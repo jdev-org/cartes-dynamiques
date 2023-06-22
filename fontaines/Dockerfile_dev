@@ -1,0 +1,38 @@
+FROM nginx:alpine
+
+ARG APP_VERSION
+ARG NEXUS3_PSW
+ARG NEXUS3_USR
+ARG NEXUS_SERVER=nexus3-ovh.priv.atolcd.com
+
+# Package et script pour la synchro des données
+RUN apk update && apk upgrade && apk add gdal-tools sshpass openssh postgresql-client mutt
+
+WORKDIR /scripts
+
+COPY scripts/*.sh ./
+COPY scripts/*.sql ./
+COPY scripts/template/*.html ./template/
+
+RUN chmod +x /scripts/*.sh \
+  && mkdir -p /var/fontaines/logs/ \
+  && mkdir -p /var/fontaines/data/
+
+# Récupération de mviewer et de la configuration de la carte
+WORKDIR /livraison
+
+COPY fontaines.zip .
+
+RUN wget -c https://github.com/geobretagne/mviewer/archive/v3.4.1.zip && \
+unzip v3.4.1.zip && \
+mv /livraison/mviewer-3.4.1/* /usr/share/nginx/html/ && \
+unzip fontaines.zip && \
+mv /livraison/* /usr/share/nginx/html/apps
+
+WORKDIR /
+
+RUN rm -rf /livraison
+
+STOPSIGNAL SIGQUIT
+
+ENTRYPOINT [ "/scripts/mviewer_entrypoint.sh" ]

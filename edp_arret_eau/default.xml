@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<application
+			title="Arrêts d'eau"
+			logo="apps/commons/theme_edp/logo_edp_white.png"	
+			style="apps/commons/theme_edp/theme_edp.css"
+			favicon="apps/commons/theme_edp/favicon.ico"	
+			help="apps/edp_arret_eau/templates/aide_personnalisee.html"
+			lang="fr"
+			langfile="apps/edp_arret_eau/custommviewer.i18n.json"
+			showhelp="true"
+			titlehelp="LES CHIFFRES"
+			iconhelp="question"
+			exportpng="true"
+			measuretools="true"
+			stats="false"
+			statsurl=""
+			coordinates="false"
+			geoloc="false"
+			mouseposition="true"
+			togglealllayersfromtheme="true"
+
+	/>
+	<mapoptions
+			maxzoom="22"
+			projection="EPSG:3857"
+			center="258000, 6251306.81"
+			zoom="9"
+			maxextent="237402, 6233326, 286849, 6266959"
+	/>
+
+	<baselayers style="gallery">
+		<baselayer
+				type="WMTS"
+				id="ign_plan"
+				label="Plan IGN"
+				title="Plan IGN"
+				thumbgallery="apps/edp_arret_eau/img/basemap/ign_plan_v2.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
+				fromcapacity="false"
+				format="image/png"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="true"
+		/>
+		<baselayer
+				type="WMTS"
+				id="ign_orthophoto"
+				label="Photos aériennes IGN"
+				title="Photos aériennes IGN"
+				thumbgallery="apps/edp_arret_eau/img/basemap/ign_orthophoto.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="ORTHOIMAGERY.ORTHOPHOTOS"
+				fromcapacity="false"
+				format="image/jpeg"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="false"
+		/>
+	</baselayers>
+
+
+
+
+	<themes mini="false" legendmini="false">
+
+		<theme name="Arrêts d'eau et travaux" collapsed="false" id="edp_arret_eau_recherche_test" icon="fas fa-tint">
+
+			<layer
+					id="edp_ep"
+					name="Arrêts d'eau"
+					url="apps/edp_arret_eau/addons/customlayers/edp_ep.js"
+					scalemin="0"
+					scalemax="1000000"
+					dynamiclegend="false"
+					visible="true"
+					exclusive="true"
+					tiled="false"
+					opacity="1"
+					legendurl="apps/edp_arret_eau/img/legende.png"
+					filter="nature_res='EP'"
+					toplayer="false"
+					expanded="true"
+					showintoc="true"
+					queryable="true"
+					infoformat="application/vnd.ogc.gml"
+					infohighlight ="false"
+					customcontrol="true"
+					customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
+					type="customlayer"
+					jsonfields="arrets"
+			>
+				<!--/fields="ID,NOM_COM,INSEE_COM,STATUT"
+                    aliases="Nom,Numéro INSEE,Statut"-->
+				<template url="apps/edp_arret_eau/templates/arret_eau_wms.mst"></template>
+			</layer>
+
+			<layer
+					id="edp:arrondissement"
+					name="Arrondissements"
+					url="https://edp-geoserver-prod.atolcd.com/geoserver/edp/wms"
+					scalemin ="0"
+					scalemax="1000000"
+					dynamiclegend ="false"
+					visible="true"
+					exclusive="false"
+					tiled="false"
+					opacity="1"
+					legendurl = ""
+					filter=""
+					toplayer="false"
+					expanded="false"
+					showintoc="false"
+					queryable="false"
+					infoformat="application/vnd.ogc.gml"
+					infohighlight ="false"
+			>
+			</layer>
+
+
+		</theme>
+
+	</themes>
+
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			closeafterclick="true"
+			querymaponclick="true"/>
+
+	<extensions>
+	</extensions>
+</config>

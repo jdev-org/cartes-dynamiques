@@ -1,0 +1,78 @@
+{{#features}}
+    <p id= "udi_nom_text" class="udi_nom">L'adresse sélectionnée est desservie par l'unité de distribution <b>{{nom}}<b><p>
+    <p id= "udi_para_text" class="udi_para"></p>
+    <br><a id= "udi_rapport_link" class="udi_rapport" href="" target="_blank" class="url">Consulter le dernier rapport de contrôle sanitaire</a>
+    <br><br><a id="edp_mst_link" class="edp_mst" href="https://www.eaudeparis.fr/la-qualite-de-leau" target="_blank"">En savoir plus</a>
+{{/features}}
+
+<style>
+	.udi_nom {
+		color: #000000;
+		font-size:14px;
+		line-height:1;
+	}
+	.udi_rapport {
+		color: #195BA3;
+		font-size:14px;
+	}
+
+	.udi_para{
+		font-size:14px;
+		fotn-style:italic;
+		color:#666;
+		line-height:1.1;
+		text-justify:auto;
+	}
+</style>
+
+<script>
+	const url_rapport_base = "https://www.eaudeparis.fr/sites/default/files/import/ARS/"
+	var udi_rapport_nom_pdf;
+	var udi_rapport_url;
+
+	
+	{{#features}}
+		{{#nom}}
+		udi_rapport_nom_pdf = 'udi_' + '{{nom}}'.replace(' ','') + '.pdf';
+		udi_nom = '{{nom}}';
+		{{/nom}}
+	{{/features}}
+	
+	udi_rapport_url = url_rapport_base + udi_rapport_nom_pdf;
+ 
+	document.getElementById("udi_rapport_link").setAttribute("href",udi_rapport_url);
+
+if (udi_rapport_nom_pdf == 'udi_hors_edp.pdf')  {
+	var hors_edp = document.getElementById("udi_nom_text");
+	var txt_hors_edp = "Vous êtes en dehors de la zone gérée par Eau de Paris (EDP), aucun rapport de contrôle sanitaire n'est disponible.";
+	hors_edp.textContent = txt_hors_edp;
+	var hors_edp_rap = document.getElementById("udi_rapport_link");
+	var txt_hors_edp_rap = "";
+	hors_edp_rap.textContent = txt_hors_edp_rap;
+	}
+
+if(udi_nom == 'SUD OUEST') {
+		var text = document.getElementById("udi_para_text");
+		var text_so = "L’Unité de Distribution (UDI) SUD OUEST est alimentée par les sources de la région de Sens acheminées via l’aqueduc de la Vanne à l’usine de l’Haÿ-les-Roses pour traitement et stockage avec l’eau de la Seine traitée à l’usine d’Orly."
+		text.textContent = text_so
+	}
+
+else if(udi_nom == 'NORD OUEST') {
+		var text = document.getElementById("udi_para_text");
+		var text_so = "L’Unité de Distribution (UDI) NORD OUEST est alimentée par les sources de l’Avre traitées à l’usine de Saint Cloud."
+		text.textContent = text_so
+	}
+
+else if(udi_nom == 'EST') {
+		var text = document.getElementById("udi_para_text");
+		var text_so = "L’Unité de Distribution (UDI) EST est alimentée par les eaux de la Marne et de la Seine traitées aux usines de Joinville et d’Orly"
+		text.textContent = text_so
+	}
+
+else if(udi_nom == 'CENTRE') {
+		var text = document.getElementById("udi_para_text");
+		var text_so = "L’Unité de Distribution (UDI) CENTRE est alimentée par les sources du Loing et de la Voulzie traitées aux usines de Longueville et de Sorques et acheminée via l’aqueduc du Loing jusqu’au réservoir Montsouris."
+		text.textContent = text_so
+	}
+
+</script>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<application
+			title="Les 50 fontaines Wallace à découvrir"
+			logo="apps/commons/theme_edp/logo_edp_white.png"	
+			style="apps/commons/theme_edp/theme_edp.css"
+			favicon="apps/commons/theme_edp/favicon.ico"		
+            help="apps/fontaines_wallace/templates/home.html?1"
+			titlehelp="INFORMATIONS GÉNÉRALES"
+			lang="fr"
+			langfile="apps/fontaines_wallace/custommviewer.i18n.json"
+			showhelp="true"			
+			exportpng="true"
+			measuretools="true"
+			stats="false"
+			statsurl=""
+			coordinates="false"
+			geoloc="false"
+			mouseposition="true"
+			togglealllayersfromtheme="true"
+	/>
+	<mapoptions
+			maxzoom="18"
+			projection="EPSG:3857"
+			center="260841.36, 6251306.81"
+			zoom="13"
+			maxextent="237402, 6233326, 286849, 6266959"
+
+	/>
+
+	<baselayers style="gallery">
+		<baselayer
+				type="WMTS"
+				id="ign_plan"
+				label="Plan IGN"
+				title="Plan IGN"
+				thumbgallery="apps/fontaines_wallace/img/basemap/ign_plan_v2.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
+				fromcapacity="false"
+				format="image/png"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="true"
+		/>
+		<baselayer
+				type="WMTS"
+				id="ign_orthophoto"
+				label="Photos aériennes IGN"
+				title="Photos aériennes IGN"
+				thumbgallery="apps/fontaines_wallace/img/basemap/ign_orthophoto.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="ORTHOIMAGERY.ORTHOPHOTOS"
+				fromcapacity="false"
+				format="image/jpeg"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="false"
+		/>
+	</baselayers>
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			closeafterclick="true"
+			querymaponclick="true"
+	/>
+	<themes mini="false" legendmini="false">
+		<theme name="Fontaines Wallace" collapsed="false" id="eaudeparis" icon="fas fa-tint">
+			<layer
+				index="1"
+				showintoc="true"
+				toplayer="true"
+				id="fontaines_wallace"
+				name="Fontaines Wallace"
+				url="https://edp-geoserver-prod.atolcd.com/geoserver/fontaines/wms"
+				dynamiclegend ="true"
+				visible="true"
+				opacity="1"
+				queryable="true"
+				infoformat="application/vnd.ogc.gml"
+				legendurl="apps/fontaines_wallace/img/legende.png?2"
+				expanded="true"
+				tooltip="true"
+				tooltipenabled="true">
+				<template url="apps/fontaines_wallace/templates/fontaines-wallace-wms.mst"></template>
+			</layer>
+		</theme>
+	</themes>
+</config>

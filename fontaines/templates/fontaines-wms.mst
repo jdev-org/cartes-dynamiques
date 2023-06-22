@@ -1,0 +1,175 @@
+{{#features}}
+  <li class="inventaire item" style="padding-bottom:65px;">
+    <p class="text-feature">
+      <span id="type_fontaine"></span><br/>
+    </p>
+    <div class="fontaines-adresse">
+      <div>{{no_voirie_pair}}{{no_voirie_impair}} {{nom_voie}}</div>
+      <div>{{nom_commune}}</div>
+    </div>
+    <div id="fontaines-qualite"></div>
+    <div id="GHA"></div>
+    <span class="indispo" id="fontaintes-date"></span> <br/>
+    <p></p>
+    <a id="fontaintes-link" target="_blank" class="url">En savoir plus</a><br/>
+    <div id="adresse-link"></div>
+  </li>
+{{/features}}
+
+<style>
+  .inventaire .text-feature{
+  font-family:"roboto_regular";
+  color:#555;
+  font-size:13px;
+  margin-top:5px;
+  }
+  .inventaire .indispo{
+    font-family:"roboto_bold";
+  }
+	.inventaire .text-feature span{
+    font-size: 20px;
+		font-family:"roboto_bold";
+	}
+  .inventaire .url {
+    color: #195BA3;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  .inventaire .url:hover {
+    color: #09aec8;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  .fontaines-adresse{
+    margin-bottom: 10px;
+  }
+  #fontaines-qualite{
+    margin-bottom: 10px;
+  }
+  #fontaines-qualite img{
+    margin-right: 10px;
+  }
+  #adresse-link {
+    color: #002DDC;
+	font-size:15.5px;
+    margin: 5% 0;
+  }
+
+  a {
+	color: #195BA3;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #09aec8;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+  var type_objet_affiche;
+  var url_en_savoir_plus, url_qualite, accessible, dispo, code_udi, type_objet, autre_info;
+  var date_indispo = [], remise_en_service = [], remise_en_service = [];
+  var latitude;
+  var longitude;
+
+  {{#features}}
+    type_objet='{{type_objet}}';
+    code_udi='{{code_udi}}';
+    autre_info='{{autre_info}}';
+    latitude='{{latitude}}';
+    longitude='{{longitude}}';
+    /* Si la fontaine est disponible, les dates d'indisponibilité ne sont pas renseignées */
+    {{#date_indispo}}
+      date_indispo.push('{{date_indispo}}');
+    {{/date_indispo}}
+    {{#date_remise_en_service}}
+      remise_en_service.push('{{date_remise_en_service}}');
+    {{/date_remise_en_service}}
+    {{#accessible}}
+      accessible='{{accessible}}';
+    {{/accessible}}
+    {{#dispo}}
+      dispo='{{dispo}}';
+    {{/dispo}}
+  {{/features}}
+
+/* Le titre à  afficher et le lien "en savoir plus" sont fonction du type de la fontaine. */
+  if(type_objet=='FTNE_PETILLANTE'){
+    type_objet_affiche = 'Fontaine à  eau pétillante';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_PETILLANTE.PDF';
+  } else if (type_objet=='BORNE_FONTAINE') {
+    type_objet_affiche = 'Borne fontaine';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/BORNE_FONTAINE.PDF';
+  } else if (type_objet=='FONTAINE_ALBIEN') {
+    type_objet_affiche = 'Fontaine à  l\'albien';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_A_L_ALBIEN.PDF';
+  } else if (type_objet=='FONTAINE_ARCEAU') {
+    type_objet_affiche = 'Fontaine arceau';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_ARCEAU.PDF';
+  } else if (type_objet=='FONTAINE_BOIS') {
+    type_objet_affiche = 'Fontaine des bois, parcs et jardins';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/BORNE_FONTAINE.PDF';
+  } else if (type_objet=='FONTAINE_TOTEM') {
+    type_objet_affiche = 'Fontaine totem';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_TOTEM.PDF';
+  } else if (type_objet=='FONTNE_WALLACE') {
+    type_objet_affiche = 'Fontaine Wallace';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_WALLACE.PDF';
+  } else if (type_objet=='FTNE_MILLENAIRE') {
+    type_objet_affiche = 'Fontaine Millénaire';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_MILLENAIRE.PDF';
+  } else if (type_objet=='FTNE_ORNEMENTAL') {
+    type_objet_affiche = 'Fontaine ornementale';
+    url_en_savoir_plus = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/BORNE_FONTAINE.PDF';
+  } else if (type_objet=='FTNE_POING_EAU') {
+    type_objet_affiche = 'Fontaine poing d\'eau';
+    url_en_savoir_plus ='https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_POINGS_D_EAU.PDF';
+  }
+  document.getElementById("fontaintes-link").setAttribute("href",url_en_savoir_plus);
+  document.getElementById("type_fontaine").innerHTML =  type_objet_affiche ;
+
+  /* Affichage des dates : seulement si les dates existent */
+  if(dispo == "OUI" && accessible == "Oui"){
+    document.getElementById("fontaintes-date").innerHTML =  "Disponible";
+    document.getElementById("fontaintes-date").style.color = "#06A317";
+  } else if(accessible == "Non"){
+    document.getElementById("fontaintes-date").innerHTML =  "Inaccessible";
+    document.getElementById("fontaintes-date").style.color = "#787B80";
+  } else if(date_indispo.length == 1 && remise_en_service.length ==1){
+    document.getElementById("fontaintes-date").innerHTML =  "Indisponible du " + date_indispo + " au " + remise_en_service;
+    document.getElementById("fontaintes-date").style.color = "#e60000";
+  } else if (date_indispo.length == 1 && remise_en_service.length ==0){
+    document.getElementById("fontaintes-date").innerHTML =  "Indisponible depuis le " + date_indispo;
+    document.getElementById("fontaintes-date").style.color = "#e60000";
+  } else {
+    document.getElementById("fontaintes-date").innerHTML =  "Disponible";
+    document.getElementById(fontaintes-"date").style.color = "#06A317";
+  }
+
+  if(code_udi=='E'){
+    url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_EST.pdf';
+  }else if (code_udi == 'C'){
+    url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_CENTRE.pdf';
+  }else if (code_udi == 'NO'){
+    url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_NORDOUEST.pdf';
+  }else if (code_udi == 'SO'){
+    url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_SUDOUEST.pdf';
+  }
+
+  if(code_udi.length > 0){
+    var link_text="Qualité de l'eau";
+    var link = '<a target="_blank" href="'+url_qualite+'"><img src="apps/fontaines/img/etoile_qualite.png" />'+link_text+'</a>';
+    document.getElementById("fontaines-qualite").innerHTML =  link;
+  }
+
+  if(autre_info.length >0){
+    var contentGHA = '<img src="apps/img/GHA.png" />' + autre_info;
+    document.getElementById("GHA").innerHTML = contentGHA;
+ }
+   
+ url_pos = 'https://www.google.com/maps/dir//' + latitude + ',' + longitude + '/@48.8591449,2.3130778,12.75z/data=!4m5!4m4!1m1!4e1!1m0!3e2';
+ document.getElementById("adresse-link").innerHTML = '<a href="' + url_pos + '" target="_blank"><b>Aller à la fontaine</b></a>';
+
+</script>

@@ -1,0 +1,204 @@
+<!--ELEMENTS HTML-->
+        <!--CHARGEMENT DE LA LIBRAIRIE SLIDER INTÉGRÉE DANS MVIEWER-->
+<script type="text/javascript" src="lib/bootstrap-slider/9.1.3/bootstrap-slider.min.js"></script>
+
+<div id="section_date_maj"></div>
+        <!--EN TÊTE-->
+<div class=principal>
+<h1>Module de recherche</h1>
+<!--<h2 class=intro>Ce module permet de filtrer les arrêts d'eau potable et non potable<br><br>Sélectionner les paramètres proposés pour afficher les arrêts d'eau correspondants</h2>-->
+
+
+        <!--PARAMÈTRE 1 : TYPE DE RÉSEAU -->
+<p class=attr1 >Type de réseau</p>
+<div class=form0>
+        <input type="radio" class="res-radio" id="res-ep" name="res" value="EP"  onclick="mviewer.customControls.edp_ep.updateLayer()" checked >
+        <label class="radio-label" for="res-ep">Potable</label>
+        <input type="radio" class="res-radio" id="res-enp" name="res" value="ENP"  onclick="mviewer.customControls.edp_ep.updateLayer()" >
+        <label class="radio-label" for="res-enp">Non potable</label>
+</div>
+
+        <!--PARAMÈTRE 2 : STATUT DE L ARRÊT -->
+<p class=attr1 >Statut de l'arrêt d'eau</p>
+<div class=form0>
+        <input type="checkbox" class="stt-checkbox1" id="stt-encours" name="stt-encours" value="EN COURS"  onclick="mviewer.customControls.edp_ep.updateLayer()" checked >
+        <label class="checkbox-label" for="stt-encours">En cours</label>
+        <input type="checkbox" class="stt-checkbox2" id="stt-prevu" name="stt-prevu" value="PREVU"  onclick="mviewer.customControls.edp_ep.updateLayer()" checked >
+        <label class="checkbox-label" for="stt-prevu">Prévu</label>
+</div>
+
+
+
+
+        <!--PARAMÈTRE 3 : SLIDER-->
+<p class=attr1 >Période</p>
+<div class=form1>
+        <input
+            class="slider"
+	        type="text"
+	        name="somename"
+	        data-provide="slider"
+	        data-slider-ticks="[1, 2, 3, 4, 5]"
+	        data-slider-ticks-labels='["Aujourd&#8216hui", "7j", "15j", "21j", "Total"]'
+	        data-slider-min="1"
+	        data-slider-max="3"
+	        data-slider-step="1"
+	        data-slider-value="5"
+	        data-slider-tooltip="hide"
+            onchange="mviewer.customControls.edp_ep.updateLayer()"
+        >
+</div>
+
+        <!--PARAMÈTRE 4 : MOTIF-->
+<p class=attr3 >Motif de l'arrêt d'eau</p>
+<div class=form1>
+  <select class="combobox_mtf" onChange="mviewer.customControls.edp_ep.updateLayer();">
+    <option class="mtf-cbbox"  value="tous"             selected="selected" >TOUS</option>
+    <option class="mtf-cbbox"  value="BRCHT NEUF"       >Branchement neuf</option>
+    <option class="mtf-cbbox"  value="CHOMAGE"          >Chômage</option>
+    <option class="mtf-cbbox"  value="DFT RESEAU"       >DFT Réseau</option>
+    <option class="mtf-cbbox"  value="ETALONNAGE"       >Étalonnage</option>
+    <option class="mtf-cbbox"  value="MAN RESERVOIR"    >Man réservoir</option>
+    <option class="mtf-cbbox"  value="MAN SECURITE"     >Man sécurité</option>
+    <option class="mtf-cbbox"  value="NETTOYAGE"        >Nettoyage</option>
+    <option class="mtf-cbbox"  value="PRECO RENOUV 3"   >Préco renouv 3</option>
+    <option class="mtf-cbbox"  value="PROJ RENDEMENT"   >Proj rendement</option>
+    <option class="mtf-cbbox"  value="REP FUITE"        >Rep fuite</option>
+    <option class="mtf-cbbox"  value="RUPTURE"          >Rupture</option>
+    <option class="mtf-cbbox"  value="TAMPONNAGE"       >Tamponnage</option>
+    <option class="mtf-cbbox"  value="TVX RENOUVEL"     >Tvx renouvel</option>
+    <option class="mtf-cbbox"  value="TVX RENOVATION"   >Tvx renovation</option>
+    <option class="mtf-cbbox"  value="TVX TIERS"        >Tvx tiers</option>
+    <option class="mtf-cbbox"  value="VISITE"           >Visite</option>
+  </select>
+</div>
+
+        <!--PARAMÈTRE 5 : ARRONDISSEMENTS -->
+<p class=attr1 >Arrondissement</p>
+<div class=form1>
+  <select class="combobox_arr" onChange="mviewer.customControls.edp_ep.updateLayer();">
+    <option class="arr-cbbox" value="tous" selected="selected">TOUS</option>
+    <option class="arr-cbbox" value="01" >1er arrondissement</option>
+    <option class="arr-cbbox" value="02" >2nd arrondissement</option>
+    <option class="arr-cbbox" value="03" >3ème arrondissement</option>
+    <option class="arr-cbbox" value="04" >4ème arrondissement</option>
+    <option class="arr-cbbox" value="05" >5ème arrondissement</option>
+    <option class="arr-cbbox" value="06" >6ème arrondissement</option>
+    <option class="arr-cbbox" value="07" >7ème arrondissement</option>
+    <option class="arr-cbbox" value="08" >8ème arrondissement</option>
+    <option class="arr-cbbox" value="09" >9ème arrondissement</option>
+    <option class="arr-cbbox" value="10" >10ème arrondissement</option>
+    <option class="arr-cbbox" value="11" >11ème arrondissement</option>
+    <option class="arr-cbbox" value="12" >12ème arrondissement</option>
+    <option class="arr-cbbox" value="13" >13ème arrondissement</option>
+    <option class="arr-cbbox" value="14" >14ème arrondissement</option>
+    <option class="arr-cbbox" value="15" >15ème arrondissement</option>
+    <option class="arr-cbbox" value="16" >16ème arrondissement</option>
+    <option class="arr-cbbox" value="17" >17ème arrondissement</option>
+    <option class="arr-cbbox" value="18" >18ème arrondissement</option>
+    <option class="arr-cbbox" value="19" >19ème arrondissement</option>
+    <option class="arr-cbbox" value="20" >20ème arrondissement</option>
+  </select>
+</div>
+<br>
+</div>
+
+<!--STYLE-->
+<style>
+
+    h1{
+        font-weight:bold;
+        font-family:DejaVu Sans;
+        font-size:20px;
+        background-color:#1C5EA5;
+        border-bottom: 2px solid #AAD5E9;
+        text-align:center;
+        color:white;
+        width: 90%;
+    }
+
+    .intro{
+        text-align:center;
+        font-style:italic;
+        font-size:12px;
+        font-family:DejaVu Sans;
+        font-weight:normal;
+        width: 90%;
+    }
+
+    .principal{
+        width:300px;
+    }
+
+    .form0{
+        width:90%;
+        display: grid;
+        grid-template-columns: 10% 90%;
+        grid-gap: 10px;
+        padding: 10px;
+    }
+
+    .form1,.form2{
+        width:90%;
+        display: grid;
+        grid-template-columns: 100%;
+        grid-gap: 10px;
+        padding: 10px;
+    }
+
+    .grid-container{
+        display: grid;
+        grid-template-columns: 7% 60% 5% 8% 20%;
+        grid-gap: 10px;
+        padding: 10px;
+    }
+
+    input{
+        width:70%;
+    }
+
+    .attr1,.attr2,.attr3 {
+        font-weight:bold;
+        font-family:DejaVu Sans;
+    }
+
+    label{
+        font-family:DejaVu Sans;
+        margin-top:10px;
+    }
+
+    p{
+        border-bottom: 2px solid #1C5EA5;
+        color:#1C5EA5;
+    }
+
+    button{
+        border:1px solid #1C5EA5;
+        border-radius:3px;
+        background-color:transparent;
+        color:#1C5EA5;
+        font-size:16px;
+    }
+
+    button:hover{
+        border:1px solid #1C5EA5;
+        border-radius:3px;
+        background-color:#1C5EA5;
+        color:white;
+        font-weight:bold;
+    }
+
+    .filtrage{
+        width:85%;
+        text-align:center;
+    }
+
+    .slider-tick-label-container {
+        margin-left: -30.32px !important;
+    }
+
+    .slider-tick-label-container .slider-tick-label {
+        width: 22.2% !important;
+    }
+
+</style>

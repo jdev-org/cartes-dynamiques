@@ -1,0 +1,46 @@
+{{#features}}
+	{{#arrets}}
+		<div class="detailArret">
+		<span class="adresseArret"><i class="fas fa-map-marker-alt"></i> {{adresse}}</span>
+		 <table>
+			<tr>
+				<th>Statut de l'arrêt d'eau</th>
+				<td>{{statut}}</td>
+			</tr>
+			<tr>
+			<tr>
+				<th>Nature du réseau</th>
+				<td>{{nature_res}}</td>
+			</tr>
+			<tr>
+				<th>Motif de l'arrêt d'eau</th>
+				<td>{{motif}}</td>
+			<tr>
+				<th>Période d'arrêt d'eau prévue</th>
+				<td>Du {{prevu_deb}} au {{prevu_fin}}</td>
+			</tr>
+		  </table>
+		</div>
+		
+	{{/arrets}}
+{{/features}}
+<style>
+
+	.detailArret{
+		padding-top:15px
+	}
+	
+	.adresseArret{
+		font-weight:bold;
+	}
+
+	th {
+		padding:2px;
+	}
+
+	td{
+		padding:2px;
+	}
+</style>
+
+

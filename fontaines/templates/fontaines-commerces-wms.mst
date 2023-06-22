@@ -1,0 +1,51 @@
+{{#features}}
+      <div class="nom_commerce">{{id}}</div><br/>
+      <div class="rue_commerce">{{numero}} {{nom_voie}} {{nom_commune}}</div>
+	  <p></p>
+	  <div id="adresse_commerce_link"></div>
+{{/features}}
+
+<style>
+  .nom_commerce{
+    font-family:"roboto_bold";
+    font-size:20px;
+    color:#555;
+  }
+
+  .rue_commerce{
+    font-family:roboto;
+    font-size:13px;
+    margin-top:5px;
+    color:#555;
+  }
+  
+  #adresse_commerce_link {
+    color: #002DDC;
+	font-size:14.5px;
+    margin: 5% 0;
+  }
+  
+  a {
+	color: #195BA3;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #09aec8;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+</style>
+
+<script>
+  var latitude;
+  var longitude;
+  {{#features}}
+    latitude='{{latitude}}';
+    longitude='{{longitude}}';
+  {{/features}}
+
+  url_pos = 'https://www.google.com/maps/dir//' + latitude + ',' + longitude + '/@48.8591449,2.3130778,12.75z/data=!4m5!4m4!1m1!4e1!1m0!3e2';
+  document.getElementById("adresse_commerce_link").innerHTML = '<a href="' + url_pos + '" target="_blank"><b>Aller boire l\'eau de Paris</b></a>';
+</script>

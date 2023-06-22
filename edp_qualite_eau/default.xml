@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<application
+			title="Qualité de l'eau"
+			logo="apps/commons/theme_edp/logo_edp_white.png"	
+			style="apps/commons/theme_edp/theme_edp.css"
+			favicon="apps/commons/theme_edp/favicon.ico"
+			help="apps/edp_qualite_eau/templates/home.html"
+			showhelp="true"
+			titlehelp="INFORMATIONS GÉNÉRALES"
+			iconhelp="question"
+			exportpng="true"
+			measuretools="true"
+			stats="false"
+			statsurl=""
+			coordinates="false"
+			geoloc="false"
+			mouseposition="true"
+			togglealllayersfromtheme="true"
+	/>
+	<mapoptions
+			maxzoom="22"
+			projection="EPSG:3857"
+			center="260841.36, 6251306.81"
+			zoom="9"
+			maxextent="237402, 6233326, 286849, 6266959"
+	/>
+
+	<baselayers style="gallery">
+		<baselayer
+				type="WMTS"
+				id="ign_plan"
+				label="Plan IGN"
+				title="Plan IGN"
+				thumbgallery="img/basemap/ign_plan_v2.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
+				fromcapacity="false"
+				format="image/png"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="true"
+		/>
+		<baselayer
+				type="WMTS"
+				id="ign_orthophoto"
+				label="Photos aériennes IGN"
+				title="Photos aériennes IGN"
+				thumbgallery="img/basemap/ign_orthophoto.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="ORTHOIMAGERY.ORTHOPHOTOS"
+				fromcapacity="false"
+				format="image/jpeg"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="false"
+		/>
+	</baselayers>
+
+
+
+
+	<themes mini="true" legendmini="false">
+		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
+
+			<layer
+					id="edp:udi_vf"
+					name="Qualité de l'eau"
+					url="https://edp-geoserver-prod.atolcd.com/geoserver/edp/wms"
+					scalemin ="0"
+					scalemax="1000000"
+					dynamiclegend ="true"
+					visible="true"
+					exclusive="true"
+					tiled="false"
+					opacity="1"
+					legendurl = ""
+					filter=""
+					toplayer="false"
+					expanded="false"
+					showintoc="true"
+					queryable="true"
+					infoformat="application/vnd.ogc.gml"
+					infohighlight ="false"
+			>
+				<!--/fields="ID,NOM_COM,INSEE_COM,STATUT"
+                    aliases="Nom,Numéro INSEE,Statut"-->
+				<template url="apps/edp_qualite_eau/templates/udi_wms.mst"></template>
+			</layer>
+
+		</theme>
+	</themes>
+
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			closeafterclick="true"
+			querymaponclick="true"
+			imgurl = "apps/edp_qualite_eau/img/drop.png"
+			imgwidth = "30px"
+	/>
+
+	<extensions>
+	</extensions>
+</config>

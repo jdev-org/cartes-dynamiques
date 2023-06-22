@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="300"
+   height="80"
+   viewBox="0 0 79.374998 21.166667"
+   version="1.1"
+   id="svg867"
+   sodipodi:docname="legende_lineaire.svg"
+   inkscape:export-filename="/home/eric/Bureau/Cloud_agaricids/demos.agaricids.com/mviewer/edp/apps/edp_arret_eau/img/legende_lineaire.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <defs
+     id="defs861" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="156.35977"
+     inkscape:cy="91.636289"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="1134"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata864">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-275.83332)">
+    <g
+       id="g1501"
+       transform="matrix(0.90960639,0,0,0.92964903,15.836408,20.325381)"
+       style="stroke-width:1.08746111">
+      <g
+         transform="translate(-0.18285216,56.589168)"
+         id="g963-2"
+         style="stroke-width:1.08746111">
+        <text
+           id="text875-6-7-7"
+           y="227.85291"
+           x="14.634323"
+           style="font-style:normal;font-weight:normal;font-size:8.06587219px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.28772408"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke-width:0.28772408"
+             y="227.85291"
+             x="14.634323"
+             id="tspan873-9-2-6"
+             sodipodi:role="line">: Arrêt prévu</tspan></text>
+        <path
+           inkscape:connector-curvature="0"
+           id="path1051"
+           d="M 6.9925596,226.55466 H 11.670015"
+           style="fill:#ffcb1e;fill-opacity:1;stroke:#ffcb1e;stroke-width:2.35435343;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373" />
+      </g>
+      <g
+         transform="translate(-0.18285216,16.712681)"
+         id="g1101"
+         style="stroke-width:1.08746111">
+        <g
+           id="g958-3"
+           transform="translate(0,39.876488)"
+           style="stroke-width:1.08746111">
+          <g
+             id="g1049"
+             style="stroke-width:1.08746111">
+            <text
+               id="text875-6-2"
+               y="234.74998"
+               x="14.445334"
+               style="font-style:normal;font-weight:normal;font-size:8.06587219px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.28772408"
+               xml:space="preserve"><tspan
+                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.23333311px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#000000;fill-opacity:1;stroke-width:0.28772408"
+                 y="234.74998"
+                 x="14.445334"
+                 id="tspan873-9-1"
+                 sodipodi:role="line">: Arrêt en cours</tspan></text>
+          </g>
+        </g>
+        <path
+           style="fill:none;fill-opacity:1;stroke:#f76963;stroke-width:2.35435343;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.78431373"
+           d="M 6.9925595,273.38016 H 11.670015"
+           id="path1051-1"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>
