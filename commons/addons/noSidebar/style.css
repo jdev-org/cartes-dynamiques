@@ -18,3 +18,7 @@
 .xs .mv-nav>li:first-child {
     display: none;
 }
+
+.xs #wrapper.toggled-2 #page-content-wrapper {
+    margin-left: -200px!important;
+}
