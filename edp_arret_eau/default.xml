@@ -6,6 +6,7 @@
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"	
 			help="apps/edp_arret_eau/templates/home.html"
+			home="https://www.eaudeparis.fr/"
 			lang="fr"
 			langfile="apps/edp_arret_eau/custommviewer.i18n.json"
 			showhelp="true"
@@ -62,13 +63,12 @@
 		/>
 	</baselayers>
 
-
-
-
+	<extensions>
+		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+	</extensions>
+	
 	<themes mini="true" legendmini="false">
-
 		<theme name="Arrêts d'eau et travaux" collapsed="true" id="edp_arret_eau_recherche_test" icon="fas fa-tint">
-
 			<layer
 					id="edp_ep"
 					name="Arrêts d'eau"

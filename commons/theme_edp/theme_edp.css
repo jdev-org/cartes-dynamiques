@@ -384,7 +384,7 @@ a.mv-layer-remove {
 /* Légende carto */
 
 .mv-layer-details img {
-    max-width: 230px!important;
+    max-width: 300px!important;
 }
 
 
@@ -826,21 +826,21 @@ span.badge.counter-slide {
 
 /** MOBILE **/
 
-.xs.mode-d #searchtool {
+.xs #searchtool {
     width: 99%!important;
 }
 
-.xs.mode-d #searchtool {
+.xs #searchtool {
     width: 99%!important;
 }
 
-.xs.mode-d .mv-title {
+.xs .mv-title {
     width: 210px!important;
     font-size: 19px!important;
     padding: 10px 0!important;
 }
 
-.xs.mode-d .navbar-toggle {
+.xs .navbar-toggle {
     color: var(--mycolor);
     background-color: #ffffff!important;
     border: none;
@@ -849,46 +849,46 @@ span.badge.counter-slide {
     border-radius: 7px;
 }
 
-.xs.mode-d .navbar {
+.xs .navbar {
    padding: 0!important;
 }
 
-.xs.mode-d .navbar-header.fixed-brand {
+.xs .navbar-header.fixed-brand {
     padding: 5px;
 }
 
-.xs.mode-d .navbar-collapse {
+.xs .navbar-collapse {
     background-color: var(--mycolor);
 }
 
 
 
-.xs.mode-d  .mv-nav a {
+.xs .mv-nav a {
     color: white!important;
     /* padding: 0px; */
     font-weight: 500;
 }
 
-.xs.mode-d .modal-content {
+.xs .modal-content {
     border-radius: 10px!important;
     padding: 10px!important;
     font-family:var(--myfont);
     background-color: #fffffff7!important;
 }
 
-.xs.mode-d .modal-title {
+.xs .modal-title {
     color:var(--mycolor);
 }
 
-.xs.mode-d .mv-theme {
+.xs .mv-theme {
     color: #555;
 }
 
-.xs.mode-d .mv-theme h4 {
+.xs .mv-theme h4 {
     font-size: 12px!important;
 }
 
-.xs.mode-d .navbar-toggle {
+.xs .navbar-toggle {
     color: var(--mycolor);
     background-color: #ffffff;
     border: none;
@@ -1077,4 +1077,8 @@ a#permalinklink {
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #F3E540; 
+  }
+
+  #layers-container-box {
+    max-width: 340px!important;    
   }

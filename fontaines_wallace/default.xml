@@ -5,7 +5,8 @@
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"		
-            help="apps/fontaines_wallace/templates/home.html?1"
+            help="apps/fontaines_wallace/templates/home.html"
+			home="https://www.eaudeparis.fr/"
 			titlehelp="INFORMATIONS GÉNÉRALES"
 			lang="fr"
 			langfile="apps/fontaines_wallace/custommviewer.i18n.json"
@@ -20,12 +21,11 @@
 			togglealllayersfromtheme="true"
 	/>
 	<mapoptions
-			maxzoom="18"
+			maxzoom="22"
 			projection="EPSG:3857"
-			center="260841.36, 6251306.81"
-			zoom="13"
+			center="258000, 6251306.81"
+			zoom="9"
 			maxextent="237402, 6233326, 286849, 6266959"
-
 	/>
 
 	<baselayers style="gallery">
@@ -70,8 +70,11 @@
 			closeafterclick="true"
 			querymaponclick="true"
 	/>
-	<themes mini="false" legendmini="false">
-		<theme name="Fontaines Wallace" collapsed="false" id="eaudeparis" icon="fas fa-tint">
+	<extensions>
+		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+	</extensions>
+	<themes mini="true" legendmini="false">
+		<theme name="Fontaines Wallace" collapsed="true" id="eaudeparis" icon="fas fa-tint">
 			<layer
 				index="1"
 				showintoc="true"

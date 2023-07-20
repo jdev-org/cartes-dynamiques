@@ -1,0 +1,20 @@
+#sidebar-wrapper {
+    display: none!important;
+}
+
+#wrapper.toggled-2 #page-content-wrapper {
+    margin-left: -250px!important;
+}
+
+.navbar-brand.menu-toggle, #btn-remove-layers{
+    display: none!important;
+}
+
+#layers-container .mv-layer-remove {
+    display: none;
+}
+
+/* En mode mobile */
+.xs .mv-nav>li:first-child {
+    display: none;
+}

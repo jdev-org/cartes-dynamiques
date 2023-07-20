@@ -1,10 +1,13 @@
 <div>
+    <div class="logoHome">
+        <img src="apps/commons/theme_edp/logo_edp_bleu.png" alt="Logo Eau de Paris" style="width: 100px;margin-bottom: 2rem;">
+    </div>
     <div class="titleHome">Les 50 fontaines Wallace à découvrir</div>
     <div class="textHome">
         Pour le 150ème anniversaire des fontaines Wallace à Paris, nous vous invitons à répondre à ce Quiz. Faites librement et à votre rythme votre parcours des 50 fontaines. Vos réponses reçues entre le 10 septembre et le 21 septembre minuit seront comptabilisées et vous permettront peut-être de gagner une « petite récompense » à retirer dans les jardins des Champs Élysées le WE d’animation du 24-25 septembre 2022. Le Quiz restera accessible en ligne et via les QR-Code au-delà du 21 septembre.
     </div>
     <button class="btnHome" data-dismiss="modal">
-        Découvrir
+        Voir la carte
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" fill="rgba(0,0,0,1)"></path></svg>  
         
     </button>
@@ -40,7 +43,13 @@
 }
 
 .btnHome svg {
-    margin-left: 1rem;
+    margin-left: 5px;
+}
+
+@media (min-width: 992px){
+    #help .modal-dialog.modal-lg {
+        width: 700px;
+    } 
 }
 
 </style>

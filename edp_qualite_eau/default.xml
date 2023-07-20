@@ -7,6 +7,7 @@
 			favicon="apps/commons/theme_edp/favicon.ico"
 			help="apps/edp_qualite_eau/templates/home.html"
 			showhelp="true"
+			home="https://www.eaudeparis.fr/"
 			titlehelp="INFORMATIONS GÉNÉRALES"
 			iconhelp="question"
 			exportpng="true"
@@ -59,9 +60,10 @@
 		/>
 	</baselayers>
 
-
-
-
+	<extensions>
+		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+	</extensions>
+	
 	<themes mini="true" legendmini="false">
 		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
 

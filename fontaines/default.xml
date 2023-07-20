@@ -6,39 +6,53 @@
         logo="apps/commons/theme_edp/logo_edp_white.png"	
 		style="apps/commons/theme_edp/theme_edp.css"
 		favicon="apps/commons/theme_edp/favicon.ico"
+        help="apps/fontaines/templates/home.html?1"
+        showhelp="true"	
+        home="https://www.eaudeparis.fr/"
         measuretools="false"
+        titlehelp="A propos"
         exportpng="true"
         togglealllayersfromtheme="true"
     />
     <mapoptions
-        maxzoom="18"
-        projection="EPSG:3857"
-        center="260841.36, 6251306.81"
-        zoom="13"
-    />
+			maxzoom="22"
+			projection="EPSG:3857"
+			center="258000, 6251306.81"
+			zoom="9"
+			maxextent="237402, 6233326, 286849, 6266959"
+	/>
 
     <baselayers style="gallery">
         <baselayer
-            type="OSM"
-            id="osm1"
-            label="OpenStreetMap"
-            title="OpenStreetMap"
-            thumbgallery="img/basemap/osm.png"
-            url="https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="Données : les contributeurs d'&lt;a href='http://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='http://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>"
-            visible="false"
-        />
+				type="WMTS"
+				id="ign_plan"
+				label="Plan IGN"
+				title="Plan IGN"
+				thumbgallery="apps/fontaines_wallace/img/basemap/ign_plan_v2.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
+				fromcapacity="false"
+				format="image/png"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="true"
+		/>
         <baselayer
-            type="OSM"
-            id="stamen2"
-            label="Watercolor"
-            title="Stamen Design"
-            thumbgallery="apps/fontaines/img/watercolor.jpg"
-            url="http://{a-c}.tile.stamen.com/watercolor/{z}/{x}/{y}.jpg"
-            maxzoom="20"
-            visible="false"
-            attribution="Map tiles by  &lt;a href='http://stamen.com/'>Stamen Design &lt;/a>, under  &lt;a href='http://creativecommons.org/licenses/by/3.0/'>CC BY 3.0 &lt;/a>"
-        />
+				type="WMTS"
+				id="ign_orthophoto"
+				label="Photos aériennes IGN"
+				title="Photos aériennes IGN"
+				thumbgallery="apps/fontaines_wallace/img/basemap/ign_orthophoto.png"
+				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+				layers="ORTHOIMAGERY.ORTHOPHOTOS"
+				fromcapacity="false"
+				format="image/jpeg"
+				attribution="Données cartographiques :©IGN"
+				style="normal"
+				matrixset="PM"
+				visible="false"
+		/>
         <baselayer
             type="OSM"
             id="stamen1"
@@ -47,25 +61,6 @@
             thumbgallery="apps/fontaines/img/toner-lite.png"
             url="http://{a-d}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png" maxzoom="20" visible="false" attribution="Map tiles by  &lt;a href='http://stamen.com/'>Stamen Design &lt;/a>, under  &lt;a href='http://creativecommons.org/licenses/by/3.0/'>CC BY 3.0 &lt;/a>"
         />
-        <baselayer
-            type="OSM"
-            id="darkmatter"
-            label="Dark Matter"
-            title="CartoDb"
-            thumbgallery="img/basemap/darkmatter.png"
-            url="https://{a-c}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
-            maxzoom="20"
-            visible="false"
-            attribution="Map tiles by  &lt;a href='http://cartodb.com/attributions'>CartoDb &lt;/a>, under  &lt;a href='http://creativecommons.org/licenses/by/3.0/'>CC BY 3.0 &lt;/a>"
-        />
-        <baselayer
-            type="OSM"
-            id="positron"
-            label="Positron" title="CartoDb" thumbgallery="img/basemap/positron.png" url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
-            maxzoom="20"
-            visible="true"
-            attribution="Map tiles by  &lt;a href='http://cartodb.com/attributions'>CartoDb &lt;/a>, under  &lt;a href='http://creativecommons.org/licenses/by/3.0/'>CC BY 3.0 &lt;/a>"
-        />
     </baselayers>
     <olscompletion
         url="https://api-adresse.data.gouv.fr/search/"
@@ -73,6 +68,9 @@
         attribution="API adresse.data.gouv.fr"
     />
     <searchparameters bbox="false" localities="true" features="false"/>
+    <extensions>
+		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+	</extensions>
 
     <themes mini="true" legendmini="false">
         <theme name="Fontaines" collapsed="true" id="eaudeparis" icon="fas fa-tint">
