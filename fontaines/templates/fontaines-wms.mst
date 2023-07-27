@@ -145,7 +145,7 @@
     document.getElementById("fontaintes-date").style.color = "#e60000";
   } else {
     document.getElementById("fontaintes-date").innerHTML =  "Disponible";
-    document.getElementById(fontaintes-"date").style.color = "#06A317";
+    document.getElementById("fontaintes-date").style.color = "#06A317";
   }
 
   if(code_udi=='E'){

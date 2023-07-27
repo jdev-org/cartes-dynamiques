@@ -1,0 +1,199 @@
+{{#features}}
+	<li class="item cardInfo fontaines" style="width:100%;">
+        <div class="displayFlex">
+            <img src="apps/fontaines/img/{{type_objet}}.svg" style="padding: 0;">
+            <div class="badgeF" id="statutFont_{{feature_ol_uid}}"></div>
+        </div>
+        <div class="nameCard">{{type_obj_l}}</div>
+        <div class="adressCard">{{nom_voie}}, {{nom_commun}}</div>
+        <div class="textCard">
+            <p id="infoFont_{{feature_ol_uid}}"></p>
+            <a id="infoFontLink_{{feature_ol_uid}}" target="_blank" href="">En savoir plus</a>
+        </div>
+
+        <div>
+            <a class="btnCard" target="_blank" href="https://www.google.com/maps/dir//{{lat}},{{lon}}/@48.8591449,2.3130778,12.75z/data=!4m5!4m4!1m1!4e1!1m0!3e2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 11.5L16 8L12.5 17.0021L11 13L7 11.5Z" fill="rgba(255,255,255,1)"></path></svg>
+                <span> J'y vais</span>
+            </a>
+            <a class="btnCard" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="rgba(255,255,255,1)"></path></svg>        
+                <span> Qualité de l'eau</span>
+            </a>
+        </div>
+		
+	</li>
+
+
+<style>
+
+#right-panel.active {
+    width: 420px!important;
+}
+
+#right-panel .item.active {
+    padding-bottom: 2.5rem!important;
+}
+
+
+.cardInfo {
+    background-color: #ededed7d;
+    padding: 2.5rem!important;
+    border-radius: 2rem;
+    font-family: var(--myfont);
+    margin-bottom: 2rem;
+}
+
+.cardInfo.fontaines img {
+    margin-left: -15px;
+    width: 70px;
+}
+
+.nameCard {
+    color: var(--mycolor);
+    font-weight: 700;
+    font-size: 2em;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.adressCard {
+    color: var(--mycolor);
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.textCard {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btnCard {
+    font-size: 1.2rem;
+    background-color: var(--mycolor);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+}
+
+.btnCard svg {
+    margin-right: 5px;
+}
+
+.btnCard:hover {
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.btnCard:focus {
+    color: white;
+    outline: none;
+}
+
+li.item.cardInfo {
+    list-style: none;
+}
+
+.displayFlex {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.badgeF {
+    color: var(--mycolor);
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 1rem;
+}
+
+.textCard a {
+    color: var(--mycolor);
+    font-weight: 600;
+    border-bottom: 3px solid var(--mycolor);
+}
+
+.textCard a:hover{
+    border: none;
+}
+
+</style>
+<script>
+    /* Affichage  du statut de la fontaine */
+    let blockBadge = document.getElementById("statutFont_{{feature_ol_uid}}");
+    let dispoFt = '{{dispo}}';
+    let accesFt = '{{accessible}}';
+    let date_ind = '{{debut_ind}}';
+    date_ind = ' depuis le ' + date_ind.replace('&#x2F;', '/').replace('&#x2F;', '/');
+
+    function displayInfoF(text,color){
+        blockBadge.innerHTML = text;
+        blockBadge.style.background=color;
+    };
+    
+    if (accesFt == "Non"){
+        displayInfoF('Fontaine non accessible','#ff96a5');
+    } else if(dispoFt == "NON"){
+        displayInfoF('Fontaine indisponible' + date_ind +'','#ffc896');
+        blockBadge.style.width='12rem';
+    } else {
+        displayInfoF('Fontaine disponible','#aeffae');
+    }
+
+    /* Gestion de la redirection pour la qualité de l'eau */
+    let url_qualite;
+    let udi_code = '{{udi_code}}';
+    if(udi_code == 'E'){
+        url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_EST.pdf';
+    }else if (udi_code == 'C'){
+        url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_CENTRE.pdf';
+    }else if (udi_code == 'NO'){
+        url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_NORDOUEST.pdf';
+    }else if (udi_code == 'SO'){
+        url_qualite = 'https://www.eaudeparis.fr/sites/default/files/import/ARS/udi_SUDOUEST.pdf';
+    }
+    document.getElementById('btnQualite_{{feature_ol_uid}}').href=url_qualite;
+
+    /* Affichage conditionnel selon le type de la fontaine */ 
+    let type_objet = '{{type_objet}}';
+
+    if(type_objet=='FTNE_PETILLANTE'){
+        textInfoF = "Envie de bulles ? Vous avez l'embarras du choix ! 17 fontaines sont disséminées dans Paris et délivrent gratuitement de l’eau gazeuse, de l’eau plate et de l’eau rafraîchie.";
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_PETILLANTE.PDF';
+    } else if (type_objet=='BORNE_FONTAINE') {
+        textInfoF = 'Plus discrètes que les Wallace, elles sont partout dans la capitale, principalement dans les parcs et jardins.';
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/BORNE_FONTAINE.PDF';
+    } else if (type_objet=='FONTAINE_ALBIEN') {
+        textInfoF = "Sous les pavés… de l’eau. Une demi-douzaine de puits artésiens ont été creusés au XIXe et au début du XXe siècles. Aujourd’hui, cinq d’entre eux ont été rénovés et 3 sont équipés de fontaines à boire, ceux de la place Verlaine (13e arr.), du square Lamartine (16e arr.) et du square de la Madone (18e arr.).";
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_A_L_ALBIEN.PDF';
+    } else if (type_objet=='FONTAINE_ARCEAU') {
+        textInfoF = "Immédiatement reconnaissable avec sa forme en « o », cette fontaine au design minimaliste est accessible aux enfants et aux personnes à mobilité réduite. Sa hauteur est idéale pour boire debout, à la volée.";
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_ARCEAU.PDF';
+    } else if (type_objet=='FONTAINE_BOIS') {
+        textInfoF = 'Plus discrètes que les Wallace, elles sont partout dans la capitale, principalement dans les parcs et jardins.';
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/BORNE_FONTAINE.PDF';
+    } else if (type_objet=='FONTAINE_TOTEM') {
+        textInfoF = "Créées dans les ateliers d’Eau de Paris, ces fontaines mobiles,au design sobre, sont surtout fonctionnelles et légères.Réalisées avec des matériaux durables (inox et acier inoxydable),elles sont faciles à entretenir ou à réparer.";
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_TOTEM.PDF';
+    } else if (type_objet=='FONTNE_WALLACE') {
+        textInfoF = "Les Wallace sont les plus célèbres des fontaines parisiennes. Leurs quatre cariatides encouragent passantes et passants à se désaltérer et surtout à porter toujours une gourde sur soi !";
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_WALLACE.PDF';
+    } else if (type_objet=='FTNE_MILLENAIRE') {
+        textInfoF = "Surnommées les « porteuses d’eau », les fontaines du Millénaire représentent deux silhouettes accolées dos à dos. Jouant sur un effet de métamorphose, la fontaine donne l’impression qu’un bras se détache du corps pour offrir l’eau. Ce geste d’offrande se traduit par une main tendue vers le passant…";
+        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_MILLENAIRE.PDF';
+    } else if (type_objet=='FTNE_POING_EAU') {
+        textInfoF = "Disséminées sur les boulevards des Maréchaux et au niveau de la porte de Montreuil, les cinq fontaines « Poings d’eau » de l'artiste Pascale Marthine Tayou, représentent des familles africaines.";
+        linkInfoF ='https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_POINGS_D_EAU.PDF';
+    }
+    document.getElementById('infoFontLink_{{feature_ol_uid}}').href = linkInfoF;
+    document.getElementById("infoFont_{{feature_ol_uid}}").innerHTML =  textInfoF ;
+    
+
+    
+</script>
+{{/features}}

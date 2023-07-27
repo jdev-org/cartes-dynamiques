@@ -7,6 +7,7 @@ Définition des propriétés de style CSS - Usages des services numériques de M
 
 /* Imports des fonts */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 /* Définition des variables */
 
 :root {
@@ -261,11 +262,11 @@ a.geoportail.list-group-item:hover {
 /** BOÎTE LEGENDE **/
 
 #layers-container-box {
-    margin-top: 60px!important;
+    margin-top: 71px!important;
     margin-left: 0px!important;
     font-family: var(--myfont);
     color: #777;
-    padding: 20px;  
+    padding: 10px 5px 10px 20px;
 }
 
 /* Header */
@@ -619,7 +620,6 @@ span.fa.mv-time-player {
 }
 
 #right-panel .mv-header {
-    background-color: var(--mycolor);
     opacity: 0.9;
     color: white;
     font-family: var(--myfont);
@@ -635,15 +635,36 @@ span.fa.mv-time-player {
 }
 
 #right-panel .close {
-    font-weight: 300!important;
-    font-size: 27px!important;
+    font-weight: 400!important;
+    font-size: 50px!important;
     right: 15px!important;
-    padding-top: 2px!important;
+    padding-top: 0px!important;
+    color: var(--mycolor)!important;
+    line-height: 0.6;
+    text-shadow: none;
 }
 
 #right-panel .item.active {
     overflow-y: auto;
-    padding-bottom: 150px!important;
+    /*padding-bottom: 150px!important;*/
+}
+
+
+
+
+/* En mode brut */
+
+#right-panel-selector .panel-heading {
+    display: none;
+}
+
+#right-panel-selector .panel-primary {
+    border: none!important;
+    box-shadow: none;
+}
+
+#right-panel ul.list-group-item {
+    border: none!important;
 }
 
 /* NAV */
@@ -667,6 +688,8 @@ span.badge.counter-slide {
     font-family: var(--myfont);
     font-weight: 400!important;
     letter-spacing: 1px;
+    left: 46%;
+    position: fixed;
 }
 
 #right-panel span.counter-slide {
@@ -807,7 +830,7 @@ span.badge.counter-slide {
     border-radius: 10px!important;
     padding: 10px!important;
     font-family:var(--myfont);
-    background-color: #fffffff7!important;
+    background-color: #ffffff!important;
 }
 
 .xs.mode-u .modal-title {
@@ -861,19 +884,19 @@ span.badge.counter-slide {
     background-color: var(--mycolor);
 }
 
-
-
 .xs .mv-nav a {
     color: white!important;
-    /* padding: 0px; */
     font-weight: 500;
+    font-size: 1.3rem;
+}
+.xs .mv-nav a:hover {
+    opacity: 0.9;
 }
 
 .xs .modal-content {
     border-radius: 10px!important;
     padding: 10px!important;
     font-family:var(--myfont);
-    background-color: #fffffff7!important;
 }
 
 .xs .modal-title {
@@ -885,14 +908,35 @@ span.badge.counter-slide {
 }
 
 .xs .mv-theme h4 {
-    font-size: 12px!important;
+    font-size: 13px!important;
+    text-transform: uppercase;
+    opacity: 0.7;
 }
 
 .xs .navbar-toggle {
     color: var(--mycolor);
-    background-color: #ffffff;
     border: none;
     padding: 12px 12px;
+}
+
+
+.xs .mv-theme h4:before {
+    content: 'ar';
+    color: #f0f8ff00;
+    width: 21px;
+    height: 22px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z' fill='rgba(83,83,83,1)'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.xs #modal-panel .panel-body {
+    border-top: none!important;
+    padding: 0;
+    box-shadow: none!important;
+}
+
+.xs #modal-panel .panel {
+    border: none;
+    box-shadow: none;
 }
 
 /* Modal Welcome */
@@ -1059,7 +1103,7 @@ a#permalinklink {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px!important;
   }
   
   /* Track */
@@ -1080,5 +1124,7 @@ a#permalinklink {
   }
 
   #layers-container-box {
-    max-width: 340px!important;    
+    max-width: 330px!important;    
   }
+
+

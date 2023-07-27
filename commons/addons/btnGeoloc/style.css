@@ -1,0 +1,32 @@
+#btnGeoloc-custom-component {
+    position: fixed;
+    top: 1rem;
+    right: 25rem;
+}
+
+#btnGeoloc-custom-component button {
+    background-color: #ffffff;
+    border: none;
+    color: var(--mycolor);
+    font-family: var(--myfont);
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 2rem;
+}
+
+#btnGeoloc-custom-component button:hover {
+    opacity: 0.9;
+}
+
+/* Position du btn en mode xs */
+
+.xs #btnGeoloc-custom-component {
+    top: 93%!important;
+    right: 20%!important;
+}
+
+.xs #btnGeoloc-custom-component button {
+    background-color: var(--mycolor);
+    color: white;
+}

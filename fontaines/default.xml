@@ -13,13 +13,14 @@
         titlehelp="A propos"
         exportpng="true"
         togglealllayersfromtheme="true"
+        templaterightinfopanel="brut"
+        geoloc="true"
     />
     <mapoptions
 			maxzoom="22"
 			projection="EPSG:3857"
-			center="258000, 6251306.81"
-			zoom="9"
-			maxextent="237402, 6233326, 286849, 6266959"
+			center="261185, 6248344.88"
+			zoom="12"
 	/>
 
     <baselayers style="gallery">
@@ -36,7 +37,7 @@
 				attribution="Données cartographiques :©IGN"
 				style="normal"
 				matrixset="PM"
-				visible="true"
+				visible="false"
 		/>
         <baselayer
 				type="WMTS"
@@ -61,6 +62,9 @@
             thumbgallery="apps/fontaines/img/toner-lite.png"
             url="http://{a-d}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png" maxzoom="20" visible="false" attribution="Map tiles by  &lt;a href='http://stamen.com/'>Stamen Design &lt;/a>, under  &lt;a href='http://creativecommons.org/licenses/by/3.0/'>CC BY 3.0 &lt;/a>"
         />
+        <baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png" 
+            url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
+            visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
     </baselayers>
     <olscompletion
         url="https://api-adresse.data.gouv.fr/search/"
@@ -70,11 +74,12 @@
     <searchparameters bbox="false" localities="true" features="false"/>
     <extensions>
 		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+        <extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 	</extensions>
 
     <themes mini="true" legendmini="false">
         <theme name="Fontaines" collapsed="true" id="eaudeparis" icon="fas fa-tint">
-            <layer
+            <!--<layer
                 id="fontaines"
                 name="Fontaines"
                 url="https://edp-geoserver-prod.atolcd.com/geoserver/fontaines/wms"
@@ -87,21 +92,51 @@
                 attribution="Eau de Paris"
                 infoformat="application/vnd.ogc.gml">
                 <template url="apps/fontaines/templates/fontaines-wms.mst"></template>
-            </layer>
-            <layer
-                id="edp:commerce"
-                name="Commerces"
-                url="https://edp-geoserver-prod.atolcd.com/geoserver/fontaines/wms"
+            </layer>-->
+            <layer id="fontaines"
+                name="Fontaines"
                 visible="true"
-                tiled="false"
-                legendurl ="apps/fontaines/img/legende_gel_vf.png"
-                filter=""
-                toplayer="false"
                 queryable="true"
+                type="customlayer"
+                opacity="1"
                 infoformat="application/vnd.ogc.gml"
-                attribution="Eau de Paris"            >
-                <template url="apps/fontaines/templates/fontaines-commerces-wms.mst"></template>
+                legendurl="apps/fontaines/img/commerces.png"
+                url="apps/fontaines/customlayers/fontaines.js"
+                customcontrol="true"
+                customcontrolpath="apps/fontaines/customcontrol"
+                attribution="Eau de Paris"
+                tooltip="false"
+                metadata=""
+                metadata-csw="">
+                <template url="apps/fontaines/templates/fontaines.mst"></template>                
             </layer>
+            <layer id="commerces"
+                name="Ici, je choisis l'eau de Paris"
+                visible="true"
+                queryable="true"
+                type="customlayer"
+                opacity="1"
+                infoformat="application/vnd.ogc.gml"
+                legendurl="apps/fontaines/img/commerces.png"
+                url="apps/fontaines/customlayers/commerces.js"
+                customcontrol="true"
+                customcontrolpath="apps/fontaines/customcontrol"
+                attribution="Eau de Paris"
+                tooltipcontent=""
+                metadata=""
+                metadata-csw="">
+                <template url="apps/fontaines/templates/commerces.mst"></template>
+            </layer>
+            <!--<layer
+                id="BAN.DATA.GOUV"
+                name="Adresses"
+                url="https://wxs.ign.fr/adresse/geoportail/v/wms"                
+                queryable="false"
+                showintoc="false"
+                visible="true"
+                attribution="IGN"
+                infoformat="application/vnd.ogc.gml">
+            </layer>-->
         </theme>
     </themes>
     <extensions>
