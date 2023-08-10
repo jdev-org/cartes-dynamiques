@@ -54,11 +54,11 @@
           <sld:MinScaleDenominator>40000</sld:MinScaleDenominator>
           <sld:PolygonSymbolizer>
             <sld:Fill>
-              <sld:CssParameter name="fill">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="fill">#f5eb5a</sld:CssParameter>
               <sld:CssParameter name="fill-opacity">0.35</sld:CssParameter>
             </sld:Fill>
             <sld:Stroke>
-              <sld:CssParameter name="stroke">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="stroke">#f5eb5a</sld:CssParameter>
               <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
               <sld:CssParameter name="stroke-width">1</sld:CssParameter>
             </sld:Stroke>
@@ -92,11 +92,11 @@
           <sld:MinScaleDenominator>40000</sld:MinScaleDenominator>
           <sld:PolygonSymbolizer>
             <sld:Fill>
-              <sld:CssParameter name="fill">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="fill">#aeffae</sld:CssParameter>
               <sld:CssParameter name="fill-opacity">0.35</sld:CssParameter>
             </sld:Fill>
             <sld:Stroke>
-              <sld:CssParameter name="stroke">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="stroke">#aeffae</sld:CssParameter>
               <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
               <sld:CssParameter name="stroke-width">1</sld:CssParameter>
             </sld:Stroke>
@@ -130,11 +130,11 @@
           <sld:MinScaleDenominator>40000</sld:MinScaleDenominator>
           <sld:PolygonSymbolizer>
             <sld:Fill>
-              <sld:CssParameter name="fill">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="fill">#ff96a5</sld:CssParameter>
               <sld:CssParameter name="fill-opacity">0.35</sld:CssParameter>
             </sld:Fill>
             <sld:Stroke>
-              <sld:CssParameter name="stroke">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="stroke">#ff96a5</sld:CssParameter>
               <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
               <sld:CssParameter name="stroke-width">1</sld:CssParameter>
             </sld:Stroke>
@@ -159,7 +159,7 @@
         <sld:Rule>
           <sld:Name>Classe_4190</sld:Name>
           <sld:Title>UDI</sld:Title>
-          <sld:MaxScaleDenominator>40000</sld:MaxScaleDenominator>
+          <sld:MaxScaleDenominator>41000</sld:MaxScaleDenominator>
           <sld:PolygonSymbolizer>
             <sld:Fill>
               <sld:CssParameter name="fill">#818181</sld:CssParameter>
