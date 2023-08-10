@@ -52,34 +52,11 @@
 	
 	<themes mini="true" legendmini="false">
 		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
-
-			<!--<layer
-					id="edp:udi_vf"
-					name="Qualité de l'eau"
-					url="https://edp-geoserver-prod.atolcd.com/geoserver/edp/wms"
-					scalemin ="0"
-					scalemax="1000000"
-					dynamiclegend ="true"
-					visible="true"
-					exclusive="true"
-					tiled="false"
-					opacity="1"
-					legendurl = ""
-					filter=""
-					toplayer="false"
-					expanded="false"
-					showintoc="true"
-					queryable="true"
-					infoformat="application/vnd.ogc.gml"
-					infohighlight ="false"
-			>
-				<template url="apps/edp_qualite_eau/templates/udi_wms.mst"></template>
-			</layer>-->
 			<layer id="udi" name="Qualité de l'eau"  visible="true" tiled="false"
 				searchable="false" queryable="true" 
 				infoformat="application/vnd.ogc.gml" featurecount="1"
 				sld="https://gis.jdev.fr/mviewer/apps/edp_qualite_eau/sld/udi.sld" 
-				url="https://edp.jdev.fr:443/geoserver/edp/ows"
+				url="https://edp.jdev.fr/geoserver/edp/ows"
 				dynamiclegend ="true"
 				attribution="Eau de Paris" 
 				infohighlight ="false"
@@ -87,7 +64,20 @@
 				metadata-csw="" >
 				<template url="apps/edp_qualite_eau/templates/udi_wms.mst"></template>
 		    </layer> 
-
+			<layer id="adresse" 
+                name="Adresse" 
+                visible="true" 
+                type="vector-tms" 
+                opacity="1" 
+                queryable="false" 
+                showintoc="false"
+                styleurl="apps/commons/style_tms/planign_adresse.json" 
+                infopanel="right-panel" 
+                metadata="https://geoservices.ign.fr/services-web-essentiels" 
+                attribution="Source: IGN" 
+                style="plan_ign" 
+                url="https://wxs.ign.fr/essentiels/geoportail/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf"> 
+            </layer>
 		</theme>
 	</themes>
 
