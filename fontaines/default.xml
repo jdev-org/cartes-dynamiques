@@ -39,6 +39,19 @@
 				matrixset="PM"
 				visible="false"
 		/>
+         <baselayer type="vector-tms"
+                owsoptions=""
+                id="plan_ign_nb"
+                label="Plan IGN - Nuance de gris"
+                title="Plan IGN - Nuance de gris"
+                thumbgallery=""
+                url="https://wxs.ign.fr/essentiels/geoportail/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf"
+                layers="PLAN.IGN"
+                visible="false"
+                attribution="IGN"
+                style="plan_ign"
+                styleurl="https://wxs.ign.fr/static/vectorTiles/styles/PLAN.IGN/essentiels/gris.json"
+        />
         <baselayer
 				type="WMTS"
 				id="ign_orthophoto"
@@ -127,16 +140,6 @@
                 metadata-csw="">
                 <template url="apps/fontaines/templates/commerces.mst"></template>
             </layer>
-            <!--<layer
-                id="BAN.DATA.GOUV"
-                name="Adresses"
-                url="https://wxs.ign.fr/adresse/geoportail/v/wms"                
-                queryable="false"
-                showintoc="false"
-                visible="true"
-                attribution="IGN"
-                infoformat="application/vnd.ogc.gml">
-            </layer>-->
         </theme>
     </themes>
     <extensions>
