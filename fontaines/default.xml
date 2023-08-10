@@ -16,65 +16,27 @@
         templaterightinfopanel="brut"
         geoloc="true"
     />
-    <mapoptions
-			maxzoom="22"
-			projection="EPSG:3857"
-			center="261185, 6248344.88"
-			zoom="12"
-	/>
+    <mapoptions	maxzoom="22" projection="EPSG:3857"	center="261185, 6248344.88"	zoom="12"/>
 
     <baselayers style="gallery">
-        <baselayer
-				type="WMTS"
-				id="ign_plan"
-				label="Plan IGN"
-				title="Plan IGN"
-				thumbgallery="apps/fontaines_wallace/img/basemap/ign_plan_v2.png"
-				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
-				layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
-				fromcapacity="false"
-				format="image/png"
-				attribution="Données cartographiques :©IGN"
-				style="normal"
-				matrixset="PM"
-				visible="false"
-		/>
-         <baselayer type="vector-tms"
-                owsoptions=""
-                id="plan_ign_nb"
-                label="Plan IGN - Nuance de gris"
-                title="Plan IGN - Nuance de gris"
-                thumbgallery=""
-                url="https://wxs.ign.fr/essentiels/geoportail/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf"
-                layers="PLAN.IGN"
-                visible="false"
-                attribution="IGN"
-                style="plan_ign"
-                styleurl="https://wxs.ign.fr/static/vectorTiles/styles/PLAN.IGN/essentiels/gris.json"
-        />
-        <baselayer
-				type="WMTS"
-				id="ign_orthophoto"
-				label="Photos aériennes IGN"
-				title="Photos aériennes IGN"
-				thumbgallery="apps/fontaines_wallace/img/basemap/ign_orthophoto.png"
-				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
-				layers="ORTHOIMAGERY.ORTHOPHOTOS"
-				fromcapacity="false"
-				format="image/jpeg"
-				attribution="Données cartographiques :©IGN"
-				style="normal"
-				matrixset="PM"
-				visible="false"
-		/>
-        <baselayer
-            type="OSM"
-            id="stamen1"
-            label="Toner-lite"
-            title="Stamen Design"
-            thumbgallery="apps/fontaines/img/toner-lite.png"
-            url="http://{a-d}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png" maxzoom="20" visible="false" attribution="Map tiles by  &lt;a href='http://stamen.com/'>Stamen Design &lt;/a>, under  &lt;a href='http://creativecommons.org/licenses/by/3.0/'>CC BY 3.0 &lt;/a>"
-        />
+        <baselayer type="WMTS" id="ign_plan" label="Plan IGN" title="Plan IGN"
+			thumbgallery="apps/commons/img/basemap/ign_plan_v2.png"
+			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+			layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
+			fromcapacity="false" format="image/png"
+			attribution="Données cartographiques :©IGN"
+			style="normal"
+			matrixset="PM"
+			visible="false"	/>
+        <baselayer type="WMTS" id="ign_orthophoto" label="Photos aériennes IGN"	title="Photos aériennes IGN"
+			thumbgallery="apps/commons/img/basemap/ign_orthophoto.png"
+			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+			layers="ORTHOIMAGERY.ORTHOPHOTOS"
+			fromcapacity="false" format="image/jpeg"
+			attribution="Données cartographiques :©IGN"
+			style="normal"
+			matrixset="PM"
+			visible="false"/>        
         <baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png" 
             url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
             visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
@@ -92,20 +54,6 @@
 
     <themes mini="true" legendmini="false">
         <theme name="Fontaines" collapsed="true" id="eaudeparis" icon="fas fa-tint">
-            <!--<layer
-                id="fontaines"
-                name="Fontaines"
-                url="https://edp-geoserver-prod.atolcd.com/geoserver/fontaines/wms"
-                legendurl="apps/fontaines/img/legende_v4.png"
-                attributefilter="true"
-                attributefield="type_objet_lib"
-                attributevalues="Fontaine des bois parcs et jardins,Fontaine totem,Fontaine borne,Fontaine arceau,Fontaine wallace,Fontaine Millénaire,Fontaine à l'albien,Fontaine poing d'eau,Fontaine à eau pétillante"
-                queryable="true"
-                visible="true"
-                attribution="Eau de Paris"
-                infoformat="application/vnd.ogc.gml">
-                <template url="apps/fontaines/templates/fontaines-wms.mst"></template>
-            </layer>-->
             <layer id="fontaines"
                 name="Fontaines"
                 visible="true"
@@ -139,6 +87,20 @@
                 metadata=""
                 metadata-csw="">
                 <template url="apps/fontaines/templates/commerces.mst"></template>
+            </layer>
+            <layer id="adresse" 
+                name="Adresse" 
+                visible="true" 
+                type="vector-tms" 
+                opacity="1" 
+                queryable="false" 
+                showintoc="false"
+                styleurl="apps/commons/style_tms/planign_adresse.json" 
+                infopanel="right-panel" 
+                metadata="https://geoservices.ign.fr/services-web-essentiels" 
+                attribution="Source: IGN" 
+                style="plan_ign" 
+                url="https://wxs.ign.fr/essentiels/geoportail/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf"> 
             </layer>
         </theme>
     </themes>
