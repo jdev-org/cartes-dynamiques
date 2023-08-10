@@ -2,23 +2,23 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1200"
    height="1200"
    viewBox="0 0 317.49999 317.50001"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    sodipodi:docname="drop.svg"
-   inkscape:export-filename="/home/eric/Bureau/Cloud_agaricids/demos.agaricids.com/mviewer/edp/img/drop.png"
+   inkscape:export-filename="C:\Users\Agathe\Desktop\drop.png"
    inkscape:export-xdpi="300"
-   inkscape:export-ydpi="300">
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -29,17 +29,18 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.49497475"
-     inkscape:cx="325.36808"
-     inkscape:cy="446.9629"
+     inkscape:cx="325.26912"
+     inkscape:cy="447.49757"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
      units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1134"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="2400"
+     inkscape:window-height="1271"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -48,7 +49,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -57,19 +57,15 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,20.500017)">
-    <g
-       id="g848"
-       transform="translate(1.404862,0.5668905)">
-      <path
-         inkscape:connector-curvature="0"
-         id="path826"
-         d="m 157.34514,-18.987965 c 0,0 -111.881024,140.984755 -111.881024,199.949035 0,58.96428 48.38103,113.39308 111.881024,113.39308 63.5,0 111.88102,-54.4288 111.88102,-113.39308 0,-58.96428 -111.88102,-199.949035 -111.88102,-199.949035 z"
-         style="fill:#1f78b4;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
-      <path
-         inkscape:connector-curvature="0"
-         id="path844"
-         d="m 231.55304,173.74397 c 0,0 0.37798,85.80059 -83.53273,82.77678"
-         style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:22.16500092;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-    </g>
+    <path
+       inkscape:connector-curvature="0"
+       id="path826"
+       d="m 158.74999,-3.6257856 c 0,0 -101.118824,127.6705956 -101.118824,181.0664756 0,53.39589 43.727104,102.6846 101.118824,102.6846 57.39175,0 101.11884,-49.28871 101.11884,-102.6846 0,-53.39588 -101.11884,-181.0664767 -101.11884,-181.0664756 z"
+       style="fill:#002ddc;fill-opacity:1;stroke:#ffffff;stroke-width:25;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path844"
+       d="m 214.59454,170.30885 c 0,0 0.286,65.02966 -63.2035,62.73786"
+       style="fill:#002ddc;fill-opacity:1;stroke:#ffffff;stroke-width:18.865;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
 </svg>

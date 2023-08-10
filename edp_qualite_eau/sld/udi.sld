@@ -16,11 +16,11 @@
           <sld:MinScaleDenominator>40000</sld:MinScaleDenominator>
           <sld:PolygonSymbolizer>
             <sld:Fill>
-              <sld:CssParameter name="fill">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="fill">#AAB9FF</sld:CssParameter>
               <sld:CssParameter name="fill-opacity">0.35</sld:CssParameter>
             </sld:Fill>
             <sld:Stroke>
-              <sld:CssParameter name="stroke">#002CDD</sld:CssParameter>
+              <sld:CssParameter name="stroke">#AAB9FF</sld:CssParameter>
               <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
               <sld:CssParameter name="stroke-width">1</sld:CssParameter>
             </sld:Stroke>
@@ -130,11 +130,11 @@
           <sld:MinScaleDenominator>40000</sld:MinScaleDenominator>
           <sld:PolygonSymbolizer>
             <sld:Fill>
-              <sld:CssParameter name="fill">#ff96a5</sld:CssParameter>
+              <sld:CssParameter name="fill">#ffc896</sld:CssParameter>
               <sld:CssParameter name="fill-opacity">0.35</sld:CssParameter>
             </sld:Fill>
             <sld:Stroke>
-              <sld:CssParameter name="stroke">#ff96a5</sld:CssParameter>
+              <sld:CssParameter name="stroke">#ffc896</sld:CssParameter>
               <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
               <sld:CssParameter name="stroke-width">1</sld:CssParameter>
             </sld:Stroke>

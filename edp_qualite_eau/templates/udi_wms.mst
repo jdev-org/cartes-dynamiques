@@ -1,27 +1,56 @@
 {{#features}}
-    <p id= "udi_nom_text" class="udi_nom">L'adresse sélectionnée est desservie par l'unité de distribution <b>{{nom}}<b><p>
+    <p id= "udi_nom_text" class="udi_nom">
+	L'adresse sélectionnée est desservie par l'unité de distribution <b>{{nom}}<b>
+	<p>
     <p id= "udi_para_text" class="udi_para"></p>
-    <br><a id= "udi_rapport_link" class="udi_rapport" href="" target="_blank" class="url">Consulter le dernier rapport de contrôle sanitaire</a>
-    <br><br><a id="edp_mst_link" class="edp_mst" href="https://www.eaudeparis.fr/la-qualite-de-leau" target="_blank"">En savoir plus</a>
+	<div class="textCard">
+        <a id="edp_mst_link" class="edp_mst" href="https://www.eaudeparis.fr/la-qualite-de-leau" target="_blank">En savoir plus</a>
+    </div>
+	<a id= "udi_rapport_link" class="udi_rapport" href="" target="_blank" class="url">
+	    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="35" height="35"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="rgba(255,255,255,1)"></path></svg>        
+		<span>Consulter le dernier rapport de contrôle sanitaire</span>
+	</a>
+	
 {{/features}}
 
 <style>
 	.udi_nom {
-		color: #000000;
-		font-size:14px;
 		line-height:1;
 	}
-	.udi_rapport {
-		color: #195BA3;
-		font-size:14px;
+	#udi_rapport_link {
+		background-color: var(--mycolor);
+		display: flex;
+		color: white;
+		font-weight: 400;
+		margin: 2rem 0;
+		padding: 10px 15px;
+		align-items: center;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		border-radius: 15px;
+		line-height: 1.2;
+	}
+	#udi_rapport_link:hover {
+		opacity:0.8;
 	}
 
 	.udi_para{
-		font-size:14px;
-		fotn-style:italic;
-		color:#666;
 		line-height:1.1;
 		text-justify:auto;
+	}
+
+	p, a{
+		font-family: var(--myfont);
+		font-size: 16px!important;
+	}
+	.textCard a {
+		color: var(--mycolor);
+		font-weight: 600;
+		border-bottom: 3px solid var(--mycolor);
+	}
+
+	.textCard a:hover{
+		border: none;
 	}
 </style>
 

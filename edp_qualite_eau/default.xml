@@ -18,6 +18,7 @@
 			geoloc="false"
 			mouseposition="true"
 			togglealllayersfromtheme="true"
+			templaterightinfopanel="brut"
 	/>
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
@@ -76,9 +77,10 @@
 			</layer>-->
 			<layer id="udi" name="Qualité de l'eau"  visible="true" tiled="false"
 				searchable="false" queryable="true" 
-				infoformat="application/vnd.ogc.gml" featurecount="2"
+				infoformat="application/vnd.ogc.gml" featurecount="1"
 				sld="https://gis.jdev.fr/mviewer/apps/edp_qualite_eau/sld/udi.sld" 
 				url="https://edp.jdev.fr:443/geoserver/edp/ows"
+				dynamiclegend ="true"
 				attribution="Eau de Paris" 
 				infohighlight ="false"
 				metadata=""
@@ -99,7 +101,7 @@
 			closeafterclick="true"
 			querymaponclick="true"
 			imgurl = "apps/edp_qualite_eau/img/drop.png"
-			imgwidth = "30px"
+			imgwidth = "25px"
 	/>
 
 	<extensions>
