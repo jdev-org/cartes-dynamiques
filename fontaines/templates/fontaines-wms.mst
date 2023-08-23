@@ -9,9 +9,9 @@
     </div>
     <div id="fontaines-qualite"></div>
     <div id="GHA"></div>
-    <span class="indispo" id="fontaintes-date"></span> <br/>
+    <span class="indispo" id="fontaines-date"></span> <br/>
     <p></p>
-    <a id="fontaintes-link" target="_blank" class="url">En savoir plus</a><br/>
+    <a id="fontaines-link" target="_blank" class="url">En savoir plus</a><br/>
     <div id="adresse-link"></div>
   </li>
 {{/features}}
@@ -127,25 +127,25 @@
     type_objet_affiche = 'Fontaine poing d\'eau';
     url_en_savoir_plus ='https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_POINGS_D_EAU.PDF';
   }
-  document.getElementById("fontaintes-link").setAttribute("href",url_en_savoir_plus);
+  document.getElementById("fontaines-link").setAttribute("href",url_en_savoir_plus);
   document.getElementById("type_fontaine").innerHTML =  type_objet_affiche ;
 
   /* Affichage des dates : seulement si les dates existent */
   if(dispo == "OUI" && accessible == "Oui"){
-    document.getElementById("fontaintes-date").innerHTML =  "Disponible";
-    document.getElementById("fontaintes-date").style.color = "#06A317";
+    document.getElementById("fontaines-date").innerHTML =  "Disponible";
+    document.getElementById("fontaines-date").style.color = "#06A317";
   } else if(accessible == "Non"){
-    document.getElementById("fontaintes-date").innerHTML =  "Inaccessible";
-    document.getElementById("fontaintes-date").style.color = "#787B80";
+    document.getElementById("fontaines-date").innerHTML =  "Inaccessible";
+    document.getElementById("fontaines-date").style.color = "#787B80";
   } else if(date_indispo.length == 1 && remise_en_service.length ==1){
-    document.getElementById("fontaintes-date").innerHTML =  "Indisponible du " + date_indispo + " au " + remise_en_service;
-    document.getElementById("fontaintes-date").style.color = "#e60000";
+    document.getElementById("fontaines-date").innerHTML =  "Indisponible du " + date_indispo + " au " + remise_en_service;
+    document.getElementById("fontaines-date").style.color = "#e60000";
   } else if (date_indispo.length == 1 && remise_en_service.length ==0){
-    document.getElementById("fontaintes-date").innerHTML =  "Indisponible depuis le " + date_indispo;
-    document.getElementById("fontaintes-date").style.color = "#e60000";
+    document.getElementById("fontaines-date").innerHTML =  "Indisponible depuis le " + date_indispo;
+    document.getElementById("fontaines-date").style.color = "#e60000";
   } else {
-    document.getElementById("fontaintes-date").innerHTML =  "Disponible";
-    document.getElementById("fontaintes-date").style.color = "#06A317";
+    document.getElementById("fontaines-date").innerHTML =  "Disponible";
+    document.getElementById("fontaines-date").style.color = "#06A317";
   }
 
   if(code_udi=='E'){
