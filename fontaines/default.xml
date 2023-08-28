@@ -71,15 +71,15 @@
                 metadata-csw="">
                 <template url="apps/fontaines/templates/fontaines.mst"></template>                
             </layer>
-            <layer id="commerces"
+            <layer id="commerce"
                 name="Ici, je choisis l'eau de Paris"
                 visible="true"
                 queryable="true"
-                type="customlayer"
+                type="wms"
                 opacity="1"
                 infoformat="application/vnd.ogc.gml"
                 legendurl="apps/fontaines/img/commerces.png"
-                url="apps/fontaines/customlayers/commerces.js"
+                url="https://edp.jdev.fr/geoserver/edp/ows"
                 customcontrol="true"
                 customcontrolpath="apps/fontaines/customcontrol"
                 attribution="Eau de Paris"

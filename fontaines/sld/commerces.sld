@@ -12,7 +12,7 @@
               <sld:ExternalGraphic>
                 <sld:OnlineResource 
                   xlink:type="simple" 
-                  xlink:href="../img/commerces.svg" />
+                  xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/commerces.svg" />
                 <sld:Format>image/svg+xml</Format>
               </sld:ExternalGraphic>
             </sld:Graphic>
