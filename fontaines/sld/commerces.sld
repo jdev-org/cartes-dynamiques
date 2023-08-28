@@ -10,11 +10,10 @@
           <sld:PointSymbolizer>
             <sld:Graphic>
               <sld:ExternalGraphic>
-                <sld:OnlineResource 
-                  xlink:type="simple" 
-                  xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/commerces.svg" />
-                <sld:Format>image/svg+xml</Format>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/commerces.svg"/>
+                <sld:Format>image/svg+xml</sld:Format>
               </sld:ExternalGraphic>
+              <sld:Size>45</sld:Size>
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
