@@ -15,20 +15,11 @@
           </ogc:Filter>
           <sld:PointSymbolizer>
             <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>square</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#DE3030</sld:CssParameter>
-                  <sld:CssParameter name="fill-opacity">1</sld:CssParameter>
-                </sld:Fill>
-                <sld:Stroke>
-                  <sld:CssParameter name="stroke">#000000</sld:CssParameter>
-                  <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
-                  <sld:CssParameter name="stroke-width">1</sld:CssParameter>
-                </sld:Stroke>
-              </sld:Mark>
-              <sld:Size>6</sld:Size>
-              <sld:Rotation>0</sld:Rotation>
+              <sld:ExternalGraphic>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_indisponible.svg"/>
+                <sld:Format>image/svg+xml</sld:Format>
+              </sld:ExternalGraphic>
+              <sld:Size>45</sld:Size>
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
@@ -43,20 +34,11 @@
           </ogc:Filter>
           <sld:PointSymbolizer>
             <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>square</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#33D346</sld:CssParameter>
-                  <sld:CssParameter name="fill-opacity">1</sld:CssParameter>
-                </sld:Fill>
-                <sld:Stroke>
-                  <sld:CssParameter name="stroke">#000000</sld:CssParameter>
-                  <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
-                  <sld:CssParameter name="stroke-width">1</sld:CssParameter>
-                </sld:Stroke>
-              </sld:Mark>
-              <sld:Size>6</sld:Size>
-              <sld:Rotation>0</sld:Rotation>
+              <sld:ExternalGraphic>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_disponible.svg"/>
+                <sld:Format>image/svg+xml</sld:Format>
+              </sld:ExternalGraphic>
+              <sld:Size>45</sld:Size>
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
@@ -71,20 +53,11 @@
           </ogc:Filter>
           <sld:PointSymbolizer>
             <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>square</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#4971E8</sld:CssParameter>
-                  <sld:CssParameter name="fill-opacity">1</sld:CssParameter>
-                </sld:Fill>
-                <sld:Stroke>
-                  <sld:CssParameter name="stroke">#000000</sld:CssParameter>
-                  <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
-                  <sld:CssParameter name="stroke-width">1</sld:CssParameter>
-                </sld:Stroke>
-              </sld:Mark>
-              <sld:Size>6</sld:Size>
-              <sld:Rotation>0</sld:Rotation>
+              <sld:ExternalGraphic>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_nonaccessible.svg"/>
+                <sld:Format>image/svg+xml</sld:Format>
+              </sld:ExternalGraphic>
+              <sld:Size>45</sld:Size>
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
