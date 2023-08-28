@@ -58,6 +58,7 @@
                 name="Fontaines"
                 visible="true"
                 queryable="true"
+                tiled="true"
                 type="wms"
                 opacity="1"
                 infoformat="application/vnd.ogc.gml"
@@ -67,7 +68,6 @@
                 customcontrol="true"
                 customcontrolpath="apps/fontaines/customcontrol"
                 attribution="Eau de Paris"
-                tooltip="false"
                 metadata=""
                 metadata-csw="">
                 <template url="apps/fontaines/templates/fontaines.mst"></template>                
@@ -76,6 +76,7 @@
                 name="Ici, je choisis l'eau de Paris"
                 visible="true"
                 queryable="true"
+                tiled="true"
                 type="wms"
                 opacity="1"
                 infoformat="application/vnd.ogc.gml"

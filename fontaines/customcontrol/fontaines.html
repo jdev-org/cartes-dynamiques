@@ -83,7 +83,7 @@
 </div>
 
 <script>
-    let urlData = "https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fontaines&outputFormat=application%2Fjson";
+    //let urlData = "https://edp.jdev.fr/geoserver/edp/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&LAYERS=fontaines&STYLES=&SLD=https%3A%2F%2Fgis.jdev.fr%2Fmviewer%2Fapps%2Ffontaines%2Fsld%2Ffontaines.sld&CRS=EPSG%3A3857&WIDTH=2868&HEIGHT=1397";
     let checkboxes = document.querySelectorAll("input[type=checkbox][name=lgd]");
     $("input[type=checkbox][name=lgd]").on('change', function() {
         $('input[type="checkbox"][name=lgd]').not(this).prop('checked', false);        
@@ -94,21 +94,28 @@
             if (this.checked) {
                 filterDataByAttr(this.value);
             } else {
-                mviewer.getLayer("fontaines").layer.getSource().setUrl(urlData);
-                mviewer.getLayer("fontaines").layer.getSource().refresh();
+                deleteFilter();
             }
         })
     });
 
     function filterDataByAttr(valAtt){
-        let cql = `CQL_FILTER=${valAtt}`;
-        mviewer.getLayer("fontaines").layer.getSource().setUrl(urlData + "&" +cql);
-        mviewer.getLayer("fontaines").layer.getSource().refresh();
+        var layer = mviewer.getLayer('fontaines');
+        var src = layer.layer.getSource();
+        var params = src.getParams();
+        // update wms layer params
+        params.CQL_FILTER = `${valAtt}`;
+        src.updateParams(params);
+        src.refresh();
     }
 
-    
-
-
+    function deleteFilter(){
+        var layer = mviewer.getLayer('fontaines');
+        var src = layer.layer.getSource();
+        var params = src.getParams();
+        delete params.CQL_FILTER;
+        src.refresh();
+    }
     
 </script>
 <style>
