@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Arrêts d'eau"
+			title="Travaux sur le réseau d'eau"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"	
@@ -20,15 +20,10 @@
 			geoloc="false"
 			mouseposition="true"
 			togglealllayersfromtheme="true"
+			templaterightinfopanel="brut"
 
 	/>
-	<mapoptions
-			maxzoom="22"
-			projection="EPSG:3857"
-			center="258000, 6251306.81"
-			zoom="9"
-			maxextent="237402, 6233326, 286849, 6266959"
-	/>
+	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
 	<baselayers style="gallery">
 		<baselayer
@@ -43,6 +38,7 @@
 				format="image/png"
 				attribution="Données cartographiques :©IGN"
 				style="normal"
+				styleurl=""
 				matrixset="PM"
 				visible="true"
 		/>
@@ -68,10 +64,10 @@
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
-		<theme name="Arrêts d'eau et travaux" collapsed="true" id="edp_arret_eau_recherche_test" icon="fas fa-tint">
+		<theme name="Travaux" collapsed="true" id="edp_arret_eau_recherche_test" icon="fas fa-tint">
 			<layer
 					id="edp_ep"
-					name="Arrêts d'eau"
+					name="Travaux"
 					url="apps/edp_arret_eau/addons/customlayers/edp_ep.js"
 					scalemin="0"
 					scalemax="1000000"

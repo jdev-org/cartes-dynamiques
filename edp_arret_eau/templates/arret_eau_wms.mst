@@ -5,7 +5,7 @@
 		<span class="adresseArret"><i class="fas fa-map-marker-alt"></i> {{adresse}}</span>
 		 <table>
 			<tr>
-				<th>Statut de l'arrêt d'eau</th>
+				<th>Statut des travaux</th>
 				<td>{{statut}}</td>
 			</tr>
 			<tr>
@@ -14,10 +14,10 @@
 				<td>{{nature_res}}</td>
 			</tr>
 			<tr>
-				<th>Motif de l'arrêt d'eau</th>
+				<th>Motif des travaux</th>
 				<td>{{motif}}</td>
 			<tr>
-				<th>Période d'arrêt d'eau prévue</th>
+				<th>Période des travaux prévue</th>
 				<td>Du {{prevu_deb}} au {{prevu_fin}}</td>
 			</tr>
 		  </table>
@@ -27,6 +27,14 @@
 	</li>
 {{/features}}
 <style>
+
+#right-panel.active {
+    width: 420px!important;
+}
+
+#right-panel .item.active {
+    padding-bottom: 2.5rem!important;
+}
 
 	.detailArret {
 		padding: 15px 5px;
