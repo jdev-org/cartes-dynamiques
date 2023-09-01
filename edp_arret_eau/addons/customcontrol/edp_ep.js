@@ -196,7 +196,7 @@ var _updateLayerParams = function (e) {
 
 }());
 
-var urlS = new URL('https://edp-geoserver-prod.atolcd.com/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_maj&outputFormat=application%2Fjson');
+var urlS = new URL('https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_maj&outputFormat=application%2Fjson');
 $.getJSON(urlS, function(dataS) {
     var itemsS = [];
     var theDivS = document.getElementById("section_date_maj");

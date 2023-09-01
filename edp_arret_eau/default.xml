@@ -97,7 +97,7 @@
 			<layer
 					id="edp:arrondissement"
 					name="Arrondissements"
-					url="https://edp-geoserver-prod.atolcd.com/geoserver/edp/wms"
+					url="https://edp.jdev.fr/geoserver/edp/wms"
 					scalemin ="0"
 					scalemax="1000000"
 					dynamiclegend ="false"
