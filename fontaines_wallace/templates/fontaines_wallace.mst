@@ -5,14 +5,14 @@
             <div class="badgeF" id="statutFont_{{feature_ol_uid}}"></div>
         </div>
         <div class="nameCard">{{type_obj_l}}</div>
-        <div class="adressCard">{{nom_voie}}, {{nom_commun}}</div>
+        <div class="adressCard">{{num_impair}}{{num_pair}} {{nom_voie}}, {{nom_commun}}</div>
         <div class="textCard">
             <p>Les Wallace sont les plus célèbres des fontaines parisiennes. Leurs quatre cariatides encouragent passantes et passants à se désaltérer et surtout à porter toujours une gourde sur soi !</p>
             <a target="_blank" href="https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_WALLACE.PDF">En savoir plus</a>
         </div>
 
         <div>
-            <a class="btnCard bgPrimary" target="_blank" href="https://www.google.com/maps/dir//{{lat}},{{lon}}/@48.8591449,2.3130778,12.75z/data=!4m5!4m4!1m1!4e1!1m0!3e2">
+            <a class="btnCard bgPrimary" target="_blank" id="go-{{feature_ol_uid}}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 11.5L16 8L12.5 17.0021L11 13L7 11.5Z" fill="rgba(255,255,255,1)"></path></svg>
                 <span> J'y vais</span>
             </a>
@@ -147,6 +147,19 @@ li.item.cardInfo {
 
 </style>
 <script>
+    /*Permet de calculer l'URL Google Map vers la fontaine au click sur le bouton "j'y vais"*/
+    const goId = document.getElementById("go-{{feature_ol_uid}}");
+    $(goId).on("click", () => {
+        navigator.geolocation.getCurrentPosition((pos) => {
+            let lat = pos.coords.latitude;
+            let long = pos.coords.longitude;
+            let fontaineLat = "{{latitude}}";
+            let fontaineLong = "{{longitude}}";
+            const url = `https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=${fontaineLat},${fontaineLong}&travelmode=walking`;
+            window.open(url);
+        });
+    })
+
     /* Affichage  du statut de la fontaine */
     let blockBadge = document.getElementById("statutFont_{{feature_ol_uid}}");
     let dispoFt = '{{dispo}}';

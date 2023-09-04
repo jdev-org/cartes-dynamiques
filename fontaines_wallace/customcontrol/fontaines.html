@@ -1,0 +1,69 @@
+<div id="legendFontaines_wallace">  
+    <h5>Fontaines concernées par le jeu</h5>
+    <div>
+        <input type="checkbox" id="btn-check11" class="btn-check-lgd" name="lgd" value="dispo like 'OUI'">
+        <label class="btn-legend " for="btn-check11">
+            <img src="apps/fontaines_wallace/img/fontaineWal_disponible.svg" style="width: 48px;padding: 0;">
+            <span>Fontaine disponible</span>
+        </label>
+    </div>
+    <div>
+        <input type="checkbox" id="btn-check12" class="btn-check-lgd" name="lgd" value="dispo like 'NON'">
+        <label class="btn-legend " for="btn-check12">
+            <img src="apps/fontaines_wallace/img/fontaineWal_indisponible.svg" style="width: 48px;padding: 0;">
+            <span>Fontaine indisponible</span>
+        </label>
+    </div>
+    <h5>Fontaines non concernées par le jeu</h5>
+    <div>
+        <input type="checkbox" id="btn-check11" class="btn-check-lgd" name="lgd" value="dispo like 'OUI'">
+        <label class="btn-legend " for="btn-check11">
+            <img src="apps/fontaines_wallace/img/fontaineWal_nogame.svg" style="width: 48px;padding: 0;">
+            <span>Autres fontaines Wallace</span>
+        </label>
+    </div>    
+</div>
+
+<script>
+  
+
+
+    
+</script>
+<style>
+    #btnLegend {
+        padding: 10px 0px;
+    }
+    
+    #legend-fontaines {
+        display: none;
+    }
+
+    .btn-legend:active {
+        box-shadow: none;
+    }
+
+    #legendFontaines_wallace label {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.2rem;
+        color: #5e5e5e;
+    }
+
+    #legendFontaines_wallace input {
+        display: none;
+    }
+
+    #legendFontaines_wallace>div {
+        margin-top: -10px;
+    }
+
+    #legendFontaines_wallace h5 {
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 1px;
+        opacity: 0.6;
+        margin-bottom: 12px;
+    }
+</style>

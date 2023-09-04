@@ -61,40 +61,23 @@
 	</extensions>
 	<themes mini="true" legendmini="false">
 		<theme name="Fontaines Wallace" collapsed="true" id="eaudeparis" icon="fas fa-tint">
-			<!--<layer
-				index="1"
-				showintoc="true"
-				toplayer="true"
-				id="fontaines_wallace"
+			<layer
+				id="fontaines"
 				name="Fontaines Wallace"
-				url="https://edp-geoserver-prod.atolcd.com/geoserver/fontaines/wms"
-				dynamiclegend ="true"
+				type="wms"
+				url="https://edp.jdev.fr/geoserver/edp/ows"
+                sld="https://gis.jdev.fr/mviewer/apps/fontaines_wallace/sld/fontaines_wallace.sld"
+				legendurl="apps/fontaines/img/commerces.png"
 				visible="true"
 				opacity="1"
 				queryable="true"
-				infoformat="application/vnd.ogc.gml"
-				legendurl="apps/fontaines_wallace/img/legende.png?2"
-				expanded="true"
-				tooltip="true"
-				tooltipenabled="true">
-				<template url="apps/fontaines_wallace/templates/fontaines-wallace-wms.mst"></template>
-			</layer>-->
-			<layer id="fontaines_wallace"
-                name="Fontaines Wallace"
-                visible="true"
-                queryable="true"
-                type="customlayer"
-                opacity="1"
-                infoformat="application/vnd.ogc.gml"
-                url="apps/fontaines_wallace/customlayers/fontaines_wallace.js"
-                customcontrol="true"
+				customcontrol="true"
                 customcontrolpath="apps/fontaines_wallace/customcontrol"
                 attribution="Eau de Paris"
-                tooltip="false"
-                metadata=""
-                metadata-csw="">
-                <template url="apps/fontaines_wallace/templates/fontaines_wallace.mst"></template>                
-            </layer>
+				infoformat="application/vnd.ogc.gml">
+				<template url="apps/fontaines_wallace/templates/fontaines_wallace.mst"></template>
+			</layer>
+			
 		</theme>
 	</themes>
 </config>
