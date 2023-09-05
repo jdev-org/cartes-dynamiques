@@ -7,6 +7,21 @@
         <sld:Rule>
           <sld:Name>Classe_456</sld:Name>
           <sld:Title>Sans titre 456</sld:Title>
+          <sld:MinScaleDenominator>30000</sld:MinScaleDenominator>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:ExternalGraphic>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/commerces.svg"/>
+                <sld:Format>image/svg+xml</sld:Format>
+              </sld:ExternalGraphic>
+              <sld:Size>30</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>
+        <sld:Rule>
+          <sld:Name>Classe_456</sld:Name>
+          <sld:Title>Sans titre 456984</sld:Title>
+          <sld:MaxScaleDenominator>30000</sld:MaxScaleDenominator>
           <sld:PointSymbolizer>
             <sld:Graphic>
               <sld:ExternalGraphic>
