@@ -1,7 +1,11 @@
-import OffCanvasPanel from "./components/OffCanvasPanel.js";
-import { getOptions } from "./components/OffCanvasUtils.js";
+import { insertLegend } from "./components/SideBarLegend.js";
+import { createButton } from "./components/SidebarButton.js";
+import { createCloseButton } from "./components/SidebarCloseButton.js";
+import SidebarLists from "./components/SidebarLists.js";
+
 const init = () => {
-    return OffCanvasPanel();
-  };
-  
-  new CustomComponent("offCanvas", init);
+    createButton();
+    createCloseButton();
+    insertLegend();
+}
+new CustomComponent("offCanvas", init);

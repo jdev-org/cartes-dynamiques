@@ -1,6 +1,7 @@
 {
-    "js": [],
-    "css": "style.css",
+    "type": "module",
+    "js": ["js/offCanvas.js"],
+    "css": ["css/offCanvas.css", "css/SidebarLists.css", "css/SidebarCloseButton.css"],
     "html":"offCanvas.html",
     "target": "page-content-wrapper"
 }
