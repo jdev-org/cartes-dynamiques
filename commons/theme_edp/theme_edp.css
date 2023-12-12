@@ -34,9 +34,11 @@ Définition des propriétés de style CSS - Usages des services numériques de M
 
 /* NAVBAR */
 
-
-.navbar-header.fixed-brand {
+.navbar-header {
+    display: flex;
+    align-items: center;
     color: white;
+    margin-top: 3px
 }
 
 .mv-title {
