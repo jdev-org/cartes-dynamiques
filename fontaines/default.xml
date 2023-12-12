@@ -48,8 +48,8 @@
     />
     <searchparameters bbox="false" localities="true" features="false"/>
     <extensions>
-		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
         <extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
+        <extension type="component" id="offCanvas" path="apps/commons/addons"/>
 	</extensions>
 
     <themes mini="true" legendmini="false">
