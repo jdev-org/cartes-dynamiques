@@ -4,13 +4,9 @@ export const getOptions = () => {
     return options.mviewer[mviewerId];
 };
 
-export const display = () => {
-    const display = sidebar.style.display;
-    sidebar.style.display = display === "block" ? "none": "block";
-};
-
-export const outside = (e) => {
-    if (e.target == sidebar) {
-        sidebar.style.display = "none";
-    }
+export const toggleSidebar = () => {
+    var sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("active");
+    var btn__sidebar = document.getElementById("sideBarNavBtn");
+    btn__sidebar.classList.toggle("active");
 };
