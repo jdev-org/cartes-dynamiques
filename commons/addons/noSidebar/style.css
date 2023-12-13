@@ -2,7 +2,7 @@
     display: none!important;
 }
 
-#wrapper.toggled-2 #page-content-wrapper {
+#wrapper {
     margin-left: -250px!important;
 }
 
@@ -19,6 +19,6 @@
     display: none;
 }
 
-.xs #wrapper.toggled-2 #page-content-wrapper {
+.xs #wrapper {
     margin-left: -200px!important;
 }

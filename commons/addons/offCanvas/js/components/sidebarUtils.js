@@ -10,3 +10,10 @@ export const toggleSidebar = () => {
     var btn__sidebar = document.getElementById("sideBarNavBtn");
     btn__sidebar.classList.toggle("active");
 };
+
+export const initDisplaySidebar = () => {
+    const mainSize = document.getElementById("main").className;    
+    if(mainSize == "" || mainSize == "xl"){
+        toggleSidebar();
+    }
+};
