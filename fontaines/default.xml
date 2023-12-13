@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <application
+        id="fontaines"
         title="Où boire de l’eau de Paris ?"
         mouseposition="false"
         logo="apps/commons/theme_edp/logo_edp_white.png"	
@@ -50,6 +51,7 @@
     <extensions>
         <extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
         <extension type="component" id="offCanvas" path="apps/commons/addons"/>
+        <extension type="component" id="print" path="apps/commons/addons"/>
 	</extensions>
 
     <themes mini="true" legendmini="false">

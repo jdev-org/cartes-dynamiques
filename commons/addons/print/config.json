@@ -1,0 +1,20 @@
+{
+  "js": [
+    "js/print.js",
+    "lib/easydrag/jquery.easyDrag.min.js",
+    "lib/html2pdf/html2pdf.bundle.min.js"
+  ],
+  "css": "style.css",
+  "type": "module",
+  "html": "print.html",
+  "target": "page-content-wrapper",
+  "options": {
+    "mviewer": {
+      "fontaines": {
+        "printLayouts": "apps/commons/addons/print/layouts/standard.json",
+        "ownerLogo": "apps/commons/theme_edp/logo_edp_bleu.png",
+        "ownerInfos": "Cette carte a été réalisée sur www.eaudeparis.fr"
+      }
+    }
+  }
+}
