@@ -71,6 +71,9 @@
     background-color: var(--mycolor);
 }
 
+.print-legend-img img {
+    max-height: 330px;
+}
 
 /* Non affichage du btn d'accès au plugin en mode mobile */
 .xs #printBtn {
@@ -221,6 +224,7 @@
 #printGridContainer.print {
 	padding: 2px;
 	border: none;
+	font-family:var(--myfont);
 }
 
 #printGridContainer.a4-landscape {

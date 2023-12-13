@@ -2,6 +2,7 @@
 <config>
 	<application
 			title="Travaux sur le réseau d'eau"
+			id="travaux_eau"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"	
@@ -60,7 +61,8 @@
 	</baselayers>
 
 	<extensions>
-		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
+        <extension type="component" id="print" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">

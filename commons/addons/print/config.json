@@ -14,6 +14,21 @@
         "printLayouts": "apps/commons/addons/print/layouts/standard.json",
         "ownerLogo": "apps/commons/theme_edp/logo_edp_bleu.png",
         "ownerInfos": "Cette carte a été réalisée sur www.eaudeparis.fr"
+      },
+      "fontaines_wallace": {
+        "printLayouts": "apps/commons/addons/print/layouts/standard.json",
+        "ownerLogo": "apps/commons/theme_edp/logo_edp_bleu.png",
+        "ownerInfos": "Cette carte a été réalisée sur www.eaudeparis.fr"
+      },
+      "travaux_eau": {
+        "printLayouts": "apps/commons/addons/print/layouts/standard.json",
+        "ownerLogo": "apps/commons/theme_edp/logo_edp_bleu.png",
+        "ownerInfos": "Cette carte a été réalisée sur www.eaudeparis.fr"
+      },
+      "qualite_eau": {
+        "printLayouts": "apps/commons/addons/print/layouts/standard.json",
+        "ownerLogo": "apps/commons/theme_edp/logo_edp_bleu.png",
+        "ownerInfos": "Cette carte a été réalisée sur www.eaudeparis.fr"
       }
     }
   }
