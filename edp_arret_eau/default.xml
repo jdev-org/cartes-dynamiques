@@ -63,6 +63,7 @@
 	<extensions>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
         <extension type="component" id="print" path="apps/commons/addons"/>
+		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">

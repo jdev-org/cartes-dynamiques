@@ -1,0 +1,5 @@
+{
+  "js": ["homeBtnTools.js"],
+  "html": "homeBtnTools.html",
+  "target": "toolstoolbar"
+}
