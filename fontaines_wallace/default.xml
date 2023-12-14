@@ -17,8 +17,6 @@
 			stats="false"
 			statsurl=""
 			coordinates="false"
-			geoloc="false"
-			mouseposition="true"
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
 	/>
@@ -58,6 +56,7 @@
 			querymaponclick="true"
 	/>
 	<extensions>
+		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
         <extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>

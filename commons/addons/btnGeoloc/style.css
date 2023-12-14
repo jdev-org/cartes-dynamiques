@@ -1,13 +1,15 @@
+/* Masque le btn initial */
+
 #btnGeoloc-custom-component {
     position: fixed;
-    top: 1rem;
-    right: 25rem;
+    bottom: 2rem;
+    right: 10rem 
 }
 
 #btnGeoloc-custom-component button {
-    background-color: #ffffff;
+    background-color: var(--mycolor);
+    color: white;
     border: none;
-    color: var(--mycolor);
     font-family: var(--myfont);
     padding: 12px 20px;
     font-size: 15px;
@@ -22,11 +24,5 @@
 /* Position du btn en mode xs */
 
 .xs #btnGeoloc-custom-component {
-    top: 93%!important;
-    right: 20%!important;
-}
-
-.xs #btnGeoloc-custom-component button {
-    background-color: var(--mycolor);
-    color: white;
+    right: 38%!important;
 }

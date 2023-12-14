@@ -32,22 +32,54 @@ Définition des propriétés de style CSS - Usages des services numériques de M
 
 /* --- MAP ---*/
 
+#map .ol-scale-line.ol-unselectable {
+    right: 10px;
+    left: auto;
+    bottom: 20px;
+}
+
+#backgroundlayerstoolbar-gallery {
+    bottom: 50px!important;
+}
+
 /* NAVBAR */
 
 .navbar-header {
-    display: flex;
-    align-items: center;
     color: white;
-    margin-top: 3px
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%!important;
+    margin-top: 3px;
+    align-items: center;
 }
 
-.mv-title {
-    color: white!important;
+.navbar-header .navbar-brand.mv-title {
+    grid-column: 2 / 3!important;
+    grid-row: 1;
+    justify-content: center!important;
+    text-align: center;
+    color: white!important; 
+    text-transform: uppercase;
     font-weight: 500;
     font-size: 21px!important;
 }
-.navbar-brand.mv-title {
-    padding: 15px 0px;
+
+.navbar-header .navbar-brand {
+    grid-column: 3 / 4;
+    grid-row: 1;
+    padding: 0!important;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+/* Logo */
+
+img.mv-logo {
+    max-height: 62px!important;
 }
 
 #mv-navbar {
@@ -78,13 +110,7 @@ Définition des propriétés de style CSS - Usages des services numériques de M
     color: white;
 }
 
-/* Logo */
 
-img.mv-logo {
-    max-height: 53px!important;
-    margin-left: -8px!important;
-    margin-top: -16px!important
-}
 
 /* Barre de recherche */
 
@@ -743,6 +769,7 @@ span.badge.counter-slide {
 
 .ol-attribution.ol-unselectable.ol-control.ol-collapsed {
     border-radius: 4px!important;
+    margin-left: 10px!important;
 }
 
 .ol-attribution.ol-unselectable.ol-control {
@@ -851,18 +878,8 @@ span.badge.counter-slide {
 
 /** MOBILE **/
 
-.xs #searchtool {
-    width: 99%!important;
-}
-
-.xs #searchtool {
-    width: 99%!important;
-}
-
-.xs .mv-title {
-    width: 190px!important;
-    font-size: 19px!important;
-    padding: 10px 0!important;
+.xs .navbar-header .navbar-brand.mv-title {
+    font-size: 18px!important;
 }
 
 .xs .navbar-toggle {
@@ -1054,7 +1071,6 @@ a#permalinklink {
 #parameterspanel .modal-content {
 	border: none;
     padding: 1rem;
-    width: 140%;
     border-radius: 2rem!important;
     font-family: var(--myfont);
 }

@@ -2,7 +2,7 @@
 <config>
     <application
         id="fontaines"
-        title="Où boire de l’eau de Paris ?"
+        title="Où boire de l’eau à Paris ?"
         mouseposition="false"
         logo="apps/commons/theme_edp/logo_edp_white.png"	
 		style="apps/commons/theme_edp/theme_edp.css"
@@ -15,7 +15,6 @@
         exportpng="true"
         togglealllayersfromtheme="true"
         templaterightinfopanel="brut"
-        geoloc="true"
     />
     <mapoptions	maxzoom="22" projection="EPSG:3857"	center="261185, 6248344.88"	zoom="12"/>
 
