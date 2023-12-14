@@ -132,3 +132,8 @@
   }
 
 /* SIDEBAR FOOTER */
+
+#sideBarNavBtn {
+    grid-column: 1 / 2;
+    grid-row: 1;
+}
