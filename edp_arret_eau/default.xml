@@ -58,6 +58,16 @@
 		/>
 	</baselayers>
 
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622&amp;context=11" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			closeafterclick="true"
+			querymaponclick="true"/>
+
 	<extensions>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
@@ -95,7 +105,6 @@
                     aliases="Nom,Numéro INSEE,Statut"-->
 				<template url="apps/edp_arret_eau/templates/arret_eau_wms.mst"></template>
 			</layer>
-
 			<layer
 					id="edp:arrondissement"
 					name="Arrondissements"
@@ -117,22 +126,6 @@
 					infohighlight ="false"
 			>
 			</layer>
-
-
 		</theme>
-
-	</themes>
-
-	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
-	<searchparameters
-			banmarker="true"
-			bbox="false"
-			localities="true"
-			features="false"
-			inputlabel="Recherche d'adresse"
-			closeafterclick="true"
-			querymaponclick="true"/>
-
-	<extensions>
-	</extensions>
+	</themes>	
 </config>

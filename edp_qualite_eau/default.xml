@@ -44,6 +44,18 @@
             url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
             visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
     </baselayers>
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622&amp;context=11" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			closeafterclick="true"
+			querymaponclick="true"
+			imgurl = "apps/edp_qualite_eau/img/drop.png"
+			imgwidth = "25px"
+	/>
 
 	<extensions>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
@@ -82,20 +94,4 @@
             </layer>
 		</theme>
 	</themes>
-
-	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
-	<searchparameters
-			banmarker="true"
-			bbox="false"
-			localities="true"
-			features="false"
-			inputlabel="Recherche d'adresse"
-			closeafterclick="true"
-			querymaponclick="true"
-			imgurl = "apps/edp_qualite_eau/img/drop.png"
-			imgwidth = "25px"
-	/>
-
-	<extensions>
-	</extensions>
 </config>
