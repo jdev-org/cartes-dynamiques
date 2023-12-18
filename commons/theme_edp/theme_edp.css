@@ -166,8 +166,8 @@ img.mv-logo {
 .searchresults-title .close {
     color: var(--mycolor);
     text-shadow: none;
-    font-weight: 600;
-    font-size: 19px;
+    font-weight: 400;
+    font-size: 30px;
 }
 
 #searchresults a.list-group-item.disabled {
@@ -586,12 +586,55 @@ span.fa.mv-time-player {
 
 /** TOOLBAR **/
 
+/* Modifications des icônes d'origine */
+
+#zoomtoolbar .glyphicon-home, 
+#toolstoolbar .glyphicon-resize-horizontal, 
+#toolstoolbar .glyphicon-share-alt,
+#drawtoolsoptions .glyphicon-adjust,
+#drawtoolsoptions .glyphicon-resize-small {
+    font-family: "Font Awesome 5 Free"!important;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 900;
+}
+
+#zoomtoolbar .glyphicon-home:before {
+    content: "\f5a0";
+}
+
+#toolstoolbar .glyphicon-resize-horizontal:before {
+    content: "\f545";
+}
+
+#toolstoolbar .glyphicon-share-alt:before {
+    content: "\f1e0";
+}
+
+#drawtoolsoptions .glyphicon-adjust:before {
+    content: "\f5cb";
+}
+
+#drawtoolsoptions .glyphicon-resize-small:before {
+    content: "\f337";
+}
+
+
+
 #zoomtoolbar button, #toolstoolbar button,#drawtoolsoptions button, #toolstoolbar a {
     border-radius: 8px!important;
-    margin: 5px 0;
+    margin: 5px 0 0px;
     border: 2px solid white!important;
     color: #002DDC;
-    padding: 7px 10px;
+    padding: 8px 9px;
+    box-shadow: 0px 0px 15px 5px rgb(184 184 184 / 18%);
+    width: 38px;
+    height: 38px;
 }
 
 #zoomtoolbar button:hover, #toolstoolbar button:hover, #drawtoolsoptions button:hover, #toolstoolbar a:hover {
@@ -601,10 +644,12 @@ span.fa.mv-time-player {
 
 #zoomtoolbar {
     top: 75px!important;
+    box-shadow:none!important;
 }
 
 #toolstoolbar, #drawtoolsoptions {
-    top: 210px!important;
+    top: 230px!important;
+    box-shadow:none!important;
 }
 
 #toolstoolbar button.active,#drawtoolsoptions button.active {
