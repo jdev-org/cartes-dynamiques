@@ -1,0 +1,35 @@
+/* Btn */
+
+#btnModalInfos {
+    position: fixed;
+    bottom: 2rem;
+    right: 23rem;
+    background-color: var(--mycolor);
+    color: white;
+    border: none;
+    font-family: var(--myfont);
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 2rem;
+}
+
+#btnModalInfos:hover {
+    opacity: 0.9;
+}
+
+.xs #btnModalInfos {
+    left: 10px!important;
+    right: auto;
+    top: 80px;
+    bottom: auto;
+    font-size: small;
+    padding: 6px 15px;
+}
+
+/* MODAL */
+
+#modalInfos  .modal-content {
+    border-radius: 2rem!important;
+    padding: 1rem;
+}
