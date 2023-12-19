@@ -10,7 +10,7 @@
 			home="https://www.eaudeparis.fr/"
 			lang="fr"
 			langfile="apps/edp_arret_eau/custommviewer.i18n.json"
-			showhelp="true"
+			showhelp="false"
 			titlehelp="LES CHIFFRES"
 			iconhelp="question"
 			exportpng="true"
@@ -58,7 +58,7 @@
 		/>
 	</baselayers>
 
-	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622&amp;context=11" type="ban" attribution="API adresse.data.gouv.fr" />
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
 	<searchparameters
 			banmarker="true"
 			bbox="false"
@@ -73,6 +73,7 @@
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
         <extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
+		<extension type="component" id="modalInfos" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
