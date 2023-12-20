@@ -31,14 +31,11 @@ const modalInfos = (function () {
     /**
     * Add content html to modal body
     */
-    function getContentModal() {
+    async function getContentModal() {
         if (options()?.templateModalUrl) {
-            fetch(options()?.templateModalUrl).then(function (response) {
-                // The API call was successful!
-                return response.text();
-            }).then(function (html) {
-                $("#modalInfos .modal-body").append(html);
-            });            
+            const callhtml = await fetch(options()?.templateModalUrl);
+            const htmltext = await callhtml.text();
+            $("#modalInfos .modal-body").append(htmltext);           
         }
     }   
       
