@@ -79,7 +79,11 @@ Définition des propriétés de style CSS - Usages des services numériques de M
 /* Logo */
 
 img.mv-logo {
-    max-height: 62px!important;
+    max-height: 60px!important;
+}
+
+.xs .mv-logo {
+    max-height: 50px!important;
 }
 
 #mv-navbar {
@@ -962,7 +966,7 @@ span.badge.counter-slide {
     opacity: 0.9;
 }
 
-.xs .modal-content {
+.xs .modal-body {
     border-radius: 10px!important;
     padding: 10px!important;
     font-family:var(--myfont);
