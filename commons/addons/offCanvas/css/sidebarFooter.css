@@ -1,38 +1,5 @@
-#sidebarBody {
-    height: calc(100% - 250px);
-}
-
 #sidebarFooter {
-    font-family: var(--myfont);
-    color: var(--mycolor);
-    padding: 0.5em 1em;
-    background-color: white;
     position: absolute;
     bottom: 0;
     width: 100%;
-}
-
-#sidebarFooter h4{
-    font-weight: 600;
-}
-
-#iconSocialLink img {
-    width: 50px;
-    transition: transform .2s;
-}
-
-#iconSocialLink img:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
-}
-
-#linkWebsite a{
-    font-family: var(--myfont);
-    color: var(--mycolor);
-    font-size: medium;
-    font-weight: 500;
-}
-
-#linkWebsite{
-    margin-bottom: 1em;
 }
