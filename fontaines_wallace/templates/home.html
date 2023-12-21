@@ -1,4 +1,4 @@
-<div>
+<div id="homePageOne" class="block-home is-visible">
     <div class="logoHome">
         <img src="apps/commons/theme_edp/logo_edp_bleu.png" alt="Logo Eau de Paris" style="width: 100px;margin-bottom: 2rem;">
     </div>
@@ -6,16 +6,187 @@
     <div class="textHome">
         Pour le 150ème anniversaire des fontaines Wallace à Paris, nous vous invitons à répondre à ce Quiz. Faites librement et à votre rythme votre parcours des 50 fontaines. Vos réponses reçues entre le 10 septembre et le 21 septembre minuit seront comptabilisées et vous permettront peut-être de gagner une « petite récompense » à retirer dans les jardins des Champs Élysées le WE d’animation du 24-25 septembre 2022. Le Quiz restera accessible en ligne et via les QR-Code au-delà du 21 septembre.
     </div>
-    <div class="btnGroupHome">
-        <button class="btnHome" data-dismiss="modal">
-            Voir la carte
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" fill="#002ddc"></path></svg>    
-        </button>
-        <a class="btnLink" target="_blank" href="https://www.eaudeparis.fr/actualit%C3%A9s/fontaines-wallace-licone-150-ans">En savoir plus</a>
+    <div class="display-flex">
+        <div class="btnGroupHome">
+            <button class="btnHome" data-dismiss="modal">
+                Voir la carte
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" fill="#002ddc"></path></svg>    
+            </button>
+            <a class="btnLink" target="_blank" href="https://www.eaudeparis.fr/actualit%C3%A9s/fontaines-wallace-licone-150-ans">En savoir plus</a>
+        </div>
+        <div id="btnToCarto" onclick="displayBlock()">
+            <img src="apps/commons/icons/icon_globe.svg" alt="Icon globe"/>
+            <span>Accéder à la cartothèque</span>
+        </div>
     </div>
 </div>
+<div id="homePageTwo" class="block-home">
+    <button id="btnGoHome" onclick="displayBlock()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z" fill="currentColor"></path></svg>        Retour à l'accueil
+    </button>    
+    <div class="titleHome">La cartothèque d'Eau de Paris</div>
+    <div id="blockMapLibrary">
+        <a class="card-map" id="fontaines" href="https://fontaine.eaudeparis.fr/" target="_blank">
+            <div class="card-overview"></div>
+            <div class="card-infos">
+                <div class="card-infos-title">Où boire de l'eau à Paris ?</div>
+                <div>Visualiser les 1 200 fontaines publiques réparties dans les rues et les jardins de la ville</div>
+            </div>
+        </a>
+        <a class="card-map" id="travaux" href="https://travaux.eaudeparis.fr/" target="_blank">
+            <div class="card-overview"></div>
+            <div class="card-infos">
+                <div class="card-infos-title">Travaux</div>
+                <div>Visualiser les travaux en cours et prévus sur le réseau d'eau à Paris</div>
+            </div>
+        </a>
+        <a class="card-map" id="qualiteeau" href="https://qualite.eaudeparis.fr/" target="_blank">
+            <div class="card-overview"></div>
+            <div class="card-infos">
+                <div class="card-infos-title">Qualité de l'eau</div>
+                <div>Consulter la qualité de l'eau distribuée à point précis dans Paris</div>
+            </div>
+        </a>
+        <a class="card-map" id="wallace" href="https://wallace.eaudeparis.fr/" target="_blank">
+            <div class="card-overview"></div>
+            <div class="card-infos">
+                <div class="card-infos-title">Les 50 fontaines Wallace</div>
+                <div>Découvrer les Fontaines Wallace symbolisant la richesse du patrimoine urbain de Paris depuis 1872</div>
+            </div>
+        </a>
+
+    </div>
+</div>
+<script>
+    function displayBlock(){
+        homePageOne.classList.toggle("is-visible");
+        homePageTwo.classList.toggle("is-visible");
+    }
+</script>
 
 <style>
+#btnGoHome{
+    background-color: #aab9ff00;
+    font-size: large;
+    border: none;
+    color: var(--mycolor);
+    font-weight: 700;
+    padding: 0.5rem;
+    border-radius: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+#btnGoHome:hover {
+    opacity: 0.8;
+}
+
+/* MapLibrary */
+#blockMapLibrary {
+    margin: 2em 0;
+}
+
+.card-map {
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+    border-radius: 0.8em;
+    margin-bottom: 1em
+}
+
+a.card-map:hover {
+    background-color: #92FFED;
+    color: inherit;
+}
+
+.card-overview {
+    width: 35%;
+    height: 9em;
+    background-size: cover;
+    border-bottom-left-radius: 0.8em;
+    border-top-left-radius: 0.8em;
+}
+
+.card-infos {
+    padding: 0 15px;
+    font-size: larger;
+    line-height: normal;
+    width: -webkit-fill-available;
+}
+
+.card-infos-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--mycolor);
+}
+
+#travaux .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/travaux_mapoverview.png);
+}
+
+#qualiteeau .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/qualiteeau_mapoverview.png);
+}
+
+#fontaines .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/fontaines_mapoverview.png);
+}
+
+#wallace .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/wallace_mapoverview.png);
+}
+
+/* Manage display mapLibrary */
+
+.block-home{
+    display: none;
+}
+.block-home.is-visible{
+    display: block;
+}
+
+/* Home style */
+
+#btnToCarto img {
+    width: 40px;
+}
+
+#btnToCarto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 90px;
+    background-color: #92ffed;
+    text-align: center;
+    padding: 1em 3em;
+    border-radius: 0.8em;
+    line-height: 1;
+    color: var(--mycolor);
+    font-weight: 600;
+    font-size: 13px;
+    transition: transform .2s;
+}
+
+#btnToCarto:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.xs #btnToCarto {
+    margin-top: 1em;
+}
+
+.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2em;
+}
 
 .titleHome {
     font-size: 3.2rem;
@@ -32,7 +203,6 @@
 .btnGroupHome {
     display: flex;
     align-items: center;
-    margin-top:2rem;
 }
 
 .btnHome {

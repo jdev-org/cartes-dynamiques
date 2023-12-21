@@ -20,7 +20,6 @@
 			coordinates="false"
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
-
 	/>
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
