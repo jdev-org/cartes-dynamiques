@@ -22,42 +22,23 @@
 </div>
 <div id="homePageTwo" class="block-home">
     <button id="btnGoHome" onclick="displayBlock()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z" fill="currentColor"></path></svg>        Retour à l'accueil
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z" fill="currentColor"></path></svg>
     </button>    
     <div class="titleHome">La cartothèque d'Eau de Paris</div>
-    <div id="blockMapLibrary">
-        <a class="card-map" id="fontaines" href="https://fontaine.eaudeparis.fr/" target="_blank">
-            <div class="card-overview"></div>
-            <div class="card-infos">
-                <div class="card-infos-title">Où boire de l'eau à Paris ?</div>
-                <div>Visualiser les 1 200 fontaines publiques réparties dans les rues et les jardins de la ville</div>
-            </div>
-        </a>
-        <a class="card-map" id="travaux" href="https://travaux.eaudeparis.fr/" target="_blank">
-            <div class="card-overview"></div>
-            <div class="card-infos">
-                <div class="card-infos-title">Travaux</div>
-                <div>Visualiser les travaux en cours et prévus sur le réseau d'eau à Paris</div>
-            </div>
-        </a>
-        <a class="card-map" id="qualiteeau" href="https://qualite.eaudeparis.fr/" target="_blank">
-            <div class="card-overview"></div>
-            <div class="card-infos">
-                <div class="card-infos-title">Qualité de l'eau</div>
-                <div>Consulter la qualité de l'eau distribuée à point précis dans Paris</div>
-            </div>
-        </a>
-        <a class="card-map" id="wallace" href="https://wallace.eaudeparis.fr/" target="_blank">
-            <div class="card-overview"></div>
-            <div class="card-infos">
-                <div class="card-infos-title">Les 50 fontaines Wallace</div>
-                <div>Découvrer les Fontaines Wallace symbolisant la richesse du patrimoine urbain de Paris depuis 1872</div>
-            </div>
-        </a>
-
+    <div id="blockMapLibrary"> 
     </div>
 </div>
 <script>
+    // MapLibrary - insert template to home page
+    async function asyncCallMapLib() {
+        urlLibrary = "apps/commons/templates/mapLibrary_edp/mapLibrary.html";
+        const callhtml = await fetch(urlLibrary);
+        const htmltext = await callhtml.text();
+        blockMapLibrary.innerHTML= htmltext;
+    }
+    asyncCallMapLib();
+
+    // MapLibrary - manage display page
     function displayBlock(){
         homePageOne.classList.toggle("is-visible");
         homePageTwo.classList.toggle("is-visible");
@@ -65,119 +46,7 @@
 </script>
 
 <style>
-#btnGoHome{
-    background-color: #aab9ff00;
-    font-size: large;
-    border: none;
-    color: var(--mycolor);
-    font-weight: 700;
-    padding: 0.5rem;
-    border-radius: 2.5rem;
-    display: flex;
-    align-items: center;
-}
-
-#btnGoHome:hover {
-    opacity: 0.8;
-}
-
-/* MapLibrary */
-#blockMapLibrary {
-    margin: 2em 0;
-}
-
-.card-map {
-    background-color: #f3f3f3;
-    display: flex;
-    align-items: center;
-    border-radius: 0.8em;
-    margin-bottom: 1em
-}
-
-a.card-map:hover {
-    background-color: #92FFED;
-    color: inherit;
-}
-
-.card-overview {
-    width: 35%;
-    height: 9em;
-    background-size: cover;
-    border-bottom-left-radius: 0.8em;
-    border-top-left-radius: 0.8em;
-}
-
-.card-infos {
-    padding: 0 15px;
-    font-size: larger;
-    line-height: normal;
-    width: -webkit-fill-available;
-}
-
-.card-infos-title {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: var(--mycolor);
-}
-
-#travaux .card-overview {
-    background-image: url(apps/commons/templates/mapLibrary_edp/travaux_mapoverview.png);
-}
-
-#qualiteeau .card-overview {
-    background-image: url(apps/commons/templates/mapLibrary_edp/qualiteeau_mapoverview.png);
-}
-
-#fontaines .card-overview {
-    background-image: url(apps/commons/templates/mapLibrary_edp/fontaines_mapoverview.png);
-}
-
-#wallace .card-overview {
-    background-image: url(apps/commons/templates/mapLibrary_edp/wallace_mapoverview.png);
-}
-
-/* Manage display mapLibrary */
-
-.block-home{
-    display: none;
-}
-.block-home.is-visible{
-    display: block;
-}
-
 /* Home style */
-
-#btnToCarto img {
-    width: 40px;
-}
-
-#btnToCarto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    width: 90px;
-    background-color: #92ffed;
-    text-align: center;
-    padding: 1em 3em;
-    border-radius: 0.8em;
-    line-height: 1;
-    color: var(--mycolor);
-    font-weight: 600;
-    font-size: 13px;
-    transition: transform .2s;
-}
-
-#btnToCarto:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
-    cursor: pointer;
-}
-
-.xs #btnToCarto {
-    margin-top: 1em;
-}
 
 .display-flex {
     display: flex;
@@ -195,9 +64,16 @@ a.card-map:hover {
     margin-bottom: 1rem;
     line-height: 1.1;
 }
+.xs .titleHome {
+    font-size: xx-large;
+}
 
 .textHome {
     font-size: large;
+}
+
+.xs .textHome {
+    font-size: larger;
 }
 
 .btnGroupHome {
@@ -236,6 +112,72 @@ a.card-map:hover {
 .btnLink:hover {
     border-color: #002ddc00;
     color: var(--mycolor);
+}
+
+#btnToCarto img {
+    width: 40px;
+}
+
+#btnToCarto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    width: 90px;
+    background-color: #92ffed;
+    text-align: center;
+    padding: 1em 3em;
+    border-radius: 0.8em;
+    line-height: 1;
+    color: var(--mycolor);
+    font-weight: 600;
+    font-size: 13px;
+    transition: transform .2s;
+}
+
+#btnToCarto:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.xs #btnToCarto {
+    margin-top: 1em;
+}
+
+#btnGoHome{
+    background-color: #aab9ff00;
+    font-size: large;
+    border: 2px solid var(--mycolor);
+    border-radius: 2em;
+    height: 40px;
+    width: 40px;
+    color: var(--mycolor);
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform .2s;
+}
+
+#btnGoHome:hover{
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.xs .btnHome, .xs .btnLink {
+    font-size: larger;
+}
+
+/* Manage display mapLibrary */
+
+.block-home{
+    display: none;
+}
+.block-home.is-visible{
+    display: block;
 }
 
 @media (min-width: 992px){
