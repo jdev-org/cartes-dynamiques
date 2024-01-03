@@ -10,7 +10,7 @@
 			home="https://www.eaudeparis.fr/"
 			lang="fr"
 			langfile="apps/edp_arret_eau/custommviewer.i18n.json"
-			showhelp="true"
+			showhelp="false"
 			titlehelp="LES CHIFFRES"
 			iconhelp="question"
 			exportpng="true"
@@ -18,11 +18,8 @@
 			stats="false"
 			statsurl=""
 			coordinates="false"
-			geoloc="false"
-			mouseposition="true"
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
-
 	/>
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
@@ -41,7 +38,7 @@
 				style="normal"
 				styleurl=""
 				matrixset="PM"
-				visible="true"
+				visible="false"
 		/>
 		<baselayer
 				type="WMTS"
@@ -58,11 +55,28 @@
 				matrixset="PM"
 				visible="false"
 		/>
+		<baselayer  type="WMS" id="osm" label="OpenStreetMap" title="OSM monochrome" thumbgallery="apps/commons/img/basemap/osm_grey.png"
+            url="https://osm.geo2france.fr:443/mapcache/" layers="grey" format="image/png" visible="true"
+            attribution="Données : les contributeurs d'&lt;a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>" />
+		
 	</baselayers>
 
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			closeafterclick="true"
+			querymaponclick="true"/>
+
 	<extensions>
+		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
         <extension type="component" id="print" path="apps/commons/addons"/>
+		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
+		<extension type="component" id="modalInfos" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
@@ -95,7 +109,6 @@
                     aliases="Nom,Numéro INSEE,Statut"-->
 				<template url="apps/edp_arret_eau/templates/arret_eau_wms.mst"></template>
 			</layer>
-
 			<layer
 					id="edp:arrondissement"
 					name="Arrondissements"
@@ -117,22 +130,6 @@
 					infohighlight ="false"
 			>
 			</layer>
-
-
 		</theme>
-
-	</themes>
-
-	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
-	<searchparameters
-			banmarker="true"
-			bbox="false"
-			localities="true"
-			features="false"
-			inputlabel="Recherche d'adresse"
-			closeafterclick="true"
-			querymaponclick="true"/>
-
-	<extensions>
-	</extensions>
+	</themes>	
 </config>

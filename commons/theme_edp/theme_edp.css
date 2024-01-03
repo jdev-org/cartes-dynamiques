@@ -32,22 +32,58 @@ Définition des propriétés de style CSS - Usages des services numériques de M
 
 /* --- MAP ---*/
 
+#map .ol-scale-line.ol-unselectable {
+    right: 10px;
+    left: auto;
+    bottom: 20px;
+}
+
+#backgroundlayerstoolbar-gallery {
+    bottom: 50px!important;
+}
+
 /* NAVBAR */
 
 .navbar-header {
-    display: flex;
-    align-items: center;
     color: white;
-    margin-top: 3px
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 100%!important;
+    margin-top: 3px;
+    align-items: center;
 }
 
-.mv-title {
-    color: white!important;
+.navbar-header .navbar-brand.mv-title {
+    grid-column: 2 / 3!important;
+    grid-row: 1;
+    justify-content: center!important;
+    text-align: center;
+    color: white!important; 
+    text-transform: uppercase;
     font-weight: 500;
     font-size: 21px!important;
 }
-.navbar-brand.mv-title {
-    padding: 15px 0px;
+
+.navbar-header .navbar-brand {
+    grid-column: 3 / 4;
+    grid-row: 1;
+    padding: 0!important;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+/* Logo */
+
+img.mv-logo {
+    max-height: 60px!important;
+}
+
+.xs .mv-logo {
+    max-height: 50px!important;
 }
 
 #mv-navbar {
@@ -78,13 +114,7 @@ Définition des propriétés de style CSS - Usages des services numériques de M
     color: white;
 }
 
-/* Logo */
 
-img.mv-logo {
-    max-height: 53px!important;
-    margin-left: -8px!important;
-    margin-top: -16px!important
-}
 
 /* Barre de recherche */
 
@@ -140,8 +170,8 @@ img.mv-logo {
 .searchresults-title .close {
     color: var(--mycolor);
     text-shadow: none;
-    font-weight: 600;
-    font-size: 19px;
+    font-weight: 400;
+    font-size: 30px;
 }
 
 #searchresults a.list-group-item.disabled {
@@ -560,12 +590,55 @@ span.fa.mv-time-player {
 
 /** TOOLBAR **/
 
+/* Modifications des icônes d'origine */
+
+#zoomtoolbar .glyphicon-home, 
+#toolstoolbar .glyphicon-resize-horizontal, 
+#toolstoolbar .glyphicon-share-alt,
+#drawtoolsoptions .glyphicon-adjust,
+#drawtoolsoptions .glyphicon-resize-small {
+    font-family: "Font Awesome 5 Free"!important;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    font-weight: 900;
+}
+
+#zoomtoolbar .glyphicon-home:before {
+    content: "\f5a0";
+}
+
+#toolstoolbar .glyphicon-resize-horizontal:before {
+    content: "\f545";
+}
+
+#toolstoolbar .glyphicon-share-alt:before {
+    content: "\f1e0";
+}
+
+#drawtoolsoptions .glyphicon-adjust:before {
+    content: "\f5cb";
+}
+
+#drawtoolsoptions .glyphicon-resize-small:before {
+    content: "\f337";
+}
+
+
+
 #zoomtoolbar button, #toolstoolbar button,#drawtoolsoptions button, #toolstoolbar a {
     border-radius: 8px!important;
-    margin: 5px 0;
+    margin: 5px 0 0px;
     border: 2px solid white!important;
     color: #002DDC;
-    padding: 7px 10px;
+    padding: 8px 9px;
+    box-shadow: 0px 0px 15px 5px rgb(184 184 184 / 18%);
+    width: 38px;
+    height: 38px;
 }
 
 #zoomtoolbar button:hover, #toolstoolbar button:hover, #drawtoolsoptions button:hover, #toolstoolbar a:hover {
@@ -575,10 +648,12 @@ span.fa.mv-time-player {
 
 #zoomtoolbar {
     top: 75px!important;
+    box-shadow:none!important;
 }
 
 #toolstoolbar, #drawtoolsoptions {
-    top: 210px!important;
+    top: 230px!important;
+    box-shadow:none!important;
 }
 
 #toolstoolbar button.active,#drawtoolsoptions button.active {
@@ -741,8 +816,14 @@ span.badge.counter-slide {
     margin-left: 9rem!important;
 }
 
+/* Non visible en mobile */
+.xs .ol-attribution {
+    display: none;
+}
+
 .ol-attribution.ol-unselectable.ol-control.ol-collapsed {
     border-radius: 4px!important;
+    margin-left: 10px!important;
 }
 
 .ol-attribution.ol-unselectable.ol-control {
@@ -851,18 +932,8 @@ span.badge.counter-slide {
 
 /** MOBILE **/
 
-.xs #searchtool {
-    width: 99%!important;
-}
-
-.xs #searchtool {
-    width: 99%!important;
-}
-
-.xs .mv-title {
-    width: 190px!important;
-    font-size: 19px!important;
-    padding: 10px 0!important;
+.xs .navbar-header .navbar-brand.mv-title {
+    font-size: 18px!important;
 }
 
 .xs .navbar-toggle {
@@ -897,12 +968,20 @@ span.badge.counter-slide {
 
 .xs .modal-content {
     border-radius: 10px!important;
+    padding: 1rem!important;
+    font-family: var(--myfont);
+}
+
+.xs .modal-body {
+    border-radius: 10px!important;
     padding: 10px!important;
     font-family:var(--myfont);
 }
 
 .xs .modal-title {
-    color:var(--mycolor);
+    font-weight: 700;
+    font-size: 23px;
+    color: var(--mycolor);
 }
 
 .xs .mv-theme {
@@ -952,8 +1031,8 @@ span.badge.counter-slide {
     padding: 1rem;
 }
 
-#help .modal-header {
-    padding: 40px 40px 10px 40px!important;
+.xs #help .modal-header {
+    padding: 1rem!important;
 }
 
 #help h4.modal-title {
@@ -967,6 +1046,7 @@ span.badge.counter-slide {
     font-size: 4rem!important;
     font-weight: 400!important;
     line-height: 0.5!important;
+    opacity: 1!important;
 }
 
 /* Partager la carte*/
@@ -983,12 +1063,6 @@ a#permalinklink {
 	margin: 0 !important;
 }
 
-#sharepanel .close {
-	opacity: 1;
-	font-size: 16px;
-	font-weight: 600;
-}
-
 #sharepanel .close:hover {
 	opacity: 0.5;
 }
@@ -996,13 +1070,12 @@ a#permalinklink {
 #sharepanel .modal-content {
 	border: none;
 	padding: 1rem;
-	width: 125%;
     border-radius: 2rem!important;
     font-family: var(--myfont);
 }
 
 
-#sharepanel .modal-title center {
+#sharepanel .modal-title {
 	text-align: left;
     margin-top: 15px;
     font-weight: 700;
@@ -1054,7 +1127,6 @@ a#permalinklink {
 #parameterspanel .modal-content {
 	border: none;
     padding: 1rem;
-    width: 140%;
     border-radius: 2rem!important;
     font-family: var(--myfont);
 }

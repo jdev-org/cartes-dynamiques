@@ -64,6 +64,7 @@
     transform: translateX(-400px);
     opacity: 0;
     transition: transform 1s;
+    z-index: 100;
 }
 
 #sidebar.active {
@@ -115,6 +116,7 @@
     overflow-x: hidden;
     width: 100%;
     padding: 0em 1.2em;
+    height: 100%;
 }
 
  
@@ -132,3 +134,8 @@
   }
 
 /* SIDEBAR FOOTER */
+
+#sideBarNavBtn {
+    grid-column: 1 / 2;
+    grid-row: 1;
+}

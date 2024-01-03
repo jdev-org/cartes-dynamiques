@@ -1,7 +1,9 @@
-#btnGeoloc-custom-component button{
+/* Btn */
+
+#btnModalInfos {
     position: fixed;
     bottom: 2rem;
-    right: 10rem;
+    right: 23rem;
     background-color: var(--mycolor);
     color: white;
     border: none;
@@ -12,14 +14,22 @@
     border-radius: 2rem;
 }
 
-#btnGeoloc-custom-component button:hover {
+#btnModalInfos:hover {
     opacity: 0.9;
 }
 
-/* Position du btn en mode xs */
-
-.xs #btnGeoloc-custom-component button {
-    right: 38%!important;
+.xs #btnModalInfos {
+    left: 10px!important;
+    right: auto;
+    top: 80px;
+    bottom: auto;
     font-size: small;
     padding: 6px 15px;
+}
+
+/* MODAL */
+
+#modalInfos  .modal-content {
+    border-radius: 2rem!important;
+    padding: 1rem;
 }
