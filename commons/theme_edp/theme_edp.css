@@ -966,6 +966,12 @@ span.badge.counter-slide {
     opacity: 0.9;
 }
 
+.xs .modal-content {
+    border-radius: 10px!important;
+    padding: 1rem!important;
+    font-family: var(--myfont);
+}
+
 .xs .modal-body {
     border-radius: 10px!important;
     padding: 10px!important;
@@ -973,7 +979,9 @@ span.badge.counter-slide {
 }
 
 .xs .modal-title {
-    color:var(--mycolor);
+    font-weight: 700;
+    font-size: 23px;
+    color: var(--mycolor);
 }
 
 .xs .mv-theme {
@@ -1023,8 +1031,8 @@ span.badge.counter-slide {
     padding: 1rem;
 }
 
-#help .modal-header {
-    padding: 40px 40px 10px 40px!important;
+.xs #help .modal-header {
+    padding: 1rem!important;
 }
 
 #help h4.modal-title {
@@ -1038,6 +1046,7 @@ span.badge.counter-slide {
     font-size: 4rem!important;
     font-weight: 400!important;
     line-height: 0.5!important;
+    opacity: 1!important;
 }
 
 /* Partager la carte*/
@@ -1054,12 +1063,6 @@ a#permalinklink {
 	margin: 0 !important;
 }
 
-#sharepanel .close {
-	opacity: 1;
-	font-size: 16px;
-	font-weight: 600;
-}
-
 #sharepanel .close:hover {
 	opacity: 0.5;
 }
@@ -1067,13 +1070,12 @@ a#permalinklink {
 #sharepanel .modal-content {
 	border: none;
 	padding: 1rem;
-	width: 125%;
     border-radius: 2rem!important;
     font-family: var(--myfont);
 }
 
 
-#sharepanel .modal-title center {
+#sharepanel .modal-title {
 	text-align: left;
     margin-top: 15px;
     font-weight: 700;
