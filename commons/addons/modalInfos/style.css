@@ -33,3 +33,11 @@
     border-radius: 2rem!important;
     padding: 1rem;
 }
+
+.xs #btnModalInfos, #btnModalInfosMobile {
+    display: none;
+}
+
+#btnModalInfos, .xs #btnModalInfosMobile {
+    display: block;
+}
