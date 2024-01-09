@@ -1,8 +1,7 @@
 {
-  "A4_LANDSCAPE": {
+  "A4_PORTRAIT": {
     "format": "A4",
-    "northUrl": "apps/commons/addons/print/img/NorthArrow.png",
-    "landscape": true,
+    "landscape": false,
     "grid": {
       "rows": "6",
       "col": "6"
@@ -44,9 +43,10 @@
       }
     }
   },
-  "A4_PORTRAIT": {
+  "A4_LANDSCAPE": {
     "format": "A4",
-    "landscape": false,
+    "northUrl": "apps/commons/addons/print/img/NorthArrow.png",
+    "landscape": true,
     "grid": {
       "rows": "6",
       "col": "6"
