@@ -933,7 +933,7 @@ span.badge.counter-slide {
 /** MOBILE **/
 
 .xs .navbar-header .navbar-brand.mv-title {
-    font-size: 18px!important;
+    font-size: 16px!important;
 }
 
 .xs .navbar-toggle {
@@ -968,7 +968,7 @@ span.badge.counter-slide {
 
 .xs .modal-content {
     border-radius: 10px!important;
-    padding: 1rem!important;
+    padding: 0rem!important;
     font-family: var(--myfont);
 }
 
@@ -1028,11 +1028,10 @@ span.badge.counter-slide {
 
 #help .modal-content {
     border-radius: 2rem!important;
-    padding: 1rem;
 }
 
-.xs #help .modal-header {
-    padding: 1rem!important;
+.xs #help .modal-header, .xs #help .modal-body {
+    padding: 1.5rem!important;
 }
 
 #help h4.modal-title {
@@ -1182,7 +1181,7 @@ a#permalinklink {
   
   /* Track */
   ::-webkit-scrollbar-track {
-      background-color:#9e9e9e17;
+    background-color:#9e9e9e17;
     border-radius: 10px;
   }
    
@@ -1194,7 +1193,7 @@ a#permalinklink {
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: #F3E540; 
+    opacity: 0.9;
   }
 
   #layers-container-box {

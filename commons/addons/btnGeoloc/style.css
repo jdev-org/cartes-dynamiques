@@ -19,7 +19,7 @@
 /* Position du btn en mode xs */
 
 .xs #btnGeoloc-custom-component button {
-    right: 38%!important;
-    font-size: small;
-    padding: 6px 15px;
+    font-size: large;
+    right: 50%;
+    transform: translateX(50%);
 }
