@@ -72,7 +72,8 @@
 }
 
 .print-legend-img img {
-    max-height: 330px;
+    max-height: 100%;
+	max-width: 100%;
 }
 
 /* Non affichage du btn d'accès au plugin en mode mobile */
@@ -160,9 +161,10 @@
 }
 
 #print-title .text {
-	font-size: x-large;
-	font-weight: 700;
-	padding: 20px 10px 0px;
+	font-size: xx-large;
+    color: var(--mycolor);
+    font-weight: 700;
+    padding: 20px 10px 0px;
 }
 
 #print-informations .text {
@@ -265,7 +267,7 @@
 }
 
 #print-informations img {
-	max-width: 50px;
+	max-width: 75px;
 }
 
 .print-panel-close {
