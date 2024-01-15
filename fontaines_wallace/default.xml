@@ -3,6 +3,8 @@
 	<application
 			title="Les 50 fontaines Wallace à découvrir"
 			id="fontaines_wallace"
+			metadescription="Découvrez les fontaines icôniques de Paris sur une carte"
+			metaimgurl="apps/fontaines_wallace/img/wallace_preview.jpg"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"		

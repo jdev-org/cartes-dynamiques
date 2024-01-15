@@ -65,6 +65,7 @@ Définition des propriétés de style CSS - Usages des services numériques de M
     text-transform: uppercase;
     font-weight: 500;
     font-size: 21px!important;
+    line-height: 1;
 }
 
 .navbar-header .navbar-brand {
@@ -628,8 +629,6 @@ span.fa.mv-time-player {
     content: "\f337";
 }
 
-
-
 #zoomtoolbar button, #toolstoolbar button,#drawtoolsoptions button, #toolstoolbar a {
     border-radius: 8px!important;
     margin: 5px 0 0px;
@@ -1111,15 +1110,6 @@ a#permalinklink {
 	margin-bottom: 10px;
 	font-size: medium;
 }
-
-#mv-display-mode::after {
-	content: "Mode de partage";
-	margin-top: 20px;
-	font-size: 16px;
-	font-weight: 700;
-}
-
-
 
 /* Paramètres de recherche */
 

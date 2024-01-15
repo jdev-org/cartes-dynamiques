@@ -1,47 +1,50 @@
 <div id="legendCommerces">
-    <div id="btnLegend" class="btn btn-legend" data-toggle="button" onclick="displayLayerCom('commerce');">
-        <img src="apps/fontaines/img/commerces.png" style="width: 48px;padding: 0;">
-        <span>Commerces partenaires</span>
-    </div>
+  <div
+    id="btnLegend"
+    class="btn btn-legend"
+    data-toggle="button"
+    onclick="displayLayerCom('commerce');">
+    <img src="apps/fontaines/img/commerces.png" style="width: 48px; padding: 0" />
+    <span i18n="fontaine.type.commerce">Ici, je choisis l'eau de Paris</span>
+  </div>
 </div>
 
 <script>
-    function displayLayerCom(layerid){
-        var layer = mviewer.getLayer(layerid).layer;
-        var btn = document.getElementById("btnLegend");
-        if (btn.classList.contains('active')) {
-            layer.setVisible(true);
-        } else {
-            layer.setVisible(false);
-        }
-    };
+  function displayLayerCom(layerid) {
+    var layer = mviewer.getLayer(layerid).layer;
+    var btn = document.getElementById("btnLegend");
+    if (btn.classList.contains("active")) {
+      layer.setVisible(true);
+    } else {
+      layer.setVisible(false);
+    }
+  }
 </script>
 <style>
-    #btnLegend {
-        padding: 10px 0px;
-    }
+  #btnLegend {
+    padding: 10px 0px;
+  }
 
-    #legendCommerces>.btn.active {
-        padding: 10px 0px!important;
-    }
+  #legendCommerces > .btn.active {
+    padding: 10px 0px !important;
+  }
 
-    #legend-commerce {
-        display: none;
-    }
+  #legend-commerce {
+    display: none;
+  }
 
-    .btn-legend span {
-        font-size: 1.2rem;
-        color: #5e5e5e;
-        font-weight: 500;
-    }
+  .btn-legend span {
+    font-size: 1.2rem;
+    color: #5e5e5e;
+    font-weight: 500;
+  }
 
-    .btn-legend:hover {
-        opacity: 0.7;
-        cursor: pointer;
-    }
+  .btn-legend:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
-    .btn.active{
-        color:var(--mycolor)
-    }
-
+  .btn.active {
+    color: var(--mycolor);
+  }
 </style>

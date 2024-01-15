@@ -3,6 +3,8 @@
     <application
         id="fontaines"
         title="Où boire de l’eau à Paris ?"
+        htmltitle="&lt;span i18n=&apos;home.title&apos;&gt;Où boire de l’eau à Paris ?&lt;/span&gt;"
+        langfile="apps/fontaines/fontaines.i18n.json" lang="fr,en"
         mouseposition="false"
         logo="apps/commons/theme_edp/logo_edp_white.png"	
 		style="apps/commons/theme_edp/theme_edp.css"

@@ -1,166 +1,238 @@
 <div id="legendFontaines">
-    <p class="small">Cliquez sur un type de fontaine pour filtrer la carte et réitérez le clic pour supprimer le filtre</p>
-    <h5>Type de fontaine</h5>
-    <div>
-        <input type="checkbox" id="btn-check9" class="btn-check-lgd" name="lgd" value="type_objet like 'BORNE_FONTAINE'">
-        <label class="btn-legend" for="btn-check9">
-            <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px;padding: 0;">
-            <span>Borne fontaine</span>            
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check1" class="btn-check-lgd" name="lgd" value="type_objet like 'FONTNE_WALLACE'">
-        <label class="btn-legend" for="btn-check1">
-            <img src="apps/fontaines/img/FONTNE_WALLACE.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine Wallace</span>            
-        </label>
-    </div>    
-    <div>
-        <input type="checkbox" id="btn-check3" class="btn-check-lgd" name="lgd" value="type_objet like 'FONTAINE_TOTEM'">
-        <label class="btn-legend " for="btn-check3">
-            <img src="apps/fontaines/img/FONTAINE_TOTEM.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine Totem</span>
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check4" class="btn-check-lgd" name="lgd" value="type_objet like 'FTNE_PETILLANTE'">
-        <label class="btn-legend " for="btn-check4">
-            <img src="apps/fontaines/img/FTNE_PETILLANTE.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine pétillante</span>
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check5" class="btn-check-lgd" name="lgd" value="type_objet like 'FTNE_MILLENAIRE'">
-        <label class="btn-legend " for="btn-check5">
-            <img src="apps/fontaines/img/FTNE_MILLENAIRE.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine du Millénaire</span>
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check6" class="btn-check-lgd" name="lgd" value="type_objet like 'FONTAINE_ARCEAU'">
-        <label class="btn-legend " for="btn-check6">
-            <img src="apps/fontaines/img/FONTAINE_ARCEAU.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine Arceau</span>
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check7" class="btn-check-lgd" name="lgd" value="type_objet like 'FTNE_POING_EAU'">
-        <label class="btn-legend " for="btn-check7">
-            <img src="apps/fontaines/img/FTNE_POING_EAU.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine Poing d'eau</span>
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check8" class="btn-check-lgd" name="lgd" value="type_objet like 'FONTAINE_ALBIEN'">
-        <label class="btn-legend " for="btn-check8">
-            <img src="apps/fontaines/img/FONTAINE_ALBIEN.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine à l'Albien</span>
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check2" class="btn-check-lgd" name="lgd" value="type_objet like 'FONTAINE_BOIS'">
-        <label class="btn-legend " for="btn-check2">
-            <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine des bois, parcs et jardins</span>
-        </label>
-    </div>
-    <h5>Disponibilité</h5>
-    <div>
-        <input type="checkbox" id="btn-check11" class="btn-check-lgd" name="lgd" value="dispo like 'OUI'">
-        <label class="btn-legend " for="btn-check11">
-            <img src="apps/fontaines/img/fontaine_disponible.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine disponible</span>
-        </label>
-    </div>
-    <div>
-        <input type="checkbox" id="btn-check12" class="btn-check-lgd" name="lgd" value="dispo like 'NON'">
-        <label class="btn-legend " for="btn-check12">
-            <img src="apps/fontaines/img/fontaine_indisponible.svg" style="width: 48px;padding: 0;">
-            <span>Fontaine indisponible</span>
-        </label>
-    </div>
-    
+  <h4 i18n="sidebar.legend.title">Recherche avancée</h4>
+  <p class="small" i18n="sidebar.legend.setpoint">
+    Cliquez sur un type de fontaine pour filtrer la carte et réitérez le clic pour
+    supprimer le filtre
+  </p>
+  <h5 i18n="sidebar.legend.subtitle.type">Type de fontaine</h5>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check9"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'BORNE_FONTAINE'" />
+    <label class="btn-legend" for="btn-check9">
+      <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.borne">Borne fontaine</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check1"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FONTNE_WALLACE'" />
+    <label class="btn-legend" for="btn-check1">
+      <img src="apps/fontaines/img/FONTNE_WALLACE.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.wallace">Fontaine Wallace</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check3"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FONTAINE_TOTEM'" />
+    <label class="btn-legend" for="btn-check3">
+      <img src="apps/fontaines/img/FONTAINE_TOTEM.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.totem">Fontaine Totem</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check4"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FTNE_PETILLANTE'" />
+    <label class="btn-legend" for="btn-check4">
+      <img src="apps/fontaines/img/FTNE_PETILLANTE.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.petillante">Fontaine pétillante</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check5"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FTNE_MILLENAIRE'" />
+    <label class="btn-legend" for="btn-check5">
+      <img src="apps/fontaines/img/FTNE_MILLENAIRE.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.millenaire">Fontaine du Millénaire</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check6"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FONTAINE_ARCEAU'" />
+    <label class="btn-legend" for="btn-check6">
+      <img src="apps/fontaines/img/FONTAINE_ARCEAU.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.arceau">Fontaine Arceau</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check7"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FTNE_POING_EAU'" />
+    <label class="btn-legend" for="btn-check7">
+      <img src="apps/fontaines/img/FTNE_POING_EAU.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.poing">Fontaine Poing d'eau</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check8"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FONTAINE_ALBIEN'" />
+    <label class="btn-legend" for="btn-check8">
+      <img src="apps/fontaines/img/FONTAINE_ALBIEN.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.albien">Fontaine à l'Albien</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check2"
+      class="btn-check-lgd"
+      name="lgd"
+      value="type_objet like 'FONTAINE_BOIS'" />
+    <label class="btn-legend" for="btn-check2">
+      <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px; padding: 0" />
+      <span i18n="fontaine.type.bois">Fontaine des bois, parcs et jardins</span>
+    </label>
+  </div>
+  <h5 i18n="sidebar.legend.subtitle.dispo">Disponibilité</h5>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check11"
+      class="btn-check-lgd"
+      name="lgd"
+      value="dispo like 'OUI'" />
+    <label class="btn-legend" for="btn-check11">
+      <img
+        src="apps/fontaines/img/fontaine_disponible.svg"
+        style="width: 48px; padding: 0" />
+      <span i18n="fontaine.disponible">Fontaine disponible</span>
+    </label>
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="btn-check12"
+      class="btn-check-lgd"
+      name="lgd"
+      value="dispo like 'NON'" />
+    <label class="btn-legend" for="btn-check12">
+      <img
+        src="apps/fontaines/img/fontaine_indisponible.svg"
+        style="width: 48px; padding: 0" />
+      <span i18n="fontaine.indisponible">Fontaine indisponible</span>
+    </label>
+  </div>
 </div>
 
 <script>
-    //let urlData = "https://edp.jdev.fr/geoserver/edp/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&LAYERS=fontaines&STYLES=&SLD=https%3A%2F%2Fgis.jdev.fr%2Fmviewer%2Fapps%2Ffontaines%2Fsld%2Ffontaines.sld&CRS=EPSG%3A3857&WIDTH=2868&HEIGHT=1397";
-    let checkboxes = document.querySelectorAll("input[type=checkbox][name=lgd]");
-    $("input[type=checkbox][name=lgd]").on('change', function() {
-        $('input[type="checkbox"][name=lgd]').not(this).prop('checked', false);        
+  //let urlData = "https://edp.jdev.fr/geoserver/edp/ows?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetMap&FORMAT=image%2Fpng&LAYERS=fontaines&STYLES=&SLD=https%3A%2F%2Fgis.jdev.fr%2Fmviewer%2Fapps%2Ffontaines%2Fsld%2Ffontaines.sld&CRS=EPSG%3A3857&WIDTH=2868&HEIGHT=1397";
+  let checkboxes = document.querySelectorAll("input[type=checkbox][name=lgd]");
+  $("input[type=checkbox][name=lgd]").on("change", function () {
+    $('input[type="checkbox"][name=lgd]').not(this).prop("checked", false);
+  });
+
+  checkboxes.forEach(function (checkbox) {
+    checkbox.addEventListener("change", function () {
+      if (this.checked) {
+        filterDataByAttr(this.value);
+      } else {
+        deleteFilter();
+      }
     });
+  });
 
-    checkboxes.forEach(function(checkbox) {
-        checkbox.addEventListener('change', function() {          
-            if (this.checked) {
-                filterDataByAttr(this.value);
-            } else {
-                deleteFilter();
-            }
-        })
-    });
+  function filterDataByAttr(valAtt) {
+    var layer = mviewer.getLayer("fontaines");
+    var src = layer.layer.getSource();
+    var params = src.getParams();
+    // update wms layer params
+    params.CQL_FILTER = `${valAtt}`;
+    src.updateParams(params);
+    src.refresh();
+  }
 
-    function filterDataByAttr(valAtt){
-        var layer = mviewer.getLayer('fontaines');
-        var src = layer.layer.getSource();
-        var params = src.getParams();
-        // update wms layer params
-        params.CQL_FILTER = `${valAtt}`;
-        src.updateParams(params);
-        src.refresh();
-    }
-
-    function deleteFilter(){
-        var layer = mviewer.getLayer('fontaines');
-        var src = layer.layer.getSource();
-        var params = src.getParams();
-        delete params.CQL_FILTER;
-        src.refresh();
-    }
-    
+  function deleteFilter() {
+    var layer = mviewer.getLayer("fontaines");
+    var src = layer.layer.getSource();
+    var params = src.getParams();
+    delete params.CQL_FILTER;
+    src.refresh();
+  }
 </script>
 <style>
-    input[type="checkbox"][name=lgd]:checked ~ label span{
-        color:var(--mycolor)
-    }
+  #legendFontaines h4 {
+    color: var(--mycolor);
+    font-weight: 600;
+    font-size: larger;
+  }
 
-    #btnLegend {
-        padding: 10px 0px;
-    }
-    
-    #legend-fontaines {
-        display: none;
-    }
+  #legend .layerdisplay-title,
+  #legend .layerdisplay-legend {
+    display: none;
+  }
 
-    .btn-legend:active {
-        box-shadow: none;
-    }
+  input[type="checkbox"][name="lgd"]:checked ~ label span {
+    color: var(--mycolor);
+  }
 
-    .btn-legend:hover {
-        opacity: 0.7;
-        cursor: pointer;
-    }
+  #btnLegend {
+    padding: 10px 0px;
+  }
 
-    #legendFontaines label {
-        display: flex;
-        align-items: center;
-        font-weight: 500;
-        font-size: 1.2rem;
-        color: #5e5e5e;
-    }
+  #legend-fontaines {
+    display: none;
+  }
 
-    #legendFontaines input {
-        display: none;
-    }
+  .btn-legend:active {
+    box-shadow: none;
+  }
 
-    #legendFontaines>div {
-        margin-top: -15px;
-    }
+  .btn-legend:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
 
-    #legendFontaines h5 {
-        text-transform: uppercase;
-        font-size: 11px;
-        letter-spacing: 1px;
-        opacity: 0.6;
-        margin-bottom: 20px;
-    }
+  #legendFontaines label {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #5e5e5e;
+  }
+
+  #legendFontaines input {
+    display: none;
+  }
+
+  #legendFontaines > div {
+    margin-top: -15px;
+  }
+
+  #legendFontaines h5 {
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
 </style>
