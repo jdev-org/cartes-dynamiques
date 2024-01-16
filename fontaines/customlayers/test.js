@@ -1,6 +1,6 @@
 const layer_fontaines = new ol.layer.Image({
   source: new ol.source.ImageWMS({
-    url: "https://edp.jdev.fr/geoserver/edp/wms",
+    url: `https://${mviewer.env?.url_data_edp}/geoserver/edp/wms`,
     params: {
       LAYERS: "edp:fontaines,edp:commerce",
       TILED: false,

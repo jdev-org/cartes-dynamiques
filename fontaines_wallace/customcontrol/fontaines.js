@@ -8,7 +8,7 @@ const cc = (function () {
 
   function getDateDataUpdate() {
     var urlS = new URL(
-      "https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Afontaines_maj&outputFormat=application%2Fjson"
+      `https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Afontaines_maj&outputFormat=application%2Fjson`
     );
     $.getJSON(urlS, function (dataS) {
       var itemsS = [];

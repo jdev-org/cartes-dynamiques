@@ -112,7 +112,7 @@
 			<layer
 					id="edp:arrondissement"
 					name="Arrondissements"
-					url="https://edp.jdev.fr/geoserver/edp/wms"
+					url="https://{{url_data_edp}}/geoserver/edp/wms"
 					scalemin ="0"
 					scalemax="1000000"
 					dynamiclegend ="false"

@@ -15,7 +15,7 @@
 
 <script>
 
-var url = new URL('https://edp-geoserver-prod.atolcd.com/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_maj&outputFormat=application%2Fjson');
+var url = new URL(`https://edp-geoserver-prod.atolcd.com/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_maj&outputFormat=application%2Fjson`);
 
 
 $.getJSON(url, function(data) {
@@ -42,7 +42,7 @@ $.getJSON(url, function(data) {
 });
 
 
-var url = new URL('https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_popup&outputFormat=application%2Fjson');
+var url = new URL('https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_popup&outputFormat=application%2Fjson');
 
 
 $.getJSON(url, function(data) {
