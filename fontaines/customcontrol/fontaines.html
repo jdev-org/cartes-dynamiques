@@ -134,7 +134,7 @@
       id="btn-check12"
       class="btn-check-lgd"
       name="lgd"
-      value="dispo like 'NON'" />
+      value="dispo = 'NON'" />
     <label class="btn-legend" for="btn-check12">
       <img
         src="apps/fontaines/img/fontaine_indisponible.svg"
@@ -142,6 +142,7 @@
       <span i18n="fontaine.indisponible">Fontaine indisponible</span>
     </label>
   </div>
+  <div id="section_date_maj"></div>
 </div>
 
 <script>
@@ -152,7 +153,9 @@
   });
 
   checkboxes.forEach(function (checkbox) {
-    checkbox.addEventListener("change", function () {
+    checkbox.addEventListener("change", function (e) {
+      let input = e.target;
+      mviewer.type_fontaine = mviewer?.type_fontaine ? mviewer.type_fontaine : [];
       if (this.checked) {
         filterDataByAttr(this.value);
       } else {
@@ -180,6 +183,11 @@
   }
 </script>
 <style>
+  #section_date_maj {
+    color: #a7a7a7;
+    margin: 2em 0 !important;
+  }
+
   #legendFontaines h4 {
     color: var(--mycolor);
     font-weight: 600;
