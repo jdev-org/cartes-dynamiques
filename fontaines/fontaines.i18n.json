@@ -30,6 +30,9 @@
     "fontaine.type.arceau": "Fontaine Arceau",
     "fontaine.type.poing": "Fontaine Poing d'eau",
     "fontaine.type.albien": "Fontaine à l'Albien",
+    "fontaine.type.wallace.2en1": "Fontaine Wallace 2-en-1",
+    "fontaine.type.2en1": "Fontaine Totem 2-en-1",
+    "fontaine.type.mat": "Fontaine Mât Source 2-en-1",
     "fontaine.type.bois": "Fontaine des bois, parcs et jardins",
     "fontaine.description.commerce": "'Ici, je choisis l’eau de Paris' est un réseau de 800 commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.",
     "fontaine.description.borne": "Plus discrète que la Wallace, la borne-fontaine est partout dans la capitale, principalement dans les parcs et jardins.",
@@ -40,7 +43,9 @@
     "fontaine.description.arceau": "Une fontaine au design minimaliste accessible aux enfants et aux personnes à mobilité réduite. Sa hauteur est idéale pour boire debout, à la volée.",
     "fontaine.description.poing": "Cette fontaine est une véritable œuvre d'art ! Retrouvez cinq fontaines de ce modèle dans l'est du 20ème arrondissement.",
     "fontaine.description.albien": "À cette fontaine coule une eau puisée à 500 m de profondeur, dans la nappe de l'Albien. Cette eau est faiblement minéralisée et très riche en fer. Paris compte trois fontaines à boire à l'Albien.",
-    "fontaine.description.bois": "Plus discrète que la Wallace, la borne-fontaine est partout dans la capitale, principalement dans les parcs et jardins."
+    "fontaine.description.bois": "Plus discrète que la Wallace, la borne-fontaine est partout dans la capitale, principalement dans les parcs et jardins.",
+    "fontaine.description.2en1": "Cette fontaine intègre un système de brumisation. Venez vous y rafraîchir lorsque le thermomètre grimpe !",
+    "fontaine.description.mat": "La Mât Source est accessible à tous et toutes, aux enfants comme aux personnes à mobilité réduite. Il est facile d'y remplir sa gourde, et la brumisation en fait un délicieux îlot de fraîcheur."
   },
   "en": {
     "home.title": "Free drinking water in Paris",
@@ -74,6 +79,9 @@
     "fontaine.type.poing": "Poing d'eau fountain",
     "fontaine.type.albien": "Albien fountain",
     "fontaine.type.bois": "Fountain in woods, parks and gardens",
+    "fontaine.type.wallace.2en1": "Wallace 2-in-1 fountain",
+    "fontaine.type.2en1": "Totem 2-in-1 fountain",
+    "fontaine.type.mat": "Mât Source fountain",
     "fontaine.description.commerce": "'I choose Paris water' is a network of 1000 shops committed to filling your water bottles for free, with no obligation to purchase.",
     "fontaine.description.borne": "More discreet than the Wallace, you can find drinking foutains pretty much  everywhere in the city, mainly in parks and gardens.",
     "fontaine.description.wallace": "This is the most famous fountain in Paris. Its four caryatids have been inviting  passers-by to quench their thirst for over 150 years.",
@@ -83,6 +91,8 @@
     "fontaine.description.arceau": "A fountain with minimalist design accessible to children and people with reduced mobility. Thanks to its height, you can drink standing up.",
     "fontaine.description.poing": "This artwork by Pascale Marthine Tayou is indeed a fountain, it's a real work of art! You'll find five Poings d'eau foutains  on the boulevards des Maréchaux and Porte de Montreuil.",
     "fontaine.description.albien": "This fountain flows water drawn from a depth of 500m, from the Albien aquifer. This water has a low mineral composition and is very rich in iron. Paris has three Albien drinking fountains. ",
-    "fontaine.description.bois": "More discreet than the Wallace, you can find drinking foutains pretty much  everywhere in the city, mainly in parks and gardens."
+    "fontaine.description.bois": "More discreet than the Wallace, you can find drinking foutains pretty much  everywhere in the city, mainly in parks and gardens.",
+    "fontaine.description.2en1": "This fountain includes a misting system. Come and cool off when the temperature rises!",
+    "fontaine.description.mat": "The Mât Source is accessible to everyone, from children to people with reduced mobility. It makes it easy to fill your water bottle and offers you a delighful refreshment!"
   }
 }

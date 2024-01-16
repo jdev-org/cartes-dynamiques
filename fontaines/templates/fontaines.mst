@@ -210,6 +210,18 @@ li.item.cardInfo {
         typeInfoF = "<span i18n='fontaine.type.poing'>Fontaine Poing d'eau</span>"
         textInfoF = "<span i18n='fontaine.description.poing'>Cette fontaine est une véritable œuvre d'art ! Retrouvez cinq fontaines de ce modèle dans l'est du 20ème arrondissement.</span>";
         linkInfoF ='https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_POINGS_D_EAU.PDF';
+    }else if (type_objet=='FONTNE_WALLACE_2EN1') {
+        typeInfoF = "<span i18n='fontaine.type.wallace.2en1'>Fontaine Wallace 2-en-1</span>"
+        textInfoF = "<span i18n='fontaine.description.2en1'>Cette fontaine intègre un système de brumisation. Venez vous y rafraîchir lorsque le thermomètre grimpe !</span>";
+        linkInfoF = 'https://www.eaudeparis.fr/actualit%C3%A9s/deux-fois-plus-de-fraicheur-pour-cet-ete-paris';
+    } else if (type_objet=='FONTAINE_TOTEM_2EN1') {
+        typeInfoF = "<span i18n='fontaine.type.2en1'>Fontaine Totem 2-en-1</span>"
+        textInfoF = "<span i18n='fontaine.description.2en1'>Cette fontaine intègre un système de brumisation. Venez vous y rafraîchir lorsque le thermomètre grimpe !</span>";
+        linkInfoF = 'https://www.eaudeparis.fr/actualit%C3%A9s/deux-fois-plus-de-fraicheur-pour-cet-ete-paris';
+    } else if (type_objet=='FTNE_MAT_SOURCE_2EN1') {
+        typeInfoF = "<span i18n='fontaine.type.mat'>Fontaine Mât Source 2-en-1</span>"
+        textInfoF = "<span i18n='fontaine.description.mat'>La Mât Source est accessible à tous et toutes, aux enfants comme aux personnes à mobilité réduite. Il est facile d'y remplir sa gourde, et la brumisation en fait un délicieux îlot de fraîcheur.</span>";
+        linkInfoF = 'https://www.eaudeparis.fr/actualit%C3%A9s/mat-source-un-nouveau-modele-de-fontaine-deau-potable-paris';
     }
     document.getElementById('typeFont_{{feature_ol_uid}}').innerHTML =  typeInfoF;
     document.getElementById('infoFontLink_{{feature_ol_uid}}').href = linkInfoF;
