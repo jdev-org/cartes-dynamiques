@@ -1,5 +1,5 @@
 
-const LAYER_URL = 'https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fontaines&outputFormat=application%2Fjson&CQL_FILTER=type_objet=%27FONTNE_WALLACE%27';
+const LAYER_URL = `https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=fontaines&outputFormat=application%2Fjson&CQL_FILTER=type_objet=%27FONTNE_WALLACE%27`;
 const LAYER_ID = "fontaines_wallace";
 
 const dispoIconesPath = {

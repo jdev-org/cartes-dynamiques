@@ -6,7 +6,71 @@ Définition des propriétés de style CSS - Usages des services numériques de M
 *******/
 
 /* Imports des fonts */
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Barlow */
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-Thin.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-ExtraLight.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-Light.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-Regular.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-Medium.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-SemiBold.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-Bold.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-ExtraBold.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: 'Barlow';
+    src: url(fonts/Barlow/Barlow-Black.ttf) format('truetype');
+    font-style: normal;
+    font-weight: 900;
+}
+
 
 /* Définition des variables */
 
@@ -65,6 +129,7 @@ Définition des propriétés de style CSS - Usages des services numériques de M
     text-transform: uppercase;
     font-weight: 500;
     font-size: 21px!important;
+    line-height: 1;
 }
 
 .navbar-header .navbar-brand {
@@ -628,8 +693,6 @@ span.fa.mv-time-player {
     content: "\f337";
 }
 
-
-
 #zoomtoolbar button, #toolstoolbar button,#drawtoolsoptions button, #toolstoolbar a {
     border-radius: 8px!important;
     margin: 5px 0 0px;
@@ -1111,15 +1174,6 @@ a#permalinklink {
 	margin-bottom: 10px;
 	font-size: medium;
 }
-
-#mv-display-mode::after {
-	content: "Mode de partage";
-	margin-top: 20px;
-	font-size: 16px;
-	font-weight: 700;
-}
-
-
 
 /* Paramètres de recherche */
 

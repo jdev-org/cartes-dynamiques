@@ -2,17 +2,17 @@
 	<li class="item cardInfo" style="width:100%;">
         <div class="displayFlex">
             <img src="apps/fontaines/img/icon_commerces.svg" style="width: 48px;padding: 0;">
-            <div class="badgeCo">Ici, je choisis l'eau de Paris</div>
+            <div class="badgeCo" i18n="template.commerce.badge">Ici, je choisis l'eau de Paris</div>
         </div>
         <h2 class="nameCard">{{id}}</h2>
         <div class="adressCard">{{numero}} {{nom_voie}}, {{code_posta}} {{nom_commun}}</div>
         <div class="textCard">
-            <p>"Ici, je choisis l’eau de Paris" est un réseau de 800 commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.</p>
+            <p i18n="fontaine.description.commerce">"Ici, je choisis l’eau de Paris" est un réseau de 800 commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.</p>
         </div>
         <div>
             <a class="btnCard" target="_blank" id="go-{{feature_ol_uid}}" >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 11.5L16 8L12.5 17.0021L11 13L7 11.5Z" fill="rgba(255,255,255,1)"></path></svg>
-                <span> J'y vais</span>
+                <span i18n="template.btn.go"> J'y vais</span>
             </a>
         </div>
 		
@@ -20,6 +20,10 @@
 
 
 <script>
+// Update lang
+let lang = configuration.getLang();
+mviewer.lang.changeLanguage(lang);
+
 /*Permet de calculer l'URL Google Map vers la fontaine au click sur le bouton "j'y vais"*/
 const goId = document.getElementById("go-{{feature_ol_uid}}");
 $(goId).on("click", () => {
@@ -39,10 +43,14 @@ $(goId).on("click", () => {
     width: 420px!important;
 }
 
+#page-content-wrapper:has(#right-panel.active) #zoomtoolbar,
+  #page-content-wrapper:has(#right-panel.active) #toolstoolbar {
+    margin-right: 420px !important;
+}
+
 #right-panel .item.active {
     padding-bottom: 2.5rem!important;
 }
-
 
 .cardInfo {
     background-color: #ededed7d;

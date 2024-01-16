@@ -1,0 +1,59 @@
+/* Modifications des propriétés de mv-title */
+.mv-title {
+    display: flex;
+    flex-direction: column;
+}
+
+#btnSwitchLang {
+    margin-top: 5px;
+}
+
+#btnSwitchLang .switch-field {
+    display: flex;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  #btnSwitchLang .switch-field input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+  }
+
+  #btnSwitchLang .switch-field label {
+    background-color: white;
+    color: var(--mycolor);
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    padding: 7px 2px;
+    margin-right: -1px;
+    transition: all 0.3s ease-in-out;
+    margin: 0;
+  }
+
+  #btnSwitchLang .switch-field label:hover {
+    cursor: pointer;
+  }
+
+  #btnSwitchLang .switch-field label span {
+    padding: 4px 14px;
+  }
+
+  #btnSwitchLang .switch-field input:checked + label span {
+    background-color: var(--mycolor);
+    box-shadow: none;
+    color: white;
+    border-radius: 15px;
+  }
+
+  #btnSwitchLang .switch-field label:first-of-type {
+    border-radius: 17px 0 0 17px;
+  }
+
+  #btnSwitchLang .switch-field label:last-of-type {
+    border-radius: 0 17px 17px 0;
+  }

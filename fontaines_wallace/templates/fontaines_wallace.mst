@@ -4,25 +4,25 @@
             <img src="apps/fontaines/img/{{type_objet}}.svg" style="padding: 0;">
             <div class="badgeF" id="statutFont_{{feature_ol_uid}}"></div>
         </div>
-        <div class="nameCard">{{type_obj_l}}</div>
+        <div class="nameCard" i18n='fontaine.type.wallace'>Fontaine Wallace</div>
         <div class="adressCard">{{num_impair}}{{num_pair}} {{nom_voie}}, {{nom_commun}}</div>
-        <div class="textCard">
-            <p>Les Wallace sont les plus célèbres des fontaines parisiennes. Leurs quatre cariatides encouragent passantes et passants à se désaltérer et surtout à porter toujours une gourde sur soi !</p>
-            <a target="_blank" href="https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_WALLACE.PDF">En savoir plus</a>
+        <div class="textCard" i18n='fontaine.description.wallace'>
+            <p>C'est la plus célèbre des fontaines parisiennes. Ses quatre cariatides encouragent passantes et passants à se désaltérer depuis plus de 150 ans.</p>
+            <a target="_blank" href="https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_WALLACE.PDF" i18n="template.btn.moreinfos">En savoir plus</a>
         </div>
 
         <div>
             <a class="btnCard bgPrimary" target="_blank" id="go-{{feature_ol_uid}}">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 11.5L16 8L12.5 17.0021L11 13L7 11.5Z" fill="rgba(255,255,255,1)"></path></svg>
-                <span> J'y vais</span>
+                <span i18n="template.btn.go"> J'y vais</span>
             </a>
             <a class="btnCard bgPrimary" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="rgba(255,255,255,1)"></path></svg>        
-                <span> Qualité de l'eau</span>
+                <span i18n="template.btn.waterquality"> Qualité de l'eau</span>
             </a>
             {{#url_jeu_vp}}
                 <a class="btnCard bgOutlinePrim" target="_blank" href="{{url_jeu_vp}}">
-                    <span> Formulaire du jeu</span>
+                    <span i18n="template.btn.play"> Formulaire du jeu</span>
                 </a>
             {{/url_jeu_vp}}
         </div>
@@ -36,10 +36,14 @@
     width: 420px!important;
 }
 
+#page-content-wrapper:has(#right-panel.active) #zoomtoolbar,
+  #page-content-wrapper:has(#right-panel.active) #toolstoolbar {
+    margin-right: 420px !important;
+}
+
 #right-panel .item.active {
     padding-bottom: 2.5rem!important;
 }
-
 
 .cardInfo {
     background-color: #ededed7d;
@@ -165,7 +169,7 @@ li.item.cardInfo {
     let dispoFt = '{{dispo}}';
     let accesFt = '{{accessible}}';
     let date_ind = '{{debut_ind}}';
-    date_ind = ' depuis le ' + date_ind.replace('&#x2F;', '/').replace('&#x2F;', '/');
+    date_ind = date_ind.replace('&#x2F;', '/').replace('&#x2F;', '/');
 
     function displayInfoF(text,color){
         blockBadge.innerHTML = text;
@@ -173,12 +177,12 @@ li.item.cardInfo {
     };
     
     if (accesFt == "Non"){
-        displayInfoF('Fontaine non accessible','#ff96a5');
+        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5');
     } else if(dispoFt == "NON"){
-        displayInfoF('Fontaine indisponible' + date_ind +'','#ffc896');
+        displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible depuis le</span>'+' ' + date_ind +'','#ffc896');
         blockBadge.style.width='12rem';
     } else {
-        displayInfoF('Fontaine disponible','#aeffae');
+        displayInfoF('<span i18n="fontaine.disponible">Fontaine disponible</span>','#aeffae');
     }
 
     /* Gestion de la redirection pour la qualité de l'eau */
@@ -195,6 +199,9 @@ li.item.cardInfo {
     }
     document.getElementById('btnQualite_{{feature_ol_uid}}').href=url_qualite;
     
+    // Update lang
+    let lang = configuration.getLang();
+    mviewer.lang.changeLanguage(lang);
 
     
 </script>
