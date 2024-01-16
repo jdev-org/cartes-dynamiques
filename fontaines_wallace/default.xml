@@ -5,8 +5,6 @@
 			id="fontaines_wallace"
 			htmltitle="&lt;span i18n=&apos;home.title&apos;&gt;Les 50 fontaines Wallace à découvrir&lt;/span&gt;"
         	langfile="apps/fontaines_wallace/fontaines_wallace.i18n.json" lang="fr,en"
-			metadescription="Découvrez les fontaines icôniques de Paris sur une carte"
-			metaimgurl="apps/fontaines_wallace/img/wallace_preview.jpg"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"		

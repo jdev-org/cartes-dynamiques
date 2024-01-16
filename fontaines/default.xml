@@ -9,7 +9,7 @@
         logo="apps/commons/theme_edp/logo_edp_white.png"	
 		style="apps/commons/theme_edp/theme_edp.css"
 		favicon="apps/commons/theme_edp/favicon.ico"
-        help="apps/fontaines/templates/home.html?1"
+        help="apps/fontaines/templates/home.html"
         showhelp="true"	
         home="https://www.eaudeparis.fr/"
         measuretools="false"
