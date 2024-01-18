@@ -12,5 +12,9 @@ export async function insertFooter() {
     let heightFooter = sidebarFooter.offsetHeight * 2.2;
     let heightBody = `calc(100% - ${heightFooter}px)`;
     sidebarBody.style.height = heightBody;
+    // Init current Lang
+    let currentLang = API.lang || window.navigator.languages[0];
+    currentLang = currentLang.includes("fr") ? "fr" : "en";
+    mviewer.lang.changeLanguage(currentLang);
   }
 }

@@ -6,7 +6,7 @@ const cc = (function () {
 
   var _initialized = false;
 
-  function getDateDataUpdate() {
+  async function getDateDataUpdate() {
     var urlS = new URL(
       `https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Afontaines_maj&outputFormat=application%2Fjson`
     );
@@ -28,6 +28,12 @@ const cc = (function () {
       });
     });
   }
+  function getCurrentLang() {
+    // Init current Lang
+    let currentLang = API.lang || window.navigator.languages[0];
+    currentLang = currentLang.includes("fr") ? "fr" : "en";
+    mviewer.lang.changeLanguage(currentLang);
+  }
 
   return {
     /*
@@ -39,7 +45,7 @@ const cc = (function () {
       if (!_initialized) {
         let divLegend = document.getElementById("legend-fontaines").parentNode;
         $("#legendFontaines").insertAfter(divLegend);
-        getDateDataUpdate();
+        getDateDataUpdate().then(getCurrentLang());
       }
     },
 

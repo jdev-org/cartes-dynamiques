@@ -13,7 +13,6 @@
           id="radio-one"
           name="switch-one"
           value="fr"
-          checked
           onclick="mviewer.lang.changeLanguage('fr');" />
         <label for="radio-one"><span>FR</span></label>
         <input
@@ -80,6 +79,17 @@
     blockMapLibrary.innerHTML = htmltext;
   }
   asyncCallMapLib();
+
+  // Init current Lang
+  let currentLang = API.lang || window.navigator.languages[0];
+  currentLang = currentLang.includes("fr") ? "fr" : "en";
+  mviewer.lang.changeLanguage(currentLang);
+  // Init btn switch lang
+  if (currentLang == "fr") {
+    document.querySelector("input[value='fr']").checked = true;
+  } else {
+    document.querySelector("input[value='en']").checked = true;
+  }
 
   // MapLibrary - manage display page
   function displayBlock() {
