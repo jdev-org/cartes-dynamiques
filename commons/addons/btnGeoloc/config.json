@@ -1,6 +1,6 @@
 {
-    "js": [],
-    "css": "style.css",
-    "html": "btnGeoloc.html",
-    "target": "page-content-wrapper"
+  "js": ["btnGeoloc.js"],
+  "css": "style.css",
+  "html": "btnGeoloc.html",
+  "target": "page-content-wrapper"
 }
