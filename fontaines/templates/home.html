@@ -84,11 +84,7 @@
   currentLang = currentLang.includes("fr") ? "fr" : "en";
   mviewer.lang.changeLanguage(currentLang);
   // Init btn switch lang
-  if (currentLang == "fr") {
-    document.querySelector("input[value='fr']").checked = true;
-  } else {
-    document.querySelector("input[value='en']").checked = true;
-  }
+  document.querySelector(`input[value='${currentLang}']`).checked = true;
 
   // MapLibrary - manage display page
   function displayBlock() {
