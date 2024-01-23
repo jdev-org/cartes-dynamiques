@@ -8,8 +8,6 @@
 			favicon="apps/commons/theme_edp/favicon.ico"	
 			help="apps/edp_arret_eau/templates/home.html"
 			home="https://www.eaudeparis.fr/"
-			lang="fr"
-			langfile="apps/edp_arret_eau/custommviewer.i18n.json"
 			showhelp="false"
 			titlehelp="LES CHIFFRES"
 			iconhelp="question"
