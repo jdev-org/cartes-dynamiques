@@ -143,7 +143,6 @@ class ClusterByAttribut extends ol.source.Cluster {
     if (this.resolution === undefined || !this.source) {
       return;
     }
-
     const extent = this.source.getExtent();
     const mapDistance = this.distance * this.resolution;
     const features = this.source.getFeatures();
