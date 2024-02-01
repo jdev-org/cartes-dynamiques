@@ -1,13 +1,17 @@
 {{#features}}
 	<li class="item cardInfo" style="width:100%;">
         <div class="displayFlex">
-            <img src="apps/fontaines/img/icon_commerces.svg" style="width: 48px;padding: 0;">
-            <div class="badgeCo" i18n="template.commerce.badge">Ici, je choisis l'eau de Paris</div>
+            <div>
+                <h2 class="nameCard name__co">{{id}}</h2>
+                <div class="adressCard">{{numero}} {{nom_voie}}, {{code_posta}} {{nom_commun}}</div>
+            </div>
+            <img src="apps/fontaines/img/EDP_Sticker_IciJeChoisis.svg" style="width: 60px;padding: 0;">
+            <!--<div class="badgeCo" i18n="template.commerce.badge">Ici, je choisis l'eau de Paris</div>-->
         </div>
-        <h2 class="nameCard">{{id}}</h2>
-        <div class="adressCard">{{numero}} {{nom_voie}}, {{code_posta}} {{nom_commun}}</div>
+        
         <div class="textCard">
             <p i18n="fontaine.description.commerce">"Ici, je choisis l’eau de Paris" est un réseau de 800 commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.</p>
+            <a target="_blank" href="https://www.eaudeparis.fr/ici-je-choisis-leau-de-paris" i18n="template.btn.moreinfos">En savoir plus</a>
         </div>
         <div>
             <a class="btnCard" target="_blank" id="go-{{feature_ol_uid}}" >
@@ -39,6 +43,11 @@ $(goId).on("click", () => {
 </script>
 
 <style>
+
+.name__co {
+    margin-top: 10px;
+}
+
 #right-panel.active {
     width: 420px!important;
 }
@@ -120,6 +129,16 @@ $(goId).on("click", () => {
 
 li.item.cardInfo {
     list-style: none;
+}
+
+.textCard a {
+    color: var(--mycolor);
+    font-weight: 600;
+    border-bottom: 3px solid var(--mycolor);
+}
+
+.textCard a:hover{
+    border: none;
 }
 
 </style>

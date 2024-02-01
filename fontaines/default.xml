@@ -81,6 +81,7 @@
                 name="Ici, je choisis l'eau de Paris"
                 visible="true"
                 queryable="true"
+                showintoc="false"
                 featurecount="5"
                 tiled="true"
                 type="wms"

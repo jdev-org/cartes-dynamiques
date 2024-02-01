@@ -1,83 +1,85 @@
- <div id="modalTravaux">
-	<div class="titleHome">Travaux en cours</div>
-    <div class="textHome">
-        <div id=arretsadresses >
-            <div id="date_maj"></div>
-            <div id="arrondissement"></div>
-        </div>
+<div id="modalTravaux">
+  <div class="titleHome">Travaux en cours</div>
+  <div class="textHome">
+    <div id="arretsadresses">
+      <div id="date_maj"></div>
+      <div id="arrondissement"></div>
     </div>
+  </div>
 </div>
 
-
 <script>
-var url = new URL(`https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_maj&outputFormat=application%2Fjson`);
+  var url = new URL(
+    `https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_maj&outputFormat=application%2Fjson`
+  );
 
-$.getJSON(url, function(data) {
+  $.getJSON(url, function (data) {
     var items = [];
     var theDiv = document.getElementById("date_maj");
-    items.push('<ul>');
+    items.push("<ul>");
     $.each(data.features, function (key, val) {
-        $.each(val.properties, function(i,j){
-                if (i == 'datemaj') {
-                    items.push('<li>');
-                    items.push('Date de dernière mise à jour'  + ' : <b>' + j + '</b> ');
-                    items.push('<ul>');
-                } else  {
-                    items.push('<li>' + j.replace(/,/gi,"</li><li>") + ' ');
-                }
-          items.push('</li>');
-            })
-        items.push('</ul>');
-        });
-        $('<ul/>', {
-            'class':'my-new-list',
-            html:items.join('')
+      $.each(val.properties, function (i, j) {
+        if (i == "datemaj") {
+          items.push("<li>");
+          items.push("Date de dernière mise à jour" + " : <b>" + j + "</b> ");
+          items.push("<ul>");
+        } else {
+          items.push("<li>" + j.replace(/,/gi, "</li><li>") + " ");
+        }
+        items.push("</li>");
+      });
+      items.push("</ul>");
+    });
+    $("<ul/>", {
+      class: "my-new-list",
+      html: items.join(""),
     }).appendTo(theDiv);
-});
+  });
 
-var url = new URL(`https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_popup&outputFormat=application%2Fjson`);
+  var url = new URL(
+    `https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_popup&outputFormat=application%2Fjson`
+  );
 
-$.getJSON(url, function(data) {
+  $.getJSON(url, function (data) {
     var items = [];
     var theDiv = document.getElementById("arrondissement");
-    items.push('<ul>');
+    items.push("<ul>");
     $.each(data.features, function (key, val) {
-        $.each(val.properties, function(i,j){
-                if (i == 'arr') {
-                    items.push('<li>');
-                    items.push('Arrondissement'  + ' : <b>' + j + '</b> ');
-                    items.push('<ul>');
-                } else  {
-                    items.push('<li>' + j.replace(/,/gi,"</li><li>") + ' ');
-                }
-          items.push('</li>');
-            })
-        items.push('</ul>');
-        });
-        $('<ul/>', {
-            'class':'my-new-list',
-            html:items.join('')
+      $.each(val.properties, function (i, j) {
+        if (i == "arr") {
+          items.push("<li>");
+          items.push("Arrondissement" + " : <b>" + j + "</b> ");
+          items.push("<ul>");
+        } else {
+          items.push("<li>" + j.replace(/,/gi, "</li><li>") + " ");
+        }
+        items.push("</li>");
+      });
+      items.push("</ul>");
+    });
+    $("<ul/>", {
+      class: "my-new-list",
+      html: items.join(""),
     }).appendTo(theDiv);
-});
-
+  });
 </script>
 <style>
-#modalTravaux {
+  #modalTravaux {
     font-family: var(--myfont);
     padding: 15px;
-}
-#modalTravaux .titleHome {
+  }
+  #modalTravaux .titleHome {
     font-size: 3.2rem;
     font-weight: 700;
     color: var(--mycolor);
     margin-bottom: 1rem;
-}
+  }
 
-#modalTravaux .textHome {
+  #modalTravaux .textHome {
     color: black;
-}
+  }
 
-#modalTravaux .btnHome {
+  #modalTravaux .btnHome {
     background-color: #aab9ff7a;
     font-size: large;
     border: none;
@@ -87,65 +89,61 @@ $.getJSON(url, function(data) {
     border-radius: 2.5rem;
     display: flex;
     align-items: center;
-}
+  }
 
-#modalTravaux .btnHome:hover {
+  #modalTravaux .btnHome:hover {
     opacity: 0.8;
-}
+  }
 
-#modalTravaux .btnHome svg {
+  #modalTravaux .btnHome svg {
     margin-left: 5px;
     fill: var(--mycolor);
-}
+  }
 
-a.linkHome {
+  a.linkHome {
     font-weight: 700;
     color: var(--mycolor);
-}
+  }
 
-a.linkHome:hover {
+  a.linkHome:hover {
     border-bottom: 3px solid;
-}
+  }
 
-#date_maj ul {
+  #date_maj ul {
     list-style: none;
     padding: 0;
     text-transform: uppercase;
     font-size: medium;
     color: var(--mycolor);
-}
+  }
 
-
-
-#arrondissement>ul>ul {
+  #arrondissement > ul > ul {
     list-style: none;
     padding: 0;
-    text-transform: uppercase!important;
-    font-size:14px;
-}
+    text-transform: uppercase !important;
+    font-size: 14px;
+  }
 
-ul.my-new-list {
+  ul.my-new-list {
     padding: 0;
-}
+  }
 
-#arrondissement>ul>ul>li {
+  #arrondissement > ul > ul > li {
     margin-bottom: 1.5rem;
-}
+  }
 
-#arrondissement {
+  #arrondissement {
     height: 400px;
     overflow-x: auto;
-}
+  }
 
-.my-new-list>ul>li>ul>li {
+  .my-new-list > ul > li > ul > li {
     text-transform: lowercase;
     list-style-type: circle;
-    font-size:14px;
-}
+    font-size: 14px;
+  }
 
-.my-new-list>ul>li>ul>li:first-letter {
+  .my-new-list > ul > li > ul > li:first-letter {
     text-transform: uppercase;
-}
-
-
+  }
 </style>

@@ -1,281 +1,556 @@
 <div id="legendFontaines">
-  <h4 i18n="sidebar.legend.title">Recherche avancée</h4>
+  <h4>
+    <span i18n="sidebar.legend.title">Recherche avancée</span>
+    <button onclick="resetFilter();" title="Réinitialiser">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 4C14.7486 4 17.1749 5.38626 18.6156 7.5H16V9.5H22V3.5H20V5.99936C18.1762 3.57166 15.2724 2 12 2C6.47715 2 2 6.47715 2 12H4C4 7.58172 7.58172 4 12 4ZM20 12C20 16.4183 16.4183 20 12 20C9.25144 20 6.82508 18.6137 5.38443 16.5H8V14.5H2V20.5H4V18.0006C5.82381 20.4283 8.72764 22 12 22C17.5228 22 22 17.5228 22 12H20Z"></path></svg>
+    </button>
+  </h4> 
   <p class="small" i18n="sidebar.legend.setpoint">
-    Cliquez sur un type de fontaine pour filtrer la carte et réitérez le clic pour
+    Cliquez sur une entrée pour filtrer la carte et réitérez le clic pour
     supprimer le filtre
-  </p>
-  <h5 i18n="sidebar.legend.subtitle.type">Type de fontaine</h5>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check9"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'BORNE_FONTAINE'" />
-    <label class="btn-legend" for="btn-check9">
-      <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.borne">Borne fontaine</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check1"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FONTNE_WALLACE'" />
-    <label class="btn-legend" for="btn-check1">
-      <img src="apps/fontaines/img/FONTNE_WALLACE.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.wallace">Fontaine Wallace</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check14"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FONTNE_WALLACE_2EN1'" />
-    <label class="btn-legend" for="btn-check14">
-      <img src="apps/fontaines/img/FONTNE_WALLACE_2EN1.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.wallace.2en1">Fontaine Wallace 2-en-1</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check3"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FONTAINE_TOTEM'" />
-    <label class="btn-legend" for="btn-check3">
-      <img src="apps/fontaines/img/FONTAINE_TOTEM.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.totem">Fontaine Totem</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check15"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FONTAINE_TOTEM_2EN1'" />
-    <label class="btn-legend" for="btn-check15">
-      <img src="apps/fontaines/img/FONTAINE_TOTEM_2EN1.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.2en1">Fontaine Totem 2-en-1</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check4"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FTNE_PETILLANTE'" />
-    <label class="btn-legend" for="btn-check4">
-      <img src="apps/fontaines/img/FTNE_PETILLANTE.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.petillante">Fontaine pétillante</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check5"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FTNE_MILLENAIRE'" />
-    <label class="btn-legend" for="btn-check5">
-      <img src="apps/fontaines/img/FTNE_MILLENAIRE.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.millenaire">Fontaine du Millénaire</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check6"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FONTAINE_ARCEAU'" />
-    <label class="btn-legend" for="btn-check6">
-      <img src="apps/fontaines/img/FONTAINE_ARCEAU.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.arceau">Fontaine Arceau</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check7"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FTNE_POING_EAU'" />
-    <label class="btn-legend" for="btn-check7">
-      <img src="apps/fontaines/img/FTNE_POING_EAU.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.poing">Fontaine Poing d'eau</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check8"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FONTAINE_ALBIEN'" />
-    <label class="btn-legend" for="btn-check8">
-      <img src="apps/fontaines/img/FONTAINE_ALBIEN.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.albien">Fontaine à l'Albien</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check2"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FONTAINE_BOIS'" />
-    <label class="btn-legend" for="btn-check2">
-      <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.bois">Fontaine des bois, parcs et jardins</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check16"
-      class="btn-check-lgd"
-      name="lgd"
-      value="type_objet like 'FTNE_MAT_SOURCE_2EN1'" />
-    <label class="btn-legend" for="btn-check16">
-      <img src="apps/fontaines/img/FTNE_MAT_SOURCE_2EN1.svg" style="width: 48px; padding: 0" />
-      <span i18n="fontaine.type.mat">Fontaine Mât Source 2-en-1</span>
-    </label>
-  </div>
-  <h5 i18n="sidebar.legend.subtitle.dispo">Disponibilité</h5>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check11"
-      class="btn-check-lgd"
-      name="lgd"
-      value="dispo like 'OUI'" />
-    <label class="btn-legend" for="btn-check11">
-      <img
-        src="apps/fontaines/img/fontaine_disponible.svg"
-        style="width: 48px; padding: 0" />
-      <span i18n="fontaine.disponible">Fontaine disponible</span>
-    </label>
-  </div>
-  <div>
-    <input
-      type="checkbox"
-      id="btn-check12"
-      class="btn-check-lgd"
-      name="lgd"
-      value="dispo = 'NON'" />
-    <label class="btn-legend" for="btn-check12">
-      <img
-        src="apps/fontaines/img/fontaine_indisponible.svg"
-        style="width: 48px; padding: 0" />
-      <span i18n="fontaine.indisponible">Fontaine indisponible</span>
-    </label>
-  </div>
+  </p> 
+  <div id="inputFilterCustom">  
+    <div class="input__level-one">
+      <input
+        type="checkbox"
+        id="btn-check__dispo24"
+        class="btn-check-lgd"
+        name="lgd"
+        cqltype="fontaines_alldispo"
+        value=""/>
+      <label class="btn-legend" for="btn-check__dispo24" style="opacity: 1;">
+        <img src="apps/fontaines/img/fontaine_dispo24.svg"/>
+        <span i18n="fontaine.type.disponible24">Disponible 24/24h</span>
+      </label>
+    </div>
+    <div class="input__level-one">
+      <input
+        type="checkbox"
+        id="btn-check__brumisation"
+        class="btn-check-lgd"
+        name="lgd"
+        cqltype="fontaines_type"
+        value="'FONTNE_WALLACE_2EN1','FONTAINE_TOTEM_2EN1','FTNE_MAT_SOURCE_2EN1'"/>
+      <label class="btn-legend" for="btn-check__brumisation" style="opacity: 1;">
+        <img src="apps/fontaines/img/brumisateur.svg"/>
+        <span i18n="fontaine.type.brumisation">Avec brumisation</span>
+      </label>
+    </div>
+    <div class="input__level-one">
+      <input
+        type="checkbox"
+        id="btn-check__eau-petillante"
+        class="btn-check-lgd"
+        name="lgd"
+        cqltype="fontaines_type"
+        value="'FTNE_PETILLANTE',''"/>
+      <label class="btn-legend" for="btn-check__eau-petillante" style="opacity: 1;">
+        <img src="apps/fontaines/img/eau_petillante.svg" />
+        <span i18n="fontaine.type.eaupetillante">Eau pétillante</span>
+      </label>
+    </div>
+    <div id="btn__blockTypesFontaine" class="input__level-one" >
+      <button onclick="displayBlock()">
+        <input
+        type="checkbox"
+        id="btn-check__type-point"
+        class="btn-check-lgd"
+        name="lgd"/>
+        <label class="btn-legend" style="opacity: 1;">
+          <img src="apps/fontaines/img/robinet.svg" />
+          <span i18n="sidebar.legend.subtitle.type">Type de fontaine</span>
+        </label>        
+        <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg></span>
+      </button>
+    </div>
+    <div id="blockTypesFontaine" class="blockDisplay">
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check__commerce"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="commerces"/>
+        <label class="btn-legend" for="btn-check__commerce" style="opacity: 1;">
+          <img src="apps/fontaines/img/bouteille.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.commerce">Ici, je choisis l'eau de Paris</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check9"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'BORNE_FONTAINE'"/>
+        <label class="btn-legend" for="btn-check9" style="opacity: 1;">
+          <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.borne">Borne fontaine</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check1"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FONTNE_WALLACE'" />
+        <label class="btn-legend" for="btn-check1" style="opacity: 1;">
+          <img src="apps/fontaines/img/FONTNE_WALLACE.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.wallace">Fontaine Wallace</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check14"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FONTNE_WALLACE_2EN1'" />
+        <label class="btn-legend" for="btn-check14" style="opacity: 1;">
+          <img src="apps/fontaines/img/FONTNE_WALLACE_2EN1.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.wallace.2en1">Fontaine Wallace 2-en-1</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check3"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FONTAINE_TOTEM'" />
+        <label class="btn-legend" for="btn-check3" style="opacity: 1;">
+          <img src="apps/fontaines/img/FONTAINE_TOTEM.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.totem">Fontaine Totem</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check15"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FONTAINE_TOTEM_2EN1'" />
+        <label class="btn-legend" for="btn-check15" style="opacity: 1;">
+          <img src="apps/fontaines/img/FONTAINE_TOTEM_2EN1.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.2en1">Fontaine Totem 2-en-1</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check4"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FTNE_PETILLANTE'" />
+        <label class="btn-legend" for="btn-check4" style="opacity: 1;">
+          <img src="apps/fontaines/img/FTNE_PETILLANTE.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.petillante">Fontaine pétillante</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check5"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FTNE_MILLENAIRE'" />
+        <label class="btn-legend" for="btn-check5" style="opacity: 1;">
+          <img src="apps/fontaines/img/FTNE_MILLENAIRE.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.millenaire">Fontaine du Millénaire</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check6"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FONTAINE_ARCEAU'" />
+        <label class="btn-legend" for="btn-check6" style="opacity: 1;">
+          <img src="apps/fontaines/img/FONTAINE_ARCEAU.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.arceau">Fontaine Arceau</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check7"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FTNE_POING_EAU'" />
+        <label class="btn-legend" for="btn-check7" style="opacity: 1;">
+          <img src="apps/fontaines/img/FTNE_POING_EAU.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.poing">Fontaine Poing d'eau</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check8"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FONTAINE_ALBIEN'" />
+        <label class="btn-legend" for="btn-check8" style="opacity: 1;">
+          <img src="apps/fontaines/img/FONTAINE_ALBIEN.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.albien">Fontaine à l'Albien</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check2"
+          class="btn-check-lgd"
+          name="lgd"      
+          cqltype="fontaines_type"
+          value="'FONTAINE_BOIS'" />
+        <label class="btn-legend" for="btn-check2" style="opacity: 1;">
+          <img src="apps/fontaines/img/BORNE_FONTAINE.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.bois">Fontaine des bois, parcs et jardins</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check16"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_type"
+          value="'FTNE_MAT_SOURCE_2EN1'" />
+        <label class="btn-legend" for="btn-check16" style="opacity: 1;">
+          <img src="apps/fontaines/img/FTNE_MAT_SOURCE_2EN1.svg" style="width: 48px; padding: 0" />
+          <span i18n="fontaine.type.mat">Fontaine Mât Source 2-en-1</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check11"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_d"
+          value="'OUI'" />
+        <label class="btn-legend" for="btn-check11" style="opacity: 1;">
+          <img
+            src="apps/fontaines/img/fontaine_disponible.svg"
+            style="width: 48px; padding:5px" />
+          <span i18n="fontaine.disponible">Fontaine disponible</span>
+        </label>
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="btn-check12"
+          class="btn-check-lgd"
+          name="lgd"
+          cqltype="fontaines_d"
+          value="'NON'" />
+        <label class="btn-legend" for="btn-check12" style="opacity: 1;">
+          <img
+            src="apps/fontaines/img/fontaine_indisponible.svg"
+            style="width: 48px; padding: 5px" />
+          <span i18n="fontaine.indisponible">Fontaine indisponible</span>
+        </label>
+      </div>
+    </div>
+  </div> 
   <div id="section_date_maj"></div>
 </div>
 
 <script>
-  let checkboxes = document.querySelectorAll("input[type=checkbox][name=lgd]");
-  $("input[type=checkbox][name=lgd]").on("change", function () {
-    $('input[type="checkbox"][name=lgd]').not(this).prop("checked", false);
-  });
+// Init variables  
+let list_types = [];
+let list_dispo = [];
 
-  checkboxes.forEach(function (checkbox) {
-    checkbox.addEventListener("change", function (e) {
-      let input = e.target;
-      mviewer.type_fontaine = mviewer?.type_fontaine ? mviewer.type_fontaine : [];
-      if (this.checked) {
-        filterDataByAttr(this.value);
-      } else {
-        deleteFilter();
-      }
-    });
-  });
+// Manage type of fontains block
+function displayBlock() {
+	const blockTypeFontaines = document.getElementById('blockTypesFontaine');
+	const btn__blockTypesFontaine = document.getElementById('btn__blockTypesFontaine');
+	blockTypeFontaines.classList.toggle("blockDisplay");
+	btn__blockTypesFontaine.classList.toggle("icon-blockDisplay");
+}
+// Function to reset filter
+function resetFilter() {
+	// Empty CQL lists and delete CQL Filter
+	list_dispo = [];
+	list_types = [];
+	deleteCQLFilter();
+	// Opacity 1 for all labels
+	let labels = document.querySelectorAll(".btn-check-lgd ~ label");
+	labels.forEach(function(label) {
+		label.style.opacity = "1";
+	});
+	// Delete checkOnMap class input
+	let checkOnMap = document.querySelectorAll(".btn-check-lgd.checkOnMap");
+	checkOnMap.forEach(function(checkbox) {
+		checkbox.classList.remove("checkOnMap");
+	});
+	// Display all layers
+	mviewer.getLayer('commerce').layer.setVisible(true);
+	mviewer.getLayer('fontaines').layer.setVisible(true);
+}
+// Function to add input value in cql list
+function valueInList(nameList, value) {
+	if (nameList.includes(value)) {
+		const index = nameList.indexOf(value);
+		const x = nameList.splice(index, 1);
+	} else {
+		nameList.push(value);
+	}
+}
+// Function to filter map by CQL filter
+function filterDataByAttr(valAtt) {
+	var layer = mviewer.getLayer("fontaines");
+	var src = layer.layer.getSource();
+	var params = src.getParams();
+	// update wms layer params
+	params.CQL_FILTER = `${valAtt}`;
+	src.updateParams(params);
+	src.refresh();
+}
+// Function to delete CQLFILTER from WMS layers
+function deleteCQLFilter() {
+	var layer = mviewer.getLayer("fontaines");
+	var src = layer.layer.getSource();
+	var params = src.getParams();
+	delete params.CQL_FILTER;
+	src.refresh();
+}
+//Functions to delete checkOnMap class
+function checkOnMap_OneLevel(input) {
+	let checkOnMap_onelevel = document.querySelector(".input__level-one .btn-check-lgd.checkOnMap");
+	if (checkOnMap_onelevel && checkOnMap_onelevel != input) {
+		checkOnMap_onelevel.classList.remove("checkOnMap");
+		deleteCQLFilter();
+	}
+}
+function checkOnMap_twolevel() {
+	let checkOnMap_twolevel = document.querySelectorAll("#blockTypesFontaine .btn-check-lgd.checkOnMap");
+	if (checkOnMap_twolevel.length > 0) {
+		checkOnMap_twolevel.forEach(function(checkbox) {
+			checkbox.classList.remove("checkOnMap");
+		});
+	}
+}
+// Get one level input 
+let checkboxes_onelevel = document.querySelectorAll(".input__level-one input[type=checkbox][name=lgd]");
+checkboxes_onelevel.forEach(function(checkbox) {
+	checkbox.addEventListener("change", function(e) {
+		let input = e.target;
+		checkOnMap_OneLevel(input);
+		checkOnMap_twolevel();
+		list_dispo = [];
+		list_types = [];
+		// Class to input checked
+		input.classList.toggle("checkOnMap");
+		// Get input value and cql type
+		let cqlvalue = input.value;
+		let cqltype = input.getAttribute('cqltype');
+		if (input.classList.contains("checkOnMap") == false) {
+			resetFilter();
+		} else {
+			if (cqltype == 'fontaines_alldispo') {
+				cql_filter = `type_objet IN ('FONTAINE_ALBIEN','FONTAINE_ARCEAU','FTNE_MILLENAIRE','FTNE_PETILLANTE','FONTNE_WALLAC','FONTAINE_TOTEM','BORNE_FONTAINE','FONTNE_WALLACE_2EN1','FONTAINE_TOTEM_2EN1','FTNE_MAT_SOURCE_2EN1') AND dispo IN ('OUI')`;
+				filterDataByAttr(cql_filter);
+				mviewer.getLayer('fontaines').layer.setVisible(true);
+				mviewer.getLayer('commerce').layer.setVisible(false);
+			} else {
+				cql_filter = `type_objet IN (${cqlvalue})`;
+				filterDataByAttr(cql_filter);
+				mviewer.getLayer('fontaines').layer.setVisible(true);
+				mviewer.getLayer('commerce').layer.setVisible(false);
+			}
+		}
+	});
+});
 
-  function filterDataByAttr(valAtt) {
-    var layer = mviewer.getLayer("fontaines");
-    var src = layer.layer.getSource();
-    var params = src.getParams();
-    // update wms layer params
-    params.CQL_FILTER = `${valAtt}`;
-    src.updateParams(params);
-    src.refresh();
-  }
+// Get two level inputs in Type fontaines
+let checkboxes_twolevel = document.querySelectorAll("#blockTypesFontaine input[type=checkbox][name=lgd]");
+checkboxes_twolevel.forEach(function(checkbox) {
+	checkbox.addEventListener("change", function(e) {
+		let input = e.target;
+		checkOnMap_OneLevel(input);
+		// Add class to input checked
+		input.classList.toggle("checkOnMap");
+		// Get input value and cql type
+		let cqlvalue = input.value;
+		let cqltype = input.getAttribute('cqltype');
 
-  function deleteFilter() {
-    var layer = mviewer.getLayer("fontaines");
-    var src = layer.layer.getSource();
-    var params = src.getParams();
-    delete params.CQL_FILTER;
-    src.refresh();
-  }
+		// Manage layer fontaines      
+		// Add the value to the corresponding list  
+		if (cqltype == 'fontaines_d') {
+			valueInList(list_dispo, cqlvalue);
+			mviewer.getLayer('fontaines').layer.setVisible(true);
+		} else if (cqltype == 'fontaines_type') {
+			valueInList(list_types, cqlvalue);
+			mviewer.getLayer('fontaines').layer.setVisible(true);
+		} else {}
+		// Manage commerces layer
+		let checkCom = document.querySelector("input[cqltype=commerces][name=lgd]").classList.contains("checkOnMap");
+		if (checkCom) {
+			mviewer.getLayer('commerce').layer.setVisible(true);
+			if (list_dispo.length == 0 && list_types.length == 0) {
+				mviewer.getLayer('fontaines').layer.setVisible(false);
+			}
+		} else {
+			mviewer.getLayer('commerce').layer.setVisible(false);
+			mviewer.getLayer('fontaines').layer.setVisible(true);
+		}
+		// CQL filter creation according to lists for fontaines layers    
+		let cql_filter;
+		if (list_dispo.length > 0 && list_types.length > 0) {
+			cql_filter = `type_objet IN  (${list_types}) AND dispo IN (${list_dispo})`;
+			filterDataByAttr(cql_filter);
+		} else if (list_dispo.length > 0 && list_types.length == 0) {
+			cql_filter = `dispo IN (${list_dispo})`;
+			filterDataByAttr(cql_filter);
+		} else if (list_dispo.length == 0 && list_types.length > 0) {
+			cql_filter = `type_objet IN (${list_types})`;
+			filterDataByAttr(cql_filter);
+		} else {
+			deleteCQLFilter();
+			mviewer.getLayer('commerce').layer.setVisible(true);
+		}
+	});
+});
 </script>
 <style>
-  #section_date_maj {
-    color: #a7a7a7;
-    margin: 2em 0 !important;
-  }
+  #inputFilterCustom input.checkOnMap ~ label {
+    opacity:1!important;
+}
 
-  #legendFontaines h4 {
-    color: var(--mycolor);
+#inputFilterCustom:has(.checkOnMap) .btn-check-lgd:not(.checkOnMap) ~ label {
+    opacity:0.4!important;
+}
+
+#btn__blockTypesFontaine.icon-blockDisplay svg{
+    transform: rotate(180deg);
+}
+
+#btn__blockTypesFontaine svg{
+    transition: all 0.2s ease-in-out;
+}
+
+a.icon-options {
+    display: none!important;
+}
+
+.input__level-one:not(:first-child) {
+	margin-top: -20px;
+}
+
+.input__level-one:first-child {
+	margin-top: -10px;
+}
+
+.input__level-one img {
+	width: 35px;
+	padding: 0;
+	margin-right: 12px;
+}
+
+.blockDisplay {
+	display: none;
+}
+
+#btn__blockTypesFontaine button {
+	background: none;
+	border: none;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	font-weight: 500;
+	font-size: 1.2rem;
+	color: #5e5e5e;
+	justify-content: space-between;
+	flex-direction: row;
+  padding: 0;
+}
+
+#blockTypesFontaine>div {
+	margin-top: -15px;
+}
+
+#blockTypesFontaine {
+	padding: 0.2em 1em 0em 1em;
+}
+
+#section_date_maj {
+	color: #a7a7a7;
+	margin: 2em 0 !important;
+}
+
+#legendFontaines h4 {
+	color: var(--mycolor);
     font-weight: 600;
     font-size: larger;
-  }
-
-  #legend .layerdisplay-title,
-  #legend .layerdisplay-legend {
-    display: none;
-  }
-
-  input[type="checkbox"][name="lgd"]:checked ~ label span {
-    color: var(--mycolor);
-  }
-
-  #btnLegend {
-    padding: 10px 0px;
-  }
-
-  #legend-fontaines {
-    display: none;
-  }
-
-  .btn-legend:active {
-    box-shadow: none;
-  }
-
-  .btn-legend:hover {
-    opacity: 0.7;
-    cursor: pointer;
-  }
-
-  #legendFontaines label {
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
     display: flex;
     align-items: center;
-    font-weight: 500;
-    font-size: 1.2rem;
-    color: #5e5e5e;
-  }
+    justify-content: space-between;
+}
 
-  #legendFontaines input {
-    display: none;
-  }
+#legendFontaines h4 button {
+    background: none;
+    border: none;
+    padding: 0;
+}
 
-  #legendFontaines > div {
-    margin-top: -15px;
-  }
+#legend .layerdisplay-title,
+#legend .layerdisplay-legend {
+	display: none;
+}
 
-  #legendFontaines h5 {
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 1px;
-    opacity: 0.6;
-    margin-bottom: 20px;
-  }
+#btnLegend {
+	padding: 10px 0px;
+}
+
+#legend-fontaines {
+	display: none;
+}
+
+.btn-legend:active {
+	box-shadow: none;
+}
+
+.btn-legend:hover {
+	opacity: 0.7!important;
+	cursor: pointer;
+}
+
+#legendFontaines label {
+	display: flex;
+	align-items: center;
+	font-weight: 500;
+	font-size: 1.2rem;
+	color: #5e5e5e;
+}
+
+#legendFontaines input {
+	display: none;
+}
+
+#legendFontaines label span {
+    line-height: 1;
+}
+
+#legendFontaines h5 {
+	text-transform: uppercase;
+	font-size: 11px;
+	letter-spacing: 1px;
+	opacity: 0.6;
+	margin-bottom: 20px;
+}
+
 </style>
