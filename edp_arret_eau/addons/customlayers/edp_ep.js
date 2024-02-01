@@ -6,8 +6,6 @@ const LAYER_ID = "edp_ep";
  * - first : EN COURS statut value
  * - second : PREVU statut value
  */
-// Clusters charts color :
-// - first is EN COURS, second is []
 const DONUT_COLORS = ["#FFC896", "#AAB9FF"];
 /**
  * Display layer as simple point not clustered
