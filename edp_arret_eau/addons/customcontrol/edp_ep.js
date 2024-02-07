@@ -180,6 +180,14 @@ var _updateLayerParams = function (e) {
 
         init: function() {
             mviewer.getMap().on('moveend', _updateLayerParams);
+            if (!mviewer.customComponents.edp_ep.init) {
+                document.addEventListener("edp_ep-init", () => {
+                    mviewer.customComponents.edp_ep.init();
+                })    
+            } else {
+                mviewer.customComponents.edp_ep.init();
+            };
+            
         },
 
 

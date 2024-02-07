@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "js": [
+    "js/edp_ep.js"
+  ],
+  "css": [
+    "css/SwitchCustom.css",
+    "css/SidebarFilters.css",
+    "css/TimeSlider.css",
+    "css/TimeCalendar.css"
+  ],
+  "html": "edp_ep.html",
+  "target": "page-content-wrapper",
+  "options": {
+    "mviewer": {
+      "travaux_eau": {
+        "labelsUrl": "apps/commons/addons/edp_ep/labels.json"
+      }
+    }
+  }
+}

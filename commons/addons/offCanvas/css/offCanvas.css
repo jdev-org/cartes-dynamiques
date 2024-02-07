@@ -1,3 +1,7 @@
+/* Colors */
+:root {
+	--bleu: #002ddc;	
+}
 /* 
     * Suppression des blocs intiales du mviewer
     * Menu des thématiques, bouton d'accès au menu, bouton de suppression des couches
