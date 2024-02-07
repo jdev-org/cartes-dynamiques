@@ -119,6 +119,9 @@
     box-shadow: none;
     border: none !important;
   }
+  #sidebarBody {
+    overflow: auto;
+  }
 
   #sidebarBody #legend {
     font-family: var(--myfont);

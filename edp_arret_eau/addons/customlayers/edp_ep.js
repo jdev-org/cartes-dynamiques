@@ -143,6 +143,7 @@ class ClusterByAttribut extends ol.source.Cluster {
     if (this.resolution === undefined || !this.source) {
       return;
     }
+
     const extent = this.source.getExtent();
     const mapDistance = this.distance * this.resolution;
     const features = this.source.getFeatures();
@@ -181,10 +182,14 @@ class ClusterByAttribut extends ol.source.Cluster {
               clustered[uid] = true;
               return true;
             });
-            this.features.push(this.createCluster(featuresToCluster, extent));
+            const clusterWithFeatures = this.createCluster(featuresToCluster, extent);
+            clusterWithFeatures.getValuesByField = (field) => clusterWithFeatures.get("features").map(f => f.get(field));
+            clusterWithFeatures.getFeaturesByFieldValue = (field, value) => clusterWithFeatures.get("features").filter(f => f.get(field) === value);
+            this.features.push(clusterWithFeatures);
           } else {
             // don't clusterize -> 1 feature = 1 cluster
-            this.features.push(this.createCluster([feature], extent));
+            const clusterWithFeatures = this.createCluster([feature], extent);
+            this.features.push(clusterWithFeatures);
           }
         }
       }

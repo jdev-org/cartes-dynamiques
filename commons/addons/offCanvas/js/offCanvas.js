@@ -6,6 +6,8 @@ import { createCloseButton } from "./components/SidebarCloseButton.js";
 import { initDisplaySidebar } from "./components/sidebarUtils.js";
 import SwitchForm from "./components/SwitchForm/SwitchForm.js";
 
+import { getArrondissements, getTravauxValues } from "./utils/layers.js";
+
 import ButtonCheckForm from "./components/ButtonCheckForm/ButtonCheckForm.js";
 
 const buttonFilterType = (title, values, size) => {
@@ -22,13 +24,16 @@ const switchFilter = (title, values) => {
   parent.appendChild(switchForm.get());
 }
 
-const init = () => {
+const init = async () => {
+  const arrondissements = await getArrondissements();
+  const travaux = getTravauxValues("motif");
+  const statuts = getTravauxValues("statut")
   createButton();
   createCloseButton();
   buttonFilterType("Type de réseau", ["Potable", "Non potable"], "xs");
-  switchFilter("Statut des travaux", ["valeur A", "valeur B"]);
-  buttonFilterType("Motifs des travaux", ["Tous", "Lorum", "ipsum"], "xs");
-  buttonFilterType("Arrondissement", ["0", "1", "2", "3","0", "1", "2", "3"], "xs");
+  switchFilter("Statut des travaux", _.uniq(statuts));
+  buttonFilterType("Motifs des travaux", _.uniq(travaux), "xs");
+  buttonFilterType("Arrondissement", _.sortBy(arrondissements.map(a => a.value)), "xs");
   insertLegend();
   insertSearch();
   insertFooter();
