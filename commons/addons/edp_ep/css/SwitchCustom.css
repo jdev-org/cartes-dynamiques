@@ -1,0 +1,46 @@
+/**
+* TOGGLE BUTTON
+* From https://codepen.io/mburnette/pen/LxNxNg
+*/
+
+.toggle-zone{
+	padding-left:0;
+	margin-bottom: 10px;
+}
+.custom-switch[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+.toggle-label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 35px;
+	height: 20px;
+	background: #d1d3d1;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+.toggle-label:after {
+	content: '';
+	position: absolute;
+	top: 2px;
+	left: 5px;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+.custom-switch:checked + .toggle-label {
+	background: var(--bleu);
+}
+
+.custom-switch:checked + .toggle-label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}

@@ -1,0 +1,29 @@
+{
+  "fr": {
+    "addon.btnGeoloc.label": "Localisez-moi",
+    "addon.socNetwork.title": "Rejoindre la communauté",
+    "sidebar.update.data": "Date de dernière mise à jour",
+    "edpep.filter.switch.PREVU": "Prévu",
+    "edpep.filter.switch.EN_COURS": "En cours",
+    "edpep.filter.btncheck.BRCHT_NEUF": "Brancht. Neuf",
+    "edpep.filter.btncheck.REP_FUITE": "Rép. fuite",
+    "edpep.filter.btncheck.VISITE": "Visite",
+    "edpep.filter.btncheck.TVX_RENOUVEL": "Travaux Renouvel.",
+    "edpep.filter.btncheck.TVX_TIERS": "Travaux Tiers",
+    "edpep.filter.btncheck.PRECO_RENOUV_1": "préco. Renouv. 1",
+    "edpep.filter.btncheck.DFT_RESEAU": "DFT Reseau",
+    "edpep.filter.btncheck.CHOMAGE": "Chômage",
+    "edpep.filter.btncheck.TAMPONNAGE": "Tamponnage",
+    "edpep.filter.btncheck.RUPTURE": "Rupture",
+    "edpep.filter.btncheck.MAN_SECURITE": "Man. Sécurité",
+    "edpep.filter.btncheck.TVX_RENOVATION": "Tavaux Rénovation",
+    "edpep.filter.btncheck.VANNES_ANNEX": "Vannes annexes",
+    "edpep.filter.btncheck.PRECO_RENOUV_3": "Préco. Renouv. 3",
+    "edpep.filter.btncheck.NETTOYAGE": "Nettoyage",
+    "edpep.filter.btncheck.EP": "Eau potable",
+    "edpep.filter.btncheck.ENP": "Eau non potable",
+    "edpep.filter.switch.slider": "Slider",
+    "edpep.filter.switch.calendar": "Calendrier",
+    "edpep.reset": "Réinitialiser"
+  }
+}

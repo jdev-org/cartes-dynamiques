@@ -10,6 +10,7 @@
 			home="https://www.eaudeparis.fr/"
 			showhelp="false"
 			titlehelp="LES CHIFFRES"
+			langfile="apps/edp_arret_eau/edpep.i18n.json" lang="fr"
 			iconhelp="question"
 			exportpng="true"
 			measuretools="true"
@@ -70,11 +71,13 @@
 			querymaponclick="true"/>
 
 	<extensions>
+		<extension  type="javascript"  src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
         <extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalInfos" path="apps/commons/addons"/>
+		<extension type="component" id="edp_ep" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
