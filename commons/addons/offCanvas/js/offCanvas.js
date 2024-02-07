@@ -4,11 +4,31 @@ import { insertFooter } from "./components/SidebarFooter.js";
 import { createButton } from "./components/SidebarButton.js";
 import { createCloseButton } from "./components/SidebarCloseButton.js";
 import { initDisplaySidebar } from "./components/sidebarUtils.js";
-import SidebarLists from "./components/SidebarLists.js";
+import SwitchForm from "./components/SwitchForm/SwitchForm.js";
+
+import ButtonCheckForm from "./components/ButtonCheckForm/ButtonCheckForm.js";
+
+const buttonFilterType = (title, values, size) => {
+  const parent = document.getElementById("sidebarBody");
+  const typeBtns = new ButtonCheckForm(parent, values, title, size);
+  typeBtns.create();
+}
+
+const switchFilter = (title, values) => {
+  const parent = document.getElementById("sidebarBody");
+  const switchForm = new SwitchForm(values, title);
+  switchForm.create();
+
+  parent.appendChild(switchForm.get());
+}
 
 const init = () => {
   createButton();
   createCloseButton();
+  buttonFilterType("Type de réseau", ["Potable", "Non potable"], "xs");
+  switchFilter("Statut des travaux", ["valeur A", "valeur B"]);
+  buttonFilterType("Motifs des travaux", ["Tous", "Lorum", "ipsum"], "xs");
+  buttonFilterType("Arrondissement", ["0", "1", "2", "3","0", "1", "2", "3"], "xs");
   insertLegend();
   insertSearch();
   insertFooter();
