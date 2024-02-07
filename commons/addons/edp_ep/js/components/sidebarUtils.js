@@ -17,8 +17,3 @@ export const initDisplaySidebar = () => {
         toggleSidebar();
     }
 };
-
-export const dispatchEvent = (name, content) => {
-    const evt = new CustomEvent(name, { detail: content });
-    document.dispatchEvent(evt);
-}
