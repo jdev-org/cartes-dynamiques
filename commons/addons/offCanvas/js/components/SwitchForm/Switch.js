@@ -55,7 +55,6 @@ class Switch {
     this.setActivate();
     this.removeClass("activate");
     this.removeClass("default");
-    console.log(this.activate);
     if (this.activate) this.addClass("activate");
     if (!this.activate) this.addClass("default");
   }
