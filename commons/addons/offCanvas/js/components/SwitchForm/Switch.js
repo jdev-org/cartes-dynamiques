@@ -1,7 +1,7 @@
 class Switch {
   constructor(value) {
     this.value = value;
-    this.id = _.uniqueId();
+    this.id = "switch-" + _.uniqueId();
     this.activate = false;
     this.stringElement = null;
   }
@@ -11,7 +11,7 @@ class Switch {
     this.create();
   }
 
-  setactivate() {
+  setActivate() {
     this.activate = !this.activate;
   }
 
@@ -33,6 +33,10 @@ class Switch {
     return this.stringElement;
   }
 
+  getId() {
+    return this.id;
+  }
+
   addClass(cl) {
     this.element.classList.add(cl);
   }
@@ -41,16 +45,27 @@ class Switch {
     this.element.classList.remove(cl);
   }
 
+  addEvent(name, func) {
+    const el = document.getElementById(this.id);
+    if (!el) return;
+    el.addEventListener(name, func);
+  }
+
   click() {
-    this.setactivate();
+    this.setActivate();
     this.removeClass("activate");
     this.removeClass("default");
+    console.log(this.activate);
     if (this.activate) this.addClass("activate");
     if (!this.activate) this.addClass("default");
   }
 
   getColor() {
     return this.activate ? this.colors?.activate : this.colors.default;
+  }
+
+  setElement(element) {
+    this.element = element;
   }
 }
 

@@ -4,12 +4,27 @@ class SwitchForm {
   constructor(values = [], title = "") {
     this.values = values;
     this.title = title;
+    this.onClick = null;
+    this.selected;
+    this.switch = [];
+  }
+
+  createSwitch() {
+    this.values.forEach((value) => {
+      const switchInstance = new Switch(value);
+      switchInstance.create();
+      this.switch.push(switchInstance);
+    });
+  }
+  setOnClick(onClick) {
+    this.onClick = onClick;
   }
 
   getSwitch() {
     return this.values.map((value) => {
       const switchInstance = new Switch(value);
       switchInstance.create();
+      this.switch.push(switchInstance);
       return switchInstance.get();
     });
   }
@@ -24,7 +39,7 @@ class SwitchForm {
     parentDiv.classList.add("toogle-zone");
 
     // create all switch
-    const childsSwitch = this.getSwitch();
+    this.createSwitch()
 
     // create form group
     const formGroup = document.createElement("div");
@@ -32,7 +47,10 @@ class SwitchForm {
     formGroup.style.display = "flex";
 
     // add each switch to form group
-    childsSwitch.forEach((s) => formGroup.insertAdjacentHTML("beforeend", s));
+    this.switch.forEach((s) => {
+      formGroup.insertAdjacentHTML("beforeend", s.get());
+      s.setElement(formGroup.querySelector("#" + s.getId()));
+    });
 
     // add title
     parentDiv.appendChild(childTitle);
@@ -40,7 +58,24 @@ class SwitchForm {
     parentDiv.appendChild(formGroup);
 
     this.element = parentDiv;
+
+    this.initSwitchClick();
   }
+
+  initSwitchClick() {
+    // on switch clicked
+    this.switch.forEach(s => {
+      const id = s.getId();
+      this.element.querySelector("#" + id).addEventListener("click", () => {
+        s.click();
+        this.selected = [...document.getElementById(this.id).querySelectorAll(".activate")].map(x => x.value);
+        if (this.onClick) {
+            this.onClick(this.id, e, this.selected);
+        };
+      })
+    })
+  }
+
   get() {
     return this.element;
   }

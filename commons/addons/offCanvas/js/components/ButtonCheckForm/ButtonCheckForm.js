@@ -1,4 +1,5 @@
 import ButtonCheck from "./ButtonCheck.js";
+
 class ButtonCheckForm {
     constructor(parent, values = [], title, size) {
         this.parent = parent;
@@ -7,10 +8,15 @@ class ButtonCheckForm {
         this.selected = [];
         this.title = title;
         this.size = size;
+        this.onClick = null;
     }
 
     get() {
-        return document.getElementById(this.id);
+        return this.element;
+    }
+
+    setOnClick(func) {
+        this.onClick = func;
     }
 
     create() {
@@ -29,14 +35,20 @@ class ButtonCheckForm {
         this.buttons = this.values.forEach(value => {
             const btn = new ButtonCheck(value, "default", this.size);
             btn.create();
-            btn.get().addEventListener("click", (e) => btn.click(e))
+            btn.get().addEventListener("click", (e) => {
+                btn.click(e);
+                this.selected = [...document.getElementById(this.id).querySelectorAll(".selected")].map(x => x.value);
+                if (this.onClick) {
+                    this.onClick(this.id, e, this.selected);
+                };
+            })
             childDiv.appendChild(btn.get());
         });
 
 
         parentDiv.appendChild(childTitle);
         parentDiv.appendChild(childDiv);
-        this.parent.appendChild(parentDiv);
+        this.element = parentDiv;
     }
 }
 
