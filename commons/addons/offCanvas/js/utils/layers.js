@@ -23,5 +23,4 @@ export const getTravauxValues = (field) => {
     const clusters = mviewer.getLayers().edp_ep.layer.getSource().getFeatures();
     clusters.forEach(c => values = [...values, ...c.getValuesByField(field)]);
     return _.uniq(values);
-
 }

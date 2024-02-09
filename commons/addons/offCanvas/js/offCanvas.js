@@ -62,14 +62,24 @@ const onMotifClick = (formId, event, values) => {
   travauxCqlFactory.updateSourceUrl();
 }
 
+const onTypeReseauClick = (formId, event, values) => {
+  travauxCqlFactory.setSource(mviewer.getLayer("edp_ep").layer.getSource().getSource());
+  travauxCqlFactory.cleanFilter("nature_res");
+  if (!_.isEmpty(values)) {
+    travauxCqlFactory.addInFilter("nature_res", values); 
+  }
+  travauxCqlFactory.updateSourceUrl();
+}
+
 
 const init = async () => {
   const arrondissements = await getArrondissements();
   const motifs = getTravauxValues("motif");
-  const statuts = getTravauxValues("statut")
+  const statuts = getTravauxValues("statut");
+  const typeReseau = getTravauxValues("nature_res");
   createButton();
   createCloseButton();
-  buttonFilterType("Type de réseau", ["Potable", "Non potable"], null, "xs");
+  buttonFilterType("Type de réseau", _.uniq(typeReseau), onTypeReseauClick, "xs");
   switchFilter("Statut des travaux", _.uniq(statuts), onStatusClick);
   buttonFilterType("Motifs des travaux", _.uniq(motifs), onMotifClick, "xs");
   buttonFilterType("Arrondissement", _.sortBy(arrondissements.map(a => a.value)), onArrondClick, "xs");
