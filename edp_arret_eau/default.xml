@@ -70,6 +70,7 @@
 			querymaponclick="true"/>
 
 	<extensions>
+		<extension  type="javascript"  src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
         <extension type="component" id="print" path="apps/commons/addons"/>
@@ -98,7 +99,7 @@
 					queryable="true"
 					infoformat="application/vnd.ogc.gml"
 					infohighlight ="false"
-					customcontrol="true"
+customcontrol="true"
 					customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
 					type="customlayer"
 					jsonfields="arrets"
