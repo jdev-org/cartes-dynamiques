@@ -1,3 +1,7 @@
+/* Colors */
+:root {
+	--bleu: #002ddc;	
+}
 /* 
     * Suppression des blocs intiales du mviewer
     * Menu des thématiques, bouton d'accès au menu, bouton de suppression des couches
@@ -115,13 +119,16 @@
     box-shadow: none;
     border: none !important;
   }
+  #sidebarBody {
+    overflow: auto;
+  }
 
   #sidebarBody #legend {
     font-family: var(--myfont);
     overflow-x: hidden;
     width: 100%;
     padding: 0em 1.2em;
-    height: 100%;
+    height: auto;
 }
 
  
