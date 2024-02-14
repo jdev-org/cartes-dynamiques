@@ -235,17 +235,18 @@ li.item.cardInfo {
     let dispoFt = '{{dispo}}';
     let accesFt = '{{accessible}}';
 
-    function displayInfoF(text,color){
+    function displayInfoF(text,backcolor,color){
         blockBadge.innerHTML = text;
-        blockBadge.style.background=color;
+        blockBadge.style.background=backcolor;
+        blockBadge.style.color=color;
     };
     
     if (accesFt == "Non"){
-        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5');
+        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5','#002ddc');
     } else if(dispoFt == "NON"){
-        displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible</span>','#ffc896');
+        displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible</span>','#ffc896','#002ddc');
     } else {
-        displayInfoF('<span i18n="fontaine.disponible">Fontaine en service</span>','#aeffae');
+        displayInfoF('<span i18n="fontaine.disponible">Fontaine en service</span>','#002ddc','white');
     }
 
     /* Gestion de la redirection pour la qualité de l'eau */

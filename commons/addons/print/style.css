@@ -267,7 +267,7 @@
 }
 
 #print-informations img {
-	max-width: 75px;
+	max-width: 65px;
 }
 
 .print-panel-close {
@@ -283,3 +283,16 @@
 	background-color: white
 }
 
+.qrcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: inherit;
+}
+
+.qrcode img {
+    max-width:100%;
+    max-height:100%;
+}
