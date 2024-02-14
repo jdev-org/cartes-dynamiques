@@ -77,7 +77,7 @@
               <sld:Size>45</sld:Size>
             </sld:Graphic>
           </sld:PointSymbolizer>
-        </sld:Rule>        
+        </sld:Rule>  
         <sld:Rule>
           <sld:Name>Classe_1952</sld:Name>
           <sld:Title>Sans titre 1952</sld:Title>
@@ -102,7 +102,7 @@
               <sld:Size>45</sld:Size>
             </sld:Graphic>
           </sld:PointSymbolizer>
-        </sld:Rule>
+        </sld:Rule>        
         <sld:Rule>
           <sld:Name>Classe_69375</sld:Name>
           <sld:Title>Sans titre 69375</sld:Title>
@@ -128,6 +128,30 @@
             </sld:Graphic>
           </sld:PointSymbolizer>
         </sld:Rule>
+        <sld:Rule>
+          <sld:Name>Classe_1952</sld:Name>
+          <sld:Title>Sans titre 1952</sld:Title>
+          <ogc:Filter>
+          <ogc:And>
+            <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>type_objet</ogc:PropertyName>
+                <ogc:Literal>FONTNE_WALLACE</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsNull>
+                <ogc:PropertyName>url_jeu_vp</ogc:PropertyName>
+              </ogc:PropertyIsNull>
+          </ogc:And>  
+          </ogc:Filter>
+          <sld:PointSymbolizer>
+            <sld:Graphic>
+              <sld:ExternalGraphic>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/${type_objet}.svg"/>
+                <sld:Format>image/svg+xml</sld:Format>
+              </sld:ExternalGraphic>
+              <sld:Size>45</sld:Size>
+            </sld:Graphic>
+          </sld:PointSymbolizer>
+        </sld:Rule>  
       </sld:FeatureTypeStyle>
     </sld:UserStyle>
   </sld:NamedLayer>
