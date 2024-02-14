@@ -12,25 +12,86 @@
         </div>
 
         <div>
-            <a class="btnCard bgPrimary" target="_blank" id="go-{{feature_ol_uid}}">
+            <a class="btnGo" id="go-{{feature_ol_uid}}" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 11.5L16 8L12.5 17.0021L11 13L7 11.5Z" fill="rgba(255,255,255,1)"></path></svg>
                 <span i18n="template.btn.go"> J'y vais</span>
-            </a>
-            <a class="btnCard bgPrimary" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="rgba(255,255,255,1)"></path></svg>        
-                <span i18n="template.btn.waterquality"> Qualité de l'eau</span>
-            </a>
-            {{#url_jeu_vp}}
-                <a class="btnCard bgOutlinePrim" target="_blank" href="{{url_jeu_vp}}">
-                    <span i18n="template.btn.play"> Formulaire du jeu</span>
-                </a>
-            {{/url_jeu_vp}}
+            </a>            
         </div>
-		
+        <div class="accordion__fontaines">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_{{feature_ol_uid}}" aria-expanded="false" aria-controls="collapse_{{feature_ol_uid}}">
+                <span i18n="template.btn.plusinfos">Plus d'infos</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+            </a>
+            <div class="collapse" id="collapse_{{feature_ol_uid}}">
+                <div class="accordion__fontaines-body">                    
+                    <a class="btnCard bgPrimary" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="rgba(255,255,255,1)"></path></svg>        
+                        <span i18n="template.btn.waterquality"> Qualité de l'eau</span>
+                    </a>
+                    {{#url_jeu_vp}}
+                        <a class="btnCard bgOutlinePrim" target="_blank" href="{{url_jeu_vp}}">
+                            <span i18n="template.btn.play"> Formulaire du jeu</span>
+                        </a>
+                    {{/url_jeu_vp}} 
+                </div>                 
+            </div>
+        </div>
 	</li>
-
-
 <style>
+.accordion__fontaines-body {
+    display: inline-flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.btnGo {
+    font-size: 1.2rem;
+    background-color: var(--mycolor);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 2rem;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.btnGo svg {
+    margin-right: 5px;
+}
+
+.btnGo:hover {
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.btnGo:focus {
+    color: white;
+    outline: none;
+}
+.accordion__fontaines {
+    border-top: 1px solid var(--mycolor);
+    margin: 1em 0 0;
+}
+
+.accordion__fontaines .btn.btn-primary {
+    background: none;
+    border: none;
+    color: var(--mycolor);
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion__fontaines .btn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
 
 #right-panel.active {
     width: 420px!important;
@@ -80,12 +141,12 @@
 }
 
 .btnCard {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     padding: 8px 14px;
     border-radius: 2rem;
     display: inline-flex;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin: 0 5px 3px 0px;
 }
 
 .bgPrimary{    
@@ -171,18 +232,18 @@ li.item.cardInfo {
     let date_ind = '{{debut_ind}}';
     date_ind = date_ind.replace('&#x2F;', '/').replace('&#x2F;', '/');
 
-    function displayInfoF(text,color){
+    function displayInfoF(text,backcolor,color){
         blockBadge.innerHTML = text;
-        blockBadge.style.background=color;
+        blockBadge.style.background=backcolor;
+        blockBadge.style.color=color;
     };
     
     if (accesFt == "Non"){
-        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5');
+        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5','#002ddc');
     } else if(dispoFt == "NON"){
-        displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible depuis le</span>'+' ' + date_ind +'','#ffc896');
-        blockBadge.style.width='12rem';
+        displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible</span>','#ffc896','#002ddc');
     } else {
-        displayInfoF('<span i18n="fontaine.disponible">Fontaine disponible</span>','#aeffae');
+        displayInfoF('<span i18n="fontaine.disponible">Fontaine en service</span>','#002ddc','white');
     }
 
     /* Gestion de la redirection pour la qualité de l'eau */

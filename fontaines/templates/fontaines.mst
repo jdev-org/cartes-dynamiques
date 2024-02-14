@@ -5,26 +5,90 @@
             <div class="badgeF" id="statutFont_{{feature_ol_uid}}"></div>
         </div>
         <div class="nameCard" id="typeFont_{{feature_ol_uid}}"></div>
-        <div class="adressCard">{{num_impair}}{{num_pair}} {{nom_voie}}, {{nom_commun}}</div>
+        <div class="adressCard">{{num_impair}}{{num_pair}} {{nom_voie}}, <span id="adresseFont_{{feature_ol_uid}}"></span></div>
         <div class="textCard">
             <p id="infoFont_{{feature_ol_uid}}"></p>
-            <a id="infoFontLink_{{feature_ol_uid}}" target="_blank" href="" i18n="template.btn.moreinfos">En savoir plus</a>
         </div>
         <div>
-            <a class="btnCard" id="go-{{feature_ol_uid}}" target="_blank">
+            <a class="btnGo" id="go-{{feature_ol_uid}}" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 11.5L16 8L12.5 17.0021L11 13L7 11.5Z" fill="rgba(255,255,255,1)"></path></svg>
                 <span i18n="template.btn.go"> J'y vais</span>
+            </a>            
+        </div>
+        <div class="accordion__fontaines">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_{{feature_ol_uid}}" aria-expanded="false" aria-controls="collapse_{{feature_ol_uid}}">
+                <span i18n="template.btn.plusinfos">Plus d'infos</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
             </a>
-            <a class="btnCard" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="rgba(255,255,255,1)"></path></svg>        
-                <span i18n="template.btn.waterquality"> Qualité de l'eau</span>
-            </a>
-            <a class="bgOutlinePrim" target="_blank" href="https://dansmarue.paris.fr/">
-                <span i18n="template.btn.anomaly">Une anomalie ?</span>
-            </a>
+            <div class="collapse" id="collapse_{{feature_ol_uid}}">
+                <div class="accordion__fontaines-body">                    
+                    <a class="bgOutlinePrim" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="currentColor"></path></svg>        
+                        <span i18n="template.btn.waterquality"> Qualité de l'eau</span>
+                    </a>                    
+                    <a class="bgOutlinePrim" target="_blank" href="https://dansmarue.paris.fr/">
+                        <span i18n="template.btn.anomaly">Une anomalie ?</span>
+                    </a>  
+                    <a class="bgOutlinePrim" target="_blank" href="https://www.eaudeparis.fr/la-decouverte-des-fontaines-parisiennes" i18n="template.btn.moreinfos">En savoir plus</a> 
+                </div>                 
+            </div>
         </div>		
 	</li>
 <style>
+.accordion__fontaines-body {
+    display: inline-flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.btnGo {
+    font-size: 1.2rem;
+    background-color: var(--mycolor);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 2rem;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin: 1em 0;
+}
+
+.btnGo svg {
+    margin-right: 5px;
+}
+
+.btnGo:hover {
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.btnGo:focus {
+    color: white;
+    outline: none;
+}
+.accordion__fontaines {
+    border-top: 1px solid var(--mycolor);
+    margin: 1em 0 0;
+}
+
+.accordion__fontaines .btn.btn-primary {
+    background: none;
+    border: none;
+    color: var(--mycolor);
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion__fontaines .btn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
 
 #right-panel.active {
     width: 420px!important;
@@ -103,13 +167,14 @@
 .bgOutlinePrim{    
     background-color: #ffffff00!important;
     color: var(--mycolor);
-    border: 2px solid;
+    border: 0.16rem solid;
     font-weight: 600;
-    font-size: 1.2rem;
-    padding: 8px 14px;
+    font-size: 13px;
+    padding: 6px 10px;
     border-radius: 2rem;
     display: inline-flex;
     align-items: center;
+    margin: 0px 5px 5px 0px;
 }
 
 .bgOutlinePrim:hover{    
@@ -147,6 +212,12 @@ li.item.cardInfo {
 
 </style>
 <script>
+    let street = "{{nom_commun}}";
+    let numberArr = street.replace(/\D/g,'');
+    street = 'PARIS '+ numberArr+String.fromCodePoint(0x1D49) + '';
+    const adresseFont = document.getElementById("adresseFont_{{feature_ol_uid}}");
+    adresseFont.innerHTML = street;
+
     /*Permet de calculer l'URL Google Map vers la fontaine au click sur le bouton "j'y vais"*/
     const goId = document.getElementById("go-{{feature_ol_uid}}");
     $(goId).on("click", () => {
@@ -163,21 +234,19 @@ li.item.cardInfo {
     let blockBadge = document.getElementById("statutFont_{{feature_ol_uid}}");
     let dispoFt = '{{dispo}}';
     let accesFt = '{{accessible}}';
-    let date_ind = '{{debut_ind}}';
-    date_ind = date_ind.replace('&#x2F;', '/').replace('&#x2F;', '/');
 
-    function displayInfoF(text,color){
+    function displayInfoF(text,backcolor,color){
         blockBadge.innerHTML = text;
-        blockBadge.style.background=color;
+        blockBadge.style.background=backcolor;
+        blockBadge.style.color=color;
     };
     
     if (accesFt == "Non"){
-        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5');
+        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5','#002ddc');
     } else if(dispoFt == "NON"){
-        displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible depuis le</span>'+' ' + date_ind +'','#ffc896');
-        blockBadge.style.width='12rem';
+        displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible</span>','#ffc896','#002ddc');
     } else {
-        displayInfoF('<span i18n="fontaine.disponible">Fontaine disponible</span>','#aeffae');
+        displayInfoF('<span i18n="fontaine.disponible">Fontaine en service</span>','#002ddc','white');
     }
 
     /* Gestion de la redirection pour la qualité de l'eau */
@@ -200,54 +269,41 @@ li.item.cardInfo {
     if(type_objet=='FTNE_PETILLANTE'){
         typeInfoF = "<span i18n='fontaine.type.petillante'>Fontaine pétillante</span>"
         textInfoF = "<span i18n='fontaine.description.petillante'>Eau gazeuse, eau rafraîchie ou tempérée : vous avez le choix ! 17  fontaines pétillantes vous attendent. </span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_PETILLANTE.PDF';
     } else if (type_objet=='BORNE_FONTAINE') {
         typeInfoF = "<span i18n='fontaine.type.borne'>Borne-fontaine</span>"
         textInfoF = "<span i18n='fontaine.description.borne'>Plus discrète que la Wallace, la borne-fontaine est partout dans la capitale, principalement dans les parcs et jardins.</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/BORNE_FONTAINE.PDF';
     } else if (type_objet=='FONTAINE_ALBIEN') {
         typeInfoF = "<span i18n='fontaine.type.albien'>Fontaine à l'Albien</span>"
         textInfoF = "<span i18n='fontaine.description.albien'>À cette fontaine coule une eau puisée à 500 m de profondeur, dans la nappe de l'Albien. Cette eau est faiblement minéralisée et très riche en fer. Paris compte trois fontaines à boire à l'Albien. </span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_A_L_ALBIEN.PDF';
     } else if (type_objet=='FONTAINE_ARCEAU') {
         typeInfoF = "<span i18n='fontaine.type.arceau'>Fontaine Arceau</span>"
         textInfoF = "<span i18n='fontaine.description.arceau'>Une fontaine au design minimaliste accessible aux enfants et aux personnes à mobilité réduite. Sa hauteur est idéale pour boire debout, à la volée.</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_ARCEAU.PDF';
     } else if (type_objet=='FONTAINE_BOIS') {
         typeInfoF = "<span i18n='fontaine.type.bois'>Fontaine des bois, parcs et jardins</span>"
         textInfoF = "<span i18n='fontaine.description.bois'>Plus discrète que la Wallace, la borne-fontaine est partout dans la capitale, principalement dans les parcs et jardins.</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/BORNE_FONTAINE.PDF';
     } else if (type_objet=='FONTAINE_TOTEM') {
         typeInfoF = "<span i18n='fontaine.type.totem'>Fontaine Totem</span>"
         textInfoF = "<span i18n='fontaine.description.totem'>Cette fontaine mobile est fonctionnelle et légère. Réalisée par Eau de Paris, en inox et en acier inoxydable, des matériaux durables, elle est facile à entretenir ou à réparer.</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_TOTEM.PDF';
     } else if (type_objet=='FONTNE_WALLACE') {
         typeInfoF = "<span i18n='fontaine.type.wallace'>Fontaine Wallace</span>"
         textInfoF = "<span i18n='fontaine.description.wallace'>C'est la plus célèbre des fontaines parisiennes. Ses quatre cariatides encouragent passantes et passants à se désaltérer depuis plus de 150 ans.</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_WALLACE.PDF';
     } else if (type_objet=='FTNE_MILLENAIRE') {
         typeInfoF = "<span i18n='fontaine.type.petillante'>Fontaine Millénaire</span>"
         textInfoF = "<span i18n='fontaine.description.millenaire'>Ses deux silhouettes accolées dos à dos sont surnommées les « porteuses d’eau ». Lorsque l'eau y coule, la fontaine donne l’impression d'une main tendue vers les passant·es. </span>";
-        linkInfoF = 'https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_MILLENAIRE.PDF';
     } else if (type_objet=='FTNE_POING_EAU') {
         typeInfoF = "<span i18n='fontaine.type.poing'>Fontaine Poing d'eau</span>"
         textInfoF = "<span i18n='fontaine.description.poing'>Cette fontaine est une véritable œuvre d'art ! Retrouvez cinq fontaines de ce modèle dans l'est du 20ème arrondissement.</span>";
-        linkInfoF ='https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_POINGS_D_EAU.PDF';
     }else if (type_objet=='FONTNE_WALLACE_2EN1') {
         typeInfoF = "<span i18n='fontaine.type.wallace.2en1'>Fontaine Wallace 2-en-1</span>"
         textInfoF = "<span i18n='fontaine.description.2en1'>Cette fontaine intègre un système de brumisation. Venez vous y rafraîchir lorsque le thermomètre grimpe !</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/actualit%C3%A9s/deux-fois-plus-de-fraicheur-pour-cet-ete-paris';
     } else if (type_objet=='FONTAINE_TOTEM_2EN1') {
         typeInfoF = "<span i18n='fontaine.type.2en1'>Fontaine Totem 2-en-1</span>"
         textInfoF = "<span i18n='fontaine.description.2en1'>Cette fontaine intègre un système de brumisation. Venez vous y rafraîchir lorsque le thermomètre grimpe !</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/actualit%C3%A9s/deux-fois-plus-de-fraicheur-pour-cet-ete-paris';
     } else if (type_objet=='FTNE_MAT_SOURCE_2EN1') {
         typeInfoF = "<span i18n='fontaine.type.mat'>Fontaine Mât Source 2-en-1</span>"
         textInfoF = "<span i18n='fontaine.description.mat'>La Mât Source est accessible à tous et toutes, aux enfants comme aux personnes à mobilité réduite. Il est facile d'y remplir sa gourde, et la brumisation en fait un délicieux îlot de fraîcheur.</span>";
-        linkInfoF = 'https://www.eaudeparis.fr/actualit%C3%A9s/mat-source-un-nouveau-modele-de-fontaine-deau-potable-paris';
     }
     document.getElementById('typeFont_{{feature_ol_uid}}').innerHTML =  typeInfoF;
-    document.getElementById('infoFontLink_{{feature_ol_uid}}').href = linkInfoF;
     document.getElementById('infoFont_{{feature_ol_uid}}').innerHTML =  textInfoF ;
     
     // Update lang

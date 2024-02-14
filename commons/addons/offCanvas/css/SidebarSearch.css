@@ -1,6 +1,7 @@
 #sidebar #searchtool {
     margin: 3em 0 2em;
     width: 100%!important;
+    padding: 0;
 }
 
 #sidebar #searchtool .form-group {
@@ -31,8 +32,8 @@
 
 #sidebar #searchresults {
     position: absolute!important;
-    top: 175px!important;
-    left: 15px!important;
+    top: 100px!important;
+    left: 12px!important;
     width: 90%!important;
     z-index: 100;
     border: 2px solid var(--mycolor);

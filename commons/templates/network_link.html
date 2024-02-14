@@ -1,4 +1,4 @@
-<div>
+<div id="socNetwork">
   <h4 i18n="addon.socNetwork.title">Rejoindre la communauté</h4>
   <div id="iconSocialLink">
     <a href="https://www.linkedin.com/company/eau-de-paris/" target="_blank"
@@ -20,19 +20,23 @@
 </div>
 
 <style>
+  #socNetwork {
+    border-top: 1px solid var(--mycolor);
+  }
+  
   #sidebarFooter {
     font-family: var(--myfont);
     color: var(--mycolor);
     padding: 0.5em 1em;
-    background-color: white;
   }
 
   #sidebarFooter h4 {
     font-weight: 600;
+    font-size: 16px!important;
   }
 
   #iconSocialLink img {
-    width: 50px;
+    width: 35px;
     transition: transform 0.2s;
   }
 
@@ -44,11 +48,11 @@
   #linkWebsite a {
     font-family: var(--myfont);
     color: var(--mycolor);
-    font-size: medium;
+    font-size: unset;
     font-weight: 500;
   }
 
   #linkWebsite {
-    margin-bottom: 1em;
+    margin: 5px 0px;
   }
 </style>
