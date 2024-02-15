@@ -12,10 +12,6 @@
   "html": "edp_ep.html",
   "target": "page-content-wrapper",
   "options": {
-    "mviewer": {
-      "travaux_eau": {
-        "labelsUrl": "apps/commons/addons/edp_ep/labels.json"
-      }
-    }
+    "mviewer": {}
   }
 }
