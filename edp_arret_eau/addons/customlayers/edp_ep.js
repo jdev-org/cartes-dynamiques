@@ -180,8 +180,10 @@ class ClusterByAttribut extends ol.source.Cluster {
               return true;
             });
             const clusterWithFeatures = this.createCluster(featuresToCluster, extent);
-            clusterWithFeatures.getValuesByField = (field) => clusterWithFeatures.get("features").map(f => f.get(field));
-            clusterWithFeatures.getFeaturesByFieldValue = (field, value) => clusterWithFeatures.get("features").filter(f => f.get(field) === value);
+            clusterWithFeatures.getValuesByField = (field) =>
+              clusterWithFeatures.get("features").map((f) => f.get(field));
+            clusterWithFeatures.getFeaturesByFieldValue = (field, value) =>
+              clusterWithFeatures.get("features").filter((f) => f.get(field) === value);
             this.features.push(clusterWithFeatures);
           } else {
             // don't clusterize -> 1 feature = 1 cluster
@@ -236,11 +238,15 @@ const handle = function (clusters, views) {
     if (featuresInCluster && featuresInCluster.length > 1) {
       const view = mviewer.getMap().getView();
       const clusterExtent = ol.extent.createEmpty();
-      featuresInCluster.forEach(feature => {
-        ol.extent.extend(clusterExtent, feature.getGeometry().getExtent())
+      featuresInCluster.forEach((feature) => {
+        ol.extent.extend(clusterExtent, feature.getGeometry().getExtent());
       });
-      var bufferedExtent = ol.extent.buffer(clusterExtent, ol.extent.getWidth(clusterExtent) / 1.5);
+      var bufferedExtent = ol.extent.buffer(
+        clusterExtent,
+        ol.extent.getWidth(clusterExtent) / 1.5
+      );
       view.fit(bufferedExtent, { duration: 500, padding: [50, 50, 50, 50] });
+      return;
     } else {
       clusters.forEach((c) => {
         // ICI ON CREER MANUELLEMENT LES FEATURES POUR MUSTACHE ET LE TEMPLATE POUR V3.5 ET ANTERIEUR
@@ -253,7 +259,9 @@ const handle = function (clusters, views) {
           );
         } else {
           // v>=3.5
-          elements = elements.concat(c?.getProperties()?.features || c.properties.features);
+          elements = elements.concat(
+            c?.getProperties()?.features || c.properties.features
+          );
         }
       });
     }
