@@ -132,11 +132,15 @@
 	border: none !important;
 }
 
+#sidebarBody {
+    overflow: auto;
+}
+
 #sidebarBody #legend {
 	font-family: var(--myfont);
 	overflow-x: hidden;
 	width: 100%;
-	height: 100%;
+	height: auto;
 }
 
 #sidebarBody #legend .active {
