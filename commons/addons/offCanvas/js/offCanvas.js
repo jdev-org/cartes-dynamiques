@@ -4,9 +4,8 @@ import { insertFooter } from "./components/SidebarFooter.js";
 import { insertHeader } from "./components/SidebarHeader.js";
 import { createButton } from "./components/SidebarButton.js";
 import { createCloseButton } from "./components/SidebarCloseButton.js";
-import { initDisplaySidebar } from "./components/sidebarUtils.js";
 import { toggleSidebar } from "./components/sidebarUtils.js";
-import { dispatchEvent, initDisplaySidebar } from "./components/sidebarUtils.js";
+import { initDisplaySidebar } from "./components/sidebarUtils.js";
 
 const init = async () => {
   createButton();
@@ -23,7 +22,6 @@ const init = async () => {
     },
     true
   );
-  dispatchEvent("offCanvas-init", { id: "offCanvas" });
   // Init current Lang
   let currentLang = API.lang || window.navigator.languages[0];
   currentLang = currentLang.includes("fr") ? "fr" : "en";

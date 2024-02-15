@@ -101,8 +101,6 @@
 					queryable="true"
 					infoformat="application/vnd.ogc.gml"
 					infohighlight ="false"
-					customcontrol="true"
-					customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
 					type="customlayer"
 					jsonfields="arrets"
 			>
