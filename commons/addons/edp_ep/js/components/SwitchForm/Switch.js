@@ -16,18 +16,18 @@ class Switch {
   }
 
   create() {
-    const switchElement = `
-      <div class="col-sm-2" style="display: inline-flex; width: 70px;">
+    const switchElement = `<div class="switch__btn">
+      <div>
           <input type="checkbox" id="${this.id}" class="custom-switch" value="${
       this.value
     }">
           <label for="${this.id}" class="toggle-label">Toggle</label>
       </div>
       <div class="switch-title">
-          <p class="Text" i18n="edpep.filter.switch.${this.value.replaceAll(" ", "_")}">${
+          <span class="Text" i18n="edpep.filter.switch.${this.value.replaceAll(" ", "_")}">${
       this.value
-    }</p>
-      </div>
+    }</span>
+      </div></div>
     `;
 
     this.stringElement = switchElement;

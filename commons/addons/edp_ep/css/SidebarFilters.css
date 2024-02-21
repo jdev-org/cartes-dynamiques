@@ -1,14 +1,26 @@
+#filterArea {
+    font-family: var(--myfont);
+}
+
 .form-check-parent {
-    margin-bottom: 15px;
+    margin-bottom: 1.5em;
 }
 .btn-check {
     margin: 2px;
     border-radius: 20px;
     min-width: 5em;
+    display: inline-flex;
+    align-items: flex-start;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    line-height: normal!important;
+    padding: 2px 7px 4px 7px!important;
+    flex-wrap: wrap;
 }
 
 .btn-check.default {
-    color: #a4a2a2;
+    color: #7c7c7c;
     background-color: #eeeeee;
 }
 
@@ -23,4 +35,12 @@
     padding: 0!important;
     font-size: 15px!important;
     color: var(--bleu);
+}
+
+#legend .layerdisplay-title, #legend .mv-layer-options, #legend .icon-options {
+    display: none;
+}
+
+.mv-layer-details img {
+    max-width: 95%!important;
 }

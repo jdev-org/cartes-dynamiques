@@ -57,7 +57,6 @@ class TimeForm {
     childTitle.classList.add("area-title");
     childTitle.innerHTML = this.title;
     this.element = document.createElement("div");
-    this.element.classList.add("col-xs-12");
     this.element.classList.add("form-check-parent");
     this.element.classList.add("filter-form");
     this.element.id = this.id;
