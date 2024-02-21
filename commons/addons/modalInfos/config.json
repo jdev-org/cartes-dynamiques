@@ -7,7 +7,7 @@
     "mviewer": {
       "travaux_eau": {
         "btnModalLabel": "Liste des travaux en cours",
-        "modalSize": "default",
+        "modalSize": "large",
         "templateModalUrl": "apps/edp_arret_eau/templates/modal-infos-travaux.html"
       }
     }
