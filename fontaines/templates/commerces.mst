@@ -10,7 +10,7 @@
         </div>
         
         <div class="textCard">
-            <p i18n="fontaine.description.commerce">"Ici, je choisis l’eau de Paris" est un réseau de 800 commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.</p>
+            <p i18n="fontaine.description.commerce">"Ici, je choisis l’eau de Paris" est un réseau de commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.</p>
         </div>
         <div>
             <a class="btnGo" target="_blank" id="go-{{feature_ol_uid}}" >
@@ -198,6 +198,10 @@ li.item.cardInfo {
 .bgOutlinePrim:hover{    
     color: var(--mycolor);
     opacity: 0.8;
+}
+
+.xs #modal-panel-selector .carousel-control {
+    height: 70%;
 }
 
 </style>

@@ -1,5 +1,6 @@
 {
   "fr": {
+    "navbar.search.placeholder": "Saisir une adresse",
     "home.title": "Où boire de l'eau à Paris ?",
     "home.texte": "1200 fontaines vous attendent dans les rues, parcs et jardins parisiens. Vous pouvez aussi remplir votre gourde gratuitement dans l'un des 1000 commerces partenaires du réseau 'Ici je choisis l'eau de Paris'.",
     "home.btn.gomap": "Voir la carte",
@@ -41,7 +42,7 @@
     "fontaine.type.2en1": "Fontaine Totem 2-en-1",
     "fontaine.type.mat": "Fontaine Mât Source 2-en-1",
     "fontaine.type.bois": "Fontaine des bois, parcs et jardins",
-    "fontaine.description.commerce": "'Ici, je choisis l’eau de Paris' est un réseau de 800 commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.",
+    "fontaine.description.commerce": "'Ici, je choisis l’eau de Paris' est un réseau de commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.",
     "fontaine.description.borne": "Plus discrète que la Wallace, la borne-fontaine est partout dans la capitale, principalement dans les parcs et jardins.",
     "fontaine.description.wallace": "C'est la plus célèbre des fontaines parisiennes. Ses quatre cariatides encouragent passantes et passants à se désaltérer depuis plus de 150 ans.",
     "fontaine.description.totem": "Cette fontaine mobile est fonctionnelle et légère. Réalisée par Eau de Paris, en inox et en acier inoxydable, des matériaux durables, elle est facile à entretenir ou à réparer.",
@@ -96,7 +97,7 @@
     "fontaine.type.wallace.2en1": "Wallace 2-in-1 fountain",
     "fontaine.type.2en1": "Totem 2-in-1 fountain",
     "fontaine.type.mat": "Mât Source fountain",
-    "fontaine.description.commerce": "'I choose Paris water' is a network of 1000 shops committed to filling your water bottles for free, with no obligation to purchase.",
+    "fontaine.description.commerce": "'I choose Paris water' is a network of shops committed to filling your water bottles for free, with no obligation to purchase.",
     "fontaine.description.borne": "More discreet than the Wallace, you can find drinking foutains pretty much  everywhere in the city, mainly in parks and gardens.",
     "fontaine.description.wallace": "This is the most famous fountain in Paris. Its four caryatids have been inviting  passers-by to quench their thirst for over 150 years.",
     "fontaine.description.totem": "This mobile fountain is both functional and light. Designed by Eau de Paris and made from durable inox and stainless steel, it's particularly easy to maintain and repair.",

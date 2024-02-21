@@ -210,6 +210,10 @@ li.item.cardInfo {
     border: none;
 }
 
+.xs #modal-panel-selector .carousel-control {
+    height: 70%;
+}
+
 </style>
 <script>
     let street = "{{nom_commun}}";
