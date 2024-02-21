@@ -1,4 +1,5 @@
 {
+  "place_layer": "edp_demo:place_hours",
   "url_edp": "gis.jdev.fr",
   "url_data_edp": "edp.jdev.fr"
 }
