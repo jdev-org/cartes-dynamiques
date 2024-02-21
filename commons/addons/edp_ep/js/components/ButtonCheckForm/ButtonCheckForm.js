@@ -23,7 +23,6 @@ class ButtonCheckForm {
 
   create() {
     const parentDiv = document.createElement("div");
-    parentDiv.classList.add("col-xs-12");
     parentDiv.classList.add("form-check-parent");
     parentDiv.classList.add("filter-form");
 

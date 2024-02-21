@@ -5,7 +5,7 @@
 // Add button to toolstoolbar
 const template = `
 <div class="sidebar-lists">
-  <ul class="lists col-xs-12">
+  <ul class="lists">
     <li class="sidebar-items"><span id="takeIn">Close</span>
     </li>
     <li class="sidebar-items items">

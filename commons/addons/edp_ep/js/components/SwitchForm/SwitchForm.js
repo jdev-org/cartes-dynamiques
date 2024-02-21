@@ -35,7 +35,6 @@ class SwitchForm {
     // create parent div
     const parentDiv = document.createElement("div");
     parentDiv.id = this.id;
-    parentDiv.classList.add("col-sm-12");
     parentDiv.classList.add("toogle-zone");
     parentDiv.classList.add("filter-form");
 
