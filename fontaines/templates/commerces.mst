@@ -125,6 +125,8 @@ if(apiId) {
         // request fail
         btn.remove();
     })
+} else {
+    btn.remove();
 }
 </script>
 
@@ -208,20 +210,19 @@ if(apiId) {
 }
 
 .btnOpen {
-    border: 1px solid transparent;
-    border-radius: 20px;
-    padding: 5px;
-    font-size: large;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 1rem;
+    line-height: 1.1;
+    color: var(--mycolor);
 }
 
 .openplace {
-    background-color: rgba(43,228,173, 0.8);
-    color: white;
+    background-color: #AEFFAE;
 }
 
 .closeplace {
-    background-color: rgba(185,189,192, 0.8);
-    color: white;
+    background-color: #FF95A5;
 }
 
 .btnGo svg {
