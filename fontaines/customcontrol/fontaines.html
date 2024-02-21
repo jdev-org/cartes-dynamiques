@@ -23,8 +23,8 @@
         id="btn-check__brumisation"
         class="btn-check-lgd"
         name="lgd"
-        cqltype="fontaines_type"
-        value="'FONTNE_WALLACE_2EN1','FONTAINE_TOTEM_2EN1','FTNE_MAT_SOURCE_2EN1'" />
+        cqltype="fontaines_brumisante"
+        value="'OUI'" />
       <label class="btn-legend" for="btn-check__brumisation" style="opacity: 1">
         <img src="apps/fontaines/img/brumisateur.svg" />
         <span i18n="fontaine.type.brumisation">Avec brumisation</span>
@@ -36,8 +36,8 @@
         id="btn-check__eau-petillante"
         class="btn-check-lgd"
         name="lgd"
-        cqltype="fontaines_type"
-        value="'FTNE_PETILLANTE',''" />
+        cqltype="fontaines_petillante"
+        value="'OUI'" />
       <label class="btn-legend" for="btn-check__eau-petillante" style="opacity: 1">
         <img src="apps/fontaines/img/eau_petillante.svg" />
         <span i18n="fontaine.type.eaupetillante">Eau pétillante</span>
@@ -334,6 +334,8 @@
   let list_types = [];
   let list_dispo = [];
   let list_dispo24 = [];
+  let list_petillante = [];
+  let list_brumisante = [];
 
 // Manage type of fontains block
 function filterDisplayBlock(targetBtn, targetBlock) {
@@ -345,9 +347,12 @@ function filterDisplayBlock(targetBtn, targetBlock) {
 // Function to reset filter
 function resetFilter() {
 	// Empty CQL lists and delete CQL Filter
-	list_dispo = [];
-	list_types = [];
-  list_dispo24 = [];
+	let list_types = [];
+  let list_dispo = [];
+  let list_dispo24 = [];
+  let list_petillante = [];
+  let list_brumisante = [];
+  let cql_constructor = [];
 	deleteCQLFilter();
 	// Opacity 1 for all labels
 	let labels = document.querySelectorAll(".btn-check-lgd ~ label");
@@ -421,50 +426,74 @@ checkboxes.forEach(function(checkbox) {
       valueInList(list_dispo24, cqlvalue);
     }else if(cqltype == "fontaines_d") {
       valueInList(list_dispo, cqlvalue);
-    } else if(cqltype == "fontaines_type") {
+    }else if(cqltype == "fontaines_type") {
       valueInList(list_types, cqlvalue);
+    }else if(cqltype == "fontaines_petillante") {
+      valueInList(list_petillante, cqlvalue);
+    }else if(cqltype == "fontaines_brumisante") {
+      valueInList(list_brumisante, cqlvalue);
     }
-		// Manage commerces layer
-		let checkCom = document.querySelectorAll("input[cqltype=commerces][name=lgd].checkOnMap");
-    if (checkCom.length > 0) {
-      mviewer.getLayer('commerce').layer.setVisible(true);
-      if (list_dispo.length == 0 && list_dispo24.length == 0 && list_types.length == 0) {
-        mviewer.getLayer('fontaines').layer.setVisible(false);
-      } else if (list_dispo.length == 0 && list_dispo24.length > 0 && list_types.length == 0) {
-        mviewer.getLayer('fontaines').layer.setVisible(false);
-        mviewer.getLayer('commerce').layer.setVisible(false);
-      } else {
-        mviewer.getLayer('fontaines').layer.setVisible(true);
-      }
-	  } else {
-      mviewer.getLayer('commerce').layer.setVisible(false);
-      mviewer.getLayer('fontaines').layer.setVisible(true);
+		
+    // Create expression for cql filter
+    let cql_filter_types;
+    let cql_filter_dispo;
+    let cql_filter_dispo24;
+    let cql_filter_petillante;
+    let cql_filter_brumisante;
+    let cql_constructor = [];
+    if (list_types.length > 0) {
+      cql_filter_types = `type_objet IN (${list_types})`;
+      cql_constructor.push(cql_filter_types);
     } 
-    // CQL filter creation according to lists for fontaines layers
-    let cql_filter;
-    if (list_dispo.length > 0 && list_types.length > 0 && list_dispo24.length  == 0) {
-      cql_filter = `type_objet IN  (${list_types}) AND dispo IN (${list_dispo})`;
-      filterDataByAttr(cql_filter);
-    } else if (list_dispo24.length > 0 && list_types.length == 0 && list_dispo.length == 0) {
-      cql_filter = `dispo_24 IN (${list_dispo24})`;
-      filterDataByAttr(cql_filter);
-    } else if (list_dispo24.length > 0 && list_types.length > 0 && list_dispo.length == 0) {
-      cql_filter = `type_objet IN  (${list_types}) AND dispo_24 IN (${list_dispo24})`;
-      filterDataByAttr(cql_filter);
-    } else if (list_dispo.length > 0 && list_types.length == 0 && list_dispo24.length  == 0) {
-      cql_filter = `dispo IN (${list_dispo})`;
-      filterDataByAttr(cql_filter);
-    } else if (list_dispo24.length == 0 && list_dispo.length == 0 && list_types.length > 0) {
-      cql_filter = `type_objet IN (${list_types})`;
-      filterDataByAttr(cql_filter);
-    } else if (list_dispo24.length > 0 && list_dispo.length > 0 && list_types.length == 0) {
+    if (list_dispo.length > 0) {
+      cql_filter_dispo = `dispo IN (${list_dispo})`;
+      cql_constructor.push(cql_filter_dispo);
+    }
+    if (list_dispo24.length > 0) {
+      cql_filter_dispo24 = `dispo_24 IN (${list_dispo24})`;
+      cql_constructor.push(cql_filter_dispo24);
+    }
+    if (list_petillante.length > 0) {
+      cql_filter_petillante = `petillante IN (${list_petillante})`;
+      cql_constructor.push(cql_filter_petillante);
+    }
+    if (list_brumisante.length > 0) {
+      cql_filter_brumisante = `brumisante IN (${list_brumisante})`;
+      cql_constructor.push(cql_filter_brumisante);
+    }
+
+    // Get status of commerces  
+    let checkCom = document.querySelectorAll("input[cqltype=commerces][name=lgd].checkOnMap");
+
+    // Manage display layers for each case
+    if (cql_constructor.length > 0 && checkCom.length > 0){      
+      filterDataByAttr(cql_constructor.join(' AND '));
+      mviewer.getLayer('fontaines').layer.setVisible(true);
+      // Combinaison Commerces + Dispo24 > Commerces non affichés
+      if (list_dispo24.length > 0) {     
+        mviewer.getLayer('commerce').layer.setVisible(false);        
+      } else {
+        mviewer.getLayer('commerce').layer.setVisible(true);
+      }   
+      // Combinaison Dispo + Dispo24 > Fontaines non affichées
+      if (list_dispo.length > 0 && list_dispo24.length > 0) {
+          mviewer.getLayer('fontaines').layer.setVisible(false);
+      }
+    } else if(cql_constructor.length > 0 && checkCom.length == 0){
+      filterDataByAttr(cql_constructor.join(' AND '));
+      mviewer.getLayer('fontaines').layer.setVisible(true);
+      mviewer.getLayer('commerce').layer.setVisible(false);
+      // Combinaison Dispo + Dispo24 > Fontaines non affichées
+      if (list_dispo.length > 0 && list_dispo24.length > 0) {
+          mviewer.getLayer('fontaines').layer.setVisible(false);
+      }
+    } else if(cql_constructor.length == 0 && checkCom.length > 0){
+      deleteCQLFilter();
       mviewer.getLayer('fontaines').layer.setVisible(false);
-    } else if (list_dispo24.length > 0 && list_dispo.length > 0 && list_types.length > 0) {
-      mviewer.getLayer('fontaines').layer.setVisible(false);
+      mviewer.getLayer('commerce').layer.setVisible(true);
     } else {
-			deleteCQLFilter();
-			mviewer.getLayer('commerce').layer.setVisible(true);
-		}		
+      resetFilter();
+    }
 	});
 });
 </script>

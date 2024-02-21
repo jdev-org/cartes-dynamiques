@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 26.458333 26.458334"
+   version="1.1"
+   id="svg127350"
+   inkscape:export-filename="C:\Users\Agathe\Desktop\commerces.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="commerce.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview127352"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="5.9722783"
+     inkscape:cx="54.250653"
+     inkscape:cy="58.35294"
+     inkscape:window-width="2400"
+     inkscape:window-height="1271"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs127347" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6.79999;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       d="M 13.389186,0.94723009 A 11.169157,11.169157 0 0 0 2.2200366,12.116377 11.169157,11.169157 0 0 0 11.469242,23.112506 c 0.864344,1.496352 1.778878,2.958068 1.919944,2.958068 0.141064,0 1.055606,-1.461732 1.919942,-2.958068 A 11.169157,11.169157 0 0 0 24.558334,12.116377 11.169157,11.169157 0 0 0 13.389186,0.94723009 Z"
+       id="path127591-0" />
+    <path
+       style="color:#000000;fill:#aab9fe;stroke:none;stroke-width:6.79999;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers;fill-opacity:1"
+       d="m 13.426499,2.7270809 a 9.3235399,9.3235399 0 0 0 -9.3235312,9.3235311 9.3235399,9.3235399 0 0 0 7.7208442,9.179102 c 0.721519,1.249095 1.484932,2.46927 1.602687,2.46927 0.117756,0 0.881177,-1.220191 1.602687,-2.46927 a 9.3235399,9.3235399 0 0 0 7.720845,-9.179102 9.3235399,9.3235399 0 0 0 -9.323532,-9.3235311 z"
+       id="path127591" />
+  </g>
+</svg>
