@@ -1,5 +1,10 @@
 {{#features}}
 	<li class="item cardInfo" style="width:100%;">
+        <div>
+            <span class="btnOpen" id="isopen-{{feature_ol_uid}}" >
+                <span class="opentext"></span>
+            </span>
+        </div>
         <div class="displayFlex">
             <div>
                 <h2 class="nameCard name__co">{{id}}</h2>
@@ -57,6 +62,70 @@ if(lastWord == 'ARRONDISSEMENT'){
 }
 const adresse_Co = document.getElementById("adresseCo_{{feature_ol_uid}}");
 adresse_Co.innerHTML = street;
+
+
+/**
+ * =================
+ * OPEN / CLOSE CODE
+ * =================
+**/
+const place_layer = "edp_demo:place_hours";
+const LAYER_URL = `https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${place_layer}&outputFormat=application%2Fjson`;
+const apiId = "{{google_id}}";
+const btnId = "isopen-{{feature_ol_uid}}"
+const btn = document.getElementById(btnId);
+btn.classList.remove("openplace");
+btn.classList.remove("closeplace");
+if(apiId) {
+    LAYER_URL += `&CQL_FILTER=id='${apiId}'`
+    fetch(LAYER_URL)
+    .then(x => x.json())
+    .then(data => {
+        // get props or abort
+        const props = data?.features[0]?.properties;
+        if(_.isEmpty(props)) {
+            btn.remove();
+            return
+        };
+        // calculate NOW time to minutes
+        const now = moment();
+        const nowHoursToMinutes = parseInt(now.format("HH"))*60;
+        const nowMinutes = now.format("mm");
+        const minutes = parseInt(nowHoursToMinutes) + parseInt(nowMinutes);
+        // get day
+        const dayNumber = now.day();
+        // get periods
+        let openPeriods = props[dayNumber + "_open"];
+        let closePeriods = props[dayNumber + "_close"];
+        if(openPeriods) {openPeriods = JSON.parse(openPeriods)};
+        if(closePeriods) {closePeriods = JSON.parse(closePeriods)};
+        let isOpen = false;
+
+        // parse each period to know if open or not
+        if(!_.isEmpty(openPeriods) && !_.isEmpty(closePeriods) && openPeriods.length == closePeriods.length) {
+            openPeriods.forEach((p, i) => {
+                // for Each period
+                const fromTime = p;
+                const toTime = closePeriods[i]
+                if(minutes >= fromTime && minutes <= toTime) {
+                    isOpen = true;
+                }
+            })
+        }
+
+        // Manage UI to display correct badge
+        if(isOpen) {
+            btn.classList.add("openplace");
+            btn.querySelector(".opentext").innerHTML = mviewer.tr("open");
+        } else {
+            btn.classList.add("closeplace");
+            btn.querySelector(".opentext").innerHTML = mviewer.tr("close");
+        }
+    }).catch(x => {
+        // request fail
+        btn.remove();
+    })
+}
 </script>
 
 <style>
@@ -124,6 +193,7 @@ adresse_Co.innerHTML = street;
     font-size: 1.2rem;
 }
 
+
 .btnGo {
     font-size: 1.2rem;
     background-color: var(--mycolor);
@@ -135,6 +205,23 @@ adresse_Co.innerHTML = street;
     align-items: center;
     justify-content: center;
     margin: 1em 0;
+}
+
+.btnOpen {
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 5px;
+    font-size: large;
+}
+
+.openplace {
+    background-color: rgba(43,228,173, 0.8);
+    color: white;
+}
+
+.closeplace {
+    background-color: rgba(185,189,192, 0.8);
+    color: white;
 }
 
 .btnGo svg {
