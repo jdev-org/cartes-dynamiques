@@ -73,7 +73,9 @@ const initBtnGeoloc = () => {
   currentLang = currentLang.includes("fr") ? "fr" : "en";
   mviewer.lang.changeLanguage(currentLang);
   document.getElementById("btnGeoloc").addEventListener("click", function () {
-    navigator.geolocation.getCurrentPosition((position) => onLocateMe(position.coords));
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => onLocateMe(position.coords));
+    }
   });
 };
 
