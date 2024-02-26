@@ -330,110 +330,123 @@
   <div id="section_date_maj"></div>
 </div>
 <script>   
-  // Init variables  
-  let list_types = [];
-  let list_dispo = [];
-  let list_dispo24 = [];
-  let list_petillante = [];
-  let list_brumisante = [];
+// Init variables
+let list_types = [];
+let list_dispo = [];
+let list_dispo24 = [];
+let list_petillante = [];
+let list_brumisante = [];
 
 // Manage type of fontains block
 function filterDisplayBlock(targetBtn, targetBlock) {
-	const block = document.getElementById(targetBlock);
+  const block = document.getElementById(targetBlock);
   block.classList.toggle("blockDisplay");
-	const btn = document.getElementById(targetBtn);
-	btn.classList.toggle("icon-blockDisplay");
+  const btn = document.getElementById(targetBtn);
+  btn.classList.toggle("icon-blockDisplay");
 }
 // Function to reset filter
 function resetFilter() {
-	// Empty CQL lists and delete CQL Filter
-	let list_types = [];
-  let list_dispo = [];
-  let list_dispo24 = [];
-  let list_petillante = [];
-  let list_brumisante = [];
-  let cql_constructor = [];
-	deleteCQLFilter();
-	// Opacity 1 for all labels
-	let labels = document.querySelectorAll(".btn-check-lgd ~ label");
-	labels.forEach(function(label) {
-		label.style.opacity = "1";
-	});
-	// Delete checkOnMap class input
-	let checkOnMap = document.querySelectorAll(".btn-check-lgd.checkOnMap");
-	checkOnMap.forEach(function(checkbox) {
-		checkbox.classList.remove("checkOnMap");
-	});
-	// Display all layers
-	mviewer.getLayer('commerce').layer.setVisible(true);
-	mviewer.getLayer('fontaines').layer.setVisible(true);
+  // Empty CQL lists and delete CQL Filter
+  list_types = [];
+  list_dispo = [];
+  list_dispo24 = [];
+  list_petillante = [];
+  list_brumisante = [];
+  cql_constructor = [];
+  deleteCQLFilter();
+  // Opacity 1 for all labels
+  let labels = document.querySelectorAll(".btn-check-lgd ~ label");
+  labels.forEach(function (label) {
+    label.style.opacity = "1";
+  });
+  // Delete checkOnMap class input
+  let checkOnMap = document.querySelectorAll(".btn-check-lgd.checkOnMap");
+  checkOnMap.forEach(function (checkbox) {
+    checkbox.classList.remove("checkOnMap");
+  });
+  // Display all layers
+  mviewer.getLayer("commerce").layer.setVisible(true);
+  mviewer.getLayer("fontaines").layer.setVisible(true);
 }
 
 // Function to add input value in cql list
 function valueInList(nameList, value) {
-	if (nameList.includes(value)) {
-		const index = nameList.indexOf(value);
-		const x = nameList.splice(index, 1);
-	} else {
-		nameList.push(value);
-	}
+  if (nameList.includes(value)) {
+    const index = nameList.indexOf(value);
+    const x = nameList.splice(index, 1);
+  } else {
+    nameList.push(value);
+  }
 }
 
 // Function to filter map by CQL filter
 function filterDataByAttr(valAtt) {
-	var layer = mviewer.getLayer("fontaines");
-	var src = layer.layer.getSource();
-	var params = src.getParams();
-	// update wms layer params
-	params.CQL_FILTER = `${valAtt}`;
-	src.updateParams(params);
-	src.refresh();
+  var layer = mviewer.getLayer("fontaines");
+  var src = layer.layer.getSource();
+  var params = src.getParams();
+  // update wms layer params
+  params.CQL_FILTER = `${valAtt}`;
+  src.updateParams(params);
+  src.refresh();
 }
 
 // Function to delete CQLFILTER from WMS layers
 function deleteCQLFilter() {
-	var layer = mviewer.getLayer("fontaines");
-	var src = layer.layer.getSource();
-	var params = src.getParams();
-	delete params.CQL_FILTER;
-	src.refresh();
+  var layer = mviewer.getLayer("fontaines");
+  var src = layer.layer.getSource();
+  var params = src.getParams();
+  delete params.CQL_FILTER;
+  src.refresh();
 }
 
 //Functions to delete checkOnMap class
 function checkOnMap(input) {
-	let checkOnMap = document.querySelectorAll("#inputFilterCustom .btn-check-lgd.checkOnMap");
-	if (checkOnMap.length > 0 && checkOnMap == input) {
-		checkOnMap.forEach(function(checkbox) {
-			checkbox.classList.remove("checkOnMap");
-		});
-	}
+  let checkOnMap = document.querySelectorAll(
+    "#inputFilterCustom .btn-check-lgd.checkOnMap",
+  );
+  if (checkOnMap.length > 0 && checkOnMap == input) {
+    checkOnMap.forEach(function (checkbox) {
+      checkbox.classList.remove("checkOnMap");
+    });
+  }
 }
 
 // Get two level inputs in Type fontaines
-let checkboxes = document.querySelectorAll("#inputFilterCustom input[type=checkbox][name=lgd]");
-checkboxes.forEach(function(checkbox) {
-	checkbox.addEventListener("change", function(e) {
-		let input = e.target;
-		checkOnMap(input);
-		// Add class to input checked
-		input.classList.toggle("checkOnMap");
-		// Get input value and cql type
-		let cqlvalue = input.value;
-		let cqltype = input.getAttribute('cqltype');
-		// Manage layer fontaines      
-		// Add the value to the corresponding list
-    if (cqltype == "fontaines_dispo24") {
-      valueInList(list_dispo24, cqlvalue);
-    }else if(cqltype == "fontaines_d") {
-      valueInList(list_dispo, cqlvalue);
-    }else if(cqltype == "fontaines_type") {
-      valueInList(list_types, cqlvalue);
-    }else if(cqltype == "fontaines_petillante") {
-      valueInList(list_petillante, cqlvalue);
-    }else if(cqltype == "fontaines_brumisante") {
-      valueInList(list_brumisante, cqlvalue);
+let checkboxes = document.querySelectorAll(
+  "#inputFilterCustom input[type=checkbox][name=lgd]",
+);
+checkboxes.forEach(function (checkbox) {
+  checkbox.addEventListener("change", function (e) {
+    console.log(e);
+    let input = e.target;
+    checkOnMap(input);
+    // Add class to input checked
+    input.classList.toggle("checkOnMap");
+    // Get input value and cql type
+    let cqlvalue = input.value;
+    let cqltype = input.getAttribute("cqltype");
+    // Manage layer fontaines
+    // Add the value to the corresponding list
+    switch(cqltype) {
+      case "fontaines_dispo24":
+        valueInList(list_dispo24, cqlvalue);
+        break;
+      case "fontaines_d":
+        valueInList(list_dispo, cqlvalue);
+        break;
+      case "fontaines_type":
+        valueInList(list_types, cqlvalue);
+        break;
+      case "fontaines_petillante":
+        valueInList(list_petillante, cqlvalue);
+        break;
+      case "fontaines_brumisante":
+        valueInList(list_brumisante, cqlvalue);
+        break;
+      default:
+        null;
     }
-		
+
     // Create expression for cql filter
     let cql_filter_types;
     let cql_filter_dispo;
@@ -444,7 +457,7 @@ checkboxes.forEach(function(checkbox) {
     if (list_types.length > 0) {
       cql_filter_types = `type_objet IN (${list_types})`;
       cql_constructor.push(cql_filter_types);
-    } 
+    }
     if (list_dispo.length > 0) {
       cql_filter_dispo = `dispo IN (${list_dispo})`;
       cql_constructor.push(cql_filter_dispo);
@@ -462,40 +475,43 @@ checkboxes.forEach(function(checkbox) {
       cql_constructor.push(cql_filter_brumisante);
     }
 
-    // Get status of commerces  
-    let checkCom = document.querySelectorAll("input[cqltype=commerces][name=lgd].checkOnMap");
+    // Get status of commerces
+    let checkCom = document.querySelectorAll(
+      "input[cqltype=commerces][name=lgd].checkOnMap",
+    );
 
     // Manage display layers for each case
-    if (cql_constructor.length > 0 && checkCom.length > 0){      
-      filterDataByAttr(cql_constructor.join(' AND '));
-      mviewer.getLayer('fontaines').layer.setVisible(true);
+    if (cql_constructor.length > 0 && checkCom.length > 0) {
+      filterDataByAttr(cql_constructor.join(" AND "));
+      mviewer.getLayer("fontaines").layer.setVisible(true);
       // Combinaison Commerces + Dispo24 > Commerces non affichés
-      if (list_dispo24.length > 0) {     
-        mviewer.getLayer('commerce').layer.setVisible(false);        
+      if (list_dispo24.length > 0) {
+        mviewer.getLayer("commerce").layer.setVisible(false);
       } else {
-        mviewer.getLayer('commerce').layer.setVisible(true);
-      }   
+        mviewer.getLayer("commerce").layer.setVisible(true);
+      }
       // Combinaison Dispo + Dispo24 > Fontaines non affichées
       if (list_dispo.length > 0 && list_dispo24.length > 0) {
-          mviewer.getLayer('fontaines').layer.setVisible(false);
+        mviewer.getLayer("fontaines").layer.setVisible(false);
       }
-    } else if(cql_constructor.length > 0 && checkCom.length == 0){
-      filterDataByAttr(cql_constructor.join(' AND '));
-      mviewer.getLayer('fontaines').layer.setVisible(true);
-      mviewer.getLayer('commerce').layer.setVisible(false);
+    } else if (cql_constructor.length > 0 && checkCom.length == 0) {
+      filterDataByAttr(cql_constructor.join(" AND "));
+      mviewer.getLayer("fontaines").layer.setVisible(true);
+      mviewer.getLayer("commerce").layer.setVisible(false);
       // Combinaison Dispo + Dispo24 > Fontaines non affichées
       if (list_dispo.length > 0 && list_dispo24.length > 0) {
-          mviewer.getLayer('fontaines').layer.setVisible(false);
+        mviewer.getLayer("fontaines").layer.setVisible(false);
       }
-    } else if(cql_constructor.length == 0 && checkCom.length > 0){
+    } else if (cql_constructor.length == 0 && checkCom.length > 0) {
       deleteCQLFilter();
-      mviewer.getLayer('fontaines').layer.setVisible(false);
-      mviewer.getLayer('commerce').layer.setVisible(true);
+      mviewer.getLayer("fontaines").layer.setVisible(false);
+      mviewer.getLayer("commerce").layer.setVisible(true);
     } else {
       resetFilter();
     }
-	});
+  });
 });
+
 </script>
 <style>
   #blockTypesFontaine label span, #blockLegend label span {
