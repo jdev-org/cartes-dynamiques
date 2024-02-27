@@ -2,6 +2,7 @@
   "fr": {
     "addon.btnGeoloc.label": "Localisez-moi",
     "addon.socNetwork.title": "Rejoindre la communauté",
+    "addon.socNetwork.link.href":"https://www.eaudeparis.fr/",
     "sidebar.update.data": "Date de dernière mise à jour",
     "edpep.filter.switch.PREVU": "Prévu",
     "edpep.filter.switch.EN_COURS": "En cours",
@@ -24,6 +25,14 @@
     "edpep.filter.btncheck.ENP": "Eau non potable",
     "edpep.filter.switch.slider": "Slider",
     "edpep.filter.switch.calendar": "Calendrier",
-    "edpep.reset": "Réinitialiser"
+    "edpep.reset": "Réinitialiser",
+    "mapslibs.title.fontaines": "Où boire de l'eau à Paris ?",
+    "mapslibs.texte.fontaines": "Visualiser l’ensemble des points d’eau potable à Paris",
+    "mapslibs.title.work": "Travaux",
+    "mapslibs.texte.work": "Visualiser les travaux en cours et prévus sur le réseau d’eau à Paris",
+    "mapslibs.title.quality": "Qualité de l'eau",
+    "mapslibs.texte.quality": "Consulter la qualité de l’eau distribuée chez vous",
+    "mapslibs.title.wallace": "Les 50 fontaines Wallace",
+    "mapslibs.texte.wallace": "Découvrir les fontaines Wallace, symboles de Paris"
   }
 }
