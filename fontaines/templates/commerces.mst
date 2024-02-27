@@ -29,7 +29,13 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
             </a>
             <div class="collapse" id="collapse_{{feature_ol_uid}}">
-                <a class="bgOutlinePrim" target="_blank" href="https://www.eaudeparis.fr/ici-je-choisis-leau-de-paris" i18n="template.btn.moreinfos">En savoir plus</a>
+                <a id="cotemplBtnQuality_{{feature_ol_uid}}" class="bgOutlinePrim" target="_blank" href="">     
+                    <span i18n="template.btn.waterquality">Qualité de l'eau</span>
+                </a>                    
+                <a class="bgOutlinePrim" target="_blank" href="mailto:jechoisis@eaudeparis.fr?subject=Anomalie {{id}}">
+                    <span i18n="template.btn.anomaly">Une anomalie ?</span>
+                </a>  
+                <a id="cotemplBtnMoreInfos_{{feature_ol_uid}}" class="bgOutlinePrim" target="_blank" href="" i18n="template.btn.moreinfos">En savoir plus</a>
             </div>
         </div>        		
 	</li>
@@ -39,6 +45,10 @@
 // Update lang
 let lang = configuration.getLang();
 mviewer.lang.changeLanguage(lang);
+
+// Link FR/EN 
+document.getElementById("cotemplBtnMoreInfos_{{feature_ol_uid}}").href = mviewer.tr("template.commerces.btn.moreinfos.href");
+document.getElementById("cotemplBtnQuality_{{feature_ol_uid}}").href = mviewer.tr("template.commerces.btn.quality.href");
 
 /*Permet de calculer l'URL Google Map vers la fontaine au click sur le bouton "j'y vais"*/
 const goId = document.getElementById("go-{{feature_ol_uid}}");
@@ -55,11 +65,8 @@ $(goId).on("click", () => {
 
 /* Modification de l'adresse initiale = suppression du mot Arrondissement et ajout unicode eme*/
 let street = "{{nom_commun}}";
-let lastWord = street.split(" ").splice(-1);
-if(lastWord == 'ARRONDISSEMENT'){    
-    let numberArr = street.replace(/\D/g,'');
-    street = 'PARIS '+ numberArr+String.fromCodePoint(0x1D49) + '';
-}
+let numberArr = street.replace(/\D/g,'');
+street = 'PARIS '+ numberArr+String.fromCodePoint(0x1D49) + '';
 const adresse_Co = document.getElementById("adresseCo_{{feature_ol_uid}}");
 adresse_Co.innerHTML = street;
 
@@ -290,6 +297,10 @@ li.item.cardInfo {
 
 .xs #modal-panel-selector .carousel-control {
     height: 70%;
+}
+
+.xs .cardInfo.active {
+    background-color: #ededed00;
 }
 
 </style>

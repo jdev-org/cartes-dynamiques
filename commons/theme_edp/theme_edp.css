@@ -1230,7 +1230,7 @@ a#permalinklink {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 5px!important;
+    width: 3px!important;
   }
   
   /* Track */
@@ -1241,7 +1241,7 @@ a#permalinklink {
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: var(--mycolor); 
+    background: #a7a7a7b7; 
     border-radius: 10px;
   }
   

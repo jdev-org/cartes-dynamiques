@@ -26,7 +26,7 @@
         cqltype="fontaines_brumisante"
         value="'OUI'" />
       <label class="btn-legend" for="btn-check__brumisation" style="opacity: 1">
-        <img src="apps/fontaines/img/brumisateur.svg" />
+        <img src="apps/fontaines/img/brumisateur.svg"/>
         <span i18n="fontaine.type.brumisation">Avec brumisation</span>
       </label>
     </div>
@@ -50,7 +50,7 @@
           id="btn-check__type-point"
           class="btn-check-lgd"
           name="lgd" />
-        <label class="btn-legend" style="opacity: 1">
+        <label class="btn-legend btn-subtitle" style="opacity: 1">
           <img src="apps/fontaines/img/robinet.svg" />
           <span i18n="sidebar.legend.subtitle.type">Type de fontaine</span>
         </label>
@@ -266,7 +266,7 @@
           id="btn-check__legende"
           class="btn-check-lgd"
           name="lgd" />
-        <label class="btn-legend" style="opacity: 1">
+        <label class="btn-legend btn-subtitle" style="opacity: 1">
           <span i18n="sidebar.legend.subtitle.legende">Légende</span>
         </label>
         <span
@@ -498,8 +498,11 @@ checkboxes.forEach(function(checkbox) {
 });
 </script>
 <style>
+  .btn-subtitle span {
+      font-weight:600;
+  }
+  
   #blockTypesFontaine label span, #blockLegend label span {
-      font-style: italic;
       font-size: 0.93em;
   }
 
