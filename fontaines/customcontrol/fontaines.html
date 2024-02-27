@@ -495,7 +495,7 @@ checkboxes.forEach(function (checkbox) {
     let is24h24 = !isNot24h24;
     
     let isNotDispo = _.isEmpty(list_dispo);
-    let isDispo = !isNot24h24;
+    let isDispo = !isNotDispo;
 
     // Manage display layers for each case
     // si commerces selectionnés et les fontaines selectionnés
@@ -525,7 +525,7 @@ checkboxes.forEach(function (checkbox) {
         mviewer.getLayer("commerce").layer.setVisible(false);
       }
 
-      
+
     } else if (fontainesSelected && commercesNotSelected) {
       // pas de commerce mais fontaines sélectionnées
       // si 24/24 + fontaines en service => fontaines et commerces non affichés
