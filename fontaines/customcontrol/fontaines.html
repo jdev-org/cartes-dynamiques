@@ -329,7 +329,7 @@
   </div>
   <div id="section_date_maj"></div>
 </div>
-<script>   
+<script>
 // Init variables
 let list_types = [];
 let list_dispo = [];
@@ -446,6 +446,7 @@ checkboxes.forEach(function (checkbox) {
       default:
         null;
     }
+    const isCommerce = cqltype === "commerces";
 
     // Create expression for cql filter
     let cql_filter_types;
@@ -475,34 +476,51 @@ checkboxes.forEach(function (checkbox) {
       cql_constructor.push(cql_filter_brumisante);
     }
 
-    // Get status of commerces
+    // Get status of commerces => Actif or not
     let checkCom = document.querySelectorAll(
       "input[cqltype=commerces][name=lgd].checkOnMap",
     );
 
     // Manage display layers for each case
-    if (cql_constructor.length > 0 && checkCom.length > 0) {
+    // si commerces selectionnés et les fontaines selectionnés
+    if (cql_constructor.length && checkCom.length) {
+      
+      // si 24/24 + je choisis eau de paris => masquer les commerces et les fontaines
+      // si 24/24 + je choisis eau de paris + fontaines => masquer les commerces et les fontaines      
       filterDataByAttr(cql_constructor.join(" AND "));
-      mviewer.getLayer("fontaines").layer.setVisible(true);
       // Combinaison Commerces + Dispo24 > Commerces non affichés
-      if (list_dispo24.length > 0) {
+      mviewer.getLayer("fontaines").layer.setVisible(!list_dispo24.length);
+      mviewer.getLayer("commerce").layer.setVisible(!list_dispo24.length);
+
+      // Combinaison Dispo + Dispo24 > Fontaines non affichées
+      // si 24/24 + fontaines en service => fontaines et commerces non affichés
+      // si 24/24 + fontaines indispo => fontaines et commerces non affichés
+      if (list_dispo.length && list_dispo24.length) {
+        mviewer.getLayer("fontaines").layer.setVisible(false);
         mviewer.getLayer("commerce").layer.setVisible(false);
-      } else {
-        mviewer.getLayer("commerce").layer.setVisible(true);
       }
-      // Combinaison Dispo + Dispo24 > Fontaines non affichées
-      if (list_dispo.length > 0 && list_dispo24.length > 0) {
-        mviewer.getLayer("fontaines").layer.setVisible(false);
+
+      // si eau brumisante => Masquer les commerces
+      // si eau pétillante => Masquer les commerces
+      if(list_petillante.length || list_brumisante.length || (list_dispo.length && list_dispo24.length)) {
+        mviewer.getLayer("commerce").layer.setVisible(false);
       }
-    } else if (cql_constructor.length > 0 && checkCom.length == 0) {
+
+    } else if (cql_constructor.length && !checkCom.length) {
+      // pas de commerce mais fontaines sélectionnées
+      // si 24/24 + fontaines en service => fontaines et commerces non affichés
+      // si 24/24 + fontaines indispo => fontaines et commerces non affichés
+      
       filterDataByAttr(cql_constructor.join(" AND "));
-      mviewer.getLayer("fontaines").layer.setVisible(true);
       mviewer.getLayer("commerce").layer.setVisible(false);
+
       // Combinaison Dispo + Dispo24 > Fontaines non affichées
-      if (list_dispo.length > 0 && list_dispo24.length > 0) {
-        mviewer.getLayer("fontaines").layer.setVisible(false);
-      }
-    } else if (cql_constructor.length == 0 && checkCom.length > 0) {
+      const hideFontaine = list_dispo.length && list_dispo24.length;
+      mviewer.getLayer("fontaines").layer.setVisible(!hideFontaine);
+
+    } else if (!cql_constructor.length && checkCom.length) {
+      // on a que des commerces
+      // On masque les fontaines
       deleteCQLFilter();
       mviewer.getLayer("fontaines").layer.setVisible(false);
       mviewer.getLayer("commerce").layer.setVisible(true);
