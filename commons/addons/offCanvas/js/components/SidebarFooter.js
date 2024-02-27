@@ -12,5 +12,14 @@ export async function insertFooter() {
     let currentLang = API.lang || window.navigator.languages[0];
     currentLang = currentLang.includes("fr") ? "fr" : "en";
     mviewer.lang.changeLanguage(currentLang);
+    //Href link FR/EN
+    document.querySelector("#linkWebsite a").href = mviewer.tr("addon.socNetwork.link.href");
+    let inputBtnSwitchLang = document.querySelectorAll("#btnSwitchLang input");
+    inputBtnSwitchLang.forEach(function(input) {  
+      input.addEventListener("click", function (e) {
+        document.querySelector("#linkWebsite a").href = mviewer.tr("addon.socNetwork.link.href");
+      })
+    });
+
   }
 }

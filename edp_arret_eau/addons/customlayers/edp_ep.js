@@ -1,6 +1,7 @@
 const LAYER_URL = `https://edp.jdev.fr/geoserver/edp/wfs?SERVICE=WFS&VERSION=1.0.0&REQUEST=GETFEATURE&TYPENAME=arret_eau_p&outputFormat=application/json`;
+const LAYER_URL_lin = `https://edp.jdev.fr/geoserver/edp/wfs?SERVICE=WFS&VERSION=1.0.0&REQUEST=GETFEATURE&TYPENAME=arret_eau_l&outputFormat=application/json`;
 const LAYER_ID = "edp_ep";
-const RES_CLUSTER = 4;
+const RES_CLUSTER = 6;
 /**
  * Clusters charts color :
  * - first : EN COURS statut value
@@ -10,19 +11,29 @@ const DONUT_COLORS = ["rgba(255,100,125,1)", "rgba(255,200,150,1)"];
 /**
  * Display layer as simple point not clustered
  */
-const uniqueStyle = [
-  new ol.style.Style({
-    image: new ol.style.Circle({
-      radius: 7,
-      fill: new ol.style.Fill({ color: "black" }),
-      stroke: new ol.style.Stroke({
-        color: [255, 0, 0],
-        width: 2,
-      }),
-    }),
-  }),
-];
+const iconesPath = {
+  'EN COURS': {src: "apps/edp_arret_eau/img/travaux_encours.svg", scale: 0.5, opacity: 1},
+  'PREVU': {src: "apps/edp_arret_eau/img/travaux_prevu.svg", scale: 0.5, opacity: 1}
+};
 
+
+const uniqueStyle = (feature) => {
+  const props = feature.getProperties();
+  const categ = props.features[0].getProperties()["statut"];
+  const categIcon = iconesPath[categ];
+  if(categIcon && props.features[0] && !props.features[0]?.icon) {
+      // insert icon path to uniq feature property
+      props.features[0].setProperties({icon: categIcon.src});
+  };
+  return [
+      new ol.style.Style({
+          image: new ol.style.Icon({
+              scale: categIcon?.scale || 0.15,
+              opacity: categIcon?.opacity || 0.9,
+              src: categIcon?.src ,
+          })
+      })
+]};
 /**
  * Points display and grouped as cluster
  * @param {int} radiusBackGround
@@ -48,10 +59,10 @@ const clusterStyleExt = (radiusBackGround, radiusChart, size, features) => {
         color: "rgba(0, 0, 255, 0.1)",
       }),
       text: new ol.style.Text({
-        font: "bold 10px Poppins, Arial, Sans-serif",
+        font: "bold 12px Barlow, Arial, Sans-serif",
         text: size.toString(),
         fill: new ol.style.Fill({
-          color: "black",
+          color: "#002ddc",
         }),
       }),
     }),
@@ -102,15 +113,15 @@ const clusterStyle = function (feature) {
   var size = feature.get("features").length;
   const clusteredFeatures = feature.get("features").map((x) => x.getProperties());
   const clusterStats = getStats(clusteredFeatures);
-  var max_radius = 40;
-  var max_value = 500;
+  var max_radius = 60;
+  var max_value = 400;
   var radiusBackGround = 15 + Math.sqrt(size) * (max_radius / Math.sqrt(max_value));
   var radiusChart = (radiusBackGround * 80) / 100;
   let resolution = mviewer.getMap().getView().getResolution();
   if (resolution >= RES_CLUSTER) {
     return clusterStyleExt(radiusBackGround, radiusChart, size, clusterStats);
   } else {
-    return uniqueStyle;
+    return uniqueStyle(feature);
   }
 };
 

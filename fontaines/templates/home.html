@@ -41,9 +41,10 @@
       </svg>
     </button>
     <a
+      id="homeBtnMore"
       class="btnLink"
       target="_blank"
-      href="https://www.eaudeparis.fr/les-fontaines-paris"
+      href=""
       i18n="home.btn.more"
       >En savoir plus</a
     >
@@ -84,6 +85,16 @@
   // Init btn switch lang
   document.querySelector(`input[value='${currentLang}']`).checked = true;
 
+  //Href link FR/EN
+  document.getElementById("homeBtnMore").href = mviewer.tr("home.btn.more.href");
+  let inputBtnSwitchLang = document.querySelectorAll("#btnSwitchLang input");
+  inputBtnSwitchLang.forEach(function(input) {  
+    input.addEventListener("click", function (e) {
+      document.getElementById("homeBtnMore").href = mviewer.tr("home.btn.more.href");
+    })
+  });
+
+  
   // MapLibrary - manage display page
   function displayBlock() {
     homePageOne.classList.toggle("is-visible");
@@ -94,15 +105,15 @@
 <style>
   /* Propriétés pour rendre tous les panels/modals transparents en mobile */
   .xs .modal-content {
-      background-color: #ffffffd9;
+      background-color: #ffffffcf;
   }
 
   .xs #sidebar {
-      background-color: #ffffffd9!important;
+      background-color: #ffffffcf!important;
   }
 
   .xs .panel {
-      background-color: #ffffff00;
+      background-color: #ffffff29!important;
   }
 
   /**/

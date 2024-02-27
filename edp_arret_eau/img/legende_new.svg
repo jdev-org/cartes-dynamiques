@@ -155,12 +155,12 @@
      inkscape:cx="110.71429"
      inkscape:cy="100.53571"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g12314"
      showgrid="false"
      units="px"
      inkscape:window-width="2400"
      inkscape:window-height="1271"
-     inkscape:window-x="-9"
+     inkscape:window-x="2391"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
      inkscape:pagecheckerboard="0"
@@ -226,11 +226,11 @@
          sodipodi:arc-type="slice"
          d="M -263.59128,39.754318 A 13.163025,13.163025 0 0 1 -276.7543,52.917343 V 39.754318 Z" />
       <circle
-         r="9.7466669"
-         cy="276.7543"
-         cx="39.754318"
+         r="8.5654917"
+         cy="276.8342"
+         cx="39.895782"
          id="path826"
-         style="vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:15.3878;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:184.654, 184.654;stroke-dashoffset:116.317;stroke-opacity:1;paint-order:markers fill stroke" />
+         style="vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:13.523;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:162.277, 162.277;stroke-dashoffset:102.221;stroke-opacity:1;paint-order:markers fill stroke" />
       <text
          id="text875"
          y="279.54166"
