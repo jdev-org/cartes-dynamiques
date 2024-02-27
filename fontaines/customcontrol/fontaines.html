@@ -510,19 +510,13 @@ checkboxes.forEach(function (checkbox) {
       mviewer.getLayer("fontaines").layer.setVisible(isNot24h24);
       mviewer.getLayer("commerce").layer.setVisible(isNot24h24);
 
-      // Combinaison Dispo + Dispo24 > Fontaines non affichées
-      // si 24/24 + fontaines en service => fontaines non affichés
-      // si 24/24 + fontaines indispo => fontaines non affichés
-      if (isDispo && is24h24) {
-        mviewer.getLayer("fontaines").layer.setVisible(false);
-      }
-
       // si eau brumisante => Masquer les commerces
       // si eau pétillante => Masquer les commerces
-      // si 24/24 + fontaines en service => commerces non affichés
-      // si 24/24 + fontaines indispo => commerces non affichés
+      // si 24/24 + fontaines en service => commerces et fontaines non affichés
+      // si 24/24 + fontaines indispo => commerces et fontaines non affichés
       if(isPetillante || isBrumisante || (isDispo && is24h24)) {
         mviewer.getLayer("commerce").layer.setVisible(false);
+        mviewer.getLayer("fontaines").layer.setVisible(false);
       }
 
 
