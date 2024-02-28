@@ -59,6 +59,7 @@ class TimeForm {
     this.element = document.createElement("div");
     this.element.classList.add("form-check-parent");
     this.element.classList.add("filter-form");
+    this.element.classList.add("filter-form-time");
     this.element.id = this.id;
 
     this.element.appendChild(childTitle);
