@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Travaux"
+			title="Travaux en cours et à venir"
 			id="travaux_eau"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
@@ -66,6 +66,7 @@
 			localities="true"
 			features="false"
 			inputlabel="Recherche d'adresse"
+			svgcolor="#002ddc"
 			closeafterclick="true"
 			querymaponclick="true"/>
 
@@ -89,22 +90,19 @@
 					scalemax="1000000"
 					dynamiclegend="false"
 					visible="true"
-					exclusive="true"
 					tiled="false"
 					opacity="1"
 					legendurl="apps/edp_arret_eau/img/legende_new.png"
 					filter="nature_res='EP'"
-					toplayer="false"
 					expanded="true"
 					showintoc="true"
 					queryable="true"
 					infoformat="application/vnd.ogc.gml"
 					infohighlight ="false"
 					type="customlayer"
-					jsonfields="arrets"
+					customcontrol="true"
+                	customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
 			>
-				<!--/fields="ID,NOM_COM,INSEE_COM,STATUT"
-                    aliases="Nom,Numéro INSEE,Statut"-->
 				<template url="apps/edp_arret_eau/templates/arret_eau_wms.mst"></template>
 			</layer>
 			<layer
@@ -113,6 +111,7 @@
 					url="https://{{url_data_edp}}/geoserver/edp/wms"
 					scalemin ="0"
 					scalemax="1000000"
+					sld="https://{{url_edp}}/mviewer/apps/edp_arret_eau/sld/arrondissements.sld"
 					dynamiclegend ="false"
 					visible="true"
 					exclusive="false"
@@ -128,6 +127,26 @@
 					infohighlight ="false"
 			>
 			</layer>
+			<layer
+					id="arret_eau_l"
+					name="Linéaires des travaux"
+					url="https://{{url_data_edp}}/geoserver/edp/wms"
+					scalemin ="0"
+					scalemax="5000"
+					sld="https://{{url_edp}}/mviewer/apps/edp_arret_eau/sld/arrets_eau_l.sld"
+					dynamiclegend ="false"
+					visible="true"
+					tiled="false"
+					opacity="1"
+					showintoc="true"
+					queryable="false"
+					infoformat="application/vnd.ogc.gml"
+					infohighlight ="false"
+					customcontrol="true"
+                	customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
+			>
+			</layer>
+			
 		</theme>
 	</themes>	
 </config>

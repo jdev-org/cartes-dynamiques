@@ -3,11 +3,15 @@
     height: 5px !important;
 }
 
+.slider-track-high {
+    background-color: var(--mycolor) !important;
+}
+
 .slider .slider-tick {
     width: 10px !important;
     height: 10px !important;
-    background-color: rgb(245 243 243) !important;
-    border: 1px solid var(--bleu);
+    background-color: var(--mycolor) !important;
+    border: 1px solid var(--mycolor);
 }
 
 .slider .min-slider-handle {

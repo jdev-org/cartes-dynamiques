@@ -10,9 +10,9 @@ import TimeForm from "./components/TimeForm/TimeForm.js";
 
 const travauxCqlFactory = new cqlWfsFactory();
 
-const buttonFilterType = (title, values, onClick, size, translate) => {
+const buttonFilterType = (title, values, onClick, size, translate, isAccordion) => {
   const parent = document.getElementById("filterArea");
-  const typeBtns = new ButtonCheckForm(parent, values, title, size, translate);
+  const typeBtns = new ButtonCheckForm(parent, values, title, size, translate, isAccordion);
   if (onClick) {
     typeBtns.setOnClick(onClick);
   }
@@ -74,7 +74,7 @@ const onArrondClick = (formId, event, values) => {
   if (!_.isEmpty(values)) {
     travauxCqlFactory.addInFilter(
       "arrondisse",
-      values.map((v) => parseInt(v))
+      values.map((v) => v)
     );
   }
   travauxCqlFactory.updateSourceUrl();
@@ -117,20 +117,21 @@ function reset() {
   init();
 }
 
-const createFilters = async () => {
+const createFilters = async () => {    
   const arrondissements = await getArrondissements();
   const motifs = getTravauxValues("motif");
   const statuts = getTravauxValues("statut");
   const typeReseau = getTravauxValues("nature_res");
 
-  buttonFilterType("Type de réseau", _.uniq(typeReseau), onTypeReseauClick, "xs", true);
-  switchFilter("Statut des travaux", _.uniq(statuts), onStatusClick);
-  buttonFilterType("Motifs des travaux", _.uniq(motifs), onMotifClick, "xs", true);
+  buttonFilterType("Types de réseau", _.uniq(typeReseau), onTypeReseauClick, "xs", true);
+  switchFilter("Statuts des travaux", _.uniq(statuts), onStatusClick);
+  buttonFilterType("Motifs des travaux", _.uniq(motifs), onMotifClick, "xs", true, true);
   buttonFilterType(
-    "Arrondissement",
+    "Arrondissements",
     _.sortBy(arrondissements.map((a) => a.value)),
     onArrondClick,
-    "xs"
+    "xs",
+    false, true
   );
   initTimeSelectors(onTimeChange);
   dispatchEvent("edp_ep-init", { id: "edp_ep" });

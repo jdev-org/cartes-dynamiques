@@ -7,10 +7,10 @@ export const getArrondissements = async () => {
     const request = await fetch(wfsUrl + params);
     const data = await request.json();
     let arrondissements = data.features.map(f => {
-        let numberArr = f.properties.cp.slice(-2);
+        let numberArr = f.properties.cp.slice(-2);        
         if (numberArr) {
-            numberArr = parseInt(f.properties.cp.slice(-2));
-            const label = `${ numberArr }`
+            numberArr = f.properties.cp.slice(-2);            
+            const label = `${parseInt(numberArr)}`;
             return { ...f.properties, value: numberArr, label: label };
         }
         return null;
