@@ -44,9 +44,10 @@
       </svg>
     </button>
     <a
+      id="homeBtnMore"
       class="btnLink"
       target="_blank"
-      href="https://www.eaudeparis.fr/actualit%C3%A9s/fontaines-wallace-licone-150-ans"
+      href=""
       i18n="home.btn.more"
       >En savoir plus</a
     >
@@ -86,6 +87,15 @@
   mviewer.lang.changeLanguage(currentLang);
   // Init btn switch lang
   document.querySelector(`input[value='${currentLang}']`).checked = true;
+
+  //Href link FR/EN
+  document.getElementById("homeBtnMore").href = mviewer.tr("home.btn.more.href");
+  let inputBtnSwitchLang = document.querySelectorAll("#btnSwitchLang input");
+  inputBtnSwitchLang.forEach(function(input) {  
+    input.addEventListener("click", function (e) {
+      document.getElementById("homeBtnMore").href = mviewer.tr("home.btn.more.href");
+    })
+  });
 
   // MapLibrary - manage display page
   function displayBlock() {

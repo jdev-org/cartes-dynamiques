@@ -5,7 +5,7 @@
             <div class="badgeF" id="statutFont_{{feature_ol_uid}}"></div>
         </div>
         <div class="nameCard" i18n='fontaine.type.wallace'>Fontaine Wallace</div>
-        <div class="adressCard">{{num_impair}}{{num_pair}} {{nom_voie}}, {{nom_commun}}</div>
+        <div class="adressCard">{{num_impair}}{{num_pair}} {{nom_voie}}, <span id="adresseFont_{{feature_ol_uid}}"></span></div>
         <div class="textCard" i18n='fontaine.description.wallace'>
             <p>C'est la plus célèbre des fontaines parisiennes. Ses quatre cariatides encouragent passantes et passants à se désaltérer depuis plus de 150 ans.</p>
             <a target="_blank" href="https://www.eaudeparis.fr/sites/default/files/import/Fontaines/FONTAINE_WALLACE.PDF" i18n="template.btn.moreinfos">En savoir plus</a>
@@ -24,8 +24,7 @@
             </a>
             <div class="collapse" id="collapse_{{feature_ol_uid}}">
                 <div class="accordion__fontaines-body">                    
-                    <a class="btnCard bgPrimary" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.09698L7.05025 8.04673C4.31658 10.7804 4.31658 15.2126 7.05025 17.9462C9.78392 20.6799 14.2161 20.6799 16.9497 17.9462C19.6834 15.2126 19.6834 10.7804 16.9497 8.04673L12 3.09698ZM12 0.268555L18.364 6.63252C21.8787 10.1472 21.8787 15.8457 18.364 19.3604C14.8492 22.8752 9.15076 22.8752 5.63604 19.3604C2.12132 15.8457 2.12132 10.1472 5.63604 6.63252L12 0.268555Z" fill="rgba(255,255,255,1)"></path></svg>        
+                    <a class="btnCard bgOutlinePrim" id="btnQualite_{{feature_ol_uid}}" target="_blank" href="">
                         <span i18n="template.btn.waterquality"> Qualité de l'eau</span>
                     </a>
                     {{#url_jeu_vp}}
@@ -159,16 +158,22 @@
 }
 
 .bgOutlinePrim{    
-    background-color: none;
+    background-color: #ffffff00!important;
     color: var(--mycolor);
-    border: 2px solid;
+    border: 0.16rem solid;
     font-weight: 600;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    margin: 0px 5px 5px 0px;
 }
 
 .bgOutlinePrim:hover{    
     color: var(--mycolor);
+    opacity: 0.8;
 }
-
 .btnCard svg {
     margin-right: 5px;
 }
@@ -212,6 +217,13 @@ li.item.cardInfo {
 
 </style>
 <script>
+    // Format du numéro d'arrondissement
+    let street = "{{nom_commun}}";
+    let numberArr = street.replace(/\D/g,'');
+    street = 'PARIS '+ numberArr+String.fromCodePoint(0x1D49) + '';
+    const adresseFont = document.getElementById("adresseFont_{{feature_ol_uid}}");
+    adresseFont.innerHTML = street;
+
     /*Permet de calculer l'URL Google Map vers la fontaine au click sur le bouton "j'y vais"*/
     const goId = document.getElementById("go-{{feature_ol_uid}}");
     $(goId).on("click", () => {
