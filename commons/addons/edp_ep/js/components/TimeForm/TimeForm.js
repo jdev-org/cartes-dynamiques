@@ -6,13 +6,12 @@ const format = "YYYYMMDDHHmmss";
 
 const getTickAsDays = (v) =>
   ({
-    1: moment(),
+    1: moment().format(format),
     2: moment().add(7, "d").format(format),
     3: moment().add(15, "d").format(format),
     4: moment().add(21, "d").format(format),
     5: null,
   }[v]);
-
 class TimeForm {
   constructor(parent, values, title, defaultValue) {
     this.id = "time-filter-" + _.uniqueId();
