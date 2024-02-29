@@ -50,13 +50,19 @@
     text-transform: uppercase;
 }
 
-#time-filter-44 .switch__btn {
+.filter-form-time .switch__btn {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     margin: -28px 1em 1em 0px;
 }
 
-#time-filter-44 .switch__btn .switch-title {
+.filter-form-time .switch__btn .switch-title {
     margin-right: 0.5em;
 }
+
+.time-calendar input::placeholder {
+    font-style:italic;
+    color: var(--mycolor);
+    font-weight:500;
+  }
