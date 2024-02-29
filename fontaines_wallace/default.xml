@@ -53,6 +53,7 @@
 			inputlabel="Recherche d'adresse"
 			closeafterclick="true"
 			querymaponclick="true"
+			svgcolor="#0000ff00"
 	/>
 	<extensions>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>

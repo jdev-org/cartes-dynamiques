@@ -28,6 +28,7 @@ class TimeCalendar {
     const input = document.createElement("input");
     input.id = this.id;
     input.classList.add("datepicker");
+    input.setAttribute('placeholder','Sélectionner une date');
     parentDiv.appendChild(input);
     this.element = parentDiv;
     this.parent.appendChild(parentDiv);
