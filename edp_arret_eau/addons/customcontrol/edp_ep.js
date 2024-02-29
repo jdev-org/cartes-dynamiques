@@ -7,10 +7,9 @@ const cc = (function () {
         $.each(dataS.features, function (key, valS) {
             $.each(valS.properties, function(i,j){
                     if (i == 'datemaj') {
-                        let legendBlock = document.getElementById('legend');
+                        let legendBlock = document.getElementById('sidebarBody');
                         div = '<div id="#section_date_maj" style="color: #a7a7a7;margin: 1em 0;font-family:var(--myfont)">Date de dernière mise à jour'  + ' :<br> <b>' + j + '</b><div>';
                         legendBlock.insertAdjacentHTML('afterend', div);
-                        $('#section_date_maj').html('Date de dernière mise à jour'  + ' :<br> <b>' + j + '</b> ');
                     } else  {
                         itemsS.push('<li>' + j.replace(/,/gi,"</li><li>") + ' ');
                     }
