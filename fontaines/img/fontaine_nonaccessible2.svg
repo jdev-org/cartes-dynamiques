@@ -11,7 +11,7 @@
    inkscape:export-xdpi="200"
    inkscape:export-ydpi="200"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="commerce2.svg"
+   sodipodi:docname="fontaine_nonaccessible2.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -43,20 +43,22 @@
      inkscape:groupmode="layer"
      id="layer1">
     <g
-       id="g4290"
-       transform="translate(-0.13884016,-1.2233495)">
+       id="g7575"
+       transform="translate(0.05431077,0.01688963)">
       <circle
          style="fill:#ffffff;stroke-width:1.90488;paint-order:fill markers stroke;stop-color:#000000"
          id="path1087-7"
          cx="13.518017"
          cy="13.229167"
-         r="11.164081" />
+         r="11.164081"
+         transform="translate(-0.18314229,-1.1347459)" />
       <circle
-         style="fill:#aab9ff;fill-opacity:1;stroke-width:1.58929;paint-order:fill markers stroke;stop-color:#000000"
+         style="fill:#d8d8d8;fill-opacity:1;stroke-width:1.58929;paint-order:fill markers stroke;stop-color:#000000"
          id="path1087"
          cx="13.518017"
          cy="13.229167"
-         r="9.314476" />
+         r="9.314476"
+         transform="translate(-0.18314229,-1.1347459)" />
     </g>
   </g>
 </svg>

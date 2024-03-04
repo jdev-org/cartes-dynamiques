@@ -238,24 +238,19 @@ li.item.cardInfo {
     })
 
     /* Affichage  du statut de la fontaine */
-    let blockBadge = document.getElementById("statutFont_{{feature_ol_uid}}");
-    let dispoFt = '{{dispo}}';
-    let accesFt = '{{accessible}}';
-    let date_ind = '{{debut_ind}}';
-    date_ind = date_ind.replace('&#x2F;', '/').replace('&#x2F;', '/');
-
     function displayInfoF(text,backcolor,color){
         blockBadge.innerHTML = text;
         blockBadge.style.background=backcolor;
         blockBadge.style.color=color;
     };
+
+    let blockBadge = document.getElementById("statutFont_{{feature_ol_uid}}");
+    let dispoFt = '{{dispo}}';
     
-    if (accesFt == "Non"){
-        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5','#002ddc');
-    } else if(dispoFt == "NON"){
+    if (dispoFt == "NON"){
         displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible</span>','#ffc896','#002ddc');
     } else {
-        displayInfoF('<span i18n="fontaine.disponible">Fontaine en service</span>','#002ddc','white');
+        displayInfoF('<span i18n="fontaine.dispo">Fontaine en service</span>','#002ddc','white');
     }
 
     /* Gestion de la redirection pour la qualité de l'eau */

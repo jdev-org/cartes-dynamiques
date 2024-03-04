@@ -1254,4 +1254,16 @@ a#permalinklink {
     max-width: 330px!important;    
   }
 
+    /* Propriétés pour rendre tous les panels/modals transparents en mobile */
+    .xs .modal-content {
+        background-color: #ffffffcf;
+    }
+  
+    .xs #sidebar {
+        background-color: #ffffffcf!important;
+    }
+  
+    .xs .panel {
+        background-color: #ffffff29!important;
+    }
 

@@ -1,5 +1,6 @@
 {
   "fr": {
+    "navbar.search.placeholder":"Saisir une adresse",
     "addon.btnGeoloc.label": "Localisez-moi",
     "addon.socNetwork.title": "Rejoindre la communauté",
     "addon.socNetwork.link.href":"https://www.eaudeparis.fr/",

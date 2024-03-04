@@ -66,12 +66,13 @@
 	
 	<themes mini="true" legendmini="false">
 		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
-			<layer id="udi" name="Qualité de l'eau"  visible="true" tiled="false"
+			<layer id="udi" name="Unités de distribution d'eau potable"  visible="true" tiled="false"
 				searchable="false" queryable="true" 
 				infoformat="application/vnd.ogc.gml" featurecount="1"
 				sld="https://{{url_edp}}/mviewer/apps/edp_qualite_eau/sld/udi.sld" 
 				url="https://{{url_data_edp}}/geoserver/edp/ows"
-				dynamiclegend ="true"
+				legendurl="apps/edp_qualite_eau/img/lgd_udi.png" 
+				dynamiclegend ="false"
 				attribution="Eau de Paris" 
 				infohighlight ="false"
 				metadata=""
