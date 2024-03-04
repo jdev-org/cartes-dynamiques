@@ -11,7 +11,7 @@
    inkscape:export-xdpi="200"
    inkscape:export-ydpi="200"
    inkscape:version="1.1 (c68e22c387, 2021-05-23)"
-   sodipodi:docname="fontaine_disponible.svg"
+   sodipodi:docname="fontaine_disponible2.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -42,13 +42,25 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       style="color:#000000;fill:#ffffff;stroke:none;stroke-width:6.79999;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="M 13.389186,0.94723009 A 11.169157,11.169157 0 0 0 2.2200366,12.116377 11.169157,11.169157 0 0 0 11.469242,23.112506 c 0.864344,1.496352 1.778878,2.958068 1.919944,2.958068 0.141064,0 1.055606,-1.461732 1.919942,-2.958068 A 11.169157,11.169157 0 0 0 24.558334,12.116377 11.169157,11.169157 0 0 0 13.389186,0.94723009 Z"
-       id="path127591-0" />
-    <path
-       style="color:#000000;fill:#002ddc;stroke:none;stroke-width:6.79999;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers;fill-opacity:1"
-       d="m 13.426499,2.7270809 a 9.3235399,9.3235399 0 0 0 -9.3235312,9.3235311 9.3235399,9.3235399 0 0 0 7.7208442,9.179102 c 0.721519,1.249095 1.484932,2.46927 1.602687,2.46927 0.117756,0 0.881177,-1.220191 1.602687,-2.46927 a 9.3235399,9.3235399 0 0 0 7.720845,-9.179102 9.3235399,9.3235399 0 0 0 -9.323532,-9.3235311 z"
-       id="path127591" />
+    <g
+       id="g1194"
+       transform="translate(0.01000864,0.10549323)">
+      <g
+         id="g4290"
+         transform="translate(-0.13884016,-1.2233495)">
+        <circle
+           style="fill:#ffffff;stroke-width:1.90488;paint-order:fill markers stroke;stop-color:#000000"
+           id="path1087-7"
+           cx="13.518017"
+           cy="13.229167"
+           r="11.164081" />
+        <circle
+           style="fill:#002ddc;fill-opacity:1;stroke-width:1.58929;paint-order:fill markers stroke;stop-color:#000000"
+           id="path1087"
+           cx="13.518017"
+           cy="13.229167"
+           r="9.314476" />
+      </g>
+    </g>
   </g>
 </svg>

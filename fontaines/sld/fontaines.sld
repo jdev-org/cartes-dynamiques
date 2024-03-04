@@ -63,35 +63,6 @@
           </sld:PointSymbolizer>
         </sld:Rule>
         <sld:Rule>
-          <sld:Name>Classe_214375</sld:Name>
-          <sld:Title>Paris 0 - Non access</sld:Title>
-          <sld:MinScaleDenominator>25000</sld:MinScaleDenominator>
-          <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>accessible</ogc:PropertyName>
-              <ogc:Literal>Non</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
-          </ogc:Filter>
-          <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
-            <sld:Graphic>
-              <sld:Mark>
-                <sld:WellKnownName>circle</sld:WellKnownName>
-                <sld:Fill>
-                  <sld:CssParameter name="fill">#d8d8d8</sld:CssParameter>
-                  <sld:CssParameter name="fill-opacity">1</sld:CssParameter>
-                </sld:Fill>
-                <sld:Stroke>
-                  <sld:CssParameter name="stroke">#FFFFFF</sld:CssParameter>
-                  <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
-                  <sld:CssParameter name="stroke-width">30</sld:CssParameter>
-                </sld:Stroke>
-              </sld:Mark>
-              <sld:Size>120</sld:Size>
-              <sld:Rotation>0</sld:Rotation>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>        
-        <sld:Rule>
           <sld:Name>Classe_35421</sld:Name>
           <sld:Title>Paris 1 - NON</sld:Title>
           <sld:MinScaleDenominator>4000</sld:MinScaleDenominator>
@@ -105,7 +76,7 @@
           <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
             <sld:Graphic>
               <sld:ExternalGraphic>
-                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_indisponible.svg"/>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_indisponible2.svg"/>
                 <sld:Format>image/svg+xml</sld:Format>
               </sld:ExternalGraphic>
               <sld:Size>100</sld:Size>
@@ -127,27 +98,6 @@
             <sld:Graphic>
               <sld:ExternalGraphic>
                 <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_disponible2.svg"/>
-                <sld:Format>image/svg+xml</sld:Format>
-              </sld:ExternalGraphic>
-              <sld:Size>100</sld:Size>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>
-        <sld:Rule>
-          <sld:Name>Classe_65378</sld:Name>
-          <sld:Title>Paris 1 - NON access</sld:Title>
-          <sld:MinScaleDenominator>4000</sld:MinScaleDenominator>
-          <sld:MaxScaleDenominator>25000</sld:MaxScaleDenominator>
-          <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>accessible</ogc:PropertyName>
-              <ogc:Literal>Non</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
-          </ogc:Filter>
-          <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
-            <sld:Graphic>
-              <sld:ExternalGraphic>
-                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_nonaccessible.svg"/>
                 <sld:Format>image/svg+xml</sld:Format>
               </sld:ExternalGraphic>
               <sld:Size>100</sld:Size>
@@ -210,7 +160,7 @@
           <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
             <sld:Graphic>
               <sld:ExternalGraphic>
-                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_indisponible.svg"/>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_indisponible2.svg"/>
                 <sld:Format>image/svg+xml</sld:Format>
               </sld:ExternalGraphic>
               <sld:Size>60</sld:Size>
@@ -232,27 +182,6 @@
             <sld:Graphic>
               <sld:ExternalGraphic>
                 <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_disponible2.svg"/>
-                <sld:Format>image/svg+xml</sld:Format>
-              </sld:ExternalGraphic>
-              <sld:Size>60</sld:Size>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>
-        <sld:Rule>
-          <sld:Name>Classe_9632</sld:Name>
-          <sld:Title>Paris 2 non access</sld:Title>
-          <sld:MinScaleDenominator>800</sld:MinScaleDenominator>
-          <sld:MaxScaleDenominator>4000</sld:MaxScaleDenominator>
-          <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>accessible</ogc:PropertyName>
-              <ogc:Literal>Non</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
-          </ogc:Filter>
-          <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
-            <sld:Graphic>
-              <sld:ExternalGraphic>
-                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_nonaccessible.svg"/>
                 <sld:Format>image/svg+xml</sld:Format>
               </sld:ExternalGraphic>
               <sld:Size>60</sld:Size>
@@ -314,7 +243,7 @@
           <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
             <sld:Graphic>
               <sld:ExternalGraphic>
-                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_indisponible.svg"/>
+                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_indisponible2.svg"/>
                 <sld:Format>image/svg+xml</sld:Format>
               </sld:ExternalGraphic>
               <sld:Size>20</sld:Size>
@@ -335,26 +264,6 @@
             <sld:Graphic>
               <sld:ExternalGraphic>
                 <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_disponible2.svg"/>
-                <sld:Format>image/svg+xml</sld:Format>
-              </sld:ExternalGraphic>
-              <sld:Size>20</sld:Size>
-            </sld:Graphic>
-          </sld:PointSymbolizer>
-        </sld:Rule>
-        <sld:Rule>
-          <sld:Name>Classe_45276</sld:Name>
-          <sld:Title>Paris 3 - Non access</sld:Title>
-          <sld:MaxScaleDenominator>800</sld:MaxScaleDenominator>
-          <ogc:Filter>
-            <ogc:PropertyIsEqualTo>
-              <ogc:PropertyName>accessible</ogc:PropertyName>
-              <ogc:Literal>Non</ogc:Literal>
-            </ogc:PropertyIsEqualTo>
-          </ogc:Filter>
-          <sld:PointSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
-            <sld:Graphic>
-              <sld:ExternalGraphic>
-                <sld:OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple" xlink:href="https://gis.jdev.fr/mviewer/apps/fontaines/img/fontaine_nonaccessible.svg"/>
                 <sld:Format>image/svg+xml</sld:Format>
               </sld:ExternalGraphic>
               <sld:Size>20</sld:Size>
