@@ -242,19 +242,16 @@ li.item.cardInfo {
         });
     })
     /* Affichage  du statut de la fontaine */
-    let blockBadge = document.getElementById("statutFont_{{feature_ol_uid}}");
-    let dispoFt = '{{dispo}}';
-    let accesFt = '{{accessible}}';
-
     function displayInfoF(text,backcolor,color){
         blockBadge.innerHTML = text;
         blockBadge.style.background=backcolor;
         blockBadge.style.color=color;
     };
-    
-    if (accesFt == "Non"){
-        displayInfoF('<span i18n="fontaine.nonaccessible">Fontaine non accessible</span>','#ff96a5','#002ddc');
-    } else if(dispoFt == "NON"){
+
+    let blockBadge = document.getElementById("statutFont_{{feature_ol_uid}}");
+    let dispoFt = '{{dispo}}';
+
+    if (dispoFt == "NON"){
         displayInfoF('<span i18n="fontaine.indisponible.since">Fontaine indisponible</span>','#ffc896','#002ddc');
     } else {
         displayInfoF('<span i18n="fontaine.dispo">Fontaine en service</span>','#002ddc','white');
@@ -281,7 +278,7 @@ li.item.cardInfo {
         typeInfoF = "<span i18n='fontaine.type.petillante'>Fontaine pétillante</span>"
         textInfoF = "<span i18n='fontaine.description.petillante'>Eau gazeuse, eau rafraîchie ou tempérée : vous avez le choix ! 17  fontaines pétillantes vous attendent. </span>";
     } else if (type_objet=='BORNE_FONTAINE') {
-        typeInfoF = "<span i18n='fontaine.type.borne'>Borne-fontaine</span>"
+        typeInfoF = "<span i18n='fontaine.type.borne'>Borne fontaine</span>"
         textInfoF = "<span i18n='fontaine.description.borne'>Plus discrète que la Wallace, la borne-fontaine est partout dans la capitale, principalement dans les parcs et jardins.</span>";
     } else if (type_objet=='FONTAINE_ALBIEN') {
         typeInfoF = "<span i18n='fontaine.type.albien'>Fontaine à l'Albien</span>"

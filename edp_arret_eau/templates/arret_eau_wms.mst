@@ -13,7 +13,7 @@
 			</div>
 			<div class="block__card">
 				<div class="subtitle__card">Motif des travaux</div>
-				<div class="text__card textMotif__{{motif}}"><span id="motifTrv_{{feature_ol_uid}}"></span></div>
+				<div class="text__card textMotif__{{motif}}"><span id="motifTrv_{{feature_ol_uid}}">{{motif_lib}}</span></div>
 			</div>
 			<div class="block__card">
 				<div class="subtitle__card">Période prévue</div>
@@ -34,9 +34,11 @@
 	blockAd.innerHTML = street;
 
     // Label du motif
+    /*
     let z = "{{motif}}"
     z = z.replace(/ /g,"_");
     document.getElementById('motifTrv_{{feature_ol_uid}}').innerHTML = mviewer.tr(`edpep.filter.btncheck.${z}`);
+    */
 
     // Format des dates
     const dateDeb = "{{prevu_deb}}";
