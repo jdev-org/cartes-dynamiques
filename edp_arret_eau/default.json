@@ -1,4 +1,5 @@
 {
-  "url_edp": "edp.jdev.fr",
-  "url_data_edp": "edp.jdev.fr"
+  "url_edp": "travaux.eaudeparis.fr",
+  "url_data_edp": "edp.jdev.fr",
+  "sld_url": "gis.jdev.fr/mviewer"
 }
