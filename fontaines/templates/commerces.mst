@@ -77,7 +77,7 @@ adresse_Co.innerHTML = street;
  * =================
 **/
 const place_layer = mviewer?.env?.place_layer || "";
-let LAYER_URL = `https://${mviewer.env?.url_edp}/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${place_layer}&outputFormat=application%2Fjson`;
+let LAYER_URL = `https://${mviewer.env?.url_data_edp}/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${place_layer}&outputFormat=application%2Fjson`;
 const apiId = "{{google_id}}";
 const btnId = "isopen-{{feature_ol_uid}}"
 const btn = document.getElementById(btnId);
