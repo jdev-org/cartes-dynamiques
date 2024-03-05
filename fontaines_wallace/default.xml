@@ -68,7 +68,7 @@
 				name="Fontaines Wallace"
 				type="wms"
 				url="https://{{url_data_edp}}/geoserver/edp/ows"
-                sld="https://{{url_edp}}/mviewer/apps/fontaines_wallace/sld/fontaines_wallace.sld"
+                sld="https://{{url_edp}}/apps/fontaines_wallace/sld/fontaines_wallace.sld"
 				legendurl="apps/fontaines_wallace/img/lgd_fontaines_wallace.png"
 				visible="true"
 				opacity="1"

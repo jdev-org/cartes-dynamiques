@@ -69,7 +69,7 @@
 			<layer id="udi" name="Unités de distribution d'eau potable"  visible="true" tiled="false"
 				searchable="false" queryable="true" 
 				infoformat="application/vnd.ogc.gml" featurecount="1"
-				sld="https://{{url_edp}}/mviewer/apps/edp_qualite_eau/sld/udi.sld" 
+				sld="https://{{url_edp}}/apps/edp_qualite_eau/sld/udi.sld" 
 				url="https://{{url_data_edp}}/geoserver/edp/ows"
 				legendurl="apps/edp_qualite_eau/img/lgd_udi.png" 
 				dynamiclegend ="false"
