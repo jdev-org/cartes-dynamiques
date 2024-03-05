@@ -417,7 +417,6 @@ let checkboxes = document.querySelectorAll(
 );
 checkboxes.forEach(function (checkbox) {
   checkbox.addEventListener("change", function (e) {
-    console.log(e);
     let input = e.target;
     checkOnMap(input);
     // Add class to input checked
