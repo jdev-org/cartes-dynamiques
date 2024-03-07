@@ -1,6 +1,10 @@
 {
   "fr": {
     "navbar.search.placeholder":"Saisir une adresse",
+    "share.title.link":"Lien",
+    "share.copy":"Copier",
+    "share.radio.minimal":"Ultra simplifié",
+    "share.modal.text":"Partager votre carte avec les couches sélectionnées et l'emprise paramétrée :",
     "addon.btnGeoloc.label": "Localisez-moi",
     "addon.socNetwork.title": "Rejoindre la communauté",
     "addon.socNetwork.link.href":"https://www.eaudeparis.fr/",

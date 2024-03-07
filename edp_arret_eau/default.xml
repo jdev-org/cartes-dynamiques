@@ -10,12 +10,6 @@
 			home="https://www.eaudeparis.fr/"
 			showhelp="true"
 			langfile="apps/edp_arret_eau/edpep.i18n.json" lang="fr"
-			iconhelp="question"
-			exportpng="true"
-			measuretools="true"
-			stats="false"
-			statsurl=""
-			coordinates="false"
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
 	/>
@@ -77,6 +71,7 @@
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalInfos" path="apps/commons/addons"/>
 		<extension type="component" id="edp_ep" path="apps/commons/addons"/>
+		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">

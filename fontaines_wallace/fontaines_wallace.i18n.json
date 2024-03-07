@@ -1,6 +1,10 @@
 {
   "fr": {
     "navbar.search.placeholder": "Saisir une adresse",
+    "share.title.link":"Lien",
+    "share.copy":"Copier",
+    "share.radio.minimal":"Ultra simplifié",
+    "share.modal.text":"Partager votre carte avec les couches sélectionnées et l'emprise paramétrée :",
     "home.title": "Les 50 fontaines Wallace à découvrir",
     "home.texte": "Pour le 150ème anniversaire des fontaines Wallace à Paris, nous vous invitons à répondre à ce Quiz. Faites librement et à votre rythme votre parcours des 50 fontaines. Vos réponses reçues entre le 10 septembre et le 21 septembre minuit seront comptabilisées et vous permettront peut-être de gagner une « petite récompense » à retirer dans les jardins des Champs Élysées le WE d’animation du 24-25 septembre 2022. Le Quiz restera accessible en ligne et via les QR-Code au-delà du 21 septembre.",
     "home.btn.gomap": "Voir la carte",
@@ -38,6 +42,9 @@
     "mapslibs.texte.wallace": "Découvrir les fontaines Wallace, symboles de Paris"
   },
   "en": {
+    "share.title.link":"Link",
+    "share.copy":"Copy",
+    "share.modal.text":"Share your map with the layers and the coverage you have set :",
     "home.title": "50 Wallace fountains to discover",
     "home.texte": "To celebrate the 150th anniversary of the Wallace fountains in Paris, we invite you to take this quiz. Take the quiz and explore the 50 fountains at your own pace. Your answers, received between 10 September and midnight on 21 September, will be counted and you could win a «small prize» to be collected from the Champs Élysées gardens on the weekend of 24-25 September 2022. The Quiz will remain accessible online and via QR-Code after 21 September.",
     "home.btn.gomap": "Let's go",
