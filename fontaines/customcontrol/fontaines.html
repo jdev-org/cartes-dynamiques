@@ -11,8 +11,8 @@
         class="btn-check-lgd"
         name="lgd"
         cqltype="fontaines_dispo24"
-        value="'OUI'" />
-      <label class="btn-legend" for="btn-check__dispo24" style="opacity: 1">
+        value="'OUI'"/>
+      <label class="btn-legend" for="btn-check__dispo24" >
         <img src="apps/fontaines/img/fontaine_dispo24.svg" />
         <span i18n="fontaine.type.disponible24">Disponible 24/24h</span>
       </label>
@@ -24,8 +24,10 @@
         class="btn-check-lgd"
         name="lgd"
         cqltype="fontaines_brumisante"
+        cqlcombodispotrue="true"
+        cqlcombodispofalse="true"
         value="'OUI'" />
-      <label class="btn-legend" for="btn-check__brumisation" style="opacity: 1">
+      <label class="btn-legend" for="btn-check__brumisation" >
         <img src="apps/fontaines/img/brumisateur.svg"/>
         <span i18n="fontaine.type.brumisation">Avec brumisation</span>
       </label>
@@ -37,8 +39,10 @@
         class="btn-check-lgd"
         name="lgd"
         cqltype="fontaines_petillante"
+        cqlcombodispotrue="true"
+        cqlcombodispofalse="true"
         value="'OUI'" />
-      <label class="btn-legend" for="btn-check__eau-petillante" style="opacity: 1">
+      <label class="btn-legend" for="btn-check__eau-petillante" >
         <img src="apps/fontaines/img/eau_petillante.svg" />
         <span i18n="fontaine.type.eaupetillante">Eau pétillante</span>
       </label>
@@ -46,11 +50,11 @@
     <div id="btn__blockTypesFontaine" class="input__level-one btn__collapse">
       <button onclick="filterDisplayBlock('btn__blockTypesFontaine', 'blockTypesFontaine')">
         <input
-          type="checkbox"
+          type=""
           id="btn-check__type-point"
-          class="btn-check-lgd"
+          class=""
           name="lgd" />
-        <label class="btn-legend btn-subtitle" style="opacity: 1">
+        <label class="btn-legend btn-subtitle" >
           <img src="apps/fontaines/img/robinet.svg" />
           <span i18n="sidebar.legend.subtitle.type">Type de fontaine</span>
         </label>
@@ -72,8 +76,9 @@
           id="btn-check__commerce"
           class="btn-check-lgd"
           name="lgd"
-          cqltype="commerces" />
-        <label class="btn-legend" for="btn-check__commerce" style="opacity: 1">
+          cqltype="commerces" 
+          cqlcombocommerces="true"/>
+        <label class="btn-legend" for="btn-check__commerce" >
           <img src="apps/fontaines/img/bouteille.svg" style="width: 48px; padding: 0" />
           <span i18n="fontaine.type.commerce">Ici, je choisis l'eau de Paris</span>
         </label>
@@ -85,8 +90,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'BORNE_FONTAINE'" />
-        <label class="btn-legend" for="btn-check9" style="opacity: 1">
+        <label class="btn-legend" for="btn-check9" >
           <img
             src="apps/fontaines/img/BORNE_FONTAINE.svg"
             style="width: 48px; padding: 0" />
@@ -100,8 +108,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FONTNE_WALLACE'" />
-        <label class="btn-legend" for="btn-check1" style="opacity: 1">
+        <label class="btn-legend" for="btn-check1" >
           <img
             src="apps/fontaines/img/FONTNE_WALLACE.svg"
             style="width: 48px; padding: 0" />
@@ -115,8 +126,12 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombobrumisante="true"
+          cqlcombodispofalse="true"
           value="'FONTNE_WALLACE_2EN1'" />
-        <label class="btn-legend" for="btn-check14" style="opacity: 1">
+        <label class="btn-legend" for="btn-check14" >
           <img
             src="apps/fontaines/img/FONTNE_WALLACE_2EN1.svg"
             style="width: 48px; padding: 0" />
@@ -130,8 +145,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FONTAINE_TOTEM'" />
-        <label class="btn-legend" for="btn-check3" style="opacity: 1">
+        <label class="btn-legend" for="btn-check3" >
           <img
             src="apps/fontaines/img/FONTAINE_TOTEM.svg"
             style="width: 48px; padding: 0" />
@@ -145,8 +163,12 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombobrumisante="true"
+          cqlcombodispofalse="true"
           value="'FONTAINE_TOTEM_2EN1'" />
-        <label class="btn-legend" for="btn-check15" style="opacity: 1">
+        <label class="btn-legend" for="btn-check15" >
           <img
             src="apps/fontaines/img/FONTAINE_TOTEM_2EN1.svg"
             style="width: 48px; padding: 0" />
@@ -160,8 +182,12 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombopetillante="true"
+          cqlcombodispofalse="true"
           value="'FTNE_PETILLANTE'" />
-        <label class="btn-legend" for="btn-check4" style="opacity: 1">
+        <label class="btn-legend" for="btn-check4" >
           <img
             src="apps/fontaines/img/FTNE_PETILLANTE.svg"
             style="width: 48px; padding: 0" />
@@ -175,8 +201,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FTNE_MILLENAIRE'" />
-        <label class="btn-legend" for="btn-check5" style="opacity: 1">
+        <label class="btn-legend" for="btn-check5" >
           <img
             src="apps/fontaines/img/FTNE_MILLENAIRE.svg"
             style="width: 48px; padding: 0" />
@@ -190,8 +219,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FONTAINE_ARCEAU'" />
-        <label class="btn-legend" for="btn-check6" style="opacity: 1">
+        <label class="btn-legend" for="btn-check6" >
           <img
             src="apps/fontaines/img/FONTAINE_ARCEAU.svg"
             style="width: 48px; padding: 0" />
@@ -205,8 +237,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FTNE_POING_EAU'" />
-        <label class="btn-legend" for="btn-check7" style="opacity: 1">
+        <label class="btn-legend" for="btn-check7" >
           <img
             src="apps/fontaines/img/FTNE_POING_EAU.svg"
             style="width: 48px; padding: 0" />
@@ -220,8 +255,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FONTAINE_ALBIEN'" />
-        <label class="btn-legend" for="btn-check8" style="opacity: 1">
+        <label class="btn-legend" for="btn-check8" >
           <img
             src="apps/fontaines/img/FONTAINE_ALBIEN.svg"
             style="width: 48px; padding: 0" />
@@ -235,8 +273,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FONTAINE_BOIS'" />
-        <label class="btn-legend" for="btn-check2" style="opacity: 1">
+        <label class="btn-legend" for="btn-check2" >
           <img
             src="apps/fontaines/img/BORNE_FONTAINE.svg"
             style="width: 48px; padding: 0" />
@@ -250,8 +291,12 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_type"
+          cqlcombodispo24h="true"
+          cqlcombobrumisante="true"
+          cqlcombodispotrue="true"
+          cqlcombodispofalse="true"
           value="'FTNE_MAT_SOURCE_2EN1'" />
-        <label class="btn-legend" for="btn-check16" style="opacity: 1">
+        <label class="btn-legend" for="btn-check16" >
           <img
             src="apps/fontaines/img/FTNE_MAT_SOURCE_2EN1.svg"
             style="width: 48px; padding: 0" />
@@ -262,11 +307,11 @@
     <div id="btn__blockLegende" class="input__level-one btn__collapse">
       <button onclick="filterDisplayBlock('btn__blockLegende', 'blockLegend')">
         <input
-          type="checkbox"
+          type=""
           id="btn-check__legende"
-          class="btn-check-lgd"
+          class=""
           name="lgd" />
-        <label class="btn-legend btn-subtitle" style="opacity: 1">
+        <label class="btn-legend btn-subtitle" >
           <span i18n="sidebar.legend.subtitle.legende">Légende</span>
         </label>
         <span
@@ -287,8 +332,9 @@
           id="btn-check__co"
           class="btn-check-lgd"
           name="lgd"
-          cqltype="commerces"/>
-        <label class="btn-legend" for="btn-check__co" style="opacity: 1">
+          cqltype="commerces"
+          cqlcombocommerces="true"/>
+        <label class="btn-legend" for="btn-check__co" >
           <img
             src="apps/fontaines/img/commerce2.svg"
             style="width: 48px; padding: 5px" />
@@ -302,8 +348,11 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_d"
+          cqlcombopetillante="true"
+          cqlcombobrumisante="true"
+          cqlcombodispo24h="true"
           value="'OUI'" />
-        <label class="btn-legend" for="btn-check11" style="opacity: 1">
+        <label class="btn-legend" for="btn-check11" >
           <img
             src="apps/fontaines/img/fontaine_disponible2.svg"
             style="width: 48px; padding: 5px" />
@@ -317,8 +366,10 @@
           class="btn-check-lgd"
           name="lgd"
           cqltype="fontaines_d"
+          cqlcombopetillante="true"
+          cqlcombobrumisante="true"
           value="'NON'" />
-        <label class="btn-legend" for="btn-check12" style="opacity: 1">
+        <label class="btn-legend" for="btn-check12" >
           <img
             src="apps/fontaines/img/fontaine_indisponible2.svg"
             style="width: 48px; padding: 5px" />
@@ -354,15 +405,22 @@ function resetFilter() {
   list_brumisante = [];
   fontaines_filters = [];
   deleteCQLFilter();
-  // Opacity 1 for all labels
-  let labels = document.querySelectorAll(".btn-check-lgd ~ label");
-  labels.forEach(function (label) {
-    label.style.opacity = "1";
-  });
   // Delete checkOnMap class input
   let checkOnMap = document.querySelectorAll(".btn-check-lgd.checkOnMap");
   checkOnMap.forEach(function (checkbox) {
     checkbox.classList.remove("checkOnMap");
+  });
+  let allInputsDisabled = document.querySelectorAll("#inputFilterCustom input[type=checkbox][disabled]");
+  allInputsDisabled.forEach(function (el) {
+    el.disabled = false;
+  });
+  let allinputIsClicked = document.querySelectorAll("#inputFilterCustom .inputIsClicked");
+  allinputIsClicked.forEach(function (el) {
+    el.classList.remove("inputIsClicked");
+  });
+  let allinputCanSelected = document.querySelectorAll("#inputFilterCustom .inputCanSelected");
+  allinputCanSelected.forEach(function (el) {
+    el.classList.remove("inputCanSelected");
   });
   // Display all layers
   mviewer.getLayer("commerce").layer.setVisible(true);
@@ -411,7 +469,32 @@ function checkOnMap(input) {
   }
 }
 
-// Get two level inputs in Type fontaines
+//Function to filter only selectable inputs in the legend
+function inputsLegendFilter(inputClicked,inputsToSelect){
+  let inputSelected = document.querySelectorAll("#inputFilterCustom input[type=checkbox].inputIsClicked");
+  // Si je clique sur un premier input
+  if(inputSelected.length == 0){
+    inputClicked.classList.toggle("inputIsClicked");    
+    if (inputsToSelect.length > 0) {
+      //Add the class inputCanSelected to all inputs that can be combined
+      inputsToSelect.forEach(function (el) {
+        el.classList.add("inputCanSelected");
+      });
+      //Add the disabled property to all inputs that cannot be combined
+      let allInputsNotCanSelected = document.querySelectorAll("#inputFilterCustom input[type=checkbox]:not(.inputCanSelected):not(.inputIsClicked)");
+      allInputsNotCanSelected.forEach(function (el) {
+        el.disabled = true;
+      });
+    }
+  } else {
+    let inputIsClicked = inputClicked.classList.contains("inputIsClicked"); 
+    if (inputIsClicked){
+      resetFilter();
+    }
+  }
+}
+
+// Function to manage the filter according to the selected input
 let checkboxes = document.querySelectorAll(
   "#inputFilterCustom input[type=checkbox][name=lgd]",
 );
@@ -429,18 +512,36 @@ checkboxes.forEach(function (checkbox) {
     switch(cqltype) {
       case "fontaines_dispo24":
         valueInList(list_dispo24, cqlvalue);
+        let inputsDispo24hTrue = document.querySelectorAll("#inputFilterCustom input[type=checkbox][cqlcombodispo24h=true]");
+        inputsLegendFilter(input,inputsDispo24hTrue);
         break;
       case "fontaines_d":
         valueInList(list_dispo, cqlvalue);
+        if(cqlvalue == "'NON'"){
+          let inputsDispoFalse = document.querySelectorAll("#inputFilterCustom input[type=checkbox][cqlcombodispofalse=true]");
+          inputsLegendFilter(input,inputsDispoFalse);
+        }else{
+          let inputsDispoTrue = document.querySelectorAll("#inputFilterCustom input[type=checkbox][cqlcombodispotrue=true]");
+          inputsLegendFilter(input,inputsDispoTrue);
+        }
         break;
       case "fontaines_type":
         valueInList(list_types, cqlvalue);
         break;
       case "fontaines_petillante":
         valueInList(list_petillante, cqlvalue);
+        let inputsPetillanteTrue = document.querySelectorAll("#inputFilterCustom input[type=checkbox][cqlcombopetillante=true]");
+        inputsLegendFilter(input,inputsPetillanteTrue);        
         break;
       case "fontaines_brumisante":
         valueInList(list_brumisante, cqlvalue);
+        let inputsBrumisanteTrue = document.querySelectorAll("#inputFilterCustom input[type=checkbox][cqlcombobrumisante=true]");
+        inputsLegendFilter(input,inputsBrumisanteTrue);
+        break;
+      case "commerces":
+        let inputsCommerceTrue = document.querySelectorAll("#inputFilterCustom input[type=checkbox][cqlcombocommerces=true]");
+        console.log(inputsCommerceTrue)
+        inputsLegendFilter(input,inputsCommerceTrue);
         break;
       default:
         null;
@@ -546,6 +647,18 @@ checkboxes.forEach(function (checkbox) {
 
 </script>
 <style>
+  .inputCanSelected.checkOnMap ~ label, .inputIsClicked.checkOnMap ~ label {
+      color: var(--mycolor)!important;
+  }
+
+  #inputFilterCustom input:disabled ~ label {
+    cursor: no-drop;
+  }
+
+ #inputFilterCustom input.inputCanSelected ~ label, #inputFilterCustom input.inputIsClicked ~ label {
+    opacity: 1!important;
+  }
+
   .btn-subtitle span {
       font-weight:600;
   }
@@ -563,11 +676,11 @@ checkboxes.forEach(function (checkbox) {
   } 
 
   #inputFilterCustom input.checkOnMap ~ label {
-    opacity: 1 !important;
+    opacity: 1!important;
   }
 
   #inputFilterCustom:has(.checkOnMap) .btn-check-lgd:not(.checkOnMap) ~ label {
-    opacity: 0.4 !important;
+    opacity: 0.4;
   }
 
   .btn__collapse.icon-blockDisplay svg {
