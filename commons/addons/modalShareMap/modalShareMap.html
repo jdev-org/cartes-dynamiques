@@ -1,0 +1,95 @@
+<!-- Button -->
+<button data-toggle="modal" data-target="#modalShareMap" id="btnModalShareMap" title="" i18n="tbar.right.share" tabindex="111" accesskey="Partager cette carte" class="btn btn-default btn-raised" data-original-title="Partager cette carte">
+  <i class="fas fa-share-alt"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalShareMap" tabindex="-1" role="dialog" aria-labelledby="modalShareMap">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h3 i18n="share.panel.title">Partager cette carte</h3>
+        <div class="blockShare__mode">
+          <p>
+            <b i18n="share.modal.title">Mode d'affichage</b>
+          </p>
+          <p i18n="share.modal.text">Partager votre carte avec les couches sélectionnées et l'emprise paramétrée :</p>
+          <div class="inputShare__mode">
+            <label class="radio-inline">
+              <input type="radio" value="Normal" name="mv-display-mode" checked="checked" i18n="share.radio.normal">
+              <div style="display: inline" i18n="share.radio.normal">Normal</div>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="mv-display-mode" value="s">
+              <div style="display: inline" i18n="share.radio.simple">Simple</div>
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="mv-display-mode" value="u">
+              <div style="display: inline" i18n="share.radio.minimal">Ultra simplifié</div>
+            </label>
+          </div>
+        </div>
+        <hr>
+        <div class="blockShare__mode">
+          <p>
+            <b i18n="share.modal.type">Mode de partage</b>
+          </p>
+          <div class="iconShare__list">
+            <a id="btnShareLink">
+              <img src="apps/commons/icons/icon_link.svg" alt="Icon link" />
+              <span i18n="share.title.link">Lien</span>
+            </a>
+            <a id="btnShareEmail" href="" target="_blank">
+              <img src="apps/commons/icons/icon_email.svg" alt="Icon email" />
+              <span>E-mail</span>
+            </a>
+            <a id="btnShareLinkedin" href="" target="_blank">
+              <img src="apps/commons/icons/icon_linkedin.svg" alt="Icon linkedin" />
+              <span>Linkedin</span>
+            </a>
+            <a id="btnShareX" href="" target="_blank">
+              <img src="apps/commons/icons/icon_twitter.svg" alt="Icon twitter" />
+              <span>X</span>
+            </a>
+            <a id="btnShareFacebook" href="" target="_blank">
+              <img src="apps/commons/icons/icon_facebook.svg" alt="Icon facebook" />
+              <span>Facebook</span>
+            </a>
+            <a id="btnShareWhatapp" href="" target="_blank">
+              <img src="apps/commons/icons/icon_whatsapp.svg" alt="Icon whatsapp" />
+              <span>WhatsApp</span>
+            </a>
+            <a id="btnShareIframe">
+              <img src="apps/commons/icons/icon_iframe.svg" alt="Icon iframe" />
+              <span>Intégration</span>
+            </a>
+          </div>
+        </div>
+        <hr>
+        <div class="blockShare__mode" id="blockLink">
+          <div class="blockShare__title">
+            <p>
+              <b i18n="share.title.link">Lien</b>
+            </p>
+            <button class="btn" onclick="mviewer.copyToClipboard('blockLinkUrl');"><span i18n="share.copy">Copier</span></button>
+          </div>
+          <div class="textEdit" id="blockLinkUrl" contentEditable></div>
+        </div>
+        <div class="blockShare__mode" id="blockIframe">
+          <div class="blockShare__title">
+            <p>
+              <b i18n="share.title.iframe">Code d'intégration en iframe</b>
+            </p>
+            <button class="btn" onclick="mviewer.copyToClipboard('blockIframeUrl');"><span i18n="share.copy">Copier</span></button>
+          </div>
+          <div class="textEdit" id="blockIframeUrl" contentEditable></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
