@@ -39,7 +39,7 @@ const initTimeSelectors = (onClick) => {
   timeForm.createArea();
   timeForm.createSlider();
   timeForm.createCalendar();
-  timeForm.showDateControler();
+  timeForm.showDateControler("slider");
 };
 
 const onTimeChange = (formInstance, event, selectedDate) => {
@@ -119,13 +119,13 @@ function reset() {
 
 const createFilters = async () => {    
   const arrondissements = await getArrondissements();
-  const motifs = getTravauxValues("motif");
+  //const motifs = getTravauxValues("motif");
   const statuts = getTravauxValues("statut");
   const typeReseau = getTravauxValues("nature_res");
 
   buttonFilterType("Types de réseau", _.uniq(typeReseau), onTypeReseauClick, "xs", true);
   switchFilter("Statuts des travaux", _.uniq(statuts), onStatusClick);
-  buttonFilterType("Motifs des travaux", _.uniq(motifs), onMotifClick, "xs", true, true);
+  //buttonFilterType("Motifs des travaux", _.uniq(motifs), onMotifClick, "xs", true, true);
   buttonFilterType(
     "Arrondissements",
     _.sortBy(arrondissements.map((a) => a.value)),

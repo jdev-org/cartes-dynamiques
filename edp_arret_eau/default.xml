@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Travaux en cours et à venir"
+			title="Info Travaux"
 			id="travaux_eau"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
@@ -59,7 +59,7 @@
 			localities="true"
 			features="false"
 			inputlabel="Recherche d'adresse"
-			svgcolor="#002ddc"
+			svgcolor="#002ddc00"
 			closeafterclick="true"
 			querymaponclick="true"/>
 

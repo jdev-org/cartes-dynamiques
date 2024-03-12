@@ -7,7 +7,7 @@ const RES_CLUSTER = 6;
  * - first : EN COURS statut value
  * - second : PREVU statut value
  */
-const DONUT_COLORS = ["rgba(255,100,125,1)", "rgba(255,200,150,1)"];
+const DONUT_COLORS = ["rgba(255,200,150,1)","rgba(255,100,125,1)"];
 /**
  * Display layer as simple point not clustered
  */
@@ -72,9 +72,9 @@ const clusterStyleExt = (radiusBackGround, radiusChart, size, features) => {
         type: "donut",
         radius: radiusBackGround,
         displacement: [0, 0],
-        data: [
-          !_.isEmpty(features["EN COURS"]) ? features["EN COURS"].length : 0,
+        data: [          
           !_.isEmpty(features["PREVU"]) ? features["PREVU"].length : 0,
+          !_.isEmpty(features["EN COURS"]) ? features["EN COURS"].length : 0,
         ],
         colors: DONUT_COLORS,
         rotateWithView: true,

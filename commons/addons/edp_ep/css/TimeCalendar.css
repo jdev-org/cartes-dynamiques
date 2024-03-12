@@ -66,3 +66,65 @@
     color: var(--mycolor);
     font-weight:500;
   }
+
+  .switchRadio-time {
+    display: flex;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .switchRadio-time  input {
+    position: absolute !important;
+    clip: rect(0, 0, 0, 0);
+    height: 1px;
+    width: 1px;
+    border: 0;
+    overflow: hidden;
+  }
+
+  .switchRadio-time  label {
+    background-color: var(--mycolor);
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    padding: 7px 2px;
+    margin-right: -1px;
+    transition: all 0.3s ease-in-out;
+    margin: 0;
+  }
+
+  .switchRadio-time  label:hover {
+    cursor: pointer;
+  }
+
+  .switchRadio-time  label span {
+    padding: 4px 8px;
+    font-weight: 500;
+  }
+
+  .switchRadio-time  input:checked + label span {
+    background-color: white;
+    box-shadow: none;
+    color: var(--mycolor);
+    border-radius: 15px;
+  }
+
+  .switchRadio-time  label:first-of-type {
+    border-radius: 17px 0 0 17px;
+  }
+
+  .switchRadio-time  label:last-of-type {
+    border-radius: 0 17px 17px 0;
+  }
+
+  .filter-form-time {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.time-filter {
+    margin-top: 1em;
+}
