@@ -36,11 +36,14 @@ class TimeForm {
   }
 
   initSelectorClick() {
-    const selectorId = this.selector.getId();
-    document.getElementById(selectorId).addEventListener("click", (e) => {
-      this.selector.setActivate();
-      this.changeValue(this.values.filter((v) => v != this.value)[0]);
-    });
+    let inputsSelectorTime = document.querySelectorAll('.switchRadio-time input');
+    inputsSelectorTime.forEach((element) => 
+      element.addEventListener("click", () => {
+        let v = element.value;
+        this.resetTime();
+        this.showDateControler(v);
+      })
+    );
   }
 
   setOnClick(func) {
@@ -64,9 +67,23 @@ class TimeForm {
     this.element.appendChild(childTitle);
 
     // switch type selector
-    this.selector = new Switch(this.value);
-    this.selector.create();
-    this.element.insertAdjacentHTML("beforeend", this.selector.get());
+    this.selector = `<div class="switchRadio-time" id="toto">
+    <input
+        type="radio"
+        id="radio-slider"
+        name="switch-radio"
+        value="slider" autocomplete="off" checked/>
+    <label for="radio-slider">
+      <span>Frise</span></label>
+      <input
+      type="radio"
+      id="radio-calendar"
+      name="switch-radio"
+      value="calendar" autocomplete="off"/>
+      <label for="radio-calendar">
+      <span>Calendrier</span></label>
+    </div>`
+    this.element.insertAdjacentHTML("beforeend", this.selector);
     this.parent.insertAdjacentElement("beforeend", this.element);
     this.initSelectorClick();
   }
@@ -109,8 +126,8 @@ class TimeForm {
     }
   };
 
-  showDateControler = () => {
-    if (this.value === "slider") {
+  showDateControler = (value) => {
+    if (value === "slider") {
       this.slider.element.style.display = "";
       this.calendar.element.style.display = "none";
     } else {

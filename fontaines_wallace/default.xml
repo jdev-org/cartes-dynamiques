@@ -10,12 +10,7 @@
 			favicon="apps/commons/theme_edp/favicon.ico"		
             help="apps/fontaines_wallace/templates/home.html"
 			home="https://www.eaudeparis.fr/"
-			showhelp="true"			
-			exportpng="true"
-			measuretools="true"
-			stats="false"
-			statsurl=""
-			coordinates="false"
+			showhelp="true"		
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
 	/>
@@ -60,6 +55,7 @@
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
         <extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
+		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
 	<themes mini="true" legendmini="false">
 		<theme name="Fontaines Wallace" collapsed="true" id="eaudeparis" icon="fas fa-tint">

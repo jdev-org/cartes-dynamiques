@@ -15,6 +15,7 @@ class TimeSlider {
     const parentDiv = document.createElement("div");
     parentDiv.classList.add("col-xs-12");
     parentDiv.classList.add("filter");
+    parentDiv.classList.add("time-slider");
     parentDiv.classList.add("time-filter");
     const input = document.createElement("input");
     input.id = this.id;

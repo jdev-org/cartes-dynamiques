@@ -296,7 +296,7 @@ li.item.cardInfo {
         typeInfoF = "<span i18n='fontaine.type.wallace'>Fontaine Wallace</span>"
         textInfoF = "<span i18n='fontaine.description.wallace'>C'est la plus célèbre des fontaines parisiennes. Ses quatre cariatides encouragent passantes et passants à se désaltérer depuis plus de 150 ans.</span>";
     } else if (type_objet=='FTNE_MILLENAIRE') {
-        typeInfoF = "<span i18n='fontaine.type.petillante'>Fontaine Millénaire</span>"
+        typeInfoF = "<span i18n='fontaine.type.millenaire'>Fontaine Millénaire</span>"
         textInfoF = "<span i18n='fontaine.description.millenaire'>Ses deux silhouettes accolées dos à dos sont surnommées les « porteuses d’eau ». Lorsque l'eau y coule, la fontaine donne l’impression d'une main tendue vers les passant·es. </span>";
     } else if (type_objet=='FTNE_POING_EAU') {
         typeInfoF = "<span i18n='fontaine.type.poing'>Fontaine Poing d'eau</span>"

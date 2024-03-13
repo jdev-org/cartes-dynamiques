@@ -1,6 +1,11 @@
 {
   "fr": {
     "navbar.search.placeholder": "Saisir une adresse",
+    "share.title.link":"Lien",
+    "share.copy":"Copier",
+    "share.radio.minimal":"Ultra simplifié",
+    "share.modal.text":"Partager votre carte avec les couches sélectionnées et l'emprise paramétrée :",
+    "tbar.right.zoom.in":"Zoom avant",
     "home.title": "Où boire de l'eau à Paris ?",
     "home.texte": "1200 fontaines vous attendent dans les rues, parcs et jardins parisiens. Vous pouvez aussi remplir votre gourde gratuitement dans l'un des 1000 commerces partenaires du réseau « Ici, je choisis l'eau de Paris ».",
     "home.btn.gomap": "Voir la carte",
@@ -71,6 +76,9 @@
     "mapslibs.texte.wallace": "Découvrir les fontaines Wallace, symboles de Paris"
   },
   "en": {
+    "share.title.link":"Link",
+    "share.copy":"Copy",
+    "share.modal.text":"Share your map with the layers and the coverage you have set :",
     "home.title": "Free drinking water in Paris",
     "home.texte": "1.200 fountains are available in the streets, parks and gardens of Paris. You can also fill your water bottle for free in one of the 1.000 partner stores of the « I choose Paris Water ».",
     "home.btn.gomap": "Let's go",

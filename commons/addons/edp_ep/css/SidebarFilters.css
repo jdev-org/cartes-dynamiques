@@ -38,14 +38,6 @@
     color: var(--bleu);
 }
 
-#legend .layerdisplay-title, #legend .mv-layer-options, #legend .icon-options {
-    display: none;
-}
-
-.mv-layer-details img {
-    max-width: 95%!important;
-}
-
 #filterArea .form-accordion-button {
     background: none;
     border: none;
