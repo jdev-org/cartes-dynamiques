@@ -67,7 +67,7 @@ class TimeForm {
     this.element.appendChild(childTitle);
 
     // switch type selector
-    this.selector = `<div class="switchRadio-time" id="toto">
+    this.selector = `<div class="switchRadio-time" id="switchRadioFilterTime">
     <input
         type="radio"
         id="radio-slider"

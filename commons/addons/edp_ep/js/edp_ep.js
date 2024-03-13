@@ -42,13 +42,14 @@ const initTimeSelectors = (onClick) => {
   timeForm.showDateControler("slider");
 };
 
-const onTimeChange = (formInstance, event, selectedDate) => {
+const onTimeChange = (formInstance, event, selectedDate) => {  
   // prevu_deb
   // prevu_fin
   travauxCqlFactory.cleanFilter("prevu_deb");
   travauxCqlFactory.cleanFilter("prevu_fin");
   travauxCqlFactory.cleanFilter("date");
-  if (selectedDate && formInstance.value === "slider") {
+  let timeFilter = document.querySelector('#switchRadioFilterTime input[type="radio"]:checked')  
+  if (selectedDate && timeFilter.value === "slider") {
     // prevu_deb < (dateNow + weeks selected)
     // prevu_fin >= date now
     travauxCqlFactory.addGroupedFilter(
