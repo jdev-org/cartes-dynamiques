@@ -216,6 +216,52 @@ const pointSource = new ol.source.Vector({
 });
 
 /**
+ * Dynamic legend - Get statistics for the pie when featuresloadend
+ */
+pointSource.on("featuresloadend", () => {
+  let features = pointSource.getFeatures();
+  // Adding the total number of works to the center pie
+  let numberPie = document.querySelector('#dynamicLegendPie #numberTotal');
+  let nbTotal = features.length;
+  numberPie.innerHTML = nbTotal;
+  // Calculating work in progress and planned
+  let featuresListEnCours = [];
+  let featuresListPrevu = [];
+  features.forEach(feature => {
+      const props = feature.getProperties();
+      let statut = props.statut;
+      if(statut == "EN COURS"){
+        featuresListEnCours.push(statut);
+      }else{
+        featuresListPrevu.push(statut);
+      }
+  });  
+  let nbEnCours = featuresListEnCours.length;
+  let nbPrevu = featuresListPrevu.length;
+  // Management of color pie and label display according to statistics
+  let backgroundPie;
+  let urlBackgroundLabel;
+  if(nbEnCours == 0 && nbPrevu == 0){
+    backgroundPie = `conic-gradient(#ffffff 0% 0%, #ffffff 0% 100%)`;
+    urlBackgroundLabel = 'url(apps/edp_arret_eau/img/label_none_legend.svg)';
+  } else if(nbEnCours > 0 && nbPrevu == 0){
+    backgroundPie = `conic-gradient(#faca99 0% 0%, #f66c7f 0% 100%)`;
+    urlBackgroundLabel = 'url(apps/edp_arret_eau/img/label_encours_legend.svg)';
+  } else if(nbEnCours == 0 && nbPrevu > 0){
+    backgroundPie = `conic-gradient(#faca99 0% 100%, #f66c7f 0% 0%)`;
+    urlBackgroundLabel = 'url(apps/edp_arret_eau/img/label_prevus_legend.svg)';
+  } else {
+    let percentPrevu = nbPrevu*100/nbTotal;
+    backgroundPie = `conic-gradient(#faca99 0% ${percentPrevu}%, #f66c7f 0% 100%)`;
+    urlBackgroundLabel = 'url(apps/edp_arret_eau/img/label_all_legend.svg)';
+  }
+  let chartPie = document.getElementById('chartPie');
+  let labelPie = document.getElementById('labelPie');
+  chartPie.style.background = backgroundPie;
+  labelPie.style.backgroundImage = urlBackgroundLabel;
+})
+
+/**
  * create vector layer
  */
 let layer = new ol.layer.Vector({
@@ -252,11 +298,13 @@ const handle = function (clusters, views) {
       featuresInCluster.forEach((feature) => {
         ol.extent.extend(clusterExtent, feature.getGeometry().getExtent());
       });
-      var bufferedExtent = ol.extent.buffer(
-        clusterExtent,
-        ol.extent.getWidth(clusterExtent) / 1.5
-      );
-      view.fit(bufferedExtent, { duration: 500, padding: [50, 50, 50, 50] });
+      //var bufferedExtent = ol.extent.buffer(
+        //clusterExtent,
+        //ol.extent.getWidth(clusterExtent) / 5
+      //);
+      var centerCluster = ol.extent.getCenter(clusterExtent);
+      mviewer.zoomToLocation(centerCluster[0],centerCluster[1],15,false,"EPSG:3857");
+      //view.fit(bufferedExtent, { duration: 500, padding: [20,20,20,20] });
       return;
     } else {
       clusters.forEach((c) => {

@@ -31,11 +31,17 @@
 	</li>
 <script>
     // Format de l'adresse
-	let street = "{{adresse}}";	
-	let arr = street.lastIndexOf(" ");
-    street = street.substring(0, arr);
+    let newAdress;
+	let adress = "{{adresse}}";	
+    let rue = adress.split(" ").slice(0, -3).join(" ");
+    let numArr = adress.replace(/\D/g,'');
+    if (numArr == "1") {
+        newAdress = rue + ', PARIS ' + numArr + '<sup>er</sup>';
+    } else {
+        newAdress = rue + ', PARIS ' + numArr + '<sup>e</sup>';
+    }
 	let blockAd = document.getElementById('adressTrv_{{feature_ol_uid}}');
-	blockAd.innerHTML = street;
+	blockAd.innerHTML = newAdress;
 
     // Label du motif
     /*
@@ -53,7 +59,6 @@
     const dateReaderF = moment(dateFin, "YYYYMMDDHHmmss");
     const dateOutputF = dateReaderF.format("DD/MM/YYYY hh:mm");
     document.getElementById("dateFin_{{feature_ol_uid}}").innerHTML = dateOutputF;
-
 	
 </script>
 <style>
@@ -79,6 +84,9 @@
 
 #right-panel .list-group-item {
     padding: 0!important;
+}
+.xs #modal-panel .panel-heading {
+    display: none;
 }
 
 .card__travaux {

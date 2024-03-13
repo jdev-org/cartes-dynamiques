@@ -1,1 +1,66 @@
-<div></div>
+<div>
+    <div id="dynamicLegendPie">
+        <div class="label-pie" id="labelPie" style="background-image: url(apps/edp_arret_eau/img/label_all_legend.svg)"></div>
+        <div class="numberCircle-chart"><span id="numberTotal"></span></div>
+        <div class="pie-chart" id="chartPie" style="background: conic-gradient(#faca99 0% 50%, #f66c7f 0% 100%)"></div>
+        <div class="background-pie"></div>
+    </div>
+    <div id="section_date_maj"></div>
+</div>
+<style>
+    .label-pie{
+        width: 100%;
+        position: absolute;
+        height: 170px;
+        z-index: 10;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .background-pie{
+        background-image: url(apps/edp_arret_eau/img/background_legend.svg);
+        width: 100%;
+        background-position: center;
+        position: absolute;
+        height: 100%;
+        z-index: -2;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .numberCircle-chart {
+        width: 70px;
+        height: 70px;
+        background-color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3em;
+        color: var(--mycolor);
+        font-weight: 600;
+        position: absolute;
+    }
+    #dynamicLegendPie {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: 1em 0;
+    }
+    .pie-chart {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+    }
+    #section_date_maj {
+        color: #a7a7a7;
+        margin: 2.5em 0 !important;
+        font-family: var(--myfont);
+        font-size: 12.5px;
+    }
+    #legend .layerdisplay-title, #legend .layerdisplay-legend, #legend .mv-layer-options .form-group-opacity, #legend .icon-options{
+        display: none;
+    }
+    .mv-layer-details img {
+        max-width: 95%!important;
+    }
+</style>

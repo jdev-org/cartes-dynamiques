@@ -60,6 +60,8 @@
 			features="false"
 			inputlabel="Recherche d'adresse"
 			svgcolor="#002ddc00"
+			animate="true"
+			duration="500"
 			closeafterclick="true"
 			querymaponclick="true"/>
 
@@ -86,7 +88,6 @@
 					visible="true"
 					tiled="false"
 					opacity="1"
-					legendurl="apps/edp_arret_eau/img/legende_new.png"
 					filter="nature_res='EP'"
 					expanded="true"
 					showintoc="true"
