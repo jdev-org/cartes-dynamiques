@@ -96,6 +96,13 @@ export class cqlWfsFactory {
     this.updateCqlParam();
   }
 
+  addGroupedFilterExpression(name, exp) {
+    let filter = exp;
+    filter = `(${filter})`;
+    this.grouppedFields[name] = filter;
+    this.updateCqlParam();
+  }
+
   getCqlExp(operator = "OR") {
     let filter = "";
     Object.keys(this.filters).forEach((f, i) => {

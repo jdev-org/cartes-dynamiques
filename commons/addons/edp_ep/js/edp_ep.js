@@ -38,7 +38,8 @@ const initTimeSelectors = (onClick) => {
   }
   timeForm.createArea();
   timeForm.createSlider();
-  timeForm.createCalendar();
+  timeForm.createCalendar('date-start','Date de début');
+  timeForm.createCalendar('date-end','Date de fin');
   timeForm.showDateControler("slider");
 };
 
@@ -48,7 +49,7 @@ const onTimeChange = (formInstance, event, selectedDate) => {
   travauxCqlFactory.cleanFilter("prevu_deb");
   travauxCqlFactory.cleanFilter("prevu_fin");
   travauxCqlFactory.cleanFilter("date");
-  let timeFilter = document.querySelector('#switchRadioFilterTime input[type="radio"]:checked')  
+  let timeFilter = document.querySelector('#switchRadioFilterTime input[type="radio"]:checked');
   if (selectedDate && timeFilter.value === "slider") {
     // prevu_deb < (dateNow + weeks selected)
     // prevu_fin >= date now
@@ -58,14 +59,17 @@ const onTimeChange = (formInstance, event, selectedDate) => {
       [`<= ${selectedDate}`, `>= ${moment().format(formInstance.getDateFormat())}`],
       "AND"
     );
-  } else if (selectedDate) {
-    // PREVU_DEB <= date <= PREVU_FIN
-    travauxCqlFactory.addGroupedFilter(
-      "date",
-      ["prevu_deb", "prevu_fin"],
-      [`<= ${selectedDate}`, `>= ${selectedDate}`],
-      "AND"
-    );
+  } else if (selectedDate && timeFilter.value === "calendar") {
+    let dateStart = document.querySelector('input.date-start').value;
+    dateStart = moment(dateStart, "DD-MM-YYYY").format('YYYYMMDDHHmmss');
+    let dateEnd = document.querySelector('input.date-end').value;
+    dateEnd = moment(dateEnd, "DD-MM-YYYY").add({hours:23,minutes:59}).format('YYYYMMDDHHmmss');  
+    if(dateStart != 'Invalid date' && dateEnd != 'Invalid date'){
+      travauxCqlFactory.addGroupedFilterExpression(
+        "date",
+        `(prevu_deb >= ${dateStart} AND prevu_deb <= ${dateEnd}) OR (prevu_fin >= ${dateStart} AND prevu_fin <= ${dateEnd}) OR (prevu_deb <= ${dateStart} AND prevu_fin >= ${dateEnd})`        
+      );
+    }    
   }
   travauxCqlFactory.updateSourceUrl();
 };
@@ -149,12 +153,13 @@ const resetFilters = () => {
 };
 const init = async () => {
   travauxCqlFactory.setSource(mviewer.getLayer("edp_ep").layer.getSource().getSource());
-  const parent = document.getElementById("sidebarBody");
-  // filer panel area
-  parent.insertAdjacentHTML(
-    "afterbegin",
-    "<div id='filterArea' class='filters-area'></12>"
-  );
+  //const parent = document.getElementById("sidebarBody");
+  mviewer.waitForElm('#sidebarBody').then((elm) => {                   
+    elm.insertAdjacentHTML(
+      "afterbegin",
+      "<div id='filterArea' class='filters-area'></12>"
+    );
+  }); 
   // reset button
   const btnId = _.uniqueId();
   const btn = `<h4 id="headerFilter" class="">
@@ -171,9 +176,11 @@ const init = async () => {
       </svg>
     </button>
   </h4>`;
-  document.getElementById("sidebarHeader").insertAdjacentHTML("beforeend", btn);
-  // reset click action
-  document.getElementById(btnId).addEventListener("click", resetFilters);
+  mviewer.waitForElm('#sidebarHeader').then((elm) => {                   
+    elm.insertAdjacentHTML("beforeend", btn);
+    document.getElementById(btnId).addEventListener("click", resetFilters);
+  }); 
+  // reset click action  
   // create all filters
   createFilters();
 };
