@@ -94,12 +94,15 @@ class TimeForm {
     timeSlider.slider.on("change", this.sliderChange);
     this.slider = timeSlider;
   }
-  createCalendar() {
+  createCalendar(className,placeholder,config) {
     const timeDatePicker = new TimeCalendar(this.element, {
       value: 5,
       startView: 0,
       todayHighlight: true,
-    });
+      format: 'dd/mm/yyyy',
+      language: "fr",
+      ...config
+    },className,placeholder);
     timeDatePicker.create();
     timeDatePicker.datepicker.on("changeDate", this.datePickerChange);
     this.calendar = timeDatePicker;
@@ -127,11 +130,14 @@ class TimeForm {
   };
 
   showDateControler = (value) => {
+    let calendarForm = document.querySelectorAll('#filterArea .time-calendar');
     if (value === "slider") {
       this.slider.element.style.display = "";
-      this.calendar.element.style.display = "none";
+      calendarForm.forEach((element) => element.style.display = "none");
+      //this.calendar.element.style.display = "none";
     } else {
-      this.calendar.element.style.display = "";
+      calendarForm.forEach((element) => element.style.display = "");
+      //this.calendar.element.style.display = "";
       this.slider.element.style.display = "none";
     }
   };
@@ -146,7 +152,8 @@ class TimeForm {
     this.slider = null;
     [...document.querySelectorAll(".time-filter")].forEach((el) => el.remove());
     this.createSlider();
-    this.createCalendar();
+    this.createCalendar('date-start','Date de début');
+    this.createCalendar('date-end','Date de fin');
     this.onClick(this, null, null);
   }
 
