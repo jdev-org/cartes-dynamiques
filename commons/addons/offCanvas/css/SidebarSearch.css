@@ -38,6 +38,14 @@
     z-index: 100;
     border: 2px solid var(--mycolor);
     max-width: 90%!important;
+    background-color: #ffffff;
+    right: 65px!important;
+    top: 70px!important;
+    border-radius: 6px;
+    font-family: var(--myfont);
+    color:#333;
+    box-shadow: 0px 0px 30px 3px rgb(200 200 200 / 40%);
+    padding: 6px;
 }
 
 #sidebar .searchresults-title {
@@ -56,6 +64,8 @@
 
 #sidebar #searchresults a {
     font-size: 13px!important;
+    font-family: var(--myfont);
+    margin: 0 !important;
 }
 
 /* Masque le bouton d'accès à la modal "Paramètres de recherche" */

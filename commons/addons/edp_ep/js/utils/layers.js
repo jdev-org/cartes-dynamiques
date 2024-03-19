@@ -24,7 +24,7 @@ export const getTravauxValues = (field) => {
   let values = [];
   const clusterSource = mviewer.getLayers().edp_ep.layer.getSource();
   const clusters = clusterSource.getFeatures();
-  if (_.isEmpty(clusters)) {
+  if (clusters == 0) {
     clusterSource.on("featuresloadend", (e) => {
       clusters.forEach((c) => (values = [...values, ...c.getValuesByField(field)]));
     });
