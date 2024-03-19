@@ -105,6 +105,7 @@ class TimeForm {
     },className,placeholder);
     timeDatePicker.create();
     timeDatePicker.datepicker.on("changeDate", this.datePickerChange);
+    timeDatePicker.datepicker.on("show", this.datePickerShow);
     this.calendar = timeDatePicker;
   }
 
@@ -115,7 +116,19 @@ class TimeForm {
   datePickerChange = (e) => {
     this.date = moment(e.date).format(format);
     this.onClick(this, e, this.getDate());
+  }; 
+
+  /**
+   * array function keep "this" as TimeForm scope
+   * @param {object} e event params callback
+   */
+  datePickerShow = (e) => {
+    let dateStartValue = document.querySelector('input.date-start').value;
+    if(dateStartValue){
+      $('input.date-end').datepicker('setStartDate', dateStartValue);
+    }    
   };
+
   /**
    * array function keep "this" as TimeForm scope
    * @param {object} e event params callback

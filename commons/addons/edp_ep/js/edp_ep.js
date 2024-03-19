@@ -123,13 +123,13 @@ function reset() {
 }
 
 const createFilters = async () => {    
-  const arrondissements = await getArrondissements();
-  //const motifs = getTravauxValues("motif");
-  const statuts = getTravauxValues("statut");
-  const typeReseau = getTravauxValues("nature_res");
-
+  const arrondissements = await getArrondissements();  
+  //const typeReseau = getTravauxValues("nature_res");
+  //const statuts = getTravauxValues("statut");
+  const statuts = ['PREVU','EN COURS'];
+  const typeReseau = ['EP','ENP'];  
   buttonFilterType("Types de réseau", _.uniq(typeReseau), onTypeReseauClick, "xs", true);
-  switchFilter("Statuts des travaux", _.uniq(statuts), onStatusClick);
+  switchFilter("Statuts des travaux", _.uniq(statuts), onStatusClick);  
   //buttonFilterType("Motifs des travaux", _.uniq(motifs), onMotifClick, "xs", true, true);
   buttonFilterType(
     "Arrondissements",
@@ -146,20 +146,23 @@ const createFilters = async () => {
   currentLang = currentLang.includes("fr") ? "fr" : "en";
   mviewer.lang.changeLanguage(currentLang);
 };
-const resetFilters = () => {
-  [...document.querySelectorAll(".filter-form")].forEach((x) => x.remove());
-  createFilters();
-  travauxCqlFactory.cleanFilters();
+const resetFilters = async () => {
+  [...document.querySelectorAll(".filter-form")].forEach((x) => x.remove()); 
+  travauxCqlFactory.cleanFilters(); 
+  const clusterSource = mviewer.getLayers().edp_ep.layer.getSource(); 
+  const clusters = await clusterSource.getFeatures();
+  if(clusters){
+    createFilters();  
+  }  
 };
 const init = async () => {
   travauxCqlFactory.setSource(mviewer.getLayer("edp_ep").layer.getSource().getSource());
-  //const parent = document.getElementById("sidebarBody");
-  mviewer.waitForElm('#sidebarBody').then((elm) => {                   
-    elm.insertAdjacentHTML(
-      "afterbegin",
-      "<div id='filterArea' class='filters-area'></12>"
-    );
-  }); 
+  const parent = document.getElementById("sidebarBody");
+  // filer panel area
+  parent.insertAdjacentHTML(
+    "afterbegin",
+    "<div id='filterArea' class='filters-area'></12>"
+  );
   // reset button
   const btnId = _.uniqueId();
   const btn = `<h4 id="headerFilter" class="">
