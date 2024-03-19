@@ -151,7 +151,7 @@ const resetFilters = async () => {
   travauxCqlFactory.cleanFilters(); 
   const clusterSource = mviewer.getLayers().edp_ep.layer.getSource(); 
   const clusters = await clusterSource.getFeatures();
-  if(clusters){
+  if (_.isEmpty(clusters)) {
     createFilters();  
   }  
 };
