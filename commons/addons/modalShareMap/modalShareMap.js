@@ -30,7 +30,7 @@ const initModalShareMap = () => {
 	function setUrlBtnShare(url) {
 		// Create all url for each btn 
 		let urlLink = url;
-		let urlEmail = "mailto:?subject=Où boire de l'eau de Paris ?&body=" + encodeURIComponent(url);
+		let urlEmail = `mailto:${mviewer?.env?.mailto_dest}?subject=Où boire de l'eau de Paris ?&body=` + encodeURIComponent(url);
 		let urlFacebook = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
 		let urlX = "https://twitter.com/intent/post?url=" + encodeURIComponent(url);
 		let urlLinkedin = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(url);
