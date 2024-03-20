@@ -10,10 +10,16 @@
     font-size: 15px;
     font-weight: 500;
     border-radius: 2rem;
+    opacity: 1;
+    transition: opacity .25s ease-in;
 }
 
 #btnGeoloc-custom-component button:hover {
     opacity: 0.9;
+}
+
+#btnGeoloc span {
+    margin-left: 3px;
 }
 
 /* Position du btn en mode xs */

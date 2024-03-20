@@ -36,11 +36,14 @@ class TimeForm {
   }
 
   initSelectorClick() {
-    const selectorId = this.selector.getId();
-    document.getElementById(selectorId).addEventListener("click", (e) => {
-      this.selector.setActivate();
-      this.changeValue(this.values.filter((v) => v != this.value)[0]);
-    });
+    let inputsSelectorTime = document.querySelectorAll('.switchRadio-time input');
+    inputsSelectorTime.forEach((element) => 
+      element.addEventListener("click", () => {
+        let v = element.value;
+        this.resetTime();
+        this.showDateControler(v);
+      })
+    );
   }
 
   setOnClick(func) {
@@ -64,9 +67,23 @@ class TimeForm {
     this.element.appendChild(childTitle);
 
     // switch type selector
-    this.selector = new Switch(this.value);
-    this.selector.create();
-    this.element.insertAdjacentHTML("beforeend", this.selector.get());
+    this.selector = `<div class="switchRadio-time" id="switchRadioFilterTime">
+    <input
+        type="radio"
+        id="radio-slider"
+        name="switch-radio"
+        value="slider" autocomplete="off" checked/>
+    <label for="radio-slider">
+      <span>Frise</span></label>
+      <input
+      type="radio"
+      id="radio-calendar"
+      name="switch-radio"
+      value="calendar" autocomplete="off"/>
+      <label for="radio-calendar">
+      <span>Calendrier</span></label>
+    </div>`
+    this.element.insertAdjacentHTML("beforeend", this.selector);
     this.parent.insertAdjacentElement("beforeend", this.element);
     this.initSelectorClick();
   }
@@ -77,14 +94,18 @@ class TimeForm {
     timeSlider.slider.on("change", this.sliderChange);
     this.slider = timeSlider;
   }
-  createCalendar() {
+  createCalendar(className,placeholder,config) {
     const timeDatePicker = new TimeCalendar(this.element, {
       value: 5,
       startView: 0,
       todayHighlight: true,
-    });
+      format: 'dd/mm/yyyy',
+      language: "fr",
+      ...config
+    },className,placeholder);
     timeDatePicker.create();
     timeDatePicker.datepicker.on("changeDate", this.datePickerChange);
+    timeDatePicker.datepicker.on("show", this.datePickerShow);
     this.calendar = timeDatePicker;
   }
 
@@ -95,7 +116,19 @@ class TimeForm {
   datePickerChange = (e) => {
     this.date = moment(e.date).format(format);
     this.onClick(this, e, this.getDate());
+  }; 
+
+  /**
+   * array function keep "this" as TimeForm scope
+   * @param {object} e event params callback
+   */
+  datePickerShow = (e) => {
+    let dateStartValue = document.querySelector('input.date-start').value;
+    if(dateStartValue){
+      $('input.date-end').datepicker('setStartDate', dateStartValue);
+    }    
   };
+
   /**
    * array function keep "this" as TimeForm scope
    * @param {object} e event params callback
@@ -109,12 +142,15 @@ class TimeForm {
     }
   };
 
-  showDateControler = () => {
-    if (this.value === "slider") {
+  showDateControler = (value) => {
+    let calendarForm = document.querySelectorAll('#filterArea .time-calendar');
+    if (value === "slider") {
       this.slider.element.style.display = "";
-      this.calendar.element.style.display = "none";
+      calendarForm.forEach((element) => element.style.display = "none");
+      //this.calendar.element.style.display = "none";
     } else {
-      this.calendar.element.style.display = "";
+      calendarForm.forEach((element) => element.style.display = "");
+      //this.calendar.element.style.display = "";
       this.slider.element.style.display = "none";
     }
   };
@@ -129,7 +165,8 @@ class TimeForm {
     this.slider = null;
     [...document.querySelectorAll(".time-filter")].forEach((el) => el.remove());
     this.createSlider();
-    this.createCalendar();
+    this.createCalendar('date-start','Date de début');
+    this.createCalendar('date-end','Date de fin');
     this.onClick(this, null, null);
   }
 

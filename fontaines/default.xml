@@ -51,9 +51,10 @@
     <searchparameters bbox="false" localities="true" features="false" inputlabel="Saisir une adresse" svgcolor="#0000ff00"/>
     <extensions>        
         <extension type="component" id="offCanvas" path="apps/commons/addons"/>
-        <extension type="component" id="print" path="apps/commons/addons"/>
         <extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
         <extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
+        <extension type="component" id="modalShareMap" path="apps/commons/addons"/>
+        <extension type="component" id="print" path="apps/commons/addons"/>
 	</extensions>
 
     <themes mini="true" legendmini="false">

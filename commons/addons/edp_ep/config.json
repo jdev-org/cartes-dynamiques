@@ -10,7 +10,7 @@
     "css/TimeCalendar.css"
   ],
   "html": "edp_ep.html",
-  "target": "page-content-wrapper",
+  "target": "sidebarBody",
   "options": {
     "mviewer": {}
   }
