@@ -1,0 +1,103 @@
+<div>
+  <a
+    class="card-map"
+    id="fontaines"
+    href="https://fontaine.eaudeparis.fr/"
+    target="_blank">
+    <div class="card-overview"></div>
+    <div class="card-infos">
+      <div class="card-infos-title" i18n="mapslibs.title.fontaines">Où boire de l'eau à Paris ?</div>
+      <div i18n="mapslibs.texte.fontaines">Visualiser l’ensemble des points d’eau potable à Paris</div>
+    </div>
+  </a>
+  <a class="card-map" id="travaux" href="https://travaux.eaudeparis.fr/" target="_blank">
+    <div class="card-overview"></div>
+    <div class="card-infos">
+      <div class="card-infos-title" i18n="mapslibs.title.work">Travaux</div>
+      <div i18n="mapslibs.texte.work">Visualiser les travaux en cours et prévus sur le réseau d’eau à Paris</div>
+    </div>
+  </a>
+  <a
+    class="card-map"
+    id="qualiteeau"
+    href="https://qualite.eaudeparis.fr/"
+    target="_blank">
+    <div class="card-overview"></div>
+    <div class="card-infos">
+      <div class="card-infos-title" i18n="mapslibs.title.quality">Qualité de l'eau</div>
+      <div i18n="mapslibs.texte.quality">Consulter la qualité de l’eau distribuée chez vous</div>
+    </div>
+  </a>
+  <a class="card-map" id="wallace" href="https://wallace.eaudeparis.fr/" target="_blank">
+    <div class="card-overview"></div>
+    <div class="card-infos">
+      <div class="card-infos-title" i18n="mapslibs.title.wallace">Les 50 fontaines Wallace</div>
+      <div i18n="mapslibs.texte.wallace">Découvrir les fontaines Wallace, symboles de Paris</div>
+    </div>
+  </a>
+</div>
+<style>
+  /* MapLibrary */
+  #blockMapLibrary {
+    margin: 2em 0;
+  }
+
+  .card-map {
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+    border-radius: 0.8em;
+    margin-bottom: 1em;
+  }
+
+  a.card-map:hover {
+    background-color: var(--mycolor);
+    color: white !important;
+  }
+
+  .card-map:hover .card-infos-title {
+    color: white !important;
+  }
+
+  .card-overview {
+    width: 35%;
+    height: 9em;
+    background-size: cover;
+    border-bottom-left-radius: 0.8em;
+    border-top-left-radius: 0.8em;
+  }
+
+  .xs .card-overview {
+    height: 9em;
+  }
+
+  .card-infos {
+    padding: 0 15px;
+    font-size: larger;
+    line-height: normal;
+    width: 75%;
+  }
+
+  .card-infos-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--mycolor);
+  }
+
+  #travaux .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/travaux_mapoverview.png);
+  }
+
+  #qualiteeau .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/qualiteeau_mapoverview.png);
+  }
+
+  #fontaines .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/fontaines_mapoverview.png);
+  }
+
+  #wallace .card-overview {
+    background-image: url(apps/commons/templates/mapLibrary_edp/wallace_mapoverview.png);
+  }
+</style>

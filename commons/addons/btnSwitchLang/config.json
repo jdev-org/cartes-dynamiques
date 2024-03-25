@@ -1,0 +1,6 @@
+{
+  "js": ["btnSwitchLang.js"],
+  "css": "style.css",
+  "html": "btnSwitchLang.html",
+  "target": "page-content-wrapper"
+}

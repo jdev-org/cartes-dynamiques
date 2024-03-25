@@ -1,0 +1,130 @@
+/* MODAL */
+
+#modalShareMap .modal-body {
+  padding: 0 15px;
+}
+
+#modalShareMap .modal-content {
+  border-radius: 2rem !important;
+  padding: 2rem 1rem;
+}
+
+#modalShareMap {
+  font-family: var(--myfont);
+  font-size: medium;
+}
+
+#modalShareMap h3 {
+  font-weight: 700;
+  color: var(--mycolor);
+  margin: 0 0rem 1rem;
+}
+
+#modalShareMap .iconShare__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.xs #modalShareMap .iconShare__list {
+  justify-content: center;
+}
+
+.iconShare__list a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.iconShare__list a span {
+  font-family: var(--myfont);
+  font-size: smaller;
+}
+
+#modalShareMap .iconShare__list img {
+  width: 4.6rem;
+  transition: transform 0.2s;
+}
+
+#modalShareMap .iconShare__list img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.iconShare__list a:hover span {
+  color: var(--mycolor);
+  opacity: 0.8;
+}
+
+.inputShare__mode .radio-inline {
+  border: 1px solid #333;
+  width: 30%;
+  border-radius: 1em;
+  padding: 12px 0px 12px 40px;
+}
+
+.xs .inputShare__mode .radio-inline {
+  width: 100%;
+  margin: 5px 0;
+}
+
+.inputShare__mode {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.inputShare__mode .radio-inline:hover,
+.inputShare__mode .radio-inline:has(input:checked) {
+  border: 1px solid #002ddc;
+  background-color: #002ddc0d;
+}
+
+.blockShare__mode .textEdit {
+  width: 100%;
+  border-radius: 1em;
+  padding: 10px;
+  border: 1px solid #333;
+  font-family: monospace;
+}
+
+.blockShare__title {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-bottom: 0.5em;
+}
+
+.blockShare__title p {
+  margin: 0;
+}
+
+.blockShare__title .btn {
+  background-color: var(--mycolor) !important;
+  color: white;
+  font-size: small;
+  border-radius: 1.5em;
+  opacity: 1;
+  transition: opacity 0.25s ease-out;
+}
+
+.blockShare__title .btn:hover {
+  opacity: 0.8;
+}
+
+#blockLink,
+#blockIframe {
+  display: none;
+}
+.block__display {
+  display: block !important;
+}

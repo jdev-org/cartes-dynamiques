@@ -1,0 +1,6 @@
+{
+  "js": ["modalShareMap.js"],
+  "html": "modalShareMap.html",
+  "css": "style.css",
+  "target": "page-content-wrapper"
+}

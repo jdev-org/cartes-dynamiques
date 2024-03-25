@@ -2,21 +2,14 @@
 <config>
 	<application
 			title="Qualité de l'eau"
+			id="qualite_eau"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"
 			help="apps/edp_qualite_eau/templates/home.html"
 			showhelp="true"
-			home="https://www.eaudeparis.fr/"
-			titlehelp="INFORMATIONS GÉNÉRALES"
-			iconhelp="question"
-			exportpng="true"
-			measuretools="true"
-			stats="false"
-			statsurl=""
-			coordinates="false"
-			geoloc="false"
-			mouseposition="true"
+			home="https://www.eaudeparis.fr/"	
+			langfile="apps/edp_qualite_eau/qualite_eau.i18n.json" lang="fr"	
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
 	/>
@@ -45,43 +38,7 @@
             url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
             visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
     </baselayers>
-
-	<extensions>
-		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
-	</extensions>
-	
-	<themes mini="true" legendmini="false">
-		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
-			<layer id="udi" name="Qualité de l'eau"  visible="true" tiled="false"
-				searchable="false" queryable="true" 
-				infoformat="application/vnd.ogc.gml" featurecount="1"
-				sld="https://gis.jdev.fr/mviewer/apps/edp_qualite_eau/sld/udi.sld" 
-				url="https://edp.jdev.fr/geoserver/edp/ows"
-				dynamiclegend ="true"
-				attribution="Eau de Paris" 
-				infohighlight ="false"
-				metadata=""
-				metadata-csw="" >
-				<template url="apps/edp_qualite_eau/templates/udi_wms.mst"></template>
-		    </layer> 
-			<layer id="adresse" 
-                name="Adresse" 
-                visible="true" 
-                type="vector-tms" 
-                opacity="1" 
-                queryable="false" 
-                showintoc="false"
-                styleurl="apps/commons/style_tms/planign_adresse.json" 
-                infopanel="right-panel" 
-                metadata="https://geoservices.ign.fr/services-web-essentiels" 
-                attribution="Source: IGN" 
-                style="plan_ign" 
-                url="https://wxs.ign.fr/essentiels/geoportail/tms/1.0.0/PLAN.IGN/{z}/{x}/{y}.pbf"> 
-            </layer>
-		</theme>
-	</themes>
-
-	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
 	<searchparameters
 			banmarker="true"
 			bbox="false"
@@ -95,5 +52,28 @@
 	/>
 
 	<extensions>
+		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
+		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
+        <extension type="component" id="print" path="apps/commons/addons"/>
+		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
+		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
+	
+	<themes mini="true" legendmini="false">
+		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
+			<layer id="udi" name="Unités de distribution d'eau potable"  visible="true" tiled="false"
+				searchable="false" queryable="true" 
+				infoformat="application/vnd.ogc.gml" featurecount="1"
+				sld="https://{{sld_url}}/apps/edp_qualite_eau/sld/udi.sld" 
+				url="https://{{url_data_edp}}/geoserver/edp/ows"
+				legendurl="apps/edp_qualite_eau/img/lgd_udi.png" 
+				dynamiclegend ="false"
+				attribution="Eau de Paris" 
+				infohighlight ="false"
+				metadata=""
+				metadata-csw="" >
+				<template url="apps/edp_qualite_eau/templates/udi_wms.mst"></template>
+		    </layer> 			
+		</theme>
+	</themes>
 </config>

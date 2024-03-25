@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 26.458333 26.458334"
+   version="1.1"
+   id="svg127350"
+   inkscape:export-filename="C:\Users\Agathe\Desktop\commerces.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="commerce2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview127352"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="5.9722783"
+     inkscape:cx="54.250653"
+     inkscape:cy="58.35294"
+     inkscape:window-width="2400"
+     inkscape:window-height="1271"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs127347" />
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g4290"
+       transform="translate(-0.13884016,-1.2233495)">
+      <circle
+         style="fill:#ffffff;stroke-width:1.90488;paint-order:fill markers stroke;stop-color:#000000"
+         id="path1087-7"
+         cx="13.518017"
+         cy="13.229167"
+         r="11.164081" />
+      <circle
+         style="fill:#aab9ff;fill-opacity:1;stroke-width:1.58929;paint-order:fill markers stroke;stop-color:#000000"
+         id="path1087"
+         cx="13.518017"
+         cy="13.229167"
+         r="9.314476" />
+    </g>
+  </g>
+</svg>

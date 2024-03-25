@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100"
+   height="100"
+   viewBox="0 0 26.458333 26.458334"
+   version="1.1"
+   id="svg127350"
+   inkscape:export-filename="C:\Users\Agathe\Desktop\commerces.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="travaux_prevu.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview127352"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="5.9722783"
+     inkscape:cx="54.752974"
+     inkscape:cy="36.418263"
+     inkscape:window-width="2400"
+     inkscape:window-height="1271"
+     inkscape:window-x="2391"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs127347">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter29770"
+       x="-0.099224002"
+       y="-0.15126168"
+       width="1.198448"
+       height="1.3025234">
+      <feFlood
+         flood-opacity="0.0980392"
+         flood-color="rgb(0,0,0)"
+         result="flood"
+         id="feFlood29760" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite29762" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="0.7"
+         result="blur"
+         id="feGaussianBlur29764" />
+      <feOffset
+         dx="0"
+         dy="1.38778e-16"
+         result="offset"
+         id="feOffset29766" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite29768" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#ffffff;stroke:none;stroke-width:0.263536;stroke-opacity:0.768627;paint-order:fill markers stroke;stop-color:#000000"
+       id="path884-0"
+       cx="13.229167"
+       cy="13.229167"
+       r="11.17103" />
+    <circle
+       style="fill:#ffc896;fill-opacity:1;stroke:none;stroke-width:0.22;stroke-opacity:0.768627;paint-order:fill markers stroke;stop-color:#000000"
+       id="path884"
+       cx="13.229167"
+       cy="13.229167"
+       r="9.325552" />
+    <path
+       id="path5836-7"
+       style="fill:#ffffff;fill-opacity:1;stroke-width:0.0304496"
+       d="m 12.434911,8.5522218 c -0.08358,0.262172 -0.740828,2.3258322 -1.405847,4.4162752 l -1.2835472,4.034681 -0.714977,0.01529 c -0.462046,0.0099 -0.736782,0.02767 -0.776125,0.05056 -0.167575,0.09752 -0.320637,0.346193 -0.319271,0.519181 0.0015,0.196859 0.189522,0.45322 0.380419,0.519769 v 6.02e-4 c 0.122611,0.0427 9.6677282,0.04845 9.8209372,0.0059 0.0592,-0.01644 0.157443,-0.08104 0.218726,-0.144052 0.264716,-0.272133 0.210788,-0.66597 -0.121121,-0.883727 -0.06912,-0.04535 -0.184441,-0.05518 -0.797294,-0.0682 l -0.716154,-0.01534 -1.495217,-4.697328 c -0.584159,-1.835389 -1.084645,-3.3866392 -1.205349,-3.7536052 -0.1207,-0.366967 -1.501602,-0.262173 -1.58518,0 z m 0.391593,1.9344352 h 0.406288 0.40688 l 0.251651,0.837276 c 0.138507,0.460551 0.259737,0.868396 0.269294,0.906068 l 0.01764,0.06879 h -0.945464 -0.944874 l 0.01764,-0.06879 c 0.0097,-0.03768 0.130798,-0.445517 0.269292,-0.906068 z m -1.143611,3.821246 1.555191,0.0076 1.555193,0.0076 0.235778,0.784359 0.235776,0.784357 h -2.020867 c -1.445829,0 -2.020868,-0.0097 -2.020868,-0.03352 0,-0.03016 0.113723,-0.415581 0.36925,-1.253561 z"
+       sodipodi:nodetypes="zcccssccscsccczzccccccccccccccccsssc" />
+  </g>
+</svg>

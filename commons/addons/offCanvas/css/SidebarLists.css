@@ -1,0 +1,48 @@
+.sidebar-lists {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: touch;
+    -webkit-animation-name: sidebar;
+    animation-name: sidebar;
+    -webkit-animation-duration: 0.25s;
+    animation-duration: 0.25s;
+    color: #212121;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .lists {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+  }
+  .sidebar-items {
+    color: #707070;
+    display: block;
+    padding-left: 30px;
+  }
+  .sidebar-items.items {
+    color: #707070;
+    display: block;
+    height: 40px;
+    padding-left: 30px;
+  }
+  .sidebar-items a {
+    text-decoration: none;
+    color: #707070;
+  }
+
+  .sidebar-lists::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    border-radius: 0;
+  }
+  .sidebar-lists::-webkit-scrollbar-track-piece {
+    background-color: #cccccc;
+    border-radius: 0;
+  }
+  .sidebar-lists::-webkit-scrollbar-thumb:vertical {
+    height: 6px;
+    background-color: #999999;
+    border-radius: 0;
+  }

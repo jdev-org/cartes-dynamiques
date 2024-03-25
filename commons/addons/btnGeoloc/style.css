@@ -1,32 +1,31 @@
-#btnGeoloc-custom-component {
+#btnGeoloc-custom-component button{
     position: fixed;
-    top: 1rem;
-    right: 25rem;
-}
-
-#btnGeoloc-custom-component button {
-    background-color: #ffffff;
+    bottom: 2rem;
+    right: 10rem;
+    background-color: var(--mycolor);
+    color: white;
     border: none;
-    color: var(--mycolor);
     font-family: var(--myfont);
     padding: 12px 20px;
     font-size: 15px;
     font-weight: 500;
     border-radius: 2rem;
+    opacity: 1;
+    transition: opacity .25s ease-in;
 }
 
 #btnGeoloc-custom-component button:hover {
     opacity: 0.9;
 }
 
-/* Position du btn en mode xs */
-
-.xs #btnGeoloc-custom-component {
-    top: 93%!important;
-    right: 20%!important;
+#btnGeoloc span {
+    margin-left: 3px;
 }
 
+/* Position du btn en mode xs */
+
 .xs #btnGeoloc-custom-component button {
-    background-color: var(--mycolor);
-    color: white;
+    font-size: large;
+    right: 50%;
+    transform: translateX(50%);
 }

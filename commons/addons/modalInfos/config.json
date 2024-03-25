@@ -1,0 +1,15 @@
+{
+  "js": ["modalInfos.js"],
+  "css": "style.css",
+  "html": "modalInfos.html",
+  "target": "page-content-wrapper",
+  "options": {
+    "mviewer": {
+      "travaux_eau": {
+        "btnModalLabel": "Liste des travaux en cours",
+        "modalSize": "large",
+        "templateModalUrl": "apps/edp_arret_eau/templates/modal-infos-travaux.html"
+      }
+    }
+  }
+}

@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Travaux sur le réseau d'eau"
+			title="Info Travaux"
+			id="travaux_eau"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"	
 			help="apps/edp_arret_eau/templates/home.html"
 			home="https://www.eaudeparis.fr/"
-			lang="fr"
-			langfile="apps/edp_arret_eau/custommviewer.i18n.json"
 			showhelp="true"
-			titlehelp="LES CHIFFRES"
-			iconhelp="question"
-			exportpng="true"
-			measuretools="true"
-			stats="false"
-			statsurl=""
-			coordinates="false"
-			geoloc="false"
-			mouseposition="true"
+			langfile="apps/edp_arret_eau/edpep.i18n.json" lang="fr"
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
-
 	/>
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
@@ -31,7 +21,7 @@
 				id="ign_plan"
 				label="Plan IGN"
 				title="Plan IGN"
-				thumbgallery="apps/edp_arret_eau/img/basemap/ign_plan_v2.png"
+				thumbgallery="apps/commons/img/basemap/ign_plan_v2.png"
 				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
 				layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
 				fromcapacity="false"
@@ -40,14 +30,14 @@
 				style="normal"
 				styleurl=""
 				matrixset="PM"
-				visible="true"
+				visible="false"
 		/>
 		<baselayer
 				type="WMTS"
 				id="ign_orthophoto"
 				label="Photos aériennes IGN"
 				title="Photos aériennes IGN"
-				thumbgallery="apps/edp_arret_eau/img/basemap/ign_orthophoto.png"
+				thumbgallery="apps/commons/img/basemap/ign_orthophoto.png"
 				url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
 				layers="ORTHOIMAGERY.ORTHOPHOTOS"
 				fromcapacity="false"
@@ -57,10 +47,33 @@
 				matrixset="PM"
 				visible="false"
 		/>
-	</baselayers>
+		<baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png" 
+            url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
+            visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
+    </baselayers>
+
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			svgcolor="#002ddc00"
+			animate="true"
+			duration="500"
+			closeafterclick="true"
+			querymaponclick="true"/>
 
 	<extensions>
-		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+		<extension  type="javascript"  src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
+		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
+		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
+        <extension type="component" id="print" path="apps/commons/addons"/>
+		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
+		<extension type="component" id="modalInfos" path="apps/commons/addons"/>
+		<extension type="component" id="edp_ep" path="apps/commons/addons"/>
+		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
@@ -73,31 +86,24 @@
 					scalemax="1000000"
 					dynamiclegend="false"
 					visible="true"
-					exclusive="true"
 					tiled="false"
 					opacity="1"
-					legendurl="apps/edp_arret_eau/img/legende.png"
 					filter="nature_res='EP'"
-					toplayer="false"
 					expanded="true"
 					showintoc="true"
 					queryable="true"
 					infoformat="application/vnd.ogc.gml"
 					infohighlight ="false"
-					customcontrol="true"
-					customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
 					type="customlayer"
-					jsonfields="arrets"
+					customcontrol="true"
+                	customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
 			>
-				<!--/fields="ID,NOM_COM,INSEE_COM,STATUT"
-                    aliases="Nom,Numéro INSEE,Statut"-->
 				<template url="apps/edp_arret_eau/templates/arret_eau_wms.mst"></template>
 			</layer>
-
 			<layer
 					id="edp:arrondissement"
 					name="Arrondissements"
-					url="https://edp.jdev.fr/geoserver/edp/wms"
+					url="https://{{url_data_edp}}/geoserver/edp/wms"
 					scalemin ="0"
 					scalemax="1000000"
 					dynamiclegend ="false"
@@ -115,22 +121,25 @@
 					infohighlight ="false"
 			>
 			</layer>
-
-
+			<layer
+					id="arret_eau_l"
+					name="Linéaires des travaux"
+					url="https://{{url_data_edp}}/geoserver/edp/wms"
+					scalemin ="0"
+					scalemax="5000"
+					dynamiclegend ="false"
+					visible="true"
+					tiled="false"
+					opacity="1"
+					showintoc="true"
+					queryable="false"
+					infoformat="application/vnd.ogc.gml"
+					infohighlight ="false"
+					customcontrol="true"
+                	customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
+			>
+			</layer>
+			
 		</theme>
-
-	</themes>
-
-	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
-	<searchparameters
-			banmarker="true"
-			bbox="false"
-			localities="true"
-			features="false"
-			inputlabel="Recherche d'adresse"
-			closeafterclick="true"
-			querymaponclick="true"/>
-
-	<extensions>
-	</extensions>
+	</themes>	
 </config>

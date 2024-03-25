@@ -1,0 +1,25 @@
+{
+    "type": "module",
+    "js": ["js/offCanvas.js"],
+    "css": ["css/offCanvas.css","css/headerFilter.css", "css/SidebarLists.css", "css/SidebarCloseButton.css", "css/SidebarSearch.css", "css/SidebarFooter.css"],
+    "html":"offCanvas.html",
+    "target": "page-content-wrapper",
+    "options": {
+        "mviewer": {
+          "fontaines_wallace": {
+            "templateFooterUrl":"apps/commons/templates/network_link.html"
+          },
+          "fontaines": {
+            "templateFooterUrl":"apps/commons/templates/network_link.html",
+            "headerFilter":"true"
+          },
+          "qualite_eau": {
+            "templateFooterUrl":"apps/commons/templates/network_link.html"
+          },
+          "travaux_eau": {
+            "templateFooterUrl":"apps/commons/templates/network_link.html"
+          }
+        }
+    }
+}
+  

@@ -2,22 +2,15 @@
 <config>
 	<application
 			title="Les 50 fontaines Wallace à découvrir"
+			id="fontaines_wallace"
+			htmltitle="&lt;span i18n=&apos;home.title&apos;&gt;Les 50 fontaines Wallace à découvrir&lt;/span&gt;"
+        	langfile="apps/fontaines_wallace/fontaines_wallace.i18n.json" lang="fr,en"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"		
             help="apps/fontaines_wallace/templates/home.html"
 			home="https://www.eaudeparis.fr/"
-			titlehelp="INFORMATIONS GÉNÉRALES"
-			lang="fr"
-			langfile="apps/fontaines_wallace/custommviewer.i18n.json"
-			showhelp="true"			
-			exportpng="true"
-			measuretools="true"
-			stats="false"
-			statsurl=""
-			coordinates="false"
-			geoloc="false"
-			mouseposition="true"
+			showhelp="true"		
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
 	/>
@@ -46,7 +39,7 @@
             url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
             visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
     </baselayers>
-	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.3358&amp;lat=48.8622" type="ban" attribution="API adresse.data.gouv.fr" />
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
 	<searchparameters
 			banmarker="true"
 			bbox="false"
@@ -55,9 +48,14 @@
 			inputlabel="Recherche d'adresse"
 			closeafterclick="true"
 			querymaponclick="true"
+			svgcolor="#0000ff00"
 	/>
 	<extensions>
-		<extension type="component" id="noSidebar" path="apps/commons/addons"/>
+		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
+		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
+        <extension type="component" id="print" path="apps/commons/addons"/>
+		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
+		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
 	<themes mini="true" legendmini="false">
 		<theme name="Fontaines Wallace" collapsed="true" id="eaudeparis" icon="fas fa-tint">
@@ -65,9 +63,9 @@
 				id="fontaines"
 				name="Fontaines Wallace"
 				type="wms"
-				url="https://edp.jdev.fr/geoserver/edp/ows"
-                sld="https://gis.jdev.fr/mviewer/apps/fontaines_wallace/sld/fontaines_wallace.sld"
-				legendurl="apps/fontaines/img/commerces.png"
+				url="https://{{url_data_edp}}/geoserver/edp/ows"
+                sld="https://{{sld_url}}/apps/fontaines_wallace/sld/fontaines_wallace.sld"
+				legendurl="apps/fontaines_wallace/img/lgd_fontaines_wallace.png"
 				visible="true"
 				opacity="1"
 				queryable="true"

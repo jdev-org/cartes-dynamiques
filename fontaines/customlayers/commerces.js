@@ -1,5 +1,5 @@
 
-const LAYER_URL = 'https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=commerce&outputFormat=application%2Fjson';
+const LAYER_URL = `https://${mviewer.env?.url_data_edp}/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=commerce&outputFormat=application%2Fjson`;
 const LAYER_ID = "commerces";
 
 var commerceStyle = new ol.style.Style({

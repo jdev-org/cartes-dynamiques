@@ -1,25 +1,55 @@
 {{#features}}
 	<li class="item cardInfo" style="width:100%;">
-        <div class="displayFlex">
-            <img src="apps/fontaines/img/icon_commerces.svg" style="width: 48px;padding: 0;">
-            <div class="badgeCo">Ici, je choisis l'eau de Paris</div>
+        <div>
+            <span class="btnOpen" id="isopen-{{feature_ol_uid}}" >
+                <span class="opentext"></span>
+            </span>
         </div>
-        <h2 class="nameCard">{{id}}</h2>
-        <div class="adressCard">{{numero}} {{nom_voie}}, {{code_posta}} {{nom_commun}}</div>
+        <div class="displayFlex">
+            <div>
+                <h2 class="nameCard name__co">{{id}}</h2>
+                <div class="adressCard">{{numero}} {{nom_voie}}, <span id="adresseCo_{{feature_ol_uid}}"></span></div>
+            </div>
+            <img src="apps/fontaines/img/EDP_Sticker_IciJeChoisis.svg" style="width: 60px;padding: 0;">
+            <!--<div class="badgeCo" i18n="template.commerce.badge">Ici, je choisis l'eau de Paris</div>-->
+        </div>
+        
         <div class="textCard">
-            <p>"Ici, je choisis l’eau de Paris" est un réseau de 800 commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.</p>
+            <p i18n="fontaine.description.commerce">"Ici, je choisis l’eau de Paris" est un réseau de commerces qui remplissent gratuitement la gourde des passant.e.s sans obligation de consommation.</p>
         </div>
         <div>
-            <a class="btnCard" target="_blank" id="go-{{feature_ol_uid}}" >
+            <a class="btnGo" target="_blank" id="go-{{feature_ol_uid}}" >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM7 11.5L16 8L12.5 17.0021L11 13L7 11.5Z" fill="rgba(255,255,255,1)"></path></svg>
-                <span> J'y vais</span>
+                <span i18n="template.btn.go"> J'y vais</span>
             </a>
         </div>
-		
+        <div class="accordion__commerce">
+            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_{{feature_ol_uid}}" aria-expanded="false" aria-controls="collapse_{{feature_ol_uid}}">
+                <span i18n="template.btn.plusinfos">Plus d'infos</span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
+            </a>
+            <div class="collapse" id="collapse_{{feature_ol_uid}}">
+                <a id="cotemplBtnQuality_{{feature_ol_uid}}" class="bgOutlinePrim" target="_blank" href="">     
+                    <span i18n="template.btn.waterquality">Qualité de l'eau</span>
+                </a>                    
+                <a class="bgOutlinePrim" target="_blank" href="mailto:jechoisis@eaudeparis.fr?subject=Anomalie {{id}}">
+                    <span i18n="template.btn.anomaly">Une anomalie ?</span>
+                </a>  
+                <a id="cotemplBtnMoreInfos_{{feature_ol_uid}}" class="bgOutlinePrim" target="_blank" href="" i18n="template.btn.moreinfos">En savoir plus</a>
+            </div>
+        </div>        		
 	</li>
 
 
 <script>
+// Update lang
+let lang = configuration.getLang();
+mviewer.lang.changeLanguage(lang);
+
+// Link FR/EN 
+document.getElementById("cotemplBtnMoreInfos_{{feature_ol_uid}}").href = mviewer.tr("template.commerces.btn.moreinfos.href");
+document.getElementById("cotemplBtnQuality_{{feature_ol_uid}}").href = mviewer.tr("template.commerces.btn.quality.href");
+
 /*Permet de calculer l'URL Google Map vers la fontaine au click sur le bouton "j'y vais"*/
 const goId = document.getElementById("go-{{feature_ol_uid}}");
 $(goId).on("click", () => {
@@ -32,17 +62,119 @@ $(goId).on("click", () => {
         window.open(url);
     });
 })
+
+/* Modification de l'adresse initiale = suppression du mot Arrondissement et ajout unicode eme*/
+let street = "{{nom_commun}}";
+let numberArr = street.replace(/\D/g,'');
+street = 'PARIS '+ numberArr+String.fromCodePoint(0x1D49) + '';
+const adresse_Co = document.getElementById("adresseCo_{{feature_ol_uid}}");
+adresse_Co.innerHTML = street;
+
+
+/**
+ * =================
+ * OPEN / CLOSE CODE
+ * =================
+**/
+const place_layer = mviewer?.env?.place_layer || "";
+let LAYER_URL = `https://${mviewer.env?.url_data_edp}/geoserver/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${place_layer}&outputFormat=application%2Fjson`;
+const apiId = "{{google_id}}";
+const btnId = "isopen-{{feature_ol_uid}}"
+const btn = document.getElementById(btnId);
+btn.classList.remove("openplace");
+btn.classList.remove("closeplace");
+if(apiId) {
+    LAYER_URL += `&CQL_FILTER=id='${apiId}'`
+    fetch(LAYER_URL)
+    .then(x => x.json())
+    .then(data => {
+        // get props or abort
+        const props = data?.features[0]?.properties;
+        if(_.isEmpty(props)) {
+            btn.remove();
+            return
+        };
+        // calculate NOW time to minutes
+        const now = moment();
+        const nowHoursToMinutes = parseInt(now.format("HH"))*60;
+        const nowMinutes = now.format("mm");
+        const minutes = parseInt(nowHoursToMinutes) + parseInt(nowMinutes);
+        // get day
+        const dayNumber = now.day();
+        // get periods
+        let openPeriods = props[dayNumber + "_open"];
+        let closePeriods = props[dayNumber + "_close"];
+        if(openPeriods) {openPeriods = JSON.parse(openPeriods)};
+        if(closePeriods) {closePeriods = JSON.parse(closePeriods)};
+        let isOpen = false;
+
+        // parse each period to know if open or not
+        if(!_.isEmpty(openPeriods) && !_.isEmpty(closePeriods) && openPeriods.length == closePeriods.length) {
+            openPeriods.forEach((p, i) => {
+                // for Each period
+                const fromTime = p;
+                const toTime = closePeriods[i]
+                if(minutes >= fromTime && minutes <= toTime) {
+                    isOpen = true;
+                }
+            })
+        }
+
+        // Manage UI to display correct badge
+        if(isOpen) {
+            btn.classList.add("openplace");
+            btn.querySelector(".opentext").innerHTML = mviewer.tr("open");
+        } else {
+            btn.classList.add("closeplace");
+            btn.querySelector(".opentext").innerHTML = mviewer.tr("close");
+        }
+    }).catch(x => {
+        // request fail
+        btn.remove();
+    })
+} else {
+    btn.remove();
+}
 </script>
 
 <style>
+.accordion__commerce {
+    border-top: 1px solid var(--mycolor);
+    margin: 1em 0 0;
+}
+
+.accordion__commerce .btn.btn-primary {
+    background: none;
+    border: none;
+    color: var(--mycolor);
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.accordion__commerce .btn[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.name__co {
+    margin-top: 10px;
+}
+
 #right-panel.active {
     width: 420px!important;
+}
+
+#page-content-wrapper:has(#right-panel.active) #zoomtoolbar,
+  #page-content-wrapper:has(#right-panel.active) #toolstoolbar {
+    margin-right: 420px !important;
 }
 
 #right-panel .item.active {
     padding-bottom: 2.5rem!important;
 }
-
 
 .cardInfo {
     background-color: #ededed7d;
@@ -68,30 +200,49 @@ $(goId).on("click", () => {
 
 .textCard {
     font-size: 1.2rem;
-    margin-bottom: 2rem;
 }
 
-.btnCard {
+
+.btnGo {
     font-size: 1.2rem;
     background-color: var(--mycolor);
     color: white;
     padding: 8px 14px;
     border-radius: 2rem;
     display: inline-flex;
+    width: 100%;
     align-items: center;
+    justify-content: center;
+    margin: 1em 0;
 }
 
-.btnCard svg {
+.btnOpen {
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 1rem;
+    line-height: 1.1;
+    color: var(--mycolor);
+}
+
+.openplace {
+    background-color: #AEFFAE;
+}
+
+.closeplace {
+    background-color: #FF95A5;
+}
+
+.btnGo svg {
     margin-right: 5px;
 }
 
-.btnCard:hover {
+.btnGo:hover {
     color: white;
     opacity: 0.8;
     cursor: pointer;
 }
 
-.btnCard:focus {
+.btnGo:focus {
     color: white;
     outline: none;
 }
@@ -112,6 +263,44 @@ $(goId).on("click", () => {
 
 li.item.cardInfo {
     list-style: none;
+}
+
+.btn__more {
+    color: var(--mycolor);
+    font-weight: 600;
+    border-bottom: 3px solid var(--mycolor);
+    font-size: 1.2rem;
+
+}
+
+.btn__more:hover{
+    border: none;
+}
+
+.bgOutlinePrim{    
+    background-color: #ffffff00!important;
+    color: var(--mycolor);
+    border: 0.16rem solid;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 2rem;
+    display: inline-flex;
+    align-items: center;
+    margin: 0px 5px 5px 0px;
+}
+
+.bgOutlinePrim:hover{    
+    color: var(--mycolor);
+    opacity: 0.8;
+}
+
+.xs #modal-panel-selector .carousel-control {
+    height: 70%;
+}
+
+.xs .cardInfo.active {
+    background-color: #ededed00;
 }
 
 </style>
