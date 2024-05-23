@@ -67,15 +67,30 @@ const onLocateMe = ({ longitude, latitude }) => {
   _map.getView().setZoom(GEOLOC_ZOOM);
 };
 
+function geoFindMe() {
+  function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    onLocateMe(position.coords);
+  }
+  function error() {
+    console.log("Unable to retrieve your location");
+  }
+
+  if (!navigator.geolocation) {
+    console.log("Geolocation is not supported by your browser");
+  } else {
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
+}
+
 const initBtnGeoloc = () => {
   // Init current Lang
   let currentLang = API.lang || window.navigator.languages[0];
   currentLang = currentLang.includes("fr") ? "fr" : "en";
   mviewer.lang.changeLanguage(currentLang);
   document.getElementById("btnGeoloc").addEventListener("click", function () {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => onLocateMe(position.coords));
-    }
+    geoFindMe();
   });
 };
 
