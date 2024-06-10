@@ -227,16 +227,40 @@ li.item.cardInfo {
     /*Permet de calculer l'URL Google Map vers la fontaine au click sur le bouton "j'y vais"*/
     const goId = document.getElementById("go-{{feature_ol_uid}}");
     $(goId).on("click", () => {
-        navigator.geolocation.getCurrentPosition((pos) => {
+        function success(pos) {            
+            function pop(url,w,h) {
+                //Get safari browser
+                let isSafari = window.navigator.vendor.toLowerCase().includes("apple");
+                if(isSafari){                        
+                        n=window.open(url,'_blank','popup=1,toolbar=0,location=0,directories=0,status=1,menubar=0,titlebar=0,scrollbars=1,resizable=1');
+                }else{
+                        n=window.open(url,"_tab");
+                };
+                // Display alert                
+                if(n==null) {
+                    alert('Oups ! Votre navigateur bloque la redirection. Veuillez autoriser les pop-up dans les réglages du navigateur et réitérez.');
+                    return true;        
+                }else{
+                    return false;   
+                }      
+            }
+
             let lat = pos.coords.latitude;
             let long = pos.coords.longitude;
             let fontaineLat = "{{latitude}}";
             let fontaineLong = "{{longitude}}";
-            const url = `https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=${fontaineLat},${fontaineLong}&travelmode=walking`;
-            window.open(url);
-        });
+            const url = `https://www.google.com/maps/dir/?api=1&origin=${lat},${long}&destination=${fontaineLat},${fontaineLong}&travelmode=walking`;  
+            pop(url);
+        }
+        function error() {
+            console.log("Unable to retrieve your location");
+        }
+        if (!navigator.geolocation) {
+            console.log("Geolocation is not supported by your browser");
+        } else {
+            navigator.geolocation.getCurrentPosition(success, error);            
+        }
     })
-
     /* Affichage  du statut de la fontaine */
     function displayInfoF(text,backcolor,color){
         blockBadge.innerHTML = text;
