@@ -100,6 +100,7 @@ class TimeForm {
       startView: 0,
       todayHighlight: true,
       format: 'dd/mm/yyyy',
+      autoclose: true,
       language: "fr",
       ...config
     },className,placeholder);

@@ -73,10 +73,12 @@ function geoFindMe() {
   }
   function error() {
     console.log("Unable to retrieve your location");
+    alert("Votre navigateur n'autorise pas la géolocalisation, veuillez modifier les paramètres dans les réglages et rechargez la carte.");
   }
 
   if (!navigator.geolocation) {
     console.log("Geolocation is not supported by your browser");
+    alert("Votre navigateur n'autorise pas la géolocalisation, veuillez modifier les paramètres dans les réglages et rechargez la carte.");
   } else {
     navigator.geolocation.getCurrentPosition(success, error);
   }

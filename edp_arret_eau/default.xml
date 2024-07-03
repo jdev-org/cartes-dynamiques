@@ -139,6 +139,21 @@
                 	customcontrolpath="apps/edp_arret_eau/addons/customcontrol"
 			>
 			</layer>
+			<layer
+					id="chantiers"
+					name="Chantiers à Paris"
+					url="apps/edp_arret_eau/addons/customlayers/chantier.js"
+					dynamiclegend ="false"
+					visible="true"
+					tiled="false"
+					opacity="1"
+					type="customlayer"
+					showintoc="true"
+					queryable="false"
+					infoformat="application/vnd.ogc.gml"
+					infohighlight ="false"
+			>
+			</layer>
 			
 		</theme>
 	</themes>	
