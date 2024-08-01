@@ -891,10 +891,7 @@ span.badge.counter-slide {
     margin-left: 9rem!important;
 }
 
-/* Non visible en mobile */
-.xs .ol-attribution {
-    display: none;
-}
+
 
 .ol-attribution.ol-unselectable.ol-control.ol-collapsed {
     border-radius: 4px!important;
