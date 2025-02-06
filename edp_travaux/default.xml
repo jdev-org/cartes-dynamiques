@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<application
+			title="EDP - Carte Travaux"
+			id="edp_travaux"
+			logo="apps/commons/theme_edp/logo_edp_white.png"	
+			style="apps/commons/theme_edp/theme_edp.css"
+			favicon="apps/commons/theme_edp/favicon.ico"	
+			help="apps/edp_travaux/templates/home.html"
+			home="https://www.eaudeparis.fr/"
+			langfile="apps/edp_travaux/edpep.i18n.json" lang="fr"
+			showhelp="false"
+	/>
+	<mapoptions maxzoom="19" projection="EPSG:3857" center="-220750.13768758904,6144925.57790189" zoom="8" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
+
+  <baselayers style="gallery">
+    	<baselayer type="WMTS" id="ign_plan" label="Plan IGN" title="Plan IGN"
+			thumbgallery="apps/commons/img/basemap/ign_plan_v2.png"
+			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+			layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
+			fromcapacity="false" format="image/png"
+			attribution="Données cartographiques :©IGN"
+			style="normal"
+			matrixset="PM"
+			visible="false"	/>
+    	<baselayer type="WMTS" id="ign_orthophoto" label="Photos aériennes IGN"	title="Photos aériennes IGN"
+			thumbgallery="apps/commons/img/basemap/ign_orthophoto.png"
+			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+			layers="ORTHOIMAGERY.ORTHOPHOTOS"
+			fromcapacity="false" format="image/jpeg"
+			attribution="Données cartographiques :©IGN"
+			style="normal"
+			matrixset="PM"
+			visible="false"/>        
+    	<baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png" 
+    	    url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
+    	    visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" 
+			/>
+  </baselayers>
+
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
+	
+	<searchparameters bbox="false" localities="true" features="false" />
+	
+	<extensions>
+		<extension type="javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
+		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
+		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
+    <extension type="component" id="print" path="apps/commons/addons"/>
+		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
+		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
+	</extensions>
+	
+	<themes mini="false" legendmini="false">
+		<theme name="Éducation"  collapsed="true" id="education" icon="fas fa-graduation-cap">
+		    <layer id="lycee" name="Lycées"  visible="true" tiled="false"
+            searchable="false" queryable="true" fields="axe" aliases="axe" 
+            attributefilter="true" attributefield="secteur_li" 
+						attributevalues="Public,Privé sous contrat avec l'éducation nationale"  attributelabel="Filtre" attributestylesync="false" attributefilterenabled="false"  
+            infoformat="application/vnd.ogc.gml" featurecount="20"
+            sld="https://kartenn.region-bretagne.fr/styles/lycee_secteur.sld" 
+            url="https://ows.region-bretagne.fr/geoserver/rb/wms" 
+            attribution="Source: Région Bretagne" 
+            metadata="https://kartenn.region-bretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/99e78163-ce9a-4eee-9ea0-36afc2a53d25"
+            metadata-csw="https://kartenn.region-bretagne.fr/geonetwork/srv/eng/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID=99e78163-ce9a-4eee-9ea0-36afc2a53d25" >	   
+            <template url="https://kartenn.region-bretagne.fr/kartoviz/apps/region/global/templates/global.lycee.mst"></template> 
+		    </layer>
+				<layer 
+						name="chantiers" 
+						id="chantiers" 
+						visible="true" 
+						type="customlayer"
+						url="apps/edp_travaux/customlayers/chantiers.js"
+						attributefilter="true" attributefield="nature_chantier" 
+						attributevalues="EP,ENP,INSTALL_RES,GENIE_CIVIL,Null"  attributelabel="Filtre" attributestylesync="false" attributefilterenabled="false"  
+            customcontrol="true"
+    				customcontrolpath="apps/edp_travaux/customcontrols"
+				>
+				</layer>                             
+      </theme>
+	</themes>
+</config>

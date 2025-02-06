@@ -1,0 +1,233 @@
+<div>
+  <div class="titleHome">Travaux en cours</div>
+  <div class="updateData"> Date de dernière mise à jour : Mercredi 31 Janvier 2024 à 13:45 </div>
+  <div id="list__trvx">
+    <div class="list__trvxArr">
+      <div></div>
+      <ul id="item__trvxArr"></ul>
+    </div>
+  </div>
+  <div class="block__info">
+    <p> Les travaux planifiés sur le réseau d'eau non potable (ENP) n'ont aucun impact sur la distribution de l'eau potable (EP) dans les habitations et autres locaux du même secteur. </p>
+  </div>
+</div>
+<script>
+  var URL_DATA = `https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_p&outputFormat=application%2Fjson`;
+  fetch(URL_DATA).then((response) => response.json()).then((data) => {
+    function filtrerParStatut(feature) {
+      if (feature.properties.statut === "EN COURS") {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    var features = data?.features.filter(filtrerParStatut);
+    const groupByArr = Object.groupBy(features, (feature) => {
+      return feature.properties.arrondisse;
+    });
+    let arrayArr = Object.entries(groupByArr).sort();
+    arrayArr.forEach(function(item) {
+      let arrTxt;
+      let numArr = item[0];
+      numArr = String(+(numArr.replace(",", "."))).replace(".", ",");
+      if (numArr == "1") {
+        arrTxt = '' + numArr + '<sup>er</sup>';
+      } else {
+        arrTxt = '' + numArr + '<sup>e</sup>';
+      }
+      const divArr = `
+	<div class="list__trvxArr" id="Arr-${item[0]}">
+		<div class="item__name collaspe__btn item__displayIcon" id="btnArr-${item[0]}">
+			<button onclick="itemDisplayBlock('trvxArr-${item[0]}','btnArr-${item[0]}')">
+				<span>
+					<b>${arrTxt}</b> Arrondissement 
+				</span>
+				<span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="20"
+                height="20"
+                fill="currentColor">
+						<path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
+					</svg>
+				</span>
+			</button>
+		</div>
+		<ul class="item__list item__display" id="trvxArr-${item[0]}"></ul>
+	</div>`;
+      document.getElementById("list__trvx").insertAdjacentHTML("beforeend", divArr);
+      var data = item[1];
+      data.forEach(function(feature) {
+        let coord_x = feature.geometry.coordinates[0];
+        let coord_y = feature.geometry.coordinates[1];
+        let street = feature.properties.adresse;
+        street = street.split(" ").slice(0, -3).join(" ");
+        let nature = feature.properties.nature_res === "EP" ? "Eau potable" : "Eau non potable";
+        const divItem = `
+	<li class="${feature.properties.nature_res}__item">
+		<div>
+			<div class="li__name">${street}</div>
+			<span class="badgeNat">
+				<svg
+					xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+					<path d="M5.63604 6.63288L12 0.268921L18.364 6.63288C21.8787 10.1476 21.8787 15.8461 18.364 19.3608C14.8492 22.8755 9.15076 22.8755 5.63604 19.3608C2.12132 15.8461 2.12132 10.1476 5.63604 6.63288H5.63604Z"></path>
+				</svg>${nature}
+			</span>
+		</div>
+		<button onclick="zoomToItem(${coord_x}, ${coord_y})" title="Voir sur la carte">
+			<svg
+				xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+				<path d="M11 5.07089C7.93431 5.5094 5.5094 7.93431 5.07089 11H7V13H5.07089C5.5094 16.0657 7.93431 18.4906 11 18.9291V17H13V18.9291C16.0657 18.4906 18.4906 16.0657 18.9291 13H17V11H18.9291C18.4906 7.93431 16.0657 5.5094 13 5.07089V7H11V5.07089ZM3.05493 11C3.51608 6.82838 6.82838 3.51608 11 3.05493V1H13V3.05493C17.1716 3.51608 20.4839 6.82838 20.9451 11H23V13H20.9451C20.4839 17.1716 17.1716 20.4839 13 20.9451V23H11V20.9451C6.82838 20.4839 3.51608 17.1716 3.05493 13H1V11H3.05493ZM14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"></path>
+			</svg>
+		</button
+	</li>`;
+        document.getElementById(`trvxArr-${item[0]}`).insertAdjacentHTML("beforeend", divItem);
+      });
+    });
+  }).catch(console.error);
+  // Function item on click
+  function zoomToItem(x, y) {
+    mviewer.zoomToLocation(x, y, 18, true, "EPSG:2154");
+    $("#modalInfos").modal("hide");
+  }
+  // Manage type of fontains block
+  function itemDisplayBlock(targetBlock, btnBlock) {
+    const block = document.getElementById(targetBlock);
+    block.classList.toggle("item__display");
+    const btn = document.getElementById(btnBlock);
+    btn.classList.toggle("item__displayIcon");
+  }
+</script>
+<style>
+  .list__trvxArr b {
+    text-transform: lowercase;
+  }
+
+  .item__displayIcon svg {
+    transform: rotate(270deg);
+  }
+
+  .collaspe__btn button {
+    background: none !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+    background: none;
+    border: none !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 3px 0;
+  }
+
+  .item__display {
+    display: none !important;
+  }
+
+  .collaspe__btn {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+  }
+
+  #modalInfos {
+    font-family: var(--myfont);
+  }
+
+  .updateData {
+    font-size: 18px;
+    color: #002ddc;
+  }
+
+  .titleHome {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--mycolor);
+    /* margin-bottom: 1rem; */
+  }
+
+  #help .modal-header {
+    padding: 40px 40px 0px 40px;
+  }
+
+  #list__trvx {
+    height: 500px;
+    overflow: auto;
+  }
+
+  .badgeNat {
+    background-color: var(--mycolor);
+    color: white;
+    padding: 1px 5px 4px;
+    border-radius: 10px;
+    font-size: smaller;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+
+  .item__list li button {
+    background: none;
+    border: px solid var(--mycolor);
+    color: var(--mycolor);
+    line-height: normal;
+  }
+
+  .item__list li {
+    list-style: none;
+    font-size: 14px;
+    background-color: #ff647d78;
+    border-radius: 6px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .item__list {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    margin-right: 0.5em;
+  }
+
+  .item__name {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 0.2em;
+  }
+
+  .li__name {
+    font-size: medium;
+    font-weight: 500;
+    color: var(--mycolor);
+    line-height: 1.1;
+  }
+
+  .EP__item .badgeNat {
+    background-color: var(--mycolor);
+  }
+
+  .ENP__item .badgeNat {
+    background-color: #002ddc2b;
+    color: var(--mycolor);
+  }
+
+  .badgeNat svg {
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+
+  .xs .item__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .block__info p {
+    margin: 10px 0 0px;
+  }
+</style>
