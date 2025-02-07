@@ -11,7 +11,7 @@
 			langfile="apps/edp_travaux/edpep.i18n.json" lang="fr"
 			showhelp="false"
 	/>
-	<mapoptions maxzoom="19" projection="EPSG:3857" center="-220750.13768758904,6144925.57790189" zoom="8" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
+	<mapoptions maxzoom="19" projection="EPSG:3857" center="261080.6331702467, 6250562.251554384" zoom="13" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 
   <baselayers style="gallery">
     	<baselayer type="WMTS" id="ign_plan" label="Plan IGN" title="Plan IGN"
@@ -52,27 +52,14 @@
 	</extensions>
 	
 	<themes mini="false" legendmini="false">
-		<theme name="Éducation"  collapsed="true" id="education" icon="fas fa-graduation-cap">
-		    <layer id="lycee" name="Lycées"  visible="true" tiled="false"
-            searchable="false" queryable="true" fields="axe" aliases="axe" 
-            attributefilter="true" attributefield="secteur_li" 
-						attributevalues="Public,Privé sous contrat avec l'éducation nationale"  attributelabel="Filtre" attributestylesync="false" attributefilterenabled="false"  
-            infoformat="application/vnd.ogc.gml" featurecount="20"
-            sld="https://kartenn.region-bretagne.fr/styles/lycee_secteur.sld" 
-            url="https://ows.region-bretagne.fr/geoserver/rb/wms" 
-            attribution="Source: Région Bretagne" 
-            metadata="https://kartenn.region-bretagne.fr/geonetwork/srv/fre/catalog.search#/metadata/99e78163-ce9a-4eee-9ea0-36afc2a53d25"
-            metadata-csw="https://kartenn.region-bretagne.fr/geonetwork/srv/eng/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID=99e78163-ce9a-4eee-9ea0-36afc2a53d25" >	   
-            <template url="https://kartenn.region-bretagne.fr/kartoviz/apps/region/global/templates/global.lycee.mst"></template> 
-		    </layer>
+		<theme name="Travaux"  collapsed="false" id="travaux" icon="fas fa-graduation-cap">
 				<layer 
 						name="chantiers" 
 						id="chantiers" 
 						visible="true" 
 						type="customlayer"
 						url="apps/edp_travaux/customlayers/chantiers.js"
-						attributefilter="true" attributefield="nature_chantier" 
-						attributevalues="EP,ENP,INSTALL_RES,GENIE_CIVIL,Null"  attributelabel="Filtre" attributestylesync="false" attributefilterenabled="false"  
+						attributefield="nature_chantier" 
             customcontrol="true"
     				customcontrolpath="apps/edp_travaux/customcontrols"
 				>

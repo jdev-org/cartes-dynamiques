@@ -2,56 +2,56 @@
     <h5 id="chantiers_title" class="title_color">NATURE DU CHANTIER</h5>
     <p>Cliquez sur un bloc pour filtrer les travaux selon la nature</p>
     <div>
-        <div id="EP" class="nature_chantier_container">
+        <label for="EP_checkbox" id="EP" class="nature_chantier_container">
             <input class="chantier_input_type" type="checkbox" id="EP_checkbox" name="chantiers_type"/>
             <span class="cbx">
                 <svg width="10px" height="10px" viewBox="0 0 12 11">
                   <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
                 </svg>
               </span>
-            <label for="EP_checkbox" class="title_color chantier_container_title">Travaux sur le réseau d'eau potable</label>
+            <span for="EP_checkbox" class="title_color chantier_container_title">Travaux sur le réseau d'eau potable</span>
             <p class="travaux_type_number"></p>
-        </div>
-        <div id="ENP" class="nature_chantier_container">
+        </label>
+        <label id="ENP" class="nature_chantier_container">
             <input class="chantier_input_type" type="checkbox" id="ENP_checkbox" name="chantiers_type"/>
             <span class="cbx">
                 <svg width="10px" height="10px" viewBox="0 0 12 11">
                   <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
                 </svg>
               </span>
-            <label for="ENP_checkbox" class="title_color chantier_container_title">Travaux sur le réseau d'eau non potable</label>
+            <span for="ENP_checkbox" class="title_color chantier_container_title">Travaux sur le réseau d'eau non potable</span>
             <p class="travaux_type_number"></p>
-        </div>
-        <div id="INSTALL_RES" class="nature_chantier_container">
+        </label>
+        <label id="INSTALL_RES" class="nature_chantier_container">
             <input class="chantier_input_type" type="checkbox" id="INSTALL_RES_checkbox" name="chantiers_type"/>
             <span class="cbx">
                 <svg width="10px" height="10px" viewBox="0 0 12 11">
                   <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
                 </svg>
               </span>
-            <label for="INSTALL_RES_checkbox" class="title_color chantier_container_title">Travaux sur les installations du réseau ou sur les réservoirs</label>
+            <span for="INSTALL_RES_checkbox" class="title_color chantier_container_title">Travaux sur les installations du réseau ou sur les réservoirs</span>
             <p class="travaux_type_number"></p>
-        </div>
-        <div id="GENIE_CIVIL" class="nature_chantier_container">
+        </label>
+        <label id="GENIE_CIVIL" class="nature_chantier_container">
             <input class="chantier_input_type" type="checkbox" id="GENIE_CIVIL_checkbox" name="chantiers_type"/>
             <span class="cbx">
                 <svg width="10px" height="10px" viewBox="0 0 12 11">
                   <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
                 </svg>
               </span>
-            <label for="GENIE_CIVIL_checkbox" class="title_color chantier_container_title">Travaux de génis civil sur les galeries abritant des canalisations d'eau</label>
+            <span for="GENIE_CIVIL_checkbox" class="title_color chantier_container_title">Travaux de génis civil sur les galeries abritant des canalisations d'eau</span>
             <p class="travaux_type_number"></p>
-        </div>
-        <div id="Null" class="nature_chantier_container">
+        </label>
+        <label id="Null" class="nature_chantier_container">
             <input class="chantier_input_type" type="checkbox" id="Null_checkbox" name="chantiers_type"/>
             <span class="cbx">
                 <svg width="10px" height="10px" viewBox="0 0 12 11">
                   <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
                 </svg>
               </span>
-            <label for="Null_checkbox" class="title_color chantier_container_title">Non renseigné</label>
+            <span for="Null_checkbox" class="title_color chantier_container_title">Non renseigné</span>
             <p class="travaux_type_number"></p>
-        </div>
+        </label>
     </div>
 </div>
 
@@ -105,7 +105,7 @@
       float: left;
       width: 18px;
       height: 18px;
-      border: thick;
+      border: 2px solid;;
       border-radius: 50%;
       border-color: #002DDC;
       background-color: #ffffff;
@@ -113,8 +113,8 @@
     }
     .nature_chantier_container .cbx svg {
       position: absolute;
-      top: 4px;
-      left: 4px;
+      top: 2px;
+      left: 2px;
       fill: none;
       stroke-linecap: round;
       stroke-linejoin: round;

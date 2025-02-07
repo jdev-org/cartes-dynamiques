@@ -30,8 +30,8 @@ const cc = (function() {
             // mandatory - code executed when layer is added to legend panel
             if (!_initialized) {
                 _layer = mviewer.getLayer(layerid).layer;
-                _blurElement = document.getElementById('heatmap-blur');
-                _radiusElement = document.getElementById('heatmap-radius');
+                _blurElement = document.getElementById('chantiers-blur');
+                _radiusElement = document.getElementById('chantiers-radius');
                 if (_blurElement && _radiusElement) {
                     _blurElement.addEventListener('change', _blurHandler);
                     _radiusElement.addEventListener('change', _radiusHandler);
