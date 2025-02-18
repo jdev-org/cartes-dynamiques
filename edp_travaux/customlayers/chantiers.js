@@ -54,7 +54,7 @@ chantiersLegend.items.push({ styles: EPstyle, label: "EP", geometry: "Polygon" }
 chantiersLegend.items.push({ styles: ENPstyle, label: "ENP", geometry: "Polygon" });
 chantiersLegend.items.push({ styles: INSTALL_RESstyle, label: "INSTALL_RES", geometry: "Polygon" });
 chantiersLegend.items.push({ styles: GENIE_CIVILstyle, label: "GENIE_CIVIL", geometry: "Polygon" });
-chantiersLegend.items.push({ styles: NullStyle, label: "Null", geometry: "Polygon" });
+chantiersLegend.items.push({ styles: NullStyle, label: "null", geometry: "Polygon" });
 
 const chantiersLayer = new ol.layer.Vector({
   source: new ol.source.Vector({
@@ -71,7 +71,7 @@ const chantiersLayer = new ol.layer.Vector({
       style = INSTALL_RESstyle;
     } else if (feature.get("nature_chantier") === "GENIE_CIVIL") {
       style = GENIE_CIVILstyle;
-    } else if (feature.get("nature_chantier") === "null") {
+    } else if (feature.get("nature_chantier") === null) {
       style = NullStyle;
     }
     return style;

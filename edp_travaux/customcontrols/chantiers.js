@@ -6,20 +6,54 @@ const cc = (function() {
     */
 
     var _initialized = false;
+    var listTravaux = [];
+    const includesAny = (arr, values) => values.some(v => arr.includes(v));
 
-    var _layer;
+    var _activeFilters = (EDPFilters) => {
+        let checkedFilters = [];
+        filterList = EDPFilters.querySelectorAll(".nature_chantier_container input:checked");
+        filterList.forEach(element => {
+            checkedFilters.push(element.getAttribute("cat"))
+        });
+        console.log(checkedFilters);
+        
+        
+        if (checkedFilters.length === 0) {
+            listTravaux.forEach(chantier => chantier.setStyle(null));
+            return;
+        }
 
-    var _blurElement = false;
-
-    var _radiusElement = false;
-
-    var _blurHandler = function(e) {
-        _layer.setBlur(parseInt(e.target.value, 10));
-    };
-
-    var _radiusHandler = function(e) {
-        _layer.setRadius(parseInt(e.target.value, 10));
-    };
+        listTravaux.forEach(chantier => {
+            let natureTravaux = String(chantier.get('nature_chantier'));
+            if (checkedFilters.includes(natureTravaux)) {
+                let travaux = [];
+                if (natureTravaux === "EP") {                    
+                    travaux.push("EP");
+                }
+                if (natureTravaux === "ENP") {
+                    travaux.push("ENP");
+                }
+                if (natureTravaux ===  "INSTALL_RES") {
+                    travaux.push("INSTALL_RES");
+                }
+                if (natureTravaux ===  "GENIE_CIVIL") {
+                    travaux.push("GENIE_CIVIL");
+                }
+                if (natureTravaux === "null") {
+                    console.log("TRAVAUX NULL");
+                    
+                    travaux.push("null");
+                } 
+                if (includesAny(checkedFilters, travaux)) {
+                    chantier.setStyle(null);
+                } else {
+                    chantier.setStyle(new ol.style.Style(null));
+                }
+            } else {
+                chantier.setStyle(new ol.style.Style(null));
+            }
+        })
+    }
 
     return {
         /*
@@ -28,17 +62,16 @@ const cc = (function() {
 
         init: function () {
             // mandatory - code executed when layer is added to legend panel
-            if (!_initialized) {
-                _layer = mviewer.getLayer(layerid).layer;
-                _blurElement = document.getElementById('chantiers-blur');
-                _radiusElement = document.getElementById('chantiers-radius');
-                if (_blurElement && _radiusElement) {
-                    _blurElement.addEventListener('change', _blurHandler);
-                    _radiusElement.addEventListener('change', _radiusHandler);
+            mviewer.getMap().once("rendercomplete", function(e) {
+                if (!_initialized) {
+                    // List all feature from the layer
+                    listTravaux = mviewer.getLayer(layerid).layer.getSource().getFeatures();
+                    let EDPFilters = document.getElementById("EDPFilters");
+                    EDPFilters.addEventListener("change", () => _activeFilters(EDPFilters));
+
                     _initialized = true;
                 }
-
-            }
+            })
         },
 
         destroy: function () {
