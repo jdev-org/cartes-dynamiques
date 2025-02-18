@@ -15,8 +15,6 @@ const cc = (function() {
         filterList.forEach(element => {
             checkedFilters.push(element.getAttribute("cat"))
         });
-        console.log(checkedFilters);
-        
         
         if (checkedFilters.length === 0) {
             listTravaux.forEach(chantier => chantier.setStyle(null));
@@ -40,8 +38,6 @@ const cc = (function() {
                     travaux.push("GENIE_CIVIL");
                 }
                 if (natureTravaux === "null") {
-                    console.log("TRAVAUX NULL");
-                    
                     travaux.push("null");
                 } 
                 if (includesAny(checkedFilters, travaux)) {
