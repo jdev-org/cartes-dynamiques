@@ -7,7 +7,35 @@ const cc = (function() {
 
     var _initialized = false;
     var listTravaux = [];
+    var countTravaux = {
+        EP: 0,
+        ENP: 0,
+        INSTALL_RES: 0,
+        GENIE_CIVIL: 0,
+        Null: 0
+    }
     const includesAny = (arr, values) => values.some(v => arr.includes(v));
+
+    var _getTravauxCount = () => {
+        listTravaux.forEach(chantier => {
+            let natureTravaux = String(chantier.get('nature_chantier'));
+            if (natureTravaux === "EP") {
+                countTravaux.EP += 1;
+            }
+            if (natureTravaux === "ENP") {
+                countTravaux.ENP += 1;
+            }
+            if (natureTravaux ===  "INSTALL_RES") {
+                countTravaux.INSTALL_RES += 1;
+            }
+            if (natureTravaux ===  "GENIE_CIVIL") {
+                countTravaux.GENIE_CIVIL += 1;
+            }
+            if (natureTravaux === "null") {
+                countTravaux.Null += 1;
+            }
+        })
+    }
 
     var _activeFilters = (EDPFilters) => {
         let checkedFilters = [];
@@ -64,6 +92,13 @@ const cc = (function() {
                     listTravaux = mviewer.getLayer(layerid).layer.getSource().getFeatures();
                     let EDPFilters = document.getElementById("EDPFilters");
                     EDPFilters.addEventListener("change", () => _activeFilters(EDPFilters));
+
+                    _getTravauxCount();
+                    document.getElementById("EP_count").innerHTML+= countTravaux.EP;
+                    document.getElementById("ENP_count").innerHTML+= countTravaux.ENP;
+                    document.getElementById("INSTALL_RES_count").innerHTML+= countTravaux.INSTALL_RES;
+                    document.getElementById("GENIE_CIVIL_count").innerHTML+= countTravaux.GENIE_CIVIL;
+                    document.getElementById("Null_count").innerHTML+= countTravaux.Null;
 
                     _initialized = true;
                 }
