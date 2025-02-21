@@ -59,10 +59,10 @@ const cc = (function() {
                 if (natureTravaux === "ENP") {
                     travaux.push("ENP");
                 }
-                if (natureTravaux ===  "INSTALL_RES") {
+                if (natureTravaux === "INSTALL_RES") {
                     travaux.push("INSTALL_RES");
                 }
-                if (natureTravaux ===  "GENIE_CIVIL") {
+                if (natureTravaux === "GENIE_CIVIL") {
                     travaux.push("GENIE_CIVIL");
                 }
                 if (natureTravaux === "null") {

@@ -10,6 +10,7 @@
 			home="https://www.eaudeparis.fr/"
 			langfile="apps/edp_travaux/edpep.i18n.json" lang="fr"
 			showhelp="false"
+			templaterightinfopanel="brut"
 	/>
 	<mapoptions maxzoom="19" projection="EPSG:3857" center="261080.6331702467, 6250562.251554384" zoom="13" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 
@@ -51,19 +52,23 @@
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
 	
-	<themes mini="false" legendmini="true">
-		<theme name="Travaux"  collapsed="false" id="travaux" icon="fas fa-graduation-cap">
-				<layer 
-						name="chantiers" 
-						id="chantiers" 
-						visible="true" 
+	<themes mini="true" legendmini="false">
+		<theme name="Travaux" collapsed="true" id="travaux" icon="fas fa-graduation-cap">
+				<layer
+						name="chantiers"
+						id="chantiers"
+						visible="true"
 						type="customlayer"
 						url="apps/edp_travaux/customlayers/chantiers.js"
-						attributefield="nature_chantier" 
+						attributefield="nature_chantier"
             customcontrol="true"
     				customcontrolpath="apps/edp_travaux/customcontrols"
+						infoformat="application/vnd.ogc.gml"
+						queryable="true"
+						featurecount="5"
 				>
-				</layer>                             
+					<template list="true" url="apps/edp_travaux/templates/edp_travaux.mst"></template>
+				</layer>
       </theme>
 	</themes>
 </config>

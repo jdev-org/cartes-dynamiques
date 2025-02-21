@@ -1,0 +1,136 @@
+{{#features}}
+<li id="{{feature_ol_uid}}" class="item" style="width:100%;">	
+	<div id="container_{{nature_chantier}}" class="travaux_card_container">
+		<div class="travaux_card_title">Adresse des travaux, {{cp_arrondissement}}</div>
+        <span id="travaux_card_nature_chantier_{{feature_ol_uid}}" class="travaux_card_nature_chantier"></span>
+        <div class="travaux_card_content">
+            <span class="travaux_card_subtitle">Motif des travaux</span>
+            <span>Type des travaux / champs saisie par EDP</span>
+        </div>
+        <div class="travaux_card_content">
+            <span class="travaux_card_subtitle">Période prévue des travaux</span>
+            <span id="travaux_card_date_{{feature_ol_uid}}"></span>
+        </div>
+        <div class="travaux_card_content">
+            <span class="travaux_card_subtitle">N° d'arrêt d'eau</span>
+            <span>{{chantier_cite_id}}</span>
+        </div>
+        <div class="travaux_card_message_container">
+            Message géré automatiquement dans le template selon la nature des travaux / le type de chantier.
+        </div>
+        <div class="travaux_card_button_container" >
+            <button href="#" class="travaux_card_button">Lettre d'info</button>
+            <button href="#" class="travaux_card_button">En savoir plus</button>
+            <button href="#" class="travaux_card_button">Anomalie</button>
+        </div>
+	</div>
+</li>
+<script>
+    // Customize le CSS selon la nature des travaux
+    const naturesTravaux = {
+        EP: "Eau potable",
+        ENP: "Eau non potable",
+        INSTALL_RES: "Réseau ou installations",
+        GENIE_CIVIL: "Génie civil",
+        Null: "Non renseigné"
+    }
+    if ("{{nature_chantier}}" === "EP") {
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").innerHTML+= naturesTravaux.EP;
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").style.backgroundColor = "rgba(170, 184, 255, 1)";
+    } else if ("{{nature_chantier}}" === "ENP") {
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").innerHTML+= naturesTravaux.ENP;
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").style.backgroundColor = "rgba(255, 239, 170, 1)";
+    } else if ("{{nature_chantier}}" === "INSTALL_RES") {
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").innerHTML+= naturesTravaux.INSTALL_RES;
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").style.backgroundColor = "rgba(174, 255, 174, 1)";
+    } else if ("{{nature_chantier}}" === "GENIE_CIVIL") {
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").innerHTML+= naturesTravaux.GENIE_CIVIL;
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").style.backgroundColor = "rgba(255, 199, 151, 1)";
+    } else if ("{{nature_chantier}}" === "null") {
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").innerHTML+= naturesTravaux.Null;
+        document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").style.backgroundColor = "rgba(226, 226, 226, 1)";
+    }
+
+    // Affichage des dates
+    const dateDebut = new Date("{{date_debut}}").toLocaleDateString("fr-FR");
+    const dateFin = new Date("{{date_fin}}").toLocaleDateString("fr-FR");
+    document.getElementById("travaux_card_date_{{feature_ol_uid}}").innerHTML = `Du ${dateDebut} au ${dateFin}`;
+
+</script>
+<style>
+.travaux_card_container {
+    padding: 10px;
+    min-height: 300px;
+    border-radius: 5%;
+    position: relative;
+    overflow: visible;
+}
+#container_EP {
+    background-color: rgba(170, 184, 255, 0.5);
+}
+#container_ENP {
+    background-color: rgba(255, 239, 170, 0.5);
+}
+#container_INSTALL_RES {
+    background-color: rgba(174, 255, 174, 0.5);
+}
+#container_GENIE_CIVIL {
+    background-color: rgba(255, 199, 151, 0.5);
+}
+#container_null {
+    background-color: rgba(226, 226, 226, 0.5);
+}
+.travaux_card_title {
+    text-transform: uppercase;
+    color: #002DDC;
+    font-size: 15px;
+    font-weight: bold;
+}
+.travaux_card_nature_chantier {
+    background-color: rgba(170, 184, 255, 0.8);
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    padding: 2px 5px;
+}
+.travaux_card_subtitle {
+    text-transform: uppercase;
+    color: #002DDC;
+}
+.travaux_card_content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+.travaux_card_message_container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px 0;
+}
+.travaux_card_button{
+    background-color: #002DDC;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 2px 5px;
+}
+.travaux_card_button_container {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.panel-body {
+    padding: 0 !important;
+}
+.carousel-inner {
+    overflow: visible !important;
+}
+</style>
+{{/features}}
