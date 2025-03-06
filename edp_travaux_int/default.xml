@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<application
+			title="Qualité de l'eau"
+			id="qualite_eau"
+			logo="apps/commons/theme_edp/logo_edp_white.png"	
+			style="apps/commons/theme_edp/theme_edp.css"
+			favicon="apps/commons/theme_edp/favicon.ico"
+			help="apps/edp_qualite_eau/templates/home.html"
+			showhelp="true"
+			home="https://www.eaudeparis.fr/"	
+			langfile="apps/edp_qualite_eau/qualite_eau.i18n.json" lang="fr"	
+			togglealllayersfromtheme="true"
+			templaterightinfopanel="brut"
+	/>
+	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
+
+    <baselayers style="gallery">
+        <baselayer type="WMTS" id="ign_plan" label="Plan IGN" title="Plan IGN"
+			thumbgallery="apps/commons/img/basemap/ign_plan_v2.png"
+			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+			layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
+			fromcapacity="false" format="image/png"
+			attribution="Données cartographiques :©IGN"
+			style="normal"
+			matrixset="PM"
+			visible="false"	/>
+        <baselayer type="WMTS" id="ign_orthophoto" label="Photos aériennes IGN"	title="Photos aériennes IGN"
+			thumbgallery="apps/commons/img/basemap/ign_orthophoto.png"
+			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
+			layers="ORTHOIMAGERY.ORTHOPHOTOS"
+			fromcapacity="false" format="image/jpeg"
+			attribution="Données cartographiques :©IGN"
+			style="normal"
+			matrixset="PM"
+			visible="false"/>        
+        <baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png" 
+            url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
+            visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
+    </baselayers>
+	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
+	<searchparameters
+			banmarker="true"
+			bbox="false"
+			localities="true"
+			features="false"
+			inputlabel="Recherche d'adresse"
+			closeafterclick="true"
+			querymaponclick="true"
+			imgurl = "apps/edp_qualite_eau/img/drop.png"
+			imgwidth = "25px"
+	/>
+
+	<extensions>
+	</extensions>
+	
+	<themes mini="true" legendmini="false">
+		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
+			<layer id="udi" name="Unités de distribution d'eau potable"  visible="true" tiled="false"
+				searchable="false" queryable="true" 
+				infoformat="application/vnd.ogc.gml" featurecount="1"
+				sld="https://{{sld_url}}/apps/edp_qualite_eau/sld/udi.sld" 
+				url="https://{{url_data_edp}}/geoserver/edp/ows"
+				legendurl="apps/edp_qualite_eau/img/lgd_udi.png" 
+				dynamiclegend ="false"
+				attribution="Eau de Paris" 
+				infohighlight ="false"
+				metadata=""
+				metadata-csw="" >
+				<template url="apps/edp_qualite_eau/templates/udi_wms.mst"></template>
+		    </layer> 			
+		</theme>
+	</themes>
+</config>
