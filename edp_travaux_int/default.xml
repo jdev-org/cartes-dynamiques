@@ -1,44 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Qualité de l'eau"
-			id="qualite_eau"
-			logo="apps/commons/theme_edp/logo_edp_white.png"	
-			style="apps/commons/theme_edp/theme_edp.css"
-			favicon="apps/commons/theme_edp/favicon.ico"
-			help="apps/edp_qualite_eau/templates/home.html"
+			title="Travaux Saisie"
+			id="travaux_saisie"
 			showhelp="true"
 			home="https://www.eaudeparis.fr/"	
-			langfile="apps/edp_qualite_eau/qualite_eau.i18n.json" lang="fr"	
+			lang="fr"	
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
 	/>
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
     <baselayers style="gallery">
-        <baselayer type="WMTS" id="ign_plan" label="Plan IGN" title="Plan IGN"
-			thumbgallery="apps/commons/img/basemap/ign_plan_v2.png"
-			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
-			layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
-			fromcapacity="false" format="image/png"
-			attribution="Données cartographiques :©IGN"
-			style="normal"
-			matrixset="PM"
-			visible="false"	/>
-        <baselayer type="WMTS" id="ign_orthophoto" label="Photos aériennes IGN"	title="Photos aériennes IGN"
-			thumbgallery="apps/commons/img/basemap/ign_orthophoto.png"
-			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
-			layers="ORTHOIMAGERY.ORTHOPHOTOS"
-			fromcapacity="false" format="image/jpeg"
-			attribution="Données cartographiques :©IGN"
-			style="normal"
-			matrixset="PM"
-			visible="false"/>        
         <baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png" 
-            url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
-            visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
+            url="http://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
+            visible="false" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
+        <baselayer  type="WMTS" id="ortho" label="Photo aérienne IGN" title="GéoPortail" maxscale="1000" thumbgallery="img/basemap/ortho.jpg"
+            url="https://data.geopf.fr/wmts" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" visible="false" fromcapacity="false"
+            attribution="&lt;a href='https://geoservices.ign.fr/services-geoplateforme-diffusion' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+        <baselayer  type="WMS" id="osm" label="OpenStreetMap" title="Plan OSM Géobretagne" thumbgallery="img/basemap/osm.png"
+            url="https://tile.geobretagne.fr/osm/service" layers="osm:grey" format="image/png" visible="true"
+            attribution="GéoBretagne. Données : les contributeurs d'&lt;a href='https://www.openstreetmap.org/' target='_blank'>OpenStreetMap &lt;/a>,  &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>ODbL &lt;/a>" />
     </baselayers>
+
 	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
+	
 	<searchparameters
 			banmarker="true"
 			bbox="false"
@@ -47,28 +33,23 @@
 			inputlabel="Recherche d'adresse"
 			closeafterclick="true"
 			querymaponclick="true"
-			imgurl = "apps/edp_qualite_eau/img/drop.png"
 			imgwidth = "25px"
 	/>
 
 	<extensions>
-	</extensions>
+		<extension type="component" id="travauxInt" path="apps/edp_travaux_int"/>
+	</extensions> 
 	
-	<themes mini="true" legendmini="false">
-		<theme name="Qualité de l'eau" collapsed="true" id="edp_qualite_eau" icon="fas fa-tint">
-			<layer id="udi" name="Unités de distribution d'eau potable"  visible="true" tiled="false"
-				searchable="false" queryable="true" 
-				infoformat="application/vnd.ogc.gml" featurecount="1"
-				sld="https://{{sld_url}}/apps/edp_qualite_eau/sld/udi.sld" 
-				url="https://{{url_data_edp}}/geoserver/edp/ows"
-				legendurl="apps/edp_qualite_eau/img/lgd_udi.png" 
-				dynamiclegend ="false"
-				attribution="Eau de Paris" 
-				infohighlight ="false"
-				metadata=""
-				metadata-csw="" >
-				<template url="apps/edp_qualite_eau/templates/udi_wms.mst"></template>
-		    </layer> 			
-		</theme>
-	</themes>
+	<themes mini="true" legendmini="false"> 
+        <theme name="Découpages territoriaux"  collapsed="true" id="territoire" icon="fas fa-globe">
+			<layer id="commune" name="Commune" visible="false" queryable="false" 
+                fields="nom_geo" aliases="Nom" 
+                type="customlayer" style="" opacity="1" legendurl="https://kartenn.region-bretagne.fr/kartoviz/apps/region/territoire/img/commune.png" 
+                url="https://kartenn.region-bretagne.fr/kartoviz/apps/region/territoire/customlayers/commune.js" 
+                tooltip="true" tooltipenabled="true"
+                attribution="Source: GéoBretagne" 
+                metadata="https://geobretagne.fr/geonetwork/srv/eng/catalog.search?node=srv#/metadata/b08e6cb1-236c-49b7-88f9-42b500d274d5" 
+                metadata-csw="https://geobretagne.fr/geonetwork/srv/eng/csw?SERVICE=CSW&amp;VERSION=2.0.2&amp;REQUEST=GetRecordById&amp;elementSetName=full&amp;ID=b08e6cb1-236c-49b7-88f9-42b500d274d5"/>	    
+        </theme>  
+    </themes>
 </config>

@@ -1,7 +1,0 @@
-{
-    "type": "module",
-    "js": [],
-    "css": "/css/style.css",
-    "html": "./trackview.html",
-    "target": "page-content-wrapper"
-}
