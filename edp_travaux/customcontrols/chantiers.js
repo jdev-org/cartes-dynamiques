@@ -45,8 +45,11 @@ const cc = (function() {
         });
         
         if (checkedFilters.length === 0) {
-            listTravaux.forEach(chantier => chantier.setStyle(null));
-            return;
+            let allFilters = EDPFilters.querySelectorAll(".nature_chantier_container input");
+            checkedFilters = [...allFilters].map(element => element.getAttribute("cat"));
+    
+            // Coche tous les filtres visuellement
+            allFilters.forEach(element => element.checked = true);
         }
 
         listTravaux.forEach(chantier => {
