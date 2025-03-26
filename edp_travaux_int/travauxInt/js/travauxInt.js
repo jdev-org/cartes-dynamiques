@@ -46,7 +46,7 @@ var travauxInt = (function () {
   };
 
   var _formatData = (sourceTravaux) => {
-    
+
     let data = sourceTravaux.getFeatures();
 
     data.forEach((feature) => {
@@ -71,7 +71,7 @@ var travauxInt = (function () {
         $("#bottom-panel").html(`
           <table id="myTable"
               data-toggle="table"
-              data-pagination="true"
+              data-height="350"
               data-search="true">
             <thead>
               <tr>
