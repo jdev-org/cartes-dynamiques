@@ -16,24 +16,12 @@
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
     <baselayers style="gallery">
-        <baselayer type="WMTS" id="ign_plan" label="Plan IGN" title="Plan IGN"
-			thumbgallery="apps/commons/img/basemap/ign_plan_v2.png"
-			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
-			layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2"
-			fromcapacity="false" format="image/png"
-			attribution="Données cartographiques :©IGN"
-			style="normal"
-			matrixset="PM"
-			visible="false"	/>
-        <baselayer type="WMTS" id="ign_orthophoto" label="Photos aériennes IGN"	title="Photos aériennes IGN"
-			thumbgallery="apps/commons/img/basemap/ign_orthophoto.png"
-			url="https://wxs.ign.fr/decouverte/geoportail/wmts?"
-			layers="ORTHOIMAGERY.ORTHOPHOTOS"
-			fromcapacity="false" format="image/jpeg"
-			attribution="Données cartographiques :©IGN"
-			style="normal"
-			matrixset="PM"
-			visible="false"/>        
+        <baselayer  type="WMTS" id="ortho2" label="Photo aérienne IGN" title="GéoPortail" maxscale="1000" thumbgallery="img/basemap/ortho.jpg"
+            url="https://data.geopf.fr/wmts" layers="ORTHOIMAGERY.ORTHOPHOTOS" format="image/jpeg" visible="false" fromcapacity="false"
+            attribution="&lt;a href='https://geoservices.ign.fr/services-geoplateforme-diffusion' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
+        <baselayer  type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8"
+            url="https://data.geopf.fr/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false"
+            attribution="&lt;a href='https://geoservices.ign.fr/services-geoplateforme-diffusion' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
         <baselayer  type="OSM" id="positron" label="Positron" title="Carto" thumbgallery="img/basemap/positron.png" 
             url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
             visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>" />
