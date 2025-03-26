@@ -132,5 +132,14 @@
 .carousel-inner {
     overflow: visible !important;
 }
+
+#page-content-wrapper:has(#right-panel.active) #zoomtoolbar,
+  #page-content-wrapper:has(#right-panel.active) #toolstoolbar {
+    margin-right: 420px !important;
+}
+
+#right-panel.active {
+    width: 420px!important;
+}
 </style>
 {{/features}}
