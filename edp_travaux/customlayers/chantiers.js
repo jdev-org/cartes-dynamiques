@@ -1,6 +1,6 @@
 let EPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(170, 184, 255, 0.5)",
+    color: "rgba(170, 184, 255, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(170, 184, 255, 1)",
@@ -10,7 +10,7 @@ let EPstyle = new ol.style.Style({
 
 let ENPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 239, 170, 0.5)",
+    color: "rgba(255, 239, 170, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(255, 239, 170, 1)",
@@ -20,7 +20,7 @@ let ENPstyle = new ol.style.Style({
 
 let INSTALL_RESstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(174, 255, 174, 0.5)",
+    color: "rgba(174, 255, 174, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(174, 255, 174, 1)",
@@ -30,7 +30,7 @@ let INSTALL_RESstyle = new ol.style.Style({
 
 let GENIE_CIVILstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 199, 151, 0.5)",
+    color: "rgba(255, 199, 151, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(255, 199, 151, 1)",
@@ -40,7 +40,7 @@ let GENIE_CIVILstyle = new ol.style.Style({
 
 let NullStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(226, 226, 226, 0.5)",
+    color: "rgba(226, 226, 226, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(226, 226, 226, 1)",
@@ -48,18 +48,26 @@ let NullStyle = new ol.style.Style({
   }),
 });
 
-let chantiersLegend = { title: "Types de chantiers",items: [] };
+let chantiersLegend = { title: "Types de chantiers", items: [] };
 
 chantiersLegend.items.push({ styles: EPstyle, label: "EP", geometry: "Polygon" });
 chantiersLegend.items.push({ styles: ENPstyle, label: "ENP", geometry: "Polygon" });
-chantiersLegend.items.push({ styles: INSTALL_RESstyle, label: "INSTALL_RES", geometry: "Polygon" });
-chantiersLegend.items.push({ styles: GENIE_CIVILstyle, label: "GENIE_CIVIL", geometry: "Polygon" });
+chantiersLegend.items.push({
+  styles: INSTALL_RESstyle,
+  label: "INSTALL_RES",
+  geometry: "Polygon",
+});
+chantiersLegend.items.push({
+  styles: GENIE_CIVILstyle,
+  label: "GENIE_CIVIL",
+  geometry: "Polygon",
+});
 chantiersLegend.items.push({ styles: NullStyle, label: "null", geometry: "Polygon" });
 
 const chantiersLayer = new ol.layer.Vector({
   source: new ol.source.Vector({
-      url: 'apps/edp_travaux/data/chantiers.geojson',
-      format: new ol.format.GeoJSON(),
+    url: "apps/edp_travaux/data/chantiers.geojson",
+    format: new ol.format.GeoJSON(),
   }),
   style: function (feature) {
     let style;
@@ -75,6 +83,6 @@ const chantiersLayer = new ol.layer.Vector({
       style = NullStyle;
     }
     return style;
-  }
+  },
 });
-new CustomLayer('chantiers', chantiersLayer, chantiersLegend);
+new CustomLayer("chantiers", chantiersLayer, chantiersLegend);
