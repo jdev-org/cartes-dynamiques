@@ -29,11 +29,6 @@
         "printLayouts": "apps/commons/addons/print/layouts/standard.json",
         "ownerLogo": "apps/commons/theme_edp/logo_edp_bleu.png",
         "ownerInfos": "Cette carte a été réalisée sur www.eaudeparis.fr"
-      },
-      "edp_travaux_int": {
-        "printLayouts": "apps/commons/addons/print/layouts/standard.json",
-        "ownerLogo": "apps/commons/theme_edp/logo_edp_bleu.png",
-        "ownerInfos": "Cette carte a été réalisée sur www.eaudeparis.fr"
       }
     }
   }
