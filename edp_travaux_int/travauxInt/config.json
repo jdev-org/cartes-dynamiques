@@ -1,0 +1,15 @@
+{
+    "type": "module",
+    "js": [
+        "js/travauxInt.js",
+        "js/bootstrap-table-1.11.0.min.js"
+    ],
+    "css": [
+        "css/style.css",
+        "css/bootstrap-table-1.11.0.min.css"
+    ],
+    "html": "travauxInt.html",
+    "target": "toolstoolbar",
+    "options": {
+    }
+}
