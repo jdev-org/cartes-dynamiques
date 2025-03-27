@@ -71,31 +71,18 @@ var travauxInt = (function () {
         $("#bottom-panel").html(`
           <table id="myTable"
               data-toggle="table"
-              data-height="350"
-              data-search="true">
+              data-height="320"
+              data-search="true"
+              >
             <thead>
               <tr>
-                <th data-field="id">
-                  ID
-                </th>
-                <th data-field="date_debut">
-                  Date début
-                </th>
-                <th data-field="date_fin">
-                  Date fin
-                </th>
-                <th data-field="chantier_cite_id">
-                  Chantier Cité ID
-                </th>
-                <th data-field="cp_arrondissement">
-                  CP Arrondissement
-                </th>
-                <th data-field="demande_cite_id">
-                  Demande Cité ID
-                </th>
-                <th data-field="num_emprise">
-                  Num Emprise
-                </th>
+                <th data-field="id">ID</th>
+                <th data-field="date_debut" data-sortable="true">Date début</th>
+                <th data-field="date_fin" data-sortable="true">Date fin</th>
+                <th data-field="chantier_cite_id">Chantier Cité ID</th>
+                <th data-field="cp_arrondissement">CP Arrondissement</th>
+                <th data-field="demande_cite_id">Demande Cité ID</th>
+                <th data-field="num_emprise">Num Emprise</th>
               </tr>
             </thead>
           </table>
