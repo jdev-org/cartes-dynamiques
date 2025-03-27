@@ -2,7 +2,7 @@
 <config>
 	<application
 			title="Travaux en cours | Interne"
-			id="travaux_saisie"
+			id="edp_travaux_int"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"
