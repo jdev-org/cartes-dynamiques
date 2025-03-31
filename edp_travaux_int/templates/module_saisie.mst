@@ -4,38 +4,113 @@
 		<div id="travaux_card_nature_chantier_{{feature_ol_uid}}" class="travaux_card_title">Editer les informations</div>
         <div class="travaux_card_ref_chantier">Référence Chantier : {{num_emprise}}</div>
         <form>
-            <div class="travaux_card_content">
+            <div class="travaux_card_content_select">
                 <label for="select_nature_chantier" class="travaux_card_subtitle">Nature du chantier</label>
-                <select id="select_nature_chantier"></select>
+                <select id="select_nature_chantier">
+                    <option value="">Séléctionnez une nature de chantier...</option>
+                </select>
             </div>
-            <div class="travaux_card_content">
-                <span class="travaux_card_subtitle">Type de chantier</span>
-                <span>Type des travaux / champs saisie par EDP</span>
+            <div class="travaux_card_content_select">
+                <label for="select_type_chantier" class="travaux_card_subtitle">Type de chantier</label>
+                <select id="select_type_chantier" disabled>
+                    <option value="">Séléctionnez un type de chantier...</option>
+                </select>
             </div>
             <div class="travaux_card_content">
                 <span class="travaux_card_subtitle">Impact</span>
-                <span id="travaux_card_date_{{feature_ol_uid}}"></span>
+                <span id="travaux_impact"></span>
             </div>
         </form>
 	</div>
 </li>
 <script>
-    // Customize le CSS selon la nature des travaux
     const naturesTravaux = {
         EP: "Travaux sur le réseau d'eau potable",
         ENP: "Travaux sur le réseau d'eau non potable",
-        INSTALL_RES: "Travaux sur le réseau ou les installations",
-        GENIE_CIVIL: "Travaux de génie civil",
+        INSTALL_RES: "Travaux sur les installations du réseau ou sur les réservoirs",
+        GENIE_CIVIL: "Travaux de génie civil sur les galeries abritant des canalisations d'eau	",
         Null: "Type de travaux non renseigné"
     }
 
-    const selectNature = document.getElementById("select_nature_chantier");
-    for (const travaux in naturesTravaux) {
-        const option = document.createElement("option");
-        option.value = travaux;
-        option.textContent = naturesTravaux[travaux];
-        selectNature.appendChild(option);
+    const typesChantier = {
+        RC: "Renouvellement de canalisations",
+        RBI: "Remplacement de bouche incendie",
+        RV: "Remplacement de vannes",
+        RCSI: "Renforcement de canalisations lié à la sécurité incendie",
+        IU: "Intervention d'urgence",
+        RAH: "Remplacement d'appareils hydrauliques",
+        TIRR: "Travaux sur les installations du réseau ou sur les réservoirs",
+        TGC: "Travaux de génie civil sur les galeries abritant des canalisations d'eau"
     }
+
+    const correspondancesNaturesTypes = {
+        EP: ['RC', 'RBI', 'RV', 'RCSI', 'IU', 'RAH'],
+        ENP: ['RC', 'RV', 'IU', 'RAH'],
+        INSTALL_RES: ['TIRR'],
+        GENIE_CIVIL: ['TGC', 'IU']
+    }
+
+    const impact = {
+        IntePonctuelles: "Ces travaux nécessiteront 2 interruptions de service ponctuelles. Celles-ci seront annoncées a minima 48h à l’avance par voie d’affichage dans vos immeubles.",
+        NoImpact: "Ces travaux n’ont pas d’impact sur la distribution d’eau potable",
+        IU: "Intervention d'urgence"
+    }
+
+    const correspondancesTypesImpact = {
+        RC: "IntePonctuelles",
+        RBI: "NoImpact",
+        RV: "IntePonctuelles",
+        RCSI: "IntePonctuelles",
+        IU: "IU",
+        RAH: "NoImpact",
+        TIRR: "NoImpact",
+        TGC: "NoImpact"
+    }
+
+    // Select Nature Chantier
+    const selectNatureChantier = document.getElementById("select_nature_chantier");
+    for (const travaux in naturesTravaux) {
+        const natureOption = document.createElement("option");
+        natureOption.value = travaux;
+        natureOption.textContent = naturesTravaux[travaux];
+        selectNatureChantier.appendChild(natureOption);
+    }
+
+    // Select Type Chantier
+    document.getElementById("select_nature_chantier").addEventListener("change", function() {
+        const selectTypeChantier =document.getElementById('select_type_chantier');
+        const natureChantierValue = selectNatureChantier.value;
+        
+        selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
+        
+        if (correspondancesNaturesTypes[natureChantierValue]) {
+            correspondancesNaturesTypes[natureChantierValue].forEach(type => {
+                const typeOption = document.createElement("option")
+                typeOption.value = type;
+                typeOption.textContent = typesChantier[type];
+                selectTypeChantier.appendChild(typeOption);
+            });
+        }
+
+        const selectType = document.getElementById("select_type_chantier");
+        if (this.value) {
+            selectType.disabled = false;
+        } else {
+            selectType.disabled = true;
+        }
+    });
+
+    document.getElementById("select_type_chantier").addEventListener("change", function() {
+        const selectTypeChantier =document.getElementById('select_type_chantier');
+        const impactTravaux =document.getElementById('travaux_impact');
+        const typeChantierValue = selectTypeChantier.value;
+        impactTravaux.innerHTML = "Impact des travaux...";
+
+        if (correspondancesTypesImpact[typeChantierValue]) {
+            const impactKey = correspondancesTypesImpact[typeChantierValue];            
+            impactTravaux.innerHTML = impact[impactKey];
+        }
+    });
 
     if ("{{nature_chantier}}" === "EP") {
         // document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").style.backgroundColor = "rgba(170, 184, 255, 1)";
@@ -48,11 +123,6 @@
     } else if ("{{nature_chantier}}" === "null") {
         // document.getElementById("travaux_card_nature_chantier_{{feature_ol_uid}}").style.backgroundColor = "rgba(226, 226, 226, 1)";
     }
-
-    // Affichage des dates
-    const dateDebut = new Date("{{date_debut}}").toLocaleDateString("fr-FR");
-    const dateFin = new Date("{{date_fin}}").toLocaleDateString("fr-FR");
-    document.getElementById("travaux_card_date_{{feature_ol_uid}}").innerHTML = `Du ${dateDebut} au ${dateFin}`;
 
     // Accordéon Plus d'infos
     function toggleInfo (element) {
@@ -178,7 +248,41 @@
     width: 100%;
 }
 .travaux_card_button_container.open {
-    max-height: 100px; /* Ajuste selon le contenu */
+    max-height: 100px;
+}
+.travaux_card_content_select {
+    position: relative;
+    font-family: var(--myfont);
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    height: 40px;
+    padding: 5px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid 2px #002DDC;
+}
+.travaux_card_content_select::after{
+    content: "▼"; /* Ou "\25BC" (Unicode du chevron) */
+    font-size: 14px;
+    color: #002DDC;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    pointer-events: none;
+}
+#travaux_impact{
+    min-height: 100px;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 2px #002DDC;
+    background-color: white;
 }
 .panel-body {
     padding: 0 !important;
