@@ -9,3 +9,7 @@
 #bottom-panel .form-control {
     border-radius: 4px!important;
 }
+
+#sidebar:has(.active) #bottom-panel {
+    margin-left: 500px;
+}

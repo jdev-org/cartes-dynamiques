@@ -10,7 +10,6 @@
 			help="apps/edp_travaux_int/templates/home.html"
 			home="https://www.eaudeparis.fr/"	
 			langfile="apps/edp_travaux/edpep.i18n.json" lang="fr"
-			templaterightinfopanel="brut"
 	/>
 	<mapoptions maxzoom="19" projection="EPSG:3857" center="261080.6331702467, 6250562.251554384" zoom="13" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 
@@ -53,6 +52,7 @@
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5">
+						<template list="true" url="apps/edp_travaux_int/templates/module_saisie.mst"></template>
 				</layer>	    
         </theme>  
     </themes>
