@@ -5,32 +5,40 @@
         <div class="travaux_card_ref_chantier">Référence Chantier : {{num_emprise}}</div>
         <form>
             <div class="travaux_card_content_select">
-                <label for="select_nature_chantier" class="travaux_card_subtitle">Nature du chantier</label>
-                <select id="select_nature_chantier">
+                <label for="select_nature_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Nature du chantier</label>
+                <select id="select_nature_chantier_{{feature_ol_uid}}">
                     <option value="">Séléctionnez une nature de chantier...</option>
                 </select>
             </div>
-            <div id="form">
+            <div id="form_{{feature_ol_uid}}">
                 <div class="travaux_card_content_select">
-                    <label for="select_type_chantier" class="travaux_card_subtitle">Type de chantier</label>
-                    <select id="select_type_chantier" disabled>
+                    <label for="select_type_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Type de chantier</label>
+                    <select id="select_type_chantier_{{feature_ol_uid}}" disabled>
                         <option value="">Séléctionnez un type de chantier...</option>
                     </select>
                 </div>
                 <div class="travaux_card_content">
                     <span class="travaux_card_subtitle">Impact</span>
-                    <span id="travaux_impact"></span>
+                    <span id="travaux_impact_{{feature_ol_uid}}" class="travaux_impact"></span>
                 </div>
             </div>
-            <div id="autre_form">
+            <div id="autre_form_{{feature_ol_uid}}" class="autre_form">
                 <div class="travaux_card_content">
-                    <label for="input_autre_type_chantier" class="travaux_card_subtitle">Précisez le type de chantier</label>
-                    <input type="text" id="input_autre_type_chantier"></input>
+                    <label for="input_autre_nature_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Précisez la nature du chantier</label>
+                    <input type="text" id="input_autre_nature_chantier_{{feature_ol_uid}}"></input>
                 </div>
                 <div class="travaux_card_content">
-                    <label for="autre_impact_chantier" class="travaux_card_subtitle">Précisez l'impact</label>
-                    <textarea id="autre_impact_chantier"></textarea>
+                    <label for="input_autre_type_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Précisez le type de chantier</label>
+                    <input type="text" id="input_autre_type_chantier_{{feature_ol_uid}}"></input>
                 </div>
+                <div class="travaux_card_content">
+                    <label for="autre_impact_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Précisez l'impact</label>
+                    <textarea id="autre_impact_chantier_{{feature_ol_uid}}" class="autre_impact_chantier"></textarea>
+                </div>
+            </div>
+            <div class="buttons_container">
+                <input id="annuler" type="button" value="Annuler" />
+                <input id="valider" type="submit" value="Valider" />
             </div>
         </form>
 	</div>
@@ -81,7 +89,7 @@
     }
 
     // Select Nature Chantier
-    const selectNatureChantier = document.getElementById("select_nature_chantier");
+    const selectNatureChantier = document.getElementById("select_nature_chantier_{{feature_ol_uid}}");
     for (const travaux in naturesTravaux) {
         const natureOption = document.createElement("option");
         natureOption.value = travaux;
@@ -90,17 +98,17 @@
     }
 
     // Select Type Chantier
-    document.getElementById("select_nature_chantier").addEventListener("change", function() {
-        const selectTypeChantier =document.getElementById('select_type_chantier');
+    document.getElementById("select_nature_chantier_{{feature_ol_uid}}").addEventListener("change", function() {
+        const selectTypeChantier =document.getElementById('select_type_chantier_{{feature_ol_uid}}');
         const natureChantierValue = selectNatureChantier.value;
-        
-        document.getElementById('autre_form').style.display = "none";
-        document.getElementById('form').style.display = "block";
+
+        document.getElementById('autre_form_{{feature_ol_uid}}').style.display = "none";
+        document.getElementById('form_{{feature_ol_uid}}').style.display = "block";
         selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
         
         if (natureChantierValue === "Autre") {
-            document.getElementById('autre_form').style.display = "block";
-            document.getElementById('form').style.display = "none";
+            document.getElementById('autre_form_{{feature_ol_uid}}').style.display = "block";
+            document.getElementById('form_{{feature_ol_uid}}').style.display = "none";
         }
 
         if (correspondancesNaturesTypes[natureChantierValue]) {
@@ -112,7 +120,7 @@
             });
         }
 
-        const selectType = document.getElementById("select_type_chantier");
+        const selectType = document.getElementById("select_type_chantier_{{feature_ol_uid}}");
         if (this.value) {
             selectType.disabled = false;
         } else {
@@ -120,9 +128,9 @@
         }
     });
 
-    document.getElementById("select_type_chantier").addEventListener("change", function() {
-        const selectTypeChantier =document.getElementById('select_type_chantier');
-        const impactTravaux =document.getElementById('travaux_impact');
+    document.getElementById("select_type_chantier_{{feature_ol_uid}}").addEventListener("change", function() {
+        const selectTypeChantier =document.getElementById('select_type_chantier_{{feature_ol_uid}}');
+        const impactTravaux =document.getElementById('travaux_impact_{{feature_ol_uid}}');
         const typeChantierValue = selectTypeChantier.value;
         impactTravaux.innerHTML = "Impact des travaux...";
 
@@ -131,21 +139,6 @@
             impactTravaux.innerHTML = impact[impactKey];
         }
     });
-
-    // Accordéon Plus d'infos
-    function toggleInfo (element) {
-        let container = element.nextElementSibling;
-        container.classList.toggle("open");
-
-        let chevron = element.querySelector(".glyphicon");
-        if (container.classList.contains("open")) {
-            chevron.classList.remove("glyphicon-chevron-down");
-            chevron.classList.add("glyphicon-chevron-up");
-        } else {
-            chevron.classList.remove("glyphicon-chevron-up");
-            chevron.classList.add("glyphicon-chevron-down");
-        }
-    }
 
 </script>
 <style>
@@ -157,7 +150,7 @@
     overflow: visible;
 }
 #container{
-    background-color: rgb(245, 242, 239);
+    background-color: rgb(255, 255, 255);
 }
 .travaux_card_ref_chantier{
     font-family: var(--myfont);
@@ -168,7 +161,7 @@
     font-family: var(--myfont);
     text-transform: uppercase;
     color: #002DDC;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 25px;
 }
@@ -210,42 +203,6 @@
     font-weight: bold;
     cursor: pointer;
 }
-.travaux_card_button{
-    background-color: #002ddc00;
-    border: solid 2px #002ddc;
-    border-radius: 20px;
-    color: #002ddc;
-    text-align: center;
-    text-decoration: none;
-    padding: 5px 5px;
-    font-family: var(--myfont);
-    font-weight: bold;
-}
-.travaux_card_button_info {
-    font-family: var(--myfont);
-    margin-top: 10px;
-    width: 100%;
-    height: 3rem;
-    background-color: #002DDC;
-    border: none;
-    border-radius: 12px;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    padding: 2px 5px;
-}
-.travaux_card_button_container {
-    max-height: 0px;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-.travaux_card_button_container.open {
-    max-height: 100px;
-}
 .travaux_card_content_select {
     position: relative;
     font-family: var(--myfont);
@@ -273,7 +230,7 @@ select {
     top: 50%;
     pointer-events: none;
 }
-#travaux_impact{
+.travaux_impact{
     min-height: 100px;
     padding: 5px;
     border-radius: 10px;
@@ -287,14 +244,29 @@ select {
     border-radius: 10px;
     border: solid 2px #002DDC;
 }
-#autre_impact_chantier{
+.autre_impact_chantier{
     height: 100px;
 }
 select:focus, input:focus, textarea:focus {
     outline: #728beb;
 }
-#autre_form {
+.autre_form {
     display: none;
+}
+.buttons_container {
+    font-family: var(--myfont);
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}
+.buttons_container input {
+    color: white;
+    background-color: #002DDC;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-weight: bold;
 }
 .panel-body {
     padding: 0 !important;
