@@ -1,5 +1,5 @@
 <div>
-  <h5 id="chantiers_title" class="title_color">NATURE DU CHANTIER</h5>
+  <h4 id="chantiers_title" class="legend__title">NATURE DU CHANTIER</h4>
   <p>Cliquez sur un bloc pour filtrer les travaux selon la nature</p>
   <div id="EDPFilters">
     <label for="EP_checkbox" id="EP" class="nature_chantier_container">
@@ -18,7 +18,7 @@
       <span for="EP_checkbox" class="title_color chantier_container_title"
         >Travaux sur le réseau d'eau potable</span
       >
-      <span id="EP_count" class="travaux_count"></span>
+      <!--<span id="EP_count" class="travaux_count"></span>-->
     </label>
     <label id="ENP" class="nature_chantier_container">
       <input
@@ -36,7 +36,7 @@
       <span for="ENP_checkbox" class="title_color chantier_container_title"
         >Travaux sur le réseau d'eau non potable</span
       >
-      <span id="ENP_count" class="travaux_count"></span>
+      <!--<span id="ENP_count" class="travaux_count"></span>-->
     </label>
     <label id="INSTALL_RES" class="nature_chantier_container">
       <input
@@ -54,7 +54,7 @@
       <span for="INSTALL_RES_checkbox" class="title_color chantier_container_title"
         >Travaux sur les installations du réseau ou sur les réservoirs</span
       >
-      <span id="INSTALL_RES_count" class="travaux_count"></span>
+      <!--<span id="INSTALL_RES_count" class="travaux_count"></span>-->
     </label>
     <label id="GENIE_CIVIL" class="nature_chantier_container">
       <input
@@ -72,7 +72,7 @@
       <span for="GENIE_CIVIL_checkbox" class="title_color chantier_container_title"
         >Travaux de génis civil sur les galeries abritant des canalisations d'eau</span
       >
-      <span id="GENIE_CIVIL_count" class="travaux_count"></span>
+      <!--<span id="GENIE_CIVIL_count" class="travaux_count"></span>-->
     </label>
     <label id="Null" class="nature_chantier_container">
       <input
@@ -90,7 +90,7 @@
       <span for="Null_checkbox" class="title_color chantier_container_title"
         >Non renseigné</span
       >
-      <span id="Null_count" class="travaux_count"></span>
+      <!--<span id="Null_count" class="travaux_count"></span>-->
     </label>
   </div>
 </div>
@@ -114,15 +114,31 @@
   .title_color {
     color: #002ddc;
   }
+
+  .legend__title {
+    color: #002ddc;
+    font-weight: 600;
+    font-size: larger;
+    font-family: var(--myfont);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 15px;
+  }
+  
   .nature_chantier_container {
     padding: 10px;
     display: flex;
     align-items: center;
+    height: 5rem;
+    border-radius: 20px;
+    margin-bottom: 0.7rem;
+    user-select: none;
+    cursor: pointer;
   }
   .chantier_container_title {
     width: 80%;
-    margin-bottom: 0px !important;
     margin-left: 10px;
+    line-height: 1.1;
   }
   .chantier_input_type {
     width: 10%;
@@ -142,11 +158,7 @@
   #Null {
     background-color: rgba(226, 226, 226, 0.5);
   }
-  .nature_chantier_container {
-    height: 5rem;
-    border-radius: 20px;
-    margin-bottom: 0.7rem;
-  }
+
   .travaux_count {
     display: flex;
     flex: 1;
@@ -187,14 +199,6 @@
     stroke-dashoffset: 17;
     transform: translate3d(0, 0, 0);
   }
-  .nature_chantier_container .cbx + span {
-    float: left;
-    margin-left: 6px;
-  }
-  .nature_chantier_container {
-    user-select: none;
-    cursor: pointer;
-  }
   .nature_chantier_container label {
     display: inline-block;
     cursor: pointer;
@@ -204,17 +208,10 @@
     visibility: hidden;
   }
   .nature_chantier_container input[type="checkbox"]:checked + .cbx {
-    background-color: #a8a8a8;
-    background-image: linear-gradient(#255cd2, #1d52c1);
+    background-color: #002ddc;
   }
   .nature_chantier_container input[type="checkbox"]:checked + .cbx svg {
     stroke-dashoffset: 0;
     transition: all 0.15s ease;
-  }
-
-  @media screen and (max-width: 600px) {
-    .chantier_container_title {
-      width: 70%;
-    }
   }
 </style>
