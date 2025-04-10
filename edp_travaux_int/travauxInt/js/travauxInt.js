@@ -1,4 +1,18 @@
 var travauxInt = (function () {
+  var scripts = [
+    'apps/commons/export_table/FileSaver.min.js',
+    'apps/commons/export_table/polyfills.umd.js',
+    'apps/commons/export_table/jspdf.umd.min.js',
+    'apps/commons/export_table/tableExport.min.js',
+    'apps/commons/export_table/bootstrap-table-export.min.js'
+  ]
+
+  scripts.forEach(function(scriptSrc) {
+    var script = document.createElement('script')
+    script.src = scriptSrc
+    document.head.appendChild(script)
+  })
+  
   let _config;
 
   let _map;
@@ -73,6 +87,8 @@ var travauxInt = (function () {
               data-toggle="table"
               data-height="320"
               data-search="true"
+              data-show-export="true"
+              data-export-types="['json', 'pdf', 'csv', 'excel']"
               >
             <thead>
               <tr>
@@ -89,7 +105,10 @@ var travauxInt = (function () {
         `);
 
         $("#myTable").bootstrapTable({
-          data: finalData
+          data: finalData,
+          exportOptions: {
+            fileName: "export-travaux"
+          }
         });
       }
     });  
