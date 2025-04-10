@@ -1,6 +1,6 @@
 let EPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(170, 184, 255, 0.5)",
+    color: "rgba(170, 184, 255, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(170, 184, 255, 1)",
@@ -10,7 +10,7 @@ let EPstyle = new ol.style.Style({
 
 let ENPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 239, 170, 0.5)",
+    color: "rgba(255, 239, 170, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(255, 239, 170, 1)",
@@ -20,7 +20,7 @@ let ENPstyle = new ol.style.Style({
 
 let INSTALL_RESstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(174, 255, 174, 0.5)",
+    color: "rgba(174, 255, 174, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(174, 255, 174, 1)",
@@ -30,7 +30,7 @@ let INSTALL_RESstyle = new ol.style.Style({
 
 let GENIE_CIVILstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 199, 151, 0.5)",
+    color: "rgba(255, 199, 151, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(255, 199, 151, 1)",
@@ -40,7 +40,7 @@ let GENIE_CIVILstyle = new ol.style.Style({
 
 let NullStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(226, 226, 226, 0.5)",
+    color: "rgba(226, 226, 226, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(226, 226, 226, 1)",

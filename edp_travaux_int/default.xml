@@ -44,7 +44,7 @@
 	<extensions>
 		<extension type="component" id="travauxInt" path="apps/edp_travaux_int"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
-    <extension type="component" id="print" path="apps/commons/addons"/>
+    	<extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions> 
@@ -57,9 +57,11 @@
 						visible="true"
 						type="customlayer"
 						url="apps/edp_travaux_int/customlayers/chantiers.js"
+						tooltip="true"
+						tooltipcontent="{{nature_chantier}}"
 						attributefield="nature_chantier"
-            customcontrol="true"
-    				customcontrolpath="apps/edp_travaux_int/customcontrols"
+            			customcontrol="true"
+    					customcontrolpath="apps/edp_travaux_int/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5">
