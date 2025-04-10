@@ -30,6 +30,15 @@
 	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
 	
 	<searchparameters bbox="false" localities="true" features="false" />
+
+	<styles>
+		<selectionstyle>
+			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+		</selectionstyle>
+		<subselectionstyle>
+			<polygon opacity="0" strokewidth="8" />
+		</subselectionstyle>
+	</styles>
 	
 	<extensions>
 		<extension type="javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
@@ -48,6 +57,8 @@
 						visible="true"
 						type="customlayer"
 						url="apps/edp_travaux/customlayers/chantiers.js"
+						tooltip="true"
+						tooltipcontent="{{nature_chantier}}"
 						attributefield="nature_chantier"
             			customcontrol="true"
     					customcontrolpath="apps/edp_travaux/customcontrols"

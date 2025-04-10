@@ -49,7 +49,7 @@
     const naturesTravaux = {
         EP: "Travaux sur le réseau d'eau potable",
         ENP: "Travaux sur le réseau d'eau non potable",
-        INSTALL_RES: "Travaux sur les installations du réseau ou sur les réservoirs",
+        INSTALL_RES: "Travaux sur les installations ou sur les réservoirs",
         GENIE_CIVIL: "Travaux de génie civil sur les galeries abritant des canalisations d'eau",
         Null: "Non renseigné"
     }
