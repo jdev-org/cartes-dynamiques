@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Travaux en cours sur les réseaux d'eau potable et non potable"
+			title="Nos travaux sur la voie publique"
 			id="edp_travaux"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
@@ -35,13 +35,13 @@
 		<extension type="javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
-    <extension type="component" id="print" path="apps/commons/addons"/>
+    	<extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
-		<theme name="Travaux" collapsed="true" id="travaux" icon="fas fa-graduation-cap">
+		<theme name="Travaux" collapsed="true" id="travaux" icon="fas fa-arrow-right">
 				<layer
 						name="chantiers"
 						id="chantiers"
@@ -49,8 +49,8 @@
 						type="customlayer"
 						url="apps/edp_travaux/customlayers/chantiers.js"
 						attributefield="nature_chantier"
-            customcontrol="true"
-    				customcontrolpath="apps/edp_travaux/customcontrols"
+            			customcontrol="true"
+    					customcontrolpath="apps/edp_travaux/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5"
