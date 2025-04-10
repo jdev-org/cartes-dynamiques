@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Travaux en cours | Interne"
+			title="Nos travaux sur la voie publique"
 			id="edp_travaux_int"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"
-			showhelp="true"
+			showhelp="false"
 			help="apps/edp_travaux_int/templates/home.html"
 			home="https://www.eaudeparis.fr/"	
 			langfile="apps/edp_travaux/edpep.i18n.json" lang="fr"
@@ -24,19 +24,16 @@
   	    url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
   	    visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>"/>
   </baselayers>
-	<styles>
-     <selectionstyle>
-         <point radius="7" fillcolor="214, 12, 12" opacity="0.5" strokecolor="214, 12, 12" strokewidth="4" />
-         <line opacity="0.5" strokecolor="214, 12, 12" strokewidth="4" />
-         <polygon fillcolor="214, 12, 12" opacity="0" strokecolor="214, 12, 12" strokewidth="4" />
-     </selectionstyle>
-     <subselectionstyle>
-         <point radius="7" fillcolor="221, 124, 124" opacity="0.5" strokecolor="221, 124, 124" strokewidth="2" />
-         <line opacity="0.5" strokecolor="221, 124, 124"  strokewidth="2" />
-         <polygon fillcolor="221, 124, 124" opacity="0" strokecolor="221, 124, 124" strokewidth="8" />
-     </subselectionstyle>
- </styles>
-
+  
+  	<styles>
+		<selectionstyle>
+			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+		</selectionstyle>
+		<subselectionstyle>
+			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+		</subselectionstyle>
+	</styles>
+	
 	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
 	
 	<searchparameters bbox="false" localities="true" features="false" />
@@ -44,22 +41,24 @@
 	<extensions>
 		<extension type="component" id="travauxInt" path="apps/edp_travaux_int"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
-    <extension type="component" id="print" path="apps/commons/addons"/>
+    	<extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions> 
 	
 	<themes mini="true" legendmini="false"> 
-        <theme name="Travaux" collapsed="true" id="travaux" icon="fas fa-globe">
+        <theme name="Travaux" collapsed="true" id="travaux" icon="far fa-edit">
 			<layer
 						name="chantiers"
 						id="chantiers"
 						visible="true"
 						type="customlayer"
 						url="apps/edp_travaux_int/customlayers/chantiers.js"
+						tooltip="true"
+						tooltipcontent="{{nature_chantier}}"
 						attributefield="nature_chantier"
-            customcontrol="true"
-    				customcontrolpath="apps/edp_travaux_int/customcontrols"
+            			customcontrol="true"
+    					customcontrolpath="apps/edp_travaux_int/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5">
