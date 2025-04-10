@@ -24,19 +24,16 @@
   	    url="https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png" maxzoom="20" 
   	    visible="true" attribution="Map tiles by  &lt;a href='https://carto.com/attributions' target='_blank'>Carto &lt;/a>, under  &lt;a href='https://creativecommons.org/licenses/by/3.0/' target='_blank'>CC BY 3.0 &lt;/a>"/>
   </baselayers>
-	<styles>
-     <selectionstyle>
-         <point radius="7" fillcolor="214, 12, 12" opacity="0.5" strokecolor="214, 12, 12" strokewidth="4" />
-         <line opacity="0.5" strokecolor="214, 12, 12" strokewidth="4" />
-         <polygon fillcolor="214, 12, 12" opacity="0" strokecolor="214, 12, 12" strokewidth="4" />
-     </selectionstyle>
-     <subselectionstyle>
-         <point radius="7" fillcolor="221, 124, 124" opacity="0.5" strokecolor="221, 124, 124" strokewidth="2" />
-         <line opacity="0.5" strokecolor="221, 124, 124"  strokewidth="2" />
-         <polygon fillcolor="221, 124, 124" opacity="0" strokecolor="221, 124, 124" strokewidth="8" />
-     </subselectionstyle>
- </styles>
-
+  
+  	<styles>
+		<selectionstyle>
+			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+		</selectionstyle>
+		<subselectionstyle>
+			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+		</subselectionstyle>
+	</styles>
+	
 	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
 	
 	<searchparameters bbox="false" localities="true" features="false" />
