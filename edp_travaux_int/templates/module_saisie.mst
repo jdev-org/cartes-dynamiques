@@ -7,14 +7,12 @@
             <div class="travaux_card_content_select">
                 <label for="select_nature_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Nature du chantier</label>
                 <select id="select_nature_chantier_{{feature_ol_uid}}">
-                    <option value="">Sélectionnez une nature de chantier...</option>
                 </select>
             </div>
             <div id="form_{{feature_ol_uid}}">
                 <div class="travaux_card_content_select">
                     <label for="select_type_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Type de chantier</label>
                     <select id="select_type_chantier_{{feature_ol_uid}}" disabled>
-                        <option value="">Sélectionnez un type de chantier...</option>
                     </select>
                 </div>
                 <div class="travaux_card_content">
@@ -101,19 +99,45 @@
     }
 
     // Select Nature Chantier
+    const natureChantier = "{{nature_chantier}}"    
+    const typeChantier = "{{type_chantier}}" //TODO récupérer le type de chantier quand le champs éxistera
+    const impactChantier = "{{impact_chantier}}" //TODO récupérer le texte de l'impact quand le champs éxistera
+
     const selectNatureChantier = document.getElementById("select_nature_chantier_{{feature_ol_uid}}");
+    const selectTypeChantier = document.getElementById('select_type_chantier_{{feature_ol_uid}}');
+    const impactTravaux = document.getElementById("travaux_impact_{{feature_ol_uid}}");
+    
+    selectNatureChantier.innerHTML = "<option value=''>Sélectionnez une nature de chantier</option>";
+    selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
+    const natureOption = document.createElement("option");
+
     for (const travaux in naturesTravaux) {
         const natureOption = document.createElement("option");
         natureOption.value = travaux;
         natureOption.textContent = naturesTravaux[travaux];
         selectNatureChantier.appendChild(natureOption);
     }
+    
+    // Si l'emprise est déjà complétée
+    if (natureChantier) {
+        selectTypeChantier.disabled = false;
+        impactTravaux.disabled = false;
+        selectNatureChantier.value = natureChantier;
+
+        if (correspondancesNaturesTypes[selectNatureChantier.value]) {
+            correspondancesNaturesTypes[selectNatureChantier.value].forEach(type => {
+                const typeOption = document.createElement("option")
+                typeOption.value = type;
+                typeOption.textContent = typesChantier[type];
+                selectTypeChantier.appendChild(typeOption);
+            });
+            selectTypeChantier.value = typeChantier
+        }
+    }
 
     // Select Type Chantier
     document.getElementById("select_nature_chantier_{{feature_ol_uid}}").addEventListener("change", function() {
-        const selectTypeChantier =document.getElementById('select_type_chantier_{{feature_ol_uid}}');
         const natureChantierValue = selectNatureChantier.value;
-
         document.getElementById('autre_form_{{feature_ol_uid}}').style.display = "none";
         document.getElementById('form_{{feature_ol_uid}}').style.display = "block";
         selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
@@ -132,20 +156,16 @@
             });
         }
 
-        const selectType = document.getElementById("select_type_chantier_{{feature_ol_uid}}");
-        const textImpact = document.getElementById("travaux_impact_{{feature_ol_uid}}");
         if (this.value) {
-            selectType.disabled = false;
-            textImpact.disabled = false;
+            selectTypeChantier.disabled = false;
+            impactTravaux.disabled = false;
         } else {
-            selectType.disabled = true;
-            textImpact.disabled = true;
+            selectTypeChantier.disabled = true;
+            impactTravaux.disabled = true;
         }
     });
 
     document.getElementById("select_type_chantier_{{feature_ol_uid}}").addEventListener("change", function() {
-        const selectTypeChantier =document.getElementById('select_type_chantier_{{feature_ol_uid}}');
-        const impactTravaux =document.getElementById('travaux_impact_{{feature_ol_uid}}');
         const typeChantierValue = selectTypeChantier.value;
         impactTravaux.innerHTML = "Impact des travaux...";
 
@@ -179,6 +199,8 @@
         selectedFiles.forEach((file, index) => {
             const row = document.createElement('tr');
             const nameCell = document.createElement('td');
+            nameCell.style = 'max-width: 100px; overflow: hidden; text-overflow: ellipsis;'
+            nameCell.title = `${file.name}`
             nameCell.textContent = file.name;
             
             // Bouton de visualisation

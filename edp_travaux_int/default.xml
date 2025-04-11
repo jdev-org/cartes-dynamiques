@@ -57,8 +57,8 @@
 						tooltip="true"
 						tooltipcontent="{{nature_chantier}}"
 						attributefield="nature_chantier"
-            			customcontrol="true"
-    					customcontrolpath="apps/edp_travaux_int/customcontrols"
+            customcontrol="true"
+    				customcontrolpath="apps/edp_travaux_int/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5">
