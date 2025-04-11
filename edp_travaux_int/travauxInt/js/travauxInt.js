@@ -34,11 +34,34 @@ var travauxInt = (function () {
     let buttonTravaux = document.getElementById("travauxIntButton");
 
     buttonTravaux.addEventListener("click", () => {
-      console.log("TravauxInt button clicked");
-      $("#bottom-panel").toggleClass("active");
-      _loadDataBottomPanel();
+      // Plus d'utilisation du tableau des données pour le moment
+      // $("#bottom-panel").toggleClass("active");
+      // _loadDataBottomPanel();
+      _exportCSV();
     });
   };
+
+  var _exportCSV = () => {
+    if (finalData.length === 0) {
+      alert('Pas de données à exporter');
+      return;
+    }
+    const headers = Object.keys(finalData[0]);
+    const csvRows = [
+      headers.join(','),
+      ...finalData.map(obj => headers.map(key => `"${obj[key]}"`).join(','))
+    ];
+
+    const blob = new Blob([csvRows.join('\n')], {type: 'text/csv;charset=utf-8;'});
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'export.csv';
+    a.click();
+  
+    URL.revokeObjectURL(url);
+  }
 
   var _initTravauxData = () => {
     let sourceTravaux = new ol.source.Vector({
@@ -85,8 +108,6 @@ var travauxInt = (function () {
         "num_emprise": feature.get("num_emprise"),
       });
     });
-
-    console.log(finalData);
   };
 
   var _loadDataBottomPanel = () => {
