@@ -38,13 +38,13 @@
             </div>
             <div class="travaux_card_content">
                 <span class="travaux_card_subtitle">Document(s) Associé(s)</span>
-                <span class="travaux_add_files">Téléverser des documents avec des informations spécifiques au chantier (max 5Mo)</span>
-                <input type="file" id="fileInput" accept=".pdf" multiple>
-                <label for="fileInput" id="fileInput_button">
+                <span class="travaux_add_files">Téléverser des documents avec des informations spécifiques au chantier (max 10Mo)</span>
+                <input type="file" id="fileInput_{{feature_ol_uid}}" accept=".pdf" multiple>
+                <label for="fileInput_{{feature_ol_uid}}" id="fileInput_button_{{feature_ol_uid}}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 19H21V21H3V19ZM13 5.82843V17H11V5.82843L4.92893 11.8995L3.51472 10.4853L12 2L20.4853 10.4853L19.0711 11.8995L13 5.82843Z"></path></svg>
                     Téléverser un document
                 </label>
-                <table id="filesList" class="ms-2">
+                <table id="filesList_{{feature_ol_uid}}" class="ms-2">
                     <tbody></tbody>
                 </table>
             </div>
@@ -156,10 +156,10 @@
     });
 
     // Upload de fichiers
-    const fileInput = document.getElementById('fileInput');
-    const filesTableBody = document.getElementById('filesList');
+    const fileInput = document.getElementById('fileInput_{{feature_ol_uid}}');
+    const filesTableBody = document.getElementById('filesList_{{feature_ol_uid}}');
     let selectedFiles = [];
-    const maxFileSize = 5 * 1024 * 1024;
+    const maxFileSize = 10 * 1024 * 1024;
 
     fileInput.addEventListener('change', () => {
         const files = Array.from(fileInput.files);
@@ -176,7 +176,6 @@
     });
 
     function renderTable () {
-        filesTableBody.innerHTML = "";
         selectedFiles.forEach((file, index) => {
             const row = document.createElement('tr');
             const nameCell = document.createElement('td');
@@ -245,7 +244,7 @@
 }
 .travaux_card_container select:not(:disabled):hover, 
 .travaux_card_container button:hover, 
-.travaux_card_container #fileInput_{{feature_ol_uid}}_button:hover{
+.travaux_card_container #fileInput_button_{{feature_ol_uid}}:hover{
     cursor:pointer;
 }
 .travaux_card_ref_chantier{
@@ -339,11 +338,11 @@
     font-size: smaller;
 }
 
-#fileInput {
+#fileInput_{{feature_ol_uid}} {
     display: none;
 }
 
-#fileInput_button {
+#fileInput_button_{{feature_ol_uid}} {
     margin-top: 1rem;
     font-weight: 600;
     background-color:#c6cff3ab;
@@ -356,7 +355,7 @@
     transition: all 1s ease-out;
 }
 
-#fileInput_button:hover, .buttons_container input:hover {
+#fileInput_button_{{feature_ol_uid}}:hover, .buttons_container input:hover {
     opacity:0.7;
     cursor:pointer;
 }
