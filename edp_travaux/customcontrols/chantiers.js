@@ -11,8 +11,6 @@ const cc = (function() {
     const includesAny = (arr, values) => values.some(v => arr.includes(v));
 
     var _activeFilters = (EDPFilters) => {
-        console.log(EDPFilters);
-        
         let checkedFilters = [];
         filterList = EDPFilters.querySelectorAll(".nature_chantier_container input:checked");
         filterList.forEach(element => {
