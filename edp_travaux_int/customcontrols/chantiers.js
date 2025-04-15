@@ -44,6 +44,9 @@ const cc = (function() {
                 if (natureTravaux === "null") {
                     travaux.push("null");
                 } 
+                if (natureTravaux === "autre") {
+                    travaux.push("autre");
+                } 
                 if (includesAny(checkedFilters, travaux)) {
                     chantier.setStyle(null);
                 } else {

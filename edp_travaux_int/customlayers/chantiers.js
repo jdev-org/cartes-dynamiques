@@ -48,6 +48,16 @@ let NullStyle = new ol.style.Style({
   }),
 });
 
+let AutreStyle = new ol.style.Style({
+  fill: new ol.style.Fill({
+    color: "rgb(237, 171, 243)",
+  }),
+  stroke: new ol.style.Stroke({
+    color: "rgba(237, 171, 243, 1)",
+    width: 2,
+  }),
+});
+
 let chantiersLegend = { title: "Types de chantiers", items: [] };
 
 chantiersLegend.items.push({ styles: EPstyle, label: "EP", geometry: "Polygon" });
@@ -63,6 +73,7 @@ chantiersLegend.items.push({
   geometry: "Polygon",
 });
 chantiersLegend.items.push({ styles: NullStyle, label: "null", geometry: "Polygon" });
+chantiersLegend.items.push({ styles: AutreStyle, label: "other", geometry: "Polygon" });
 
 const chantiersLayer = new ol.layer.Vector({
   source: new ol.source.Vector({
@@ -81,7 +92,9 @@ const chantiersLayer = new ol.layer.Vector({
       style = GENIE_CIVILstyle;
     } else if (feature.get("nature_chantier") === null) {
       style = NullStyle;
-    }
+    } else if (feature.get("nature_chantier") === "autre") {
+    style = AutreStyle;
+  }
     return style;
   },
 });
