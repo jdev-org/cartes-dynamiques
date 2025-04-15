@@ -11,6 +11,8 @@ const cc = (function() {
     const includesAny = (arr, values) => values.some(v => arr.includes(v));
 
     var _activeFilters = (EDPFilters) => {
+        console.log(EDPFilters);
+        
         let checkedFilters = [];
         filterList = EDPFilters.querySelectorAll(".nature_chantier_container input:checked");
         filterList.forEach(element => {
@@ -43,6 +45,9 @@ const cc = (function() {
                 }
                 if (natureTravaux === "null") {
                     travaux.push("null");
+                } 
+                if (natureTravaux === "autre") {
+                    travaux.push("autre");
                 } 
                 if (includesAny(checkedFilters, travaux)) {
                     chantier.setStyle(null);

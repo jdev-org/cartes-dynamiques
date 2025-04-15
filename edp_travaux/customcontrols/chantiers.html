@@ -52,6 +52,16 @@
       <span for="Null_checkbox" class="title_color chantier_container_title">Non renseigné</span>
       <!--<span id="Null_count" class="travaux_count"></span>-->
     </label>
+    <label id="Autre" class="nature_chantier_container">
+      <input class="chantier_input_type" type="checkbox" id="Autres_checkbox" name="chantiers_type" cat="autre" checked />
+      <span class="cbx">
+        <svg width="10px" height="10px" viewBox="0 0 12 11">
+          <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+        </svg>
+      </span>
+      <span for="Autres_checkbox" class="title_color chantier_container_title">Autre</span>
+      <!--<span id="Null_count" class="travaux_count"></span>-->
+    </label>
   </div>
   <div class="legend__dataInfo">
     <p> Source : <a href="https://opendata.paris.fr/explore/dataset/chantiers-a-paris/" target="_blank">opendata.paris.fr</a>
@@ -134,6 +144,10 @@
 
   #Null {
     background-color: rgba(226, 226, 226, 0.9);
+  }
+
+  #Autre {
+    background-color: rgba(237, 171, 243, 0.9);
   }
 
   .travaux_count {
