@@ -202,9 +202,7 @@
                 alert(`Le fichier "${file.name}" dépasse la taille maximale autorisée (10 Mo).`);
             }
         });
-        selectedFiles = validFiles;
-        console.log({selectedFiles});
-        
+        selectedFiles = validFiles;        
         renderTable();
 
         if (selectedFiles.length > 0) {
@@ -214,7 +212,7 @@
                 formData.append("files", file);
             });
             formData.append("chantier_id", "{{num_emprise}}");
-            fetch(`http://localhost:8000/${pluginsOption.endpoint}`, {
+            fetch(`${pluginsOption.origin}${pluginsOption.endpointUpload}`, {
                 method: "POST",
                 body: formData
             })
@@ -232,12 +230,15 @@
         const pluginsOption = getOptions();
         const response = await fetch(`${pluginsOption.getFiles}/?chantier_id=${chantierId}`);
         const data = await response.json();
-        selectedFiles = data.files
+        selectedFiles = [];
+        selectedFiles = data.files;
         
         renderTable(true)
     }
 
     function renderTable (get = false) {
+        const pluginsOption = getOptions();
+        filesTableBody.innerHTML = "";
         selectedFiles.forEach((file, index) => {
             const row = document.createElement('tr');
             const nameCell = document.createElement('td');
@@ -251,7 +252,7 @@
             viewBtn.className = 'actionButton';
             viewBtn.onclick = () => {
                 event.preventDefault();
-                const fileURL = URL.createObjectURL(file);
+                const fileURL = get ? `${pluginsOption.serveFiles}/{{num_emprise}}/${file}` : URL.createObjectURL(file);
                 window.open(fileURL, '_blank');
             };
 
@@ -262,8 +263,25 @@
             deleteBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path></svg>';
             deleteBtn.className = 'actionButton';
             deleteBtn.onclick = () => {
-                selectedFiles.splice(index, 1);
-                renderTable();
+                event.preventDefault();
+                if (get) {
+                    fetch(`${pluginsOption.origin}${pluginsOption.endpointDelete}/?chantier_id={{num_emprise}}&filename=${file}`, {
+                        method: "DELETE",
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            console.log(data.message);
+                            fetchFiles(numEmprise);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erreur lors de la suppression du fichier :", error);
+                    });
+                } else {
+                    selectedFiles.splice(index, 1);
+                    renderTable();
+                }
             };
 
             actionCell.appendChild(viewBtn);
