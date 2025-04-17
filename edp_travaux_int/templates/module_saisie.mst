@@ -111,6 +111,10 @@
     selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
     const natureOption = document.createElement("option");
 
+    // Récupérer les fichiers associés
+    const numEmprise =  "{{num_emprise}}"
+    fetchFiles(numEmprise)
+
     for (const travaux in naturesTravaux) {
         const natureOption = document.createElement("option");
         natureOption.value = travaux;
@@ -174,6 +178,13 @@
             impactTravaux.innerHTML = impact[impactKey];
         }
     });
+    
+    function getOptions() {
+        const mviewerId = configuration.getConfiguration().application.id;
+        const options = mviewer.customComponents.travauxInt.config.options;
+
+        return options.mviewer[mviewerId];
+    };
 
     // Upload de fichiers
     const fileInput = document.getElementById('fileInput_{{feature_ol_uid}}');
@@ -188,20 +199,51 @@
             if (file.size <= maxFileSize) {
                 validFiles.push(file);
             } else {
-                alert(`Le fichier "${file.name}" dépasse la taille maximale autorisée (5 Mo).`);
+                alert(`Le fichier "${file.name}" dépasse la taille maximale autorisée (10 Mo).`);
             }
         });
         selectedFiles = validFiles;
+        console.log({selectedFiles});
+        
         renderTable();
+
+        if (selectedFiles.length > 0) {
+            const pluginsOption = getOptions();
+            const formData = new FormData();
+            selectedFiles.forEach(file => {
+                formData.append("files", file);
+            });
+            formData.append("chantier_id", "{{num_emprise}}");
+            fetch(`http://localhost:8000/${pluginsOption.endpoint}`, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Upload réussi :", data);
+            })
+            .catch(error => {
+                console.error("Erreur lors de l'envoi :", error);
+            });
+        }
     });
 
-    function renderTable () {
+    async function fetchFiles(chantierId) {
+        const pluginsOption = getOptions();
+        const response = await fetch(`${pluginsOption.getFiles}/?chantier_id=${chantierId}`);
+        const data = await response.json();
+        selectedFiles = data.files
+        
+        renderTable(true)
+    }
+
+    function renderTable (get = false) {
         selectedFiles.forEach((file, index) => {
             const row = document.createElement('tr');
             const nameCell = document.createElement('td');
             nameCell.style = 'max-width: 100px; overflow: hidden; text-overflow: ellipsis;'
-            nameCell.title = `${file.name}`
-            nameCell.textContent = file.name;
+            nameCell.title = get ? `${file}` : `${file.name}`
+            nameCell.textContent = get ? file : file.name;
             
             // Bouton de visualisation
             const viewBtn = document.createElement('button');

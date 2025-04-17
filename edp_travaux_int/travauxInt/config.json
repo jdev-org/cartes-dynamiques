@@ -11,5 +11,11 @@
     "html": "travauxInt.html",
     "target": "toolstoolbar",
     "options": {
+        "mviewer": {
+            "edp_travaux_int": {
+                "endpoint" :"uploadfile",
+                "getFiles": "http://localhost:8000/listfiles"
+            }
+        }
     }
 }
