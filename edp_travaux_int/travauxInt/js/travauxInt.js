@@ -1,4 +1,18 @@
 var travauxInt = (function () {
+  var scripts = [
+    'apps/commons/export_table/FileSaver.min.js',
+    'apps/commons/export_table/polyfills.umd.js',
+    'apps/commons/export_table/jspdf.umd.min.js',
+    'apps/commons/export_table/tableExport.min.js',
+    'apps/commons/export_table/bootstrap-table-export.min.js'
+  ]
+
+  scripts.forEach(function(scriptSrc) {
+    var script = document.createElement('script')
+    script.src = scriptSrc
+    document.head.appendChild(script)
+  })
+  
   let _config;
 
   let _map;
@@ -20,11 +34,34 @@ var travauxInt = (function () {
     let buttonTravaux = document.getElementById("travauxIntButton");
 
     buttonTravaux.addEventListener("click", () => {
-      console.log("TravauxInt button clicked");
-      $("#bottom-panel").toggleClass("active");
-      _loadDataBottomPanel();
+      // Plus d'utilisation du tableau des données pour le moment
+      // $("#bottom-panel").toggleClass("active");
+      // _loadDataBottomPanel();
+      _exportCSV();
     });
   };
+
+  var _exportCSV = () => {
+    if (finalData.length === 0) {
+      alert('Pas de données à exporter');
+      return;
+    }
+    const headers = Object.keys(finalData[0]);
+    const csvRows = [
+      headers.join(','),
+      ...finalData.map(obj => headers.map(key => `"${obj[key]}"`).join(','))
+    ];
+
+    const blob = new Blob([csvRows.join('\n')], {type: 'text/csv;charset=utf-8;'});
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'export.csv';
+    a.click();
+  
+    URL.revokeObjectURL(url);
+  }
 
   var _initTravauxData = () => {
     let sourceTravaux = new ol.source.Vector({
@@ -71,8 +108,6 @@ var travauxInt = (function () {
         "num_emprise": feature.get("num_emprise"),
       });
     });
-
-    console.log(finalData);
   };
 
   var _loadDataBottomPanel = () => {
@@ -84,6 +119,8 @@ var travauxInt = (function () {
               data-toggle="table"
               data-height="320"
               data-search="true"
+              data-show-export="true"
+              data-export-types="['json', 'pdf', 'csv', 'excel']"
               >
             <thead>
               <tr>
@@ -100,7 +137,10 @@ var travauxInt = (function () {
         `);
 
         $("#myTable").bootstrapTable({
-          data: finalData
+          data: finalData,
+          exportOptions: {
+            fileName: "export-travaux"
+          }
         });
       }
     });  

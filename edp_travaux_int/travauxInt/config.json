@@ -2,14 +2,23 @@
     "type": "module",
     "js": [
         "js/travauxInt.js",
-        "js/bootstrap-table-1.11.0.min.js"
+        "js/bootstrap-table.min.js"
     ],
     "css": [
         "css/style.css",
-        "css/bootstrap-table-1.11.0.min.css"
+        "css/bootstrap-table.min.css"
     ],
     "html": "travauxInt.html",
     "target": "toolstoolbar",
     "options": {
+        "mviewer": {
+            "edp_travaux_int": {
+                "endpointUpload" :"uploadfile",
+                "endpointDelete" :"deletefile",
+                "getFiles": "http://localhost:8000/listfiles",
+                "origin": "http://localhost:8000/",
+                "serveFiles": "http://localhost:8000/files"
+            }
+        }
     }
 }

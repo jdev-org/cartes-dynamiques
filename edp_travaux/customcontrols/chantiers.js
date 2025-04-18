@@ -26,23 +26,26 @@ const cc = (function() {
         }
 
         listTravaux.forEach(chantier => {
-            let natureTravaux = String(chantier.get('nature_chantier'));
+            let natureTravaux = String(chantier.get('nature_code_chantier'));
             if (checkedFilters.includes(natureTravaux)) {
                 let travaux = [];
-                if (natureTravaux === "EP") {                    
-                    travaux.push("EP");
+                if (natureTravaux === "ep") {                    
+                    travaux.push("ep");
                 }
-                if (natureTravaux === "ENP") {
-                    travaux.push("ENP");
+                if (natureTravaux === "enp") {
+                    travaux.push("enp");
                 }
-                if (natureTravaux === "INSTALL_RES") {
-                    travaux.push("INSTALL_RES");
+                if (natureTravaux === "install_res") {
+                    travaux.push("install_res");
                 }
-                if (natureTravaux === "GENIE_CIVIL") {
-                    travaux.push("GENIE_CIVIL");
+                if (natureTravaux === "genie_civil") {
+                    travaux.push("genie_civil");
                 }
                 if (natureTravaux === "null") {
                     travaux.push("null");
+                } 
+                if (natureTravaux === "autre") {
+                    travaux.push("autre");
                 } 
                 if (includesAny(checkedFilters, travaux)) {
                     chantier.setStyle(null);
