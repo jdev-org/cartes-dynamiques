@@ -183,7 +183,7 @@
         const mviewerId = configuration.getConfiguration().application.id;
         const options = mviewer.customComponents.travauxInt.config.options;
 
-        return options.mviewer[mviewerId];
+        return options?.mviewer[mviewerId];
     };
 
     // Upload de fichiers
