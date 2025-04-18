@@ -1,54 +1,54 @@
 {{#features}}
-<li id="{{feature_ol_uid}}" class="item" style="width:100%;">	
+<li id="{{unique_id}}" class="item" style="width:100%;">	
 	<div id="container" class="travaux_card_container">
-		<div id="travaux_card_nature_chantier_{{feature_ol_uid}}" class="travaux_card_title">Éditer les informations</div>
+		<div id="travaux_card_nature_chantier_{{unique_id}}" class="travaux_card_title">Éditer les informations</div>
         <div class="travaux_card_ref_chantier">Référence Chantier : {{num_emprise}}</div>
         <form>
             <div class="travaux_card_content_select">
-                <label for="select_nature_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Nature du chantier</label>
-                <select id="select_nature_chantier_{{feature_ol_uid}}">
+                <label for="select_nature_chantier_{{unique_id}}" class="travaux_card_subtitle">Nature du chantier</label>
+                <select id="select_nature_chantier_{{unique_id}}">
                 </select>
             </div>
-            <div id="form_{{feature_ol_uid}}">
+            <div id="form_{{unique_id}}">
                 <div class="travaux_card_content_select">
-                    <label for="select_type_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Type de chantier</label>
-                    <select id="select_type_chantier_{{feature_ol_uid}}" disabled>
+                    <label for="select_type_chantier_{{unique_id}}" class="travaux_card_subtitle">Type de chantier</label>
+                    <select id="select_type_chantier_{{unique_id}}" disabled>
                     </select>
                 </div>
                 <div class="travaux_card_content">
                     <span class="travaux_card_subtitle">Impact sur l'espace public</span>
-                    <textarea id="travaux_impact_{{feature_ol_uid}}" class="travaux_impact" disabled></textarea>
+                    <textarea id="travaux_impact_{{unique_id}}" class="travaux_impact" disabled></textarea>
                 </div>
             </div>
-            <div id="autre_form_{{feature_ol_uid}}" class="autre_form">
+            <div id="autre_form_{{unique_id}}" class="autre_form">
                 <div class="travaux_card_content">
-                    <label for="input_autre_nature_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Précisez la nature du chantier</label>
-                    <input type="text" id="input_autre_nature_chantier_{{feature_ol_uid}}"/>
+                    <label for="input_autre_nature_chantier_{{unique_id}}" class="travaux_card_subtitle">Précisez la nature du chantier</label>
+                    <input type="text" id="input_autre_nature_chantier_{{unique_id}}"/>
                 </div>
                 <div class="travaux_card_content">
-                    <label for="input_autre_type_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Précisez le type de chantier</label>
-                    <input type="text" id="input_autre_type_chantier_{{feature_ol_uid}}"/>
+                    <label for="input_autre_type_chantier_{{unique_id}}" class="travaux_card_subtitle">Précisez le type de chantier</label>
+                    <input type="text" id="input_autre_type_chantier_{{unique_id}}"/>
                 </div>
                 <div class="travaux_card_content">
-                    <label for="autre_impact_chantier_{{feature_ol_uid}}" class="travaux_card_subtitle">Précisez l'impact sur l'espace public</label>
-                    <textarea id="autre_impact_chantier_{{feature_ol_uid}}" class="autre_impact_chantier"></textarea>
+                    <label for="autre_impact_chantier_{{unique_id}}" class="travaux_card_subtitle">Précisez l'impact sur l'espace public</label>
+                    <textarea id="autre_impact_chantier_{{unique_id}}" class="autre_impact_chantier"></textarea>
                 </div>
             </div>
             <div class="travaux_card_content">
                 <span class="travaux_card_subtitle">Document(s) Associé(s)</span>
                 <span class="travaux_add_files">Téléverser des documents avec des informations spécifiques au chantier (max 10Mo)</span>
-                <input type="file" id="fileInput_{{feature_ol_uid}}" accept=".pdf" multiple>
-                <label for="fileInput_{{feature_ol_uid}}" id="fileInput_button_{{feature_ol_uid}}">
+                <input type="file" id="fileInput_{{unique_id}}" accept=".pdf" multiple>
+                <label for="fileInput_{{unique_id}}" id="fileInput_button_{{unique_id}}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 19H21V21H3V19ZM13 5.82843V17H11V5.82843L4.92893 11.8995L3.51472 10.4853L12 2L20.4853 10.4853L19.0711 11.8995L13 5.82843Z"></path></svg>
                     Téléverser un document
                 </label>
-                <table id="filesList_{{feature_ol_uid}}" class="ms-2">
+                <table id="filesList_{{unique_id}}" class="ms-2">
                     <tbody></tbody>
                 </table>
             </div>
             <div class="buttons_container">
                 <input id="annuler" class="btn__grey" type="button" value="Annuler" />
-                <input id="valider" class="btn__default" type="submit" value="Enregistrer" />
+                <input id="valider" class="btn__default" type="button" value="Enregistrer" onclick="_transactWfsEdp('{{unique_id}}')" />
             </div>
         </form>
 	</div>
@@ -98,14 +98,59 @@
         TGC: "NoImpact"
     }
 
+    const chantierMapping = [
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Renouvellement de canalisations", type_code_chantier: "ep_reno_can" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Remplacement de bouche incendie", type_code_chantier: "ep_remp_bou_inc" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Remplacement de vannes", type_code_chantier: "ep_remp_van" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Renforcement de canalisations lié à la sécurité incendie", type_code_chantier: "ep_renf_can" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Intervention d'urgence", type_code_chantier: "ep_int_urg" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Remplacement d'appareils hydrauliques", type_code_chantier: "ep_remp_app_hyd" },
+
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Renouvellement de canalisations", type_code_chantier: "enp_reno_can" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Remplacement d'appareils hydrauliques", type_code_chantier: "enp_remp_app_hyd" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Remplacement de vannes", type_code_chantier: "enp_remp_van" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Intervention d'urgence", type_code_chantier: "enp_int_urg" },
+
+        { nature_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", nature_code_chantier: "install_res", type_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", type_code_chantier: "install_res_trav" },
+
+        { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", type_code_chantier: "genie_civil_trav" },
+        { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Intervention d'urgence", type_code_chantier: "genie_civil_int_urg" },
+
+        { nature_chantier: "Non renseigné", nature_code_chantier: "non_renseigne", type_chantier: "Non renseigné", type_code_chantier: "non_renseigne" },
+        { nature_chantier: "Saisie libre par le user", nature_code_chantier: "nature_autre", type_chantier: "Saisie libre par le user", type_code_chantier: "type_autre" }
+    ];
+
+
     // Select Nature Chantier
     const natureChantier = "{{nature_chantier}}"    
     const typeChantier = "{{type_chantier}}" //TODO récupérer le type de chantier quand le champs éxistera
     const impactChantier = "{{impact_chantier}}" //TODO récupérer le texte de l'impact quand le champs éxistera
 
-    const selectNatureChantier = document.getElementById("select_nature_chantier_{{feature_ol_uid}}");
-    const selectTypeChantier = document.getElementById('select_type_chantier_{{feature_ol_uid}}');
-    const impactTravaux = document.getElementById("travaux_impact_{{feature_ol_uid}}");
+    const selectNatureChantier = document.getElementById("select_nature_chantier_{{unique_id}}");
+    const selectTypeChantier = document.getElementById('select_type_chantier_{{unique_id}}');
+    const impactTravaux = document.getElementById("travaux_impact_{{unique_id}}");
+
+    // Add active class to selected option
+    selectNatureChantier.addEventListener("change", function() {
+        const options = selectNatureChantier.querySelectorAll("option");
+        options.forEach(option => {
+            option.classList.remove("active");
+        });
+
+        const selectedOption = selectNatureChantier.options[selectNatureChantier.selectedIndex];
+        selectedOption.classList.add("active");
+    });
+
+    // Add active class to selected option
+    selectTypeChantier.addEventListener("change", function() {
+        const options = selectTypeChantier.querySelectorAll("option");
+        options.forEach(option => {
+            option.classList.remove("active");
+        });
+
+        const selectedOption = selectTypeChantier.options[selectTypeChantier.selectedIndex];
+        selectedOption.classList.add("active");
+    });
     
     selectNatureChantier.innerHTML = "<option value=''>Sélectionnez une nature de chantier</option>";
     selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
@@ -140,15 +185,15 @@
     }
 
     // Select Type Chantier
-    document.getElementById("select_nature_chantier_{{feature_ol_uid}}").addEventListener("change", function() {
+    document.getElementById("select_nature_chantier_{{unique_id}}").addEventListener("change", function() {
         const natureChantierValue = selectNatureChantier.value;
-        document.getElementById('autre_form_{{feature_ol_uid}}').style.display = "none";
-        document.getElementById('form_{{feature_ol_uid}}').style.display = "block";
+        document.getElementById('autre_form_{{unique_id}}').style.display = "none";
+        document.getElementById('form_{{unique_id}}').style.display = "block";
         selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
         
         if (natureChantierValue === "Autre") {
-            document.getElementById('autre_form_{{feature_ol_uid}}').style.display = "block";
-            document.getElementById('form_{{feature_ol_uid}}').style.display = "none";
+            document.getElementById('autre_form_{{unique_id}}').style.display = "block";
+            document.getElementById('form_{{unique_id}}').style.display = "none";
         }
 
         if (correspondancesNaturesTypes[natureChantierValue]) {
@@ -169,7 +214,7 @@
         }
     });
 
-    document.getElementById("select_type_chantier_{{feature_ol_uid}}").addEventListener("change", function() {
+    document.getElementById("select_type_chantier_{{unique_id}}").addEventListener("change", function() {
         const typeChantierValue = selectTypeChantier.value;
         impactTravaux.innerHTML = "Impact des travaux...";
 
@@ -178,7 +223,7 @@
             impactTravaux.innerHTML = impact[impactKey];
         }
     });
-    
+
     function getOptions() {
         const mviewerId = configuration.getConfiguration().application.id;
         const options = mviewer.customComponents.travauxInt.config.options;
@@ -187,8 +232,8 @@
     };
 
     // Upload de fichiers
-    const fileInput = document.getElementById('fileInput_{{feature_ol_uid}}');
-    const filesTableBody = document.getElementById('filesList_{{feature_ol_uid}}');
+    const fileInput = document.getElementById('fileInput_{{unique_id}}');
+    const filesTableBody = document.getElementById('filesList_{{unique_id}}');
     let selectedFiles = [];
     const maxFileSize = 10 * 1024 * 1024;
 
@@ -202,7 +247,7 @@
                 alert(`Le fichier "${file.name}" dépasse la taille maximale autorisée (10 Mo).`);
             }
         });
-        selectedFiles = validFiles;        
+        selectedFiles = validFiles;
         renderTable();
 
         if (selectedFiles.length > 0) {
@@ -282,6 +327,8 @@
                     selectedFiles.splice(index, 1);
                     renderTable();
                 }
+                selectedFiles.splice(index, 1);
+                renderTable();
             };
 
             actionCell.appendChild(viewBtn);
@@ -291,6 +338,138 @@
             filesTableBody.appendChild(row);
         });
     }
+
+    var _transactWfsEdp = (id) => {
+        let s;
+        let node;
+        let str;
+
+        let _sourceEdp;
+        let _currentFeature;
+        let _cleanCurrentFeature;
+        let _coordsCleanCurrentFeature;
+        let _sourceGML;
+        let _vectorGML;
+        let _url = "https://gis.jdev.fr/geoserver/";
+        let _selectedContentNatureChantier = document.querySelector(`#select_nature_chantier_${id} option.active`).textContent.trim();
+        let _selectedContentTypeChantier = document.querySelector(`#select_type_chantier_${id} option.active`).textContent.trim();
+
+        let _namespace = "edp_demo";
+
+        let _workspace = "chantiersopendata";
+
+        let _projection = "EPSG:4326";
+
+        let allLayers = mviewer.getMap().getAllLayers();
+
+        for (const layer of allLayers) {
+            if (layer.getProperties().source.id === "edpSource") {
+                _sourceEdp = layer.getSource();
+                break;
+            }
+        }
+
+        if (!_sourceEdp) {
+            console.error("EDP source not found");
+            return;
+        } 
+        
+        _currentFeature = _sourceEdp.getFeatures().find(
+            f => f.get("unique_id") === id
+        );
+
+        if (!_currentFeature) {
+            console.error("Current feature not found for ID : ", id);
+            return;
+        }
+
+        if (!_currentFeature.getGeometry()) {
+            console.error("Invalid feature or geometry is missing :", _currentFeature);
+            return;
+        }
+
+        _coordsCleanCurrentFeature = [
+            _currentFeature.getGeometry().getCoordinates(),
+        ];
+
+        _cleanCurrentFeature = new ol.Feature({
+            geometry: new ol.geom.MultiPolygon([_coordsCleanCurrentFeature.map(function(coord) {
+                return ol.proj.fromLonLat(coord);  // Conversion de chaque coordonnée en projection Web Mercator
+            })]),
+        });
+
+        _cleanCurrentFeature.setId(_currentFeature.getId());
+        _cleanCurrentFeature.setProperties(_currentFeature.getProperties());
+
+        var formatWFS = new ol.format.WFS();
+
+        console.log(_selectedContentNatureChantier, _selectedContentTypeChantier);
+
+        const matchingChantier = chantierMapping.find(
+            ch => ch.nature_chantier === _selectedContentNatureChantier && ch.type_chantier === _selectedContentTypeChantier
+        );
+
+        // Set attributes if match
+        if (matchingChantier) {
+            // nature_code_chantier
+            _cleanCurrentFeature.set("nature_code_chantier", matchingChantier.nature_code_chantier);
+            // type_code_chantier
+            _cleanCurrentFeature.set("type_code_chantier", matchingChantier.type_code_chantier);
+        } else {
+            // nature_code_chantier
+            _cleanCurrentFeature.set("nature_code_chantier", "undefined");
+            // type_code_chantier
+            _cleanCurrentFeature.set("type_code_chantier", "undefined");
+        }
+        // nature_chantier
+        _cleanCurrentFeature.set("nature_chantier", _selectedContentNatureChantier);
+        // type_chantier
+        _cleanCurrentFeature.set("type_chantier", _selectedContentTypeChantier);
+        // impact_chantier
+        _cleanCurrentFeature.set("impact_chantier", impactTravaux.value);
+
+        let options = {
+            "featureNS": `https://www.gis.jdev.fr/geoserver/edpdemo`,
+            "featureType": `${_workspace}`,
+            "srsName": "EPSG:4326",
+            "version": "1.0.0",
+        }
+
+        // Transform the geometry to the correct projection
+        _cleanCurrentFeature.getGeometry().transform("EPSG:3857", _projection);
+
+        // Clear unnecessary properties
+        // Geometry properties is not editable
+        _cleanCurrentFeature.unset("geometry");
+        _cleanCurrentFeature.unset("geom");
+        _cleanCurrentFeature.unset("mviewerid");
+        _cleanCurrentFeature.unset("fields_kv");
+        _cleanCurrentFeature.unset("serialized");
+
+        // Update to the geoserver
+        node = formatWFS.writeTransaction(null, [_cleanCurrentFeature], null, options);
+
+        s = new XMLSerializer();
+        str = s.serializeToString(node);
+
+        // Send to API
+        fetch(_url + "wfs", {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/xml",
+            },
+            body: str,
+        })
+            .then((response) => {
+                return response.text();
+            })
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
 </script>
 <style>
@@ -326,7 +505,7 @@
 }
 .travaux_card_container select:not(:disabled):hover, 
 .travaux_card_container button:hover, 
-.travaux_card_container #fileInput_button_{{feature_ol_uid}}:hover{
+.travaux_card_container #fileInput_button_{{unique_id}}:hover{
     cursor:pointer;
 }
 .travaux_card_ref_chantier{
@@ -420,11 +599,11 @@
     font-size: smaller;
 }
 
-#fileInput_{{feature_ol_uid}} {
+#fileInput_{{unique_id}} {
     display: none;
 }
 
-#fileInput_button_{{feature_ol_uid}} {
+#fileInput_button_{{unique_id}} {
     margin-top: 1rem;
     font-weight: 600;
     background-color:#c6cff3ab;
@@ -437,7 +616,7 @@
     transition: all 1s ease-out;
 }
 
-#fileInput_button_{{feature_ol_uid}}:hover, .buttons_container input:hover {
+#fileInput_button_{{unique_id}}:hover, .buttons_container input:hover {
     opacity:0.7;
     cursor:pointer;
 }

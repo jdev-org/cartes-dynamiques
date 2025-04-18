@@ -1,39 +1,49 @@
 let EPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(170, 184, 255, 1)",
+    color: "rgb(0, 0, 255)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(170, 184, 255, 1)",
+    color: "rgb(0, 0, 255)",
     width: 2,
   }),
 });
 
 let ENPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 239, 170, 1)",
+    color: "rgb(255, 140, 0)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(255, 239, 170, 1)",
+    color: "rgb(255, 140, 0)",
     width: 2,
   }),
 });
 
 let INSTALL_RESstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(174, 255, 174, 1)",
+    color: "rgb(0, 255, 0)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(174, 255, 174, 1)",
+    color: "rgb(0, 255, 0)",
     width: 2,
   }),
 });
 
 let GENIE_CIVILstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 199, 151, 1)",
+    color: "rgb(255, 0, 0)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(255, 199, 151, 1)",
+    color: "rgb(255, 0, 0)",
+    width: 2,
+  }),
+});
+
+let AutreStyle = new ol.style.Style({
+  fill: new ol.style.Fill({
+    color: "rgb(0, 0, 0)",
+  }),
+  stroke: new ol.style.Stroke({
+    color: "rgb(0, 0, 0)",
     width: 2,
   }),
 });
@@ -44,16 +54,6 @@ let NullStyle = new ol.style.Style({
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(226, 226, 226, 1)",
-    width: 2,
-  }),
-});
-
-let AutreStyle = new ol.style.Style({
-  fill: new ol.style.Fill({
-    color: "rgb(237, 171, 243)",
-  }),
-  stroke: new ol.style.Stroke({
-    color: "rgba(237, 171, 243, 1)",
     width: 2,
   }),
 });
@@ -75,28 +75,39 @@ chantiersLegend.items.push({
 chantiersLegend.items.push({ styles: NullStyle, label: "null", geometry: "Polygon" });
 chantiersLegend.items.push({ styles: AutreStyle, label: "other", geometry: "Polygon" });
 
-const chantiersLayer = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    url: "https://gis.jdev.fr/geoserver/edp_demo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp_demo%3Achantiersopendata&outputFormat=application%2Fjson",
-    format: new ol.format.GeoJSON(),
+let _sourceEdp;
+
+let _vectorEdp;
+
+let _serveurCarto = "geoserver";
+
+let _namespace = "edp_demo";
+
+let _workspace = "chantiersopendata";
+
+let _projection = "EPSG:4326";
+
+let _url = "https://gis.jdev.fr/" + _serveurCarto + "/" + _namespace;
+
+_sourceEdp = new ol.source.Vector({
+  format: new ol.format.GeoJSON({
+    srsName: _projection,
   }),
-  style: function (feature) {    
-    let style;
-    
-    if (feature.get("nature_code_chantier") === "ep") {
-      style = EPstyle;
-    } else if (feature.get("nature_code_chantier") === "enp") {
-      style = ENPstyle;
-    } else if (feature.get("nature_code_chantier") === "install_res") {
-      style = INSTALL_RESstyle;
-    } else if (feature.get("nature_code_chantier") === "genie_civil") {
-      style = GENIE_CIVILstyle;
-    } else if (feature.get("nature_code_chantier") === null) {
-      style = NullStyle;
-    } else if (feature.get("nature_code_chantier") === "autre") {
-    style = AutreStyle;
-  }
-    return style;
-  },
+  url: _url + "/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" + _namespace + "%3A" + _workspace + "&outputFormat=application%2Fjson",
 });
-new CustomLayer("chantiers", chantiersLayer, chantiersLegend);
+
+_sourceEdp.id = "edpSource";
+
+_vectorEdp = new ol.layer.Vector({
+  source: _sourceEdp,
+  style: function (feature) {
+    const styles = {
+      "ep": EPstyle,
+      "enp": ENPstyle,
+      "install_res": INSTALL_RESstyle,
+      "genie_civil": GENIE_CIVILstyle,
+    };
+    return styles[feature.get("nature_code_chantier")] || AutreStyle;
+  }
+});
+new CustomLayer("chantiers", _vectorEdp, chantiersLegend);
