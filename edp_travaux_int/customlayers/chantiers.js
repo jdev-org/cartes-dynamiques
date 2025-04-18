@@ -77,22 +77,23 @@ chantiersLegend.items.push({ styles: AutreStyle, label: "other", geometry: "Poly
 
 const chantiersLayer = new ol.layer.Vector({
   source: new ol.source.Vector({
-    url: "apps/edp_travaux/data/chantiers.geojson",
+    url: "https://gis.jdev.fr/geoserver/edp_demo/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp_demo%3Achantiersopendata&outputFormat=application%2Fjson",
     format: new ol.format.GeoJSON(),
   }),
-  style: function (feature) {
+  style: function (feature) {    
     let style;
-    if (feature.get("nature_chantier") === "EP") {
+    
+    if (feature.get("nature_code_chantier") === "ep") {
       style = EPstyle;
-    } else if (feature.get("nature_chantier") === "ENP") {
+    } else if (feature.get("nature_code_chantier") === "enp") {
       style = ENPstyle;
-    } else if (feature.get("nature_chantier") === "INSTALL_RES") {
+    } else if (feature.get("nature_code_chantier") === "install_res") {
       style = INSTALL_RESstyle;
-    } else if (feature.get("nature_chantier") === "GENIE_CIVIL") {
+    } else if (feature.get("nature_code_chantier") === "genie_civil") {
       style = GENIE_CIVILstyle;
-    } else if (feature.get("nature_chantier") === null) {
+    } else if (feature.get("nature_code_chantier") === null) {
       style = NullStyle;
-    } else if (feature.get("nature_chantier") === "autre") {
+    } else if (feature.get("nature_code_chantier") === "autre") {
     style = AutreStyle;
   }
     return style;
