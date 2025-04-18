@@ -106,6 +106,7 @@ _vectorEdp = new ol.layer.Vector({
       "enp": ENPstyle,
       "install_res": INSTALL_RESstyle,
       "genie_civil": GENIE_CIVILstyle,
+      "autre": AutreStyle,
     };
     return styles[feature.get("nature_code_chantier")] || AutreStyle;
   }

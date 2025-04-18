@@ -75,27 +75,40 @@ chantiersLegend.items.push({
 chantiersLegend.items.push({ styles: NullStyle, label: "null", geometry: "Polygon" });
 chantiersLegend.items.push({ styles: AutreStyle, label: "other", geometry: "Polygon" });
 
-const chantiersLayer = new ol.layer.Vector({
-  source: new ol.source.Vector({
-    url: "apps/edp_travaux/data/chantiers.geojson",
-    format: new ol.format.GeoJSON(),
+let _sourceEdp;
+
+let _vectorEdp;
+
+let _serveurCarto = "geoserver";
+
+let _namespace = "edp_demo";
+
+let _workspace = "chantiersopendata";
+
+let _projection = "EPSG:4326";
+
+let _url = "https://gis.jdev.fr/" + _serveurCarto + "/" + _namespace;
+
+_sourceEdp = new ol.source.Vector({
+  format: new ol.format.GeoJSON({
+    srsName: _projection,
   }),
-  style: function (feature) {
-    let style;
-    if (feature.get("nature_chantier") === "EP") {
-      style = EPstyle;
-    } else if (feature.get("nature_chantier") === "ENP") {
-      style = ENPstyle;
-    } else if (feature.get("nature_chantier") === "INSTALL_RES") {
-      style = INSTALL_RESstyle;
-    } else if (feature.get("nature_chantier") === "GENIE_CIVIL") {
-      style = GENIE_CIVILstyle;
-    } else if (feature.get("nature_chantier") === null) {
-      style = NullStyle;
-    } else if (feature.get("nature_chantier") === "autre") {
-      style = AutreStyle;
-    }
-    return style;
-  },
+  url: _url + "/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" + _namespace + "%3A" + _workspace + "&outputFormat=application%2Fjson",
 });
-new CustomLayer("chantiers", chantiersLayer, chantiersLegend);
+
+_sourceEdp.id = "edpSource";
+
+_vectorEdp = new ol.layer.Vector({
+  source: _sourceEdp,
+  style: function (feature) {
+    const styles = {
+      "ep": EPstyle,
+      "enp": ENPstyle,
+      "install_res": INSTALL_RESstyle,
+      "genie_civil": GENIE_CIVILstyle,
+      "autre": AutreStyle,
+    };
+    return styles[feature.get("nature_code_chantier")] || AutreStyle;
+  }
+});
+new CustomLayer("chantiers", _vectorEdp, chantiersLegend);
