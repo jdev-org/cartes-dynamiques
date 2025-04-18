@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Travaux en cours sur les réseaux d'eau potable et non potable"
+			title="Nos travaux sur la voie publique"
 			id="edp_travaux"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
@@ -30,27 +30,38 @@
 	<olscompletion url="https://api-adresse.data.gouv.fr/search/?limit=5&amp;lon=2.347&amp;lat=48.857&amp;citycode=75056" type="ban" attribution="API adresse.data.gouv.fr" />
 	
 	<searchparameters bbox="false" localities="true" features="false" />
+
+	<styles>
+		<selectionstyle>
+			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+		</selectionstyle>
+		<subselectionstyle>
+			<polygon opacity="0" strokewidth="8" />
+		</subselectionstyle>
+	</styles>
 	
 	<extensions>
 		<extension type="javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
-    <extension type="component" id="print" path="apps/commons/addons"/>
+    	<extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
-		<theme name="Travaux" collapsed="true" id="travaux" icon="fas fa-graduation-cap">
+		<theme name="Travaux" collapsed="true" id="travaux" icon="fas fa-arrow-right">
 				<layer
 						name="chantiers"
 						id="chantiers"
 						visible="true"
 						type="customlayer"
 						url="apps/edp_travaux/customlayers/chantiers.js"
+						tooltip="true"
+						tooltipcontent="{{nature_chantier}}"
 						attributefield="nature_chantier"
-            customcontrol="true"
-    				customcontrolpath="apps/edp_travaux/customcontrols"
+            			customcontrol="true"
+    					customcontrolpath="apps/edp_travaux/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5"
