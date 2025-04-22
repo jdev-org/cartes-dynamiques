@@ -173,6 +173,12 @@
         selectTypeChantier.disabled = false;
         impactTravaux.disabled = false;
         selectNatureChantier.value = natureChantier;
+        const options = selectNatureChantier.querySelectorAll("option");
+        options.forEach(option => {
+            option.classList.remove("active");
+        });
+        const selectedOption = selectNatureChantier.options[selectNatureChantier.selectedIndex];
+        selectedOption.classList.add("active");
 
         if (correspondancesNaturesTypes[selectNatureChantier.value]) {
             correspondancesNaturesTypes[selectNatureChantier.value].forEach(type => {
@@ -182,6 +188,12 @@
                 selectTypeChantier.appendChild(typeOption);
             });
             selectTypeChantier.value = typeChantier;
+            const options = selectTypeChantier.querySelectorAll("option");
+            options.forEach(option => {
+                option.classList.remove("active");
+            });
+            const selectedOption = selectTypeChantier.options[selectTypeChantier.selectedIndex];
+            selectedOption.classList.add("active");
         }
 
         if (correspondancesTypesImpact[selectTypeChantier.value]) {
@@ -253,27 +265,8 @@
             }
         });
         selectedFiles = validFiles;
+        console.log(selectedFiles);
         renderTable();
-
-        if (selectedFiles.length > 0) {
-            const pluginsOption = getOptions();
-            const formData = new FormData();
-            selectedFiles.forEach(file => {
-                formData.append("files", file);
-            });
-            formData.append("chantier_id", "{{unique_id}}");
-            fetch(`${pluginsOption.origin}${pluginsOption.endpointUpload}`, {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Upload réussi :", data);
-            })
-            .catch(error => {
-                console.error("Erreur lors de l'envoi :", error);
-            });
-        }
     });
 
     async function fetchFiles(uniqueId) {
@@ -315,7 +308,7 @@
             deleteBtn.onclick = () => {
                 event.preventDefault();
                 if (get) {
-                    fetch(`${pluginsOption.origin}${pluginsOption.endpointDelete}/?chantier_id={{num_emprise}}&filename=${file}`, {
+                    fetch(`${pluginsOption.origin}${pluginsOption.endpointDelete}/?chantier_id={{unique_id}}&filename=${file}`, {
                         method: "DELETE",
                     })
                     .then(response => response.json())
@@ -492,6 +485,27 @@
             .catch((error) => {
                 console.log(error);
             });
+
+        // Si des documents sont associés
+        if (selectedFiles.length > 0) {
+            const pluginsOption = getOptions();
+            const formData = new FormData();
+            selectedFiles.forEach(file => {
+                formData.append("files", file);
+            });
+            formData.append("chantier_id", "{{unique_id}}");
+            fetch(`${pluginsOption.origin}${pluginsOption.endpointUpload}`, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Upload réussi :", data);
+            })
+            .catch(error => {
+                console.error("Erreur lors de l'envoi :", error);
+            });
+        }
     };
 
 </script>
