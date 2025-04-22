@@ -55,30 +55,30 @@
 </li>
 <script>
     const naturesTravaux = {
-        EP: "Travaux sur le réseau d'eau potable",
-        ENP: "Travaux sur le réseau d'eau non potable",
-        INSTALL_RES: "Travaux sur les installations du réseau ou sur les réservoirs",
-        GENIE_CIVIL: "Travaux de génie civil sur les galeries abritant des canalisations d'eau	",
-        Null: "Type de travaux non renseigné",
-        Autre: "Autre"
+        ep: "Travaux sur le réseau d'eau potable",
+        enp: "Travaux sur le réseau d'eau non potable",
+        install_res: "Travaux sur les installations du réseau ou sur les réservoirs",
+        genie_civil: "Travaux de génie civil sur les galeries abritant des canalisations d'eau	",
+        null: "Type de travaux non renseigné",
+        autre: "Autre"
     }
 
     const typesChantier = {
-        RC: "Renouvellement de canalisations",
-        RBI: "Remplacement de bouche incendie",
-        RV: "Remplacement de vannes",
-        RCSI: "Renforcement de canalisations lié à la sécurité incendie",
-        IU: "Intervention d'urgence",
-        RAH: "Remplacement d'appareils hydrauliques",
-        TIRR: "Travaux sur les installations du réseau ou sur les réservoirs",
-        TGC: "Travaux de génie civil sur les galeries abritant des canalisations d'eau"
+        ep_reno_can: "Renouvellement de canalisations",
+        ep_remp_bou_inc: "Remplacement de bouche incendie",
+        ep_remp_van: "Remplacement de vannes",
+        ep_renf_can: "Renforcement de canalisations lié à la sécurité incendie",
+        ep_int_urg: "Intervention d'urgence",
+        ep_remp_app_hyd: "Remplacement d'appareils hydrauliques",
+        install_res_trav: "Travaux sur les installations du réseau ou sur les réservoirs",
+        genie_civil_trav: "Travaux de génie civil sur les galeries abritant des canalisations d'eau"
     }
 
     const correspondancesNaturesTypes = {
-        EP: ['RC', 'RBI', 'RV', 'RCSI', 'IU', 'RAH'],
-        ENP: ['RC', 'RV', 'IU', 'RAH'],
-        INSTALL_RES: ['TIRR'],
-        GENIE_CIVIL: ['TGC', 'IU']
+        ep: ['ep_reno_can', 'ep_remp_bou_inc', 'ep_remp_van', 'ep_renf_can', 'ep_int_urg', 'ep_remp_app_hyd'],
+        enp: ['ep_reno_can', 'ep_remp_van', 'ep_int_urg', 'ep_remp_app_hyd'],
+        install_res: ['install_res_trav'],
+        genie_civil: ['genie_civil_trav', 'ep_int_urg']
     }
 
     const impact = {
@@ -88,14 +88,14 @@
     }
 
     const correspondancesTypesImpact = {
-        RC: "IntePonctuelles",
-        RBI: "NoImpact",
-        RV: "IntePonctuelles",
-        RCSI: "IntePonctuelles",
-        IU: "IU",
-        RAH: "NoImpact",
-        TIRR: "NoImpact",
-        TGC: "NoImpact"
+        ep_reno_can: "IntePonctuelles",
+        ep_remp_bou_inc: "NoImpact",
+        ep_remp_van: "IntePonctuelles",
+        ep_renf_can: "IntePonctuelles",
+        ep_int_urg: "IU",
+        ep_remp_app_hyd: "NoImpact",
+        install_res_trav: "NoImpact",
+        genie_civil_trav: "NoImpact"
     }
 
     const chantierMapping = [
@@ -122,9 +122,9 @@
 
 
     // Select Nature Chantier
-    const natureChantier = "{{nature_chantier}}"    
-    const typeChantier = "{{type_chantier}}" //TODO récupérer le type de chantier quand le champs éxistera
-    const impactChantier = "{{impact_chantier}}" //TODO récupérer le texte de l'impact quand le champs éxistera
+    const natureChantier = "{{nature_code_chantier}}"    
+    const typeChantier = "{{type_code_chantier}}"
+    const impactChantier = "{{impact_chantier}}"        
 
     const selectNatureChantier = document.getElementById("select_nature_chantier_{{unique_id}}");
     const selectTypeChantier = document.getElementById('select_type_chantier_{{unique_id}}');
@@ -157,9 +157,10 @@
     const natureOption = document.createElement("option");
 
     // Récupérer les fichiers associés
-    const numEmprise =  "{{num_emprise}}"
-    fetchFiles(numEmprise)
+    const unique_id=  "{{unique_id}}"
+    fetchFiles(unique_id)
 
+    // Créé les listes d'options
     for (const travaux in naturesTravaux) {
         const natureOption = document.createElement("option");
         natureOption.value = travaux;
@@ -180,7 +181,11 @@
                 typeOption.textContent = typesChantier[type];
                 selectTypeChantier.appendChild(typeOption);
             });
-            selectTypeChantier.value = typeChantier
+            selectTypeChantier.value = typeChantier;
+        }
+
+        if (correspondancesTypesImpact[selectTypeChantier.value]) {
+            impactTravaux.innerHTML = impactChantier;
         }
     }
 
@@ -256,7 +261,7 @@
             selectedFiles.forEach(file => {
                 formData.append("files", file);
             });
-            formData.append("chantier_id", "{{num_emprise}}");
+            formData.append("chantier_id", "{{unique_id}}");
             fetch(`${pluginsOption.origin}${pluginsOption.endpointUpload}`, {
                 method: "POST",
                 body: formData
@@ -271,9 +276,9 @@
         }
     });
 
-    async function fetchFiles(chantierId) {
+    async function fetchFiles(uniqueId) {
         const pluginsOption = getOptions();
-        const response = await fetch(`${pluginsOption.getFiles}/?chantier_id=${chantierId}`);
+        const response = await fetch(`${pluginsOption.getFiles}/?chantier_id=${uniqueId}`);
         const data = await response.json();
         selectedFiles = [];
         selectedFiles = data.files;
@@ -297,7 +302,7 @@
             viewBtn.className = 'actionButton';
             viewBtn.onclick = () => {
                 event.preventDefault();
-                const fileURL = get ? `${pluginsOption.serveFiles}/{{num_emprise}}/${file}` : URL.createObjectURL(file);
+                const fileURL = get ? `${pluginsOption.serveFiles}/{{unique_id}}/${file}` : URL.createObjectURL(file);
                 window.open(fileURL, '_blank');
             };
 
@@ -317,7 +322,7 @@
                     .then(data => {
                         if (data.message) {
                             console.log(data.message);
-                            fetchFiles(numEmprise);
+                            fetchFiles(unique_id);
                         }
                     })
                     .catch(error => {
