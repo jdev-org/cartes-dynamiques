@@ -465,6 +465,7 @@
             })
             .then((data) => {
                 console.log(data);
+                _sourceEdp.refresh();
             })
             .catch((error) => {
                 console.log(error);
