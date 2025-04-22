@@ -355,13 +355,13 @@
         let _selectedContentNatureChantier = document.querySelector(`#select_nature_chantier_${id} option.active`).textContent.trim();
         let _selectedContentTypeChantier = document.querySelector(`#select_type_chantier_${id} option.active`)?.textContent?.trim() || "";
 
-        if (_selectedContentNatureChantier === "") {
+        if (_selectedContentTypeChantier === "") {
             _natureChantierAutre = true;
         }
 
-        const _inputAutreNatureChantier = document.getElementById(`input_autre_nature_chantier_${id}`).textContent;
-        const _inputAutreTypeChantier = document.getElementById(`input_autre_type_chantier_${id}`).textContent;
-        const _autreImpactChantier = document.getElementById(`autre_impact_chantier_${id}`).textContent;
+        const _inputAutreNatureChantier = document.getElementById(`input_autre_nature_chantier_${id}`).value;
+        const _inputAutreTypeChantier = document.getElementById(`input_autre_type_chantier_${id}`).value;
+        const _autreImpactChantier = document.getElementById(`autre_impact_chantier_${id}`).value;
 
         let _namespace = "edp_demo";
 
@@ -429,7 +429,7 @@
             _cleanCurrentFeature.set("type_code_chantier", "undefined");
         }
 
-        if (_autreImpactChantier) {
+        if (_natureChantierAutre) {
             // nature_chantier
             _cleanCurrentFeature.set("nature_chantier", _inputAutreNatureChantier);
             // type_chantier
