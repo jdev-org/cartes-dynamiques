@@ -1,0 +1,7 @@
+{
+    "serveur_carto": "geoserver",
+    "namespace": "edp_demo",
+    "workspace": "chantiersopendata",
+    "projection": "EPSG:4326",
+    "url": "https://gis.jdev.fr/"
+}
