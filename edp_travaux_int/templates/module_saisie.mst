@@ -16,7 +16,7 @@
                     </select>
                 </div>
                 <div class="travaux_card_content">
-                    <span class="travaux_card_subtitle">Impact sur l'espace public</span>
+                    <span class="travaux_card_subtitle">Impact sur la disponibilité en eau</span>
                     <textarea id="travaux_impact_{{unique_id}}" class="travaux_impact" disabled></textarea>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 </table>
             </div>
             <div class="buttons_container">
-                <input id="annuler" class="btn__grey" type="button" value="Annuler" />
+                <input id="annuler" class="btn__grey" type="button" onclick="$('#right-panel').toggleClass('active')" value="Annuler" />
                 <input id="valider" class="btn__default" type="button" value="Enregistrer" onclick="_transactWfsEdp('{{unique_id}}')" />
             </div>
         </form>
@@ -351,8 +351,17 @@
         let _sourceGML;
         let _vectorGML;
         let _url = "https://gis.jdev.fr/geoserver/";
+        let _natureChantierAutre = false;
         let _selectedContentNatureChantier = document.querySelector(`#select_nature_chantier_${id} option.active`).textContent.trim();
-        let _selectedContentTypeChantier = document.querySelector(`#select_type_chantier_${id} option.active`).textContent.trim();
+        let _selectedContentTypeChantier = document.querySelector(`#select_type_chantier_${id} option.active`)?.textContent?.trim() || "";
+
+        if (_selectedContentNatureChantier === "") {
+            _natureChantierAutre = true;
+        }
+
+        const _inputAutreNatureChantier = document.getElementById(`input_autre_nature_chantier_${id}`).textContent;
+        const _inputAutreTypeChantier = document.getElementById(`input_autre_type_chantier_${id}`).textContent;
+        const _autreImpactChantier = document.getElementById(`autre_impact_chantier_${id}`).textContent;
 
         let _namespace = "edp_demo";
 
@@ -403,8 +412,6 @@
 
         var formatWFS = new ol.format.WFS();
 
-        console.log(_selectedContentNatureChantier, _selectedContentTypeChantier);
-
         const matchingChantier = chantierMapping.find(
             ch => ch.nature_chantier === _selectedContentNatureChantier && ch.type_chantier === _selectedContentTypeChantier
         );
@@ -421,12 +428,22 @@
             // type_code_chantier
             _cleanCurrentFeature.set("type_code_chantier", "undefined");
         }
-        // nature_chantier
-        _cleanCurrentFeature.set("nature_chantier", _selectedContentNatureChantier);
-        // type_chantier
-        _cleanCurrentFeature.set("type_chantier", _selectedContentTypeChantier);
-        // impact_chantier
-        _cleanCurrentFeature.set("impact_chantier", impactTravaux.value);
+
+        if (_autreImpactChantier) {
+            // nature_chantier
+            _cleanCurrentFeature.set("nature_chantier", _inputAutreNatureChantier);
+            // type_chantier
+            _cleanCurrentFeature.set("type_chantier", _inputAutreTypeChantier);
+            // impact_chantier
+            _cleanCurrentFeature.set("impact_chantier", _autreImpactChantier);
+        } else {
+            // nature_chantier
+            _cleanCurrentFeature.set("nature_chantier", _selectedContentNatureChantier);
+            // type_chantier
+            _cleanCurrentFeature.set("type_chantier", _selectedContentTypeChantier);
+            // impact_chantier
+            _cleanCurrentFeature.set("impact_chantier", impactTravaux.value);
+        }
 
         let options = {
             "featureNS": `https://www.gis.jdev.fr/geoserver/edpdemo`,
