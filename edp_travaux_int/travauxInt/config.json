@@ -13,11 +13,11 @@
     "options": {
         "mviewer": {
             "edp_travaux_int": {
-                "endpointUpload" :"uploadfile",
-                "endpointDelete" :"deletefile",
-                "getFiles": "http://localhost:8000/listfiles",
-                "origin": "http://localhost:8000/",
-                "serveFiles": "http://localhost:8000/files"
+                "endpointUpload" :"/uploadfile",
+                "endpointDelete" :"/deletefile",
+                "origin": "https://gis.jdev.fr/edpdocs",
+                "getFiles": "/listfiles",
+                "serveFiles": "/files"
             }
         }
     }
