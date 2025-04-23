@@ -79,15 +79,15 @@ let _sourceEdp;
 
 let _vectorEdp;
 
-let _serveurCarto = "geoserver";
+let _serveurCarto = `${mviewer.env?.serveur_carto}`;
 
-let _namespace = "edp_demo";
+let _namespace = `${mviewer.env?.namespace}`;
 
-let _workspace = "chantiersopendata";
+let _workspace = `${mviewer.env?.workspace}`;
 
-let _projection = "EPSG:4326";
+let _projection = `${mviewer.env?.projection}`;
 
-let _url = "https://gis.jdev.fr/" + _serveurCarto + "/" + _namespace;
+let _url = `${mviewer.env?.url}` + _serveurCarto + "/" + _namespace;
 
 _sourceEdp = new ol.source.Vector({
   format: new ol.format.GeoJSON({
