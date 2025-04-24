@@ -65,20 +65,25 @@
 
     const typesChantier = {
         ep_reno_can: "Renouvellement de canalisations",
+        enp_reno_can: "Renouvellement de canalisations",
         ep_remp_bou_inc: "Remplacement de bouche incendie",
         ep_remp_van: "Remplacement de vannes",
+        enp_remp_van: "Remplacement de vannes",
         ep_renf_can: "Renforcement de canalisations lié à la sécurité incendie",
         ep_int_urg: "Intervention d'urgence",
+        enp_int_urg: "Intervention d'urgence",
+        genie_civil_int_urg: "Intervention d'urgence",
         ep_remp_app_hyd: "Remplacement d'appareils hydrauliques",
+        enp_remp_app_hyd: "Remplacement d'appareils hydrauliques",
         install_res_trav: "Travaux sur les installations du réseau ou sur les réservoirs",
         genie_civil_trav: "Travaux de génie civil sur les galeries abritant des canalisations d'eau"
     }
 
     const correspondancesNaturesTypes = {
         ep: ['ep_reno_can', 'ep_remp_bou_inc', 'ep_remp_van', 'ep_renf_can', 'ep_int_urg', 'ep_remp_app_hyd'],
-        enp: ['ep_reno_can', 'ep_remp_van', 'ep_int_urg', 'ep_remp_app_hyd'],
+        enp: ['enp_reno_can', 'enp_remp_van', 'enp_int_urg', 'enp_remp_app_hyd'],
         install_res: ['install_res_trav'],
-        genie_civil: ['genie_civil_trav', 'ep_int_urg']
+        genie_civil: ['genie_civil_trav', 'genie_civil_int_urg']
     }
 
     const impact = {
@@ -89,13 +94,18 @@
 
     const correspondancesTypesImpact = {
         ep_reno_can: "IntePonctuelles",
+        enp_reno_can: "IntePonctuelles",
         ep_remp_bou_inc: "NoImpact",
         ep_remp_van: "IntePonctuelles",
+        enp_remp_van: "IntePonctuelles",
         ep_renf_can: "IntePonctuelles",
         ep_int_urg: "IU",
+        enp_int_urg: "IU",
         ep_remp_app_hyd: "NoImpact",
+        enp_remp_app_hyd: "NoImpact",
         install_res_trav: "NoImpact",
-        genie_civil_trav: "NoImpact"
+        genie_civil_trav: "NoImpact",
+        genie_civil_int_urg: "IU"
     }
 
     const chantierMapping = [
