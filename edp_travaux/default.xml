@@ -58,7 +58,7 @@
 						type="customlayer"
 						url="apps/edp_travaux/customlayers/chantiers.js"
 						tooltip="true"
-						tooltipcontent="{{nature_chantier}}"
+						tooltipcontent="{{#nature_chantier}}{{nature_chantier}}{{/nature_chantier}}{{^nature_chantier}}Non renseigné{{/nature_chantier}}"
 						attributefield="nature_chantier"
             			customcontrol="true"
     					customcontrolpath="apps/edp_travaux/customcontrols"
