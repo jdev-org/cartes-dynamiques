@@ -280,7 +280,7 @@
 
     async function fetchFiles(uniqueId) {
         const pluginsOption = getOptions();
-        const response = await fetch(`${pluginsOption.origin}${pluginsOption.getFiles}/?chantier_id=${uniqueId}`);
+        const response = await fetch(`${pluginsOption.origin}${pluginsOption.getFiles}?chantier_id=${uniqueId}`);
         const data = await response.json();
         selectedFiles = [];
         selectedFiles = data.files;
