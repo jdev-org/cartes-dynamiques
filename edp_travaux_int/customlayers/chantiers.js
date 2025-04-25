@@ -1,9 +1,9 @@
 let EPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(0, 0, 255)",
+    color: "rgb(105, 105, 230)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(0, 0, 255)",
+    color: "rgb(105, 105, 230)",
     width: 2,
   }),
 });
@@ -40,20 +40,20 @@ let GENIE_CIVILstyle = new ol.style.Style({
 
 let NullStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(226, 226, 226, 1)",
+    color: "rgba(172, 136, 136, 1)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(226, 226, 226, 1)",
+    color: "rgba(172, 136, 136, 1)",
     width: 2,
   }),
 });
 
 let AutreStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(0, 0, 0)",
+    color: "rgb(99, 95, 92)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(0, 0, 0)",
+    color: "rgb(99, 95, 92)",
     width: 2,
   }),
 });
