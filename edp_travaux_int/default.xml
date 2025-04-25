@@ -39,9 +39,9 @@
 	<searchparameters bbox="false" localities="true" features="false" />
 
 	<extensions>
-		<extension type="component" id="travauxInt" path="apps/edp_travaux_int_raph"/>
+		<extension type="component" id="travauxInt" path="apps/edp_travaux_int"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
-    	<!-- <extension type="component" id="print" path="apps/commons/addons"/> -->
+    	<extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions> 
@@ -53,16 +53,16 @@
 						id="chantiers"
 						visible="true"
 						type="customlayer"
-						url="apps/edp_travaux_int_raph/customlayers/chantiers.js"
+						url="apps/edp_travaux_int/customlayers/chantiers.js"
 						tooltip="true"
 						tooltipcontent="{{#nature_chantier}}{{nature_chantier}}{{/nature_chantier}}{{^nature_chantier}}Non renseigné{{/nature_chantier}}"
 						attributefield="nature_chantier"
             			customcontrol="true"
-    					customcontrolpath="apps/edp_travaux_int_raph/customcontrols"
+    					customcontrolpath="apps/edp_travaux_int/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5">
-						<template list="true" url="apps/edp_travaux_int_raph/templates/module_saisie.mst"></template>
+						<template list="true" url="apps/edp_travaux_int/templates/module_saisie.mst"></template>
 				</layer>	    
         </theme>  
     </themes>
