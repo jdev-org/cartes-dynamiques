@@ -332,8 +332,6 @@
             deleteBtn.onclick = () => {
                 event.preventDefault();
                 if (get) {
-                    console.log(`${pluginsOption.origin}${pluginsOption.endpointDelete}/?chantier_id=${unique_id}&filename=${file}`);
-                    
                     fetch(`${pluginsOption.origin}${pluginsOption.endpointDelete}?chantier_id=${unique_id}&filename=${file}`, {
                         method: "DELETE",
                     })
