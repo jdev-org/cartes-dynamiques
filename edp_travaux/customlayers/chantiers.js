@@ -50,7 +50,7 @@ let NullStyle = new ol.style.Style({
 
 let AutreStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(237, 171, 243)",
+    color: "rgba(237, 171, 243, 1)",
   }),
   stroke: new ol.style.Stroke({
     color: "rgba(237, 171, 243, 1)",
@@ -93,7 +93,13 @@ _sourceEdp = new ol.source.Vector({
   format: new ol.format.GeoJSON({
     srsName: _projection,
   }),
-  url: _url + "/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" + _namespace + "%3A" + _workspace + "&outputFormat=application%2Fjson",
+  url:
+    _url +
+    "/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" +
+    _namespace +
+    "%3A" +
+    _workspace +
+    "&outputFormat=application%2Fjson",
 });
 
 _sourceEdp.id = "edpSource";
@@ -102,13 +108,13 @@ _vectorEdp = new ol.layer.Vector({
   source: _sourceEdp,
   style: function (feature) {
     const styles = {
-      "ep": EPstyle,
-      "enp": ENPstyle,
-      "install_res": INSTALL_RESstyle,
-      "genie_civil": GENIE_CIVILstyle,
-      "autre": AutreStyle,
+      ep: EPstyle,
+      enp: ENPstyle,
+      install_res: INSTALL_RESstyle,
+      genie_civil: GENIE_CIVILstyle,
+      autre: AutreStyle,
     };
-    return styles[feature.get("nature_code_chantier")] || AutreStyle;
-  }
+    return styles[feature.get("nature_code_chantier")] || NullStyle;
+  },
 });
 new CustomLayer("chantiers", _vectorEdp, chantiersLegend);
