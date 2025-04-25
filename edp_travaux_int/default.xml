@@ -6,10 +6,10 @@
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"
-			showhelp="false"
+			showhelp="true"
 			help="apps/edp_travaux_int/templates/home.html"
 			home="https://www.eaudeparis.fr/"	
-			langfile="apps/edp_travaux/edpep.i18n.json" lang="fr"
+			lang="fr"
 	/>
 	<mapoptions maxzoom="19" projection="EPSG:3857" center="261080.6331702467, 6250562.251554384" zoom="13" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 
@@ -48,17 +48,17 @@
 	
 	<themes mini="true" legendmini="false"> 
         <theme name="Travaux" collapsed="true" id="travaux" icon="far fa-edit">
-			<layer
+				<layer
 						name="chantiers"
 						id="chantiers"
 						visible="true"
 						type="customlayer"
 						url="apps/edp_travaux_int/customlayers/chantiers.js"
 						tooltip="true"
-						tooltipcontent="{{nature_chantier}}"
+						tooltipcontent="{{#nature_chantier}}{{nature_chantier}}{{/nature_chantier}}{{^nature_chantier}}Non renseigné{{/nature_chantier}}"
 						attributefield="nature_chantier"
-            customcontrol="true"
-    				customcontrolpath="apps/edp_travaux_int/customcontrols"
+            			customcontrol="true"
+    					customcontrolpath="apps/edp_travaux_int/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5">
