@@ -48,7 +48,7 @@
             </div>
             <div class="buttons_container">
                 <input id="annuler" class="btn__grey" type="button" onclick="$('#right-panel').toggleClass('active')" value="Annuler" />
-                <input id="valider" class="btn__default" type="button" value="Enregistrer" onclick="_transactWfsEdp('{{unique_id}}')" />
+                <input id="valider" class="btn__default btnSaveDisabled" type="button" value="Enregistrer" onclick="_transactWfsEdp('{{unique_id}}')" disabled="true" />
             </div>
         </form>
 	</div>
@@ -59,7 +59,6 @@
         enp: "Travaux sur le réseau d'eau non potable",
         install_res: "Travaux sur les installations du réseau ou sur les réservoirs",
         genie_civil: "Travaux de génie civil sur les galeries abritant des canalisations d'eau	",
-        null: "Type de travaux non renseigné",
         autre: "Autre"
     }
 
@@ -139,6 +138,7 @@
     const selectNatureChantier = document.getElementById("select_nature_chantier_{{unique_id}}");
     const selectTypeChantier = document.getElementById('select_type_chantier_{{unique_id}}');
     const impactTravaux = document.getElementById("travaux_impact_{{unique_id}}");
+    const btnSave = document.getElementById("valider");
 
     // Add active class to selected option
     selectNatureChantier.addEventListener("change", function() {
@@ -149,6 +149,11 @@
 
         const selectedOption = selectNatureChantier.options[selectNatureChantier.selectedIndex];
         selectedOption.classList.add("active");
+
+        // Désactive le bouton "enregistrer" si le premier select a sa valeur par défaut
+        if (selectNatureChantier.selectedIndex === 0 || selectTypeChantier.selectedIndex === 0) {
+            btnSave.disabled = true;
+        } 
     });
 
     // Add active class to selected option
@@ -160,6 +165,13 @@
 
         const selectedOption = selectTypeChantier.options[selectTypeChantier.selectedIndex];
         selectedOption.classList.add("active");
+
+        // Désactive le bouton "enregistrer" si le second select a sa valeur par défaut
+        if (selectTypeChantier.selectedIndex === 0) {
+            btnSave.disabled = true;
+        } else {
+            btnSave.disabled = false;
+        }
     });
     
     selectNatureChantier.innerHTML = "<option value=''>Sélectionnez une nature de chantier</option>";
@@ -452,6 +464,12 @@
             _cleanCurrentFeature.set("impact_chantier", impactTravaux.value);
         }
 
+        // Check if the feature has valid data before proceeding
+        if (!_cleanCurrentFeature.get("nature_chantier") || !_cleanCurrentFeature.get("type_chantier")) {
+            console.error("Missing required data (nature_chantier or type_chantier)");
+            return;
+        }
+
         let options = {
             "featureNS": `https://www.gis.jdev.fr/geoserver/edpdemo`,
             "featureType": `${_workspace}`,
@@ -633,7 +651,12 @@
 .btn__default{
     background-color: #002DDC;
     color: white;
-} 
+}
+
+.btn__default:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
 .btn__yellow{
     background-color:rgb(209, 209, 209);
     color: #002DDC;
