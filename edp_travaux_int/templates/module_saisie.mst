@@ -37,7 +37,7 @@
             <div class="travaux_card_content">
                 <span class="travaux_card_subtitle">Document(s) Associé(s)</span>
                 <span class="travaux_add_files">Téléverser des documents avec des informations spécifiques au chantier (max 10Mo)</span>
-                <input type="file" id="fileInput_{{unique_id}}" accept=".pdf" multiple>
+                <input type="file" id="fileInput_{{unique_id}}" accept=".pdf" multiple />
                 <label for="fileInput_{{unique_id}}" id="fileInput_button_{{unique_id}}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 19H21V21H3V19ZM13 5.82843V17H11V5.82843L4.92893 11.8995L3.51472 10.4853L12 2L20.4853 10.4853L19.0711 11.8995L13 5.82843Z"></path></svg>
                     Téléverser un document
@@ -273,8 +273,22 @@
     // Upload de fichiers
     const fileInput = document.getElementById('fileInput_{{unique_id}}');
     const filesTableBody = document.getElementById('filesList_{{unique_id}}');
+    const fileInputLabel = document.getElementById('fileInput_button_{{unique_id}}');
     let selectedFiles = [];
     const maxFileSize = 10 * 1024 * 1024;
+
+    // Affichage conditionnel du bouton d'upload
+    function toggleFileInput() {
+        if (selectNatureChantier.value === "") {
+            fileInput.disabled = true;
+            fileInputLabel.classList.add('file-upload-disabled');
+        } else {
+            fileInput.disabled = false;
+            fileInputLabel.classList.remove('file-upload-disabled');
+        }
+    }
+    selectNatureChantier.addEventListener('change', toggleFileInput);
+    toggleFileInput();
 
     fileInput.addEventListener('change', () => {
         const files = Array.from(fileInput.files);
@@ -740,6 +754,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.file-upload-disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 </style>
