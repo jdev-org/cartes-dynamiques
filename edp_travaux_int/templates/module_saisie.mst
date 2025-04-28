@@ -230,7 +230,7 @@
         document.getElementById('form_{{unique_id}}').style.display = "block";
         selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
         
-        if (natureChantierValue === "Autre") {
+        if (natureChantierValue === "autre") {
             document.getElementById('autre_form_{{unique_id}}').style.display = "block";
             document.getElementById('form_{{unique_id}}').style.display = "none";
         }
@@ -286,28 +286,43 @@
                 alert(`Le fichier "${file.name}" dépasse la taille maximale autorisée (10 Mo).`);
             }
         });
-        selectedFiles = validFiles;
+        selectedFiles.push(...validFiles);
         renderTable();
     });
 
     async function fetchFiles(uniqueId) {
-        const pluginsOption = getOptions();
-        const response = await fetch(`${pluginsOption.origin}${pluginsOption.getFiles}?chantier_id=${uniqueId}`);
-        const data = await response.json();
-        selectedFiles = [];
-        selectedFiles = data.files;
+        const response = await fetch(`https://gis.jdev.fr/edp/documents/${uniqueId}/`);
+        if (response.status === 404) {
+            console.warn(`Pas de fichiers pour l'emprise ${uniqueId}`);
+            selectedFiles = [];
+            renderTable();
+            return;
+        }
+        if (!response.ok) {
+            console.error("Erreur lors de la récupération des fichiers :", response.status);
+            return;
+        }
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser .parseFromString(html, "text/html");
+        const links = [...doc.querySelectorAll("a")];        
+        const files = links.map(link => link.getAttribute('href')).filter(href => !href.startsWith("?")).slice(1)
         
-        renderTable(true)
+        selectedFiles = [];
+        selectedFiles = files;
+        
+        renderTable()
     }
 
-    function renderTable (get = false) {
+    function renderTable () {
         const pluginsOption = getOptions();
         filesTableBody.innerHTML = "";
         selectedFiles.forEach((file, index) => {
+            const get = typeof file === "string"
             const row = document.createElement('tr');
             const nameCell = document.createElement('td');
             nameCell.style = 'max-width: 100px; overflow: hidden; text-overflow: ellipsis;'
-            nameCell.title = get ? `${file}` : `${file.name}`
+            nameCell.title = `${file}` || `${file.name}`;
             nameCell.textContent = get ? file : file.name;
             
             // Bouton de visualisation
@@ -316,7 +331,7 @@
             viewBtn.className = 'actionButton';
             viewBtn.onclick = () => {
                 event.preventDefault();
-                const fileURL = get ? `${pluginsOption.serveFiles}/{{unique_id}}/${file}` : URL.createObjectURL(file);
+                const fileURL = get ? `https://gis.jdev.fr/edp/documents/${unique_id}/${file}`: URL.createObjectURL(file);
                 window.open(fileURL, '_blank');
             };
 
@@ -329,11 +344,12 @@
             deleteBtn.onclick = () => {
                 event.preventDefault();
                 if (get) {
-                    fetch(`${pluginsOption.origin}${pluginsOption.endpointDelete}/?chantier_id={{unique_id}}&filename=${file}`, {
+                    fetch(`${pluginsOption.origin}${pluginsOption.endpointDelete}?chantier_id=${unique_id}&filename=${file}`, {
                         method: "DELETE",
                     })
                     .then(response => response.json())
-                    .then(data => {
+                    .then(data => { console.log('then');
+                    
                         if (data.message) {
                             console.log(data.message);
                             fetchFiles(unique_id);
