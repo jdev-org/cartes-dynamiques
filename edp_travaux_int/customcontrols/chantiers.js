@@ -60,8 +60,6 @@ const cc = (function() {
 
     // Date de mise à jour
     async function getDateDataUpdate() {
-        console.log('truc : ', mviewer.env?.namespace);
-        
         var url = new URL(
           `${mviewer.env?.url}/geoserver/${mviewer.env?.namespace}/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${mviewer.env?.dataUpdateLayer}%3Adonnees_maj&maxFeatures=50&outputFormat=application%2Fjson`
         );
