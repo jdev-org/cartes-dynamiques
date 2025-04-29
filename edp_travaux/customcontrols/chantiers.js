@@ -58,6 +58,24 @@ const cc = (function() {
         })
     }
 
+    // Date de mise à jour
+    async function getDateDataUpdate() {
+        var url = new URL(
+          `${mviewer.env?.url}/geoserver/${mviewer.env?.namespace}/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${mviewer.env?.dataUpdateLayer}%3Adonnees_maj&maxFeatures=50&outputFormat=application%2Fjson`
+        );
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            data.features.forEach((val) => {
+                for(const [key, value] of Object.entries(val.properties)) {
+                    if (key === "datemaj") {
+                        document.getElementById("section_date_maj").innerHTML = "<span>Date de dernière mise à jour</span> :<br>" + value;
+                    }
+                }
+            })
+        })
+    }
+
     return {
         /*
         * Public
@@ -71,6 +89,7 @@ const cc = (function() {
                     listTravaux = mviewer.getLayer(layerid).layer.getSource().getFeatures();
                     let EDPFilters = document.getElementById("EDPFilters");
                     EDPFilters.addEventListener("change", () => _activeFilters(EDPFilters));
+                    getDateDataUpdate();
 
                     _initialized = true;
                 }
