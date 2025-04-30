@@ -121,7 +121,7 @@
         }
 
         if (associatedFiles.length === 1) {
-            lettreInfo.style.display = 'block';
+            lettreInfo.style.display = 'flex';
             listeLettresInfo.style.display = 'none';
             lettreInfo.onclick = (e) => {
                 e.preventDefault();
