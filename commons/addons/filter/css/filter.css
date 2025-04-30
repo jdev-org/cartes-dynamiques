@@ -1,0 +1,111 @@
+.advancedFilter {
+  background-color: #FFFFFF;
+  display: none;
+  text-align: left;
+  position: fixed !important;
+  top: 240px;
+  left: 60px;
+  z-index: 1000 !important;
+}
+
+#advancedFilter {
+  border-color: #8080802b!important;
+  border-radius: 1em;
+  padding: 15px!important;
+  max-width: 300px;
+  font-family: var(--myfont);
+}
+
+#advancedFilter .filter__header {
+  font-family: var(--myfont);
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  margin: 0;
+  margin: 0 0 15px 0;
+}
+
+.advancedFilter h2 .btnFilter__header {
+  cursor: pointer;
+}
+
+.advancedFilter .form-check-label {
+  background-color: #282cd91a !important;
+  font-size: 12px;
+  font-weight: 400;
+  border-radius: 12px;
+  padding: 4px 7px;
+  color: #282cd9!important;
+  transition: all .2s ease-out;
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 38ch;
+    margin: 0;
+}
+
+.advancedFilter .form-check-label:hover {
+  cursor: pointer;
+  color: white!important;
+  background-color: #282cd9!important;
+}
+
+.advancedFilter label {
+  margin-right: 2px;
+  padding: .3em .6em .3em;
+}
+
+.advancedFilter legend {
+  font-size: 13px;
+  margin-bottom: 9px;
+  border: none!important;
+  font-weight: 500;
+}
+
+.advancedFilter .form-check-label {
+  display: inline-block;
+}
+
+.advancedFilter .form-check-label-checked{
+  background-color: #282cd9 !important;
+  color: white!important;
+}
+
+.form-check {
+  margin-bottom: 5px;
+}
+
+/* needed to add x button on filter */
+
+.filter-legend:has(.glyphicon-trash) {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.filter-legend .glyphicon-trash {
+  cursor: pointer;
+}
+
+#advancedFilter-chantiers > *:not(:last-child) {
+  border-bottom: 1px solid #e4e4e48f;
+}
+
+#advancedFilter-chantiers > *{
+  margin: 1em 0px;
+}
+
+.download-btn{
+  color: white;
+    cursor: pointer;
+    background-color: #282cd9;
+    border-radius: 15px;
+    padding: 5px 12px;
+    margin-right: 5px;
+}
+
+.download-btn:hover{
+  opacity: .8;
+}
