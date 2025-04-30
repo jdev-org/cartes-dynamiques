@@ -83,6 +83,20 @@ var travauxInt = (function () {
         "&outputFormat=application%2Fjson",
     });
 
+    let styleTravaux = new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: "rgba(0, 0, 0, 0)",
+        width: 0,
+      }),
+    });
+
+    let travauxIntLayer = new ol.layer.Vector({
+      source: sourceTravaux,
+      style: styleTravaux,
+    });
+
+    _map.addLayer(travauxIntLayer);
+
     sourceTravaux.on("change", () => {
       if (sourceTravaux.getState() === "ready") {
         _formatData(sourceTravaux);
