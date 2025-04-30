@@ -3,63 +3,118 @@
   <p>Cliquez sur un bloc pour filtrer les travaux selon la nature</p>
   <div id="EDPFilters">
     <label for="EP_checkbox" id="EP" class="nature_chantier_container">
-      <input class="chantier_input_type" type="checkbox" id="EP_checkbox" name="chantiers_type" cat="ep" checked />
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="EP_checkbox"
+        name="chantiers_type"
+        cat="ep"
+        checked />
       <span class="cbx">
         <svg width="10px" height="10px" viewBox="0 0 12 11">
           <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
         </svg>
       </span>
-      <span for="EP_checkbox" class="title_color chantier_container_title">Travaux sur le réseau d'eau potable</span>
+      <span for="EP_checkbox" class="title_color chantier_container_title"
+        >Travaux sur le réseau d'eau potable</span
+      >
     </label>
     <label id="ENP" class="nature_chantier_container">
-      <input class="chantier_input_type" type="checkbox" id="ENP_checkbox" name="chantiers_type" cat="enp" checked />
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="ENP_checkbox"
+        name="chantiers_type"
+        cat="enp"
+        checked />
       <span class="cbx">
         <svg width="10px" height="10px" viewBox="0 0 12 11">
           <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
         </svg>
       </span>
-      <span for="ENP_checkbox" class="title_color chantier_container_title">Travaux sur le réseau d'eau non potable</span>
+      <span for="ENP_checkbox" class="title_color chantier_container_title"
+        >Travaux sur le réseau d'eau non potable</span
+      >
     </label>
     <label id="INSTALL_RES" class="nature_chantier_container">
-      <input class="chantier_input_type" type="checkbox" id="INSTALL_RES_checkbox" name="chantiers_type" cat="install_res" checked />
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="INSTALL_RES_checkbox"
+        name="chantiers_type"
+        cat="install_res"
+        checked />
       <span class="cbx">
         <svg width="10px" height="10px" viewBox="0 0 12 11">
           <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
         </svg>
       </span>
-      <span for="INSTALL_RES_checkbox" class="title_color chantier_container_title">Travaux sur les installations ou sur les réservoirs</span>
+      <span for="INSTALL_RES_checkbox" class="title_color chantier_container_title"
+        >Travaux sur les installations ou sur les réservoirs</span
+      >
     </label>
     <label id="GENIE_CIVIL" class="nature_chantier_container">
-      <input class="chantier_input_type" type="checkbox" id="GENIE_CIVIL_checkbox" name="chantiers_type" cat="genie_civil" checked />
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="GENIE_CIVIL_checkbox"
+        name="chantiers_type"
+        cat="genie_civil"
+        checked />
       <span class="cbx">
         <svg width="10px" height="10px" viewBox="0 0 12 11">
           <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
         </svg>
       </span>
-      <span for="GENIE_CIVIL_checkbox" class="title_color chantier_container_title">Travaux de génie civil sur les galeries abritant des canalisations d'eau</span>
+      <span for="GENIE_CIVIL_checkbox" class="title_color chantier_container_title"
+        >Travaux de génie civil sur les galeries abritant des canalisations d'eau</span
+      >
     </label>
     <label id="Autre" class="nature_chantier_container">
-      <input class="chantier_input_type" type="checkbox" id="Autres_checkbox" name="chantiers_type" cat="" checked />
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="Autres_checkbox"
+        name="chantiers_type"
+        cat="nature_autre"
+        checked />
       <span class="cbx">
         <svg width="10px" height="10px" viewBox="0 0 12 11">
           <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
         </svg>
       </span>
-      <span for="Autres_checkbox" class="title_color chantier_container_title">Autres</span>
+      <span for="Autres_checkbox" class="title_color chantier_container_title"
+        >Autres</span
+      >
     </label>
     <label id="Null" class="nature_chantier_container">
-      <input class="chantier_input_type" type="checkbox" id="Null_checkbox" name="chantiers_type" cat="null" checked />
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="Null_checkbox"
+        name="chantiers_type"
+        cat="null"
+        checked />
       <span class="cbx">
         <svg width="10px" height="10px" viewBox="0 0 12 11">
           <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
         </svg>
       </span>
-      <span for="Null_checkbox" class="title_color chantier_container_title">Non renseigné</span>
+      <span for="Null_checkbox" class="title_color chantier_container_title"
+        >Non renseigné</span
+      >
     </label>
   </div>
   <div class="legend__dataInfo">
-    <p> Source : <a href="https://opendata.paris.fr/explore/dataset/chantiers-a-paris/" target="_blank">opendata.paris.fr</a>
-      <br> <span id="section_date_maj"></span>
+    <p>
+      Source :
+      <a
+        href="https://opendata.paris.fr/explore/dataset/chantiers-a-paris/"
+        target="_blank"
+        >opendata.paris.fr</a
+      >
+      <br />
+      <span id="section_date_maj"></span>
     </p>
   </div>
 </div>
@@ -107,9 +162,9 @@
   }
 
   .nature_chantier_container:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
-  
+
   .chantier_container_title {
     width: 80%;
     margin-left: 10px;
@@ -197,11 +252,11 @@
     visibility: hidden;
   }
 
-  .nature_chantier_container input[type="checkbox"]:checked+.cbx {
+  .nature_chantier_container input[type="checkbox"]:checked + .cbx {
     background-color: #002ddc;
   }
 
-  .nature_chantier_container input[type="checkbox"]:checked+.cbx svg {
+  .nature_chantier_container input[type="checkbox"]:checked + .cbx svg {
     stroke-dashoffset: 0;
     transition: all 0.15s ease;
   }

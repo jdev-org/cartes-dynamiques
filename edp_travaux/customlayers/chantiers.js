@@ -73,7 +73,11 @@ chantiersLegend.items.push({
   geometry: "Polygon",
 });
 chantiersLegend.items.push({ styles: NullStyle, label: "null", geometry: "Polygon" });
-chantiersLegend.items.push({ styles: AutreStyle, label: "other", geometry: "Polygon" });
+chantiersLegend.items.push({
+  styles: AutreStyle,
+  label: "nature_autre",
+  geometry: "Polygon",
+});
 
 let _sourceEdp;
 
@@ -112,7 +116,7 @@ _vectorEdp = new ol.layer.Vector({
       enp: ENPstyle,
       install_res: INSTALL_RESstyle,
       genie_civil: GENIE_CIVILstyle,
-      autre: AutreStyle,
+      nature_autre: AutreStyle,
     };
     return styles[feature.get("nature_code_chantier")] || NullStyle;
   },
