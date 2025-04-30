@@ -63,11 +63,15 @@ var travauxInt = (function () {
     URL.revokeObjectURL(url);
   };
 
+  let _namespace = `${mviewer.env?.namespace}`;
+
+  let _workspace = `${mviewer.env?.workspace}`;
+
+  let _url = `${mviewer.env?.url}` + _serveurCarto + "/" + _namespace;
+
   var _initTravauxData = () => {
     let sourceTravaux = new ol.source.Vector({
-      format: new ol.format.GeoJSON({
-        srsName: _projection,
-      }),
+      format: new ol.format.GeoJSON(),
       url:
         _url +
         "/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" +
