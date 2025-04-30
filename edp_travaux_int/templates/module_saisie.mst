@@ -59,7 +59,7 @@
         enp: "Travaux sur le réseau d'eau non potable",
         install_res: "Travaux sur les installations du réseau ou sur les réservoirs",
         genie_civil: "Travaux de génie civil sur les galeries abritant des canalisations d'eau	",
-        autre: "Autre"
+        nature_autre: "Autre"
     }
 
     const typesChantier = {
@@ -245,7 +245,7 @@
         document.getElementById('form_{{unique_id}}').style.display = "block";
         selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
         
-        if (natureChantierValue === "autre") {
+        if (natureChantierValue === "nature_autre") {
             document.getElementById('autre_form_{{unique_id}}').style.display = "block";
             document.getElementById('form_{{unique_id}}').style.display = "none";
         }
