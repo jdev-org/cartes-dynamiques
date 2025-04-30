@@ -115,10 +115,15 @@ var travauxInt = (function () {
         id: feature.getProperties()["geometry"]["ol_uid"],
         chantier_cite_id: feature.get("chantier_cite_id"),
         cp_arrondissement: feature.get("cp_arrondissement"),
+        nom_rue: feature.get("nom_rue"),
         date_debut: feature.get("date_debut"),
         date_fin: feature.get("date_fin"),
         demande_cite_id: feature.get("demande_cite_id"),
-        num_emprise: feature.get("num_emprise"),
+        lon: feature.get("lon"),
+        lat: feature.get("lat"),
+        nature_chantier: feature.get("nature_chantier"),
+        type_chantier: feature.get("type_chantier"),
+        impact_chantier: feature.get("impact_chantier"),
       });
     });
   };
