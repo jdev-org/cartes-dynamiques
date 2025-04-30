@@ -141,9 +141,15 @@
     const btnSave = document.getElementById("valider");
     const inputNatureAutre = document.getElementById("input_autre_nature_chantier_{{unique_id}}");
     const inputTypeAutre = document.getElementById("input_autre_type_chantier_{{unique_id}}");
-    const impactAutre = document.getElementById("autre_impact_chantier_{{unique_id}}");
+    const inputImpactAutre = document.getElementById("autre_impact_chantier_{{unique_id}}");
 
-    var isAutre = false;
+    var toggleBtnSave = () => {
+        if (inputNatureAutre.value && inputTypeAutre.value && inputImpactAutre.value) {
+            btnSave.disabled = false;
+        } else {
+            btnSave.disabled = true;
+        }
+    }
 
     // Add active class to selected option
     selectNatureChantier.addEventListener("change", function() {
@@ -155,18 +161,13 @@
         const selectedOption = selectNatureChantier.options[selectNatureChantier.selectedIndex];
         selectedOption.classList.add("active");
 
-
         // Désactive le bouton "enregistrer" si le premier select a sa valeur par défaut
         if (selectNatureChantier.selectedIndex === 0) {
             btnSave.disabled = true;
         } else if (selectedOption.textContent.trim() === "Autre") {
-            inputNatureAutre, inputTypeAutre, impactAutre.addEventListener("input", function() {
-                if (inputNatureAutre.value && inputTypeAutre.value && impactAutre.value) {
-                    btnSave.disabled = false;
-                } else {
-                    btnSave.disabled = true;
-                }
-            });
+            inputNatureAutre.addEventListener("input", toggleBtnSave);
+            inputTypeAutre.addEventListener("input", toggleBtnSave);
+            inputImpactAutre.addEventListener("input", toggleBtnSave);
         }
     });
 
