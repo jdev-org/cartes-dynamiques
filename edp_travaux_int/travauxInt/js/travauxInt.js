@@ -63,6 +63,8 @@ var travauxInt = (function () {
     URL.revokeObjectURL(url);
   };
 
+  let _serveurCarto = `${mviewer.env?.serveur_carto}`;
+
   let _namespace = `${mviewer.env?.namespace}`;
 
   let _workspace = `${mviewer.env?.workspace}`;
