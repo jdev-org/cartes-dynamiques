@@ -318,6 +318,7 @@
         });
         selectedFiles.push(...validFiles);
         renderTable();
+        fileInput.value = '';
     });
 
     async function fetchFiles(uniqueId) {
@@ -388,9 +389,6 @@
                     .catch(error => {
                         console.error("Erreur lors de la suppression du fichier :", error);
                     });
-                } else {
-                    selectedFiles.splice(index, 1);
-                    renderTable();
                 }
                 selectedFiles.splice(index, 1);
                 renderTable();
