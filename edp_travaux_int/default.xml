@@ -6,7 +6,7 @@
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
 			favicon="apps/commons/theme_edp/favicon.ico"
-			showhelp="true"
+			showhelp="false"
 			help="apps/edp_travaux_int/templates/home.html"
 			home="https://www.eaudeparis.fr/"	
 			lang="fr"
