@@ -4,11 +4,11 @@
   "html": "filter.html",
   "target": "page-content-wrapper",
   "options": {
-    "mviewer": {      
+    "mviewer": {
       "edp_travaux_int": {
         "tooltipPosition": "bottom-left",
         "title": "Filtrer",
-        "open": true,
+        "open": false,
         "zoomOnFeatures": true,
         "legendTitle": "Sélectionner une donnée :",
         "style": {
@@ -17,7 +17,7 @@
           "text": "#002ddc",
           "colorButton": "#002ddc",
           "top": "7em",
-          "bottom":"auto",
+          "bottom": "auto",
           "left": "auto",
           "right": "5em"
         },

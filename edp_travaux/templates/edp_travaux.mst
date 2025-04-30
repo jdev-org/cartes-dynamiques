@@ -179,6 +179,9 @@
 #container_genie_civil {
     background-color: rgba(255, 199, 151, 0.5);
 }
+#container_nature_autre {
+    background-color: rgba(237, 171, 243, 0.5);
+}
 #container_ {
     background-color: rgba(226, 226, 226, 0.5);
 }

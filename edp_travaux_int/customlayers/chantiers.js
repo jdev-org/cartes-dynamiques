@@ -1,59 +1,59 @@
 let EPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(105, 105, 230)",
+    color: "rgb(46, 162, 197)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(105, 105, 230)",
+    color: "rgb(46, 162, 197)",
     width: 2,
   }),
 });
 
 let ENPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(255, 140, 0)",
+    color: "rgb(234, 158, 64)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(255, 140, 0)",
+    color: "rgb(234, 158, 64)",
     width: 2,
   }),
 });
 
 let INSTALL_RESstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(0, 255, 0)",
+    color: "rgb(142, 216, 84)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(0, 255, 0)",
+    color: "rgb(142, 216, 84)",
     width: 2,
   }),
 });
 
 let GENIE_CIVILstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(255, 0, 0)",
+    color: "rgb(243, 103, 103)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(255, 0, 0)",
+    color: "rgb(243, 103, 103)",
     width: 2,
   }),
 });
 
 let NullStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(172, 136, 136, 1)",
+    color: "rgb(31, 31, 31)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(172, 136, 136, 1)",
+    color: "rgb(31, 31, 31)",
     width: 2,
   }),
 });
 
 let AutreStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(99, 95, 92)",
+    color: "rgb(242, 216, 67)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(99, 95, 92)",
+    color: "rgb(242, 216, 67)",
     width: 2,
   }),
 });
@@ -73,7 +73,11 @@ chantiersLegend.items.push({
   geometry: "Polygon",
 });
 chantiersLegend.items.push({ styles: NullStyle, label: "null", geometry: "Polygon" });
-chantiersLegend.items.push({ styles: AutreStyle, label: "other", geometry: "Polygon" });
+chantiersLegend.items.push({
+  styles: AutreStyle,
+  label: "nature_autre",
+  geometry: "Polygon",
+});
 
 let _sourceEdp;
 
@@ -112,7 +116,7 @@ _vectorEdp = new ol.layer.Vector({
       enp: ENPstyle,
       install_res: INSTALL_RESstyle,
       genie_civil: GENIE_CIVILstyle,
-      autre: AutreStyle,
+      nature_autre: AutreStyle,
     };
     return styles[feature.get("nature_code_chantier")] || NullStyle;
   },

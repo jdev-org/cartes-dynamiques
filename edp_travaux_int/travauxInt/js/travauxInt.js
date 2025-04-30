@@ -1,18 +1,18 @@
 var travauxInt = (function () {
   var scripts = [
-    'apps/commons/export_table/FileSaver.min.js',
-    'apps/commons/export_table/polyfills.umd.js',
-    'apps/commons/export_table/jspdf.umd.min.js',
-    'apps/commons/export_table/tableExport.min.js',
-    'apps/commons/export_table/bootstrap-table-export.min.js'
-  ]
+    "apps/commons/export_table/FileSaver.min.js",
+    "apps/commons/export_table/polyfills.umd.js",
+    "apps/commons/export_table/jspdf.umd.min.js",
+    "apps/commons/export_table/tableExport.min.js",
+    "apps/commons/export_table/bootstrap-table-export.min.js",
+  ];
 
-  scripts.forEach(function(scriptSrc) {
-    var script = document.createElement('script')
-    script.src = scriptSrc
-    document.head.appendChild(script)
-  })
-  
+  scripts.forEach(function (scriptSrc) {
+    var script = document.createElement("script");
+    script.src = scriptSrc;
+    document.head.appendChild(script);
+  });
+
   let _config;
 
   let _map;
@@ -43,76 +43,90 @@ var travauxInt = (function () {
 
   var _exportCSV = () => {
     if (finalData.length === 0) {
-      alert('Pas de données à exporter');
+      alert("Pas de données à exporter");
       return;
     }
     const headers = Object.keys(finalData[0]);
     const csvRows = [
-      headers.join(','),
-      ...finalData.map(obj => headers.map(key => `"${obj[key]}"`).join(','))
+      headers.join(","),
+      ...finalData.map((obj) => headers.map((key) => `"${obj[key]}"`).join(",")),
     ];
 
-    const blob = new Blob([csvRows.join('\n')], {type: 'text/csv;charset=utf-8;'});
+    const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
 
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'export.csv';
+    a.download = "export.csv";
     a.click();
-  
+
     URL.revokeObjectURL(url);
-  }
+  };
+
+  let _serveurCarto = `${mviewer.env?.serveur_carto}`;
+
+  let _namespace = `${mviewer.env?.namespace}`;
+
+  let _workspace = `${mviewer.env?.workspace}`;
+
+  let _url = `${mviewer.env?.url}` + _serveurCarto + "/" + _namespace;
 
   var _initTravauxData = () => {
     let sourceTravaux = new ol.source.Vector({
-      url: "apps/edp_travaux_int/travauxInt/data/result.geojson",
-      format: new ol.format.GeoJSON()
+      format: new ol.format.GeoJSON(),
+      url:
+        _url +
+        "/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=" +
+        _namespace +
+        "%3A" +
+        _workspace +
+        "&outputFormat=application%2Fjson",
     });
 
     let styleTravaux = new ol.style.Style({
       stroke: new ol.style.Stroke({
         color: "rgba(0, 0, 0, 0)",
-        width: 1,
+        width: 0,
       }),
-      fill: new ol.style.Fill({
-        color: "rgba(0, 0, 0, 0)",
-      }),
-    })
+    });
 
     let travauxIntLayer = new ol.layer.Vector({
       source: sourceTravaux,
-      style: styleTravaux
+      style: styleTravaux,
     });
 
     _map.addLayer(travauxIntLayer);
 
     sourceTravaux.on("change", () => {
       if (sourceTravaux.getState() === "ready") {
-          _formatData(sourceTravaux);
-      };
+        _formatData(sourceTravaux);
+      }
     });
   };
 
   var _formatData = (sourceTravaux) => {
-
     let data = sourceTravaux.getFeatures();
 
     data.forEach((feature) => {
       finalData.push({
-        "id": feature.getProperties()["geometry"]["ol_uid"],
-        "chantier_cite_id": feature.get("chantier_cite_id"),
-        "cp_arrondissement": feature.get("cp_arrondissement"),
-        "date_debut": feature.get("date_debut"),
-        "date_fin": feature.get("date_fin"),
-        "demande_cite_id": feature.get("demande_cite_id"),
-        "num_emprise": feature.get("num_emprise"),
+        id: feature.getProperties()["geometry"]["ol_uid"],
+        chantier_cite_id: feature.get("chantier_cite_id"),
+        cp_arrondissement: feature.get("cp_arrondissement"),
+        nom_rue: feature.get("nom_rue"),
+        date_debut: feature.get("date_debut"),
+        date_fin: feature.get("date_fin"),
+        demande_cite_id: feature.get("demande_cite_id"),
+        lon: feature.get("lon"),
+        lat: feature.get("lat"),
+        nature_chantier: feature.get("nature_chantier"),
+        type_chantier: feature.get("type_chantier"),
+        impact_chantier: feature.get("impact_chantier"),
       });
     });
   };
 
   var _loadDataBottomPanel = () => {
-
-    $(document).ready(function() {
+    $(document).ready(function () {
       if ($("#bottom-panel").length) {
         $("#bottom-panel").html(`
           <table id="myTable"
@@ -139,11 +153,11 @@ var travauxInt = (function () {
         $("#myTable").bootstrapTable({
           data: finalData,
           exportOptions: {
-            fileName: "export-travaux"
-          }
+            fileName: "export-travaux",
+          },
         });
       }
-    });  
+    });
   };
 
   return {
