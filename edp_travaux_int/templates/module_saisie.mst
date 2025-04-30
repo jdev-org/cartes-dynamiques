@@ -114,21 +114,21 @@
         { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Renforcement de canalisations lié à la sécurité incendie", type_code_chantier: "ep_renf_can" },
         { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Intervention d'urgence", type_code_chantier: "ep_int_urg" },
         { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Remplacement d'appareils hydrauliques", type_code_chantier: "ep_remp_app_hyd" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Autre", type_code_chantier: "ep_autre" },
 
         { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Renouvellement de canalisations", type_code_chantier: "enp_reno_can" },
         { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Remplacement d'appareils hydrauliques", type_code_chantier: "enp_remp_app_hyd" },
         { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Remplacement de vannes", type_code_chantier: "enp_remp_van" },
         { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Intervention d'urgence", type_code_chantier: "enp_int_urg" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Autre", type_code_chantier: "enp_autre" },
 
         { nature_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", nature_code_chantier: "install_res", type_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", type_code_chantier: "install_res_trav" },
+        { nature_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", nature_code_chantier: "install_res", type_chantier: "Autre", type_code_chantier: "install_res_autre" },
 
         { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", type_code_chantier: "genie_civil_trav" },
         { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Intervention d'urgence", type_code_chantier: "genie_civil_int_urg" },
-
-        { nature_chantier: "Non renseigné", nature_code_chantier: "non_renseigne", type_chantier: "Non renseigné", type_code_chantier: "non_renseigne" },
-        { nature_chantier: "Saisie libre par le user", nature_code_chantier: "nature_autre", type_chantier: "Saisie libre par le user", type_code_chantier: "type_autre" }
+        { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Autre", type_code_chantier: "genie_civil_autre" },
     ];
-
 
     // Select Nature Chantier
     const natureChantier = "{{nature_code_chantier}}"    
@@ -141,10 +141,10 @@
     const btnSave = document.getElementById("valider");
     const inputNatureAutre = document.getElementById("input_autre_nature_chantier_{{unique_id}}");
     const inputTypeAutre = document.getElementById("input_autre_type_chantier_{{unique_id}}");
-    const inputImpactAutre = document.getElementById("autre_impact_chantier_{{unique_id}}");
+    // const inputImpactAutre = document.getElementById("autre_impact_chantier_{{unique_id}}");
 
-    var toggleBtnSave = () => {
-        if (inputNatureAutre.value && inputTypeAutre.value && inputImpactAutre.value) {
+    var _toggleBtnSave = () => {
+        if (inputNatureAutre.value && inputTypeAutre.value) {
             btnSave.disabled = false;
         } else {
             btnSave.disabled = true;
@@ -165,9 +165,9 @@
         if (selectNatureChantier.selectedIndex === 0) {
             btnSave.disabled = true;
         } else if (selectedOption.textContent.trim() === "Autre") {
-            inputNatureAutre.addEventListener("input", toggleBtnSave);
-            inputTypeAutre.addEventListener("input", toggleBtnSave);
-            inputImpactAutre.addEventListener("input", toggleBtnSave);
+            inputNatureAutre.addEventListener("input", _toggleBtnSave);
+            inputTypeAutre.addEventListener("input", _toggleBtnSave);
+            // inputImpactAutre.addEventListener("input", _toggleBtnSave);
         }
     });
 
@@ -207,6 +207,7 @@
     
     // Si l'emprise est déjà complétée
     if (natureChantier) {
+        btnSave.disabled = false;
         selectTypeChantier.disabled = false;
         impactTravaux.disabled = false;
         selectNatureChantier.value = natureChantier;
