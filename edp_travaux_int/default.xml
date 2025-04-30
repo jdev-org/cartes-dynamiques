@@ -30,7 +30,7 @@
 			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
 		</selectionstyle>
 		<subselectionstyle>
-			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+			<polygon opacity="0" strokewidth="8" />
 		</subselectionstyle>
 	</styles>
 	
@@ -58,13 +58,12 @@
 						tooltip="true"
 						tooltipcontent="{{#nature_chantier}}{{nature_chantier}}{{/nature_chantier}}{{^nature_chantier}}Non renseigné{{/nature_chantier}}&lt;br&gt;
 						{{#date_debut}}{{date_debut}}{{/date_debut}} au {{#date_fin}}{{date_fin}}{{/date_fin}}"
-						attributefield="nature_chantier"
-            			customcontrol="true"
+						customcontrol="true"
     					customcontrolpath="apps/edp_travaux_int/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5">
-						<template list="true" url="apps/edp_travaux_int/templates/module_saisie.mst"></template>
+						<template url="apps/edp_travaux_int/templates/module_saisie.mst"></template>
 				</layer>	    
         </theme>  
     </themes>

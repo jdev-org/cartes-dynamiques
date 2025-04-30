@@ -60,14 +60,13 @@
 						tooltip="true"
 						tooltipcontent="{{#nature_chantier}}{{nature_chantier}}{{/nature_chantier}}{{^nature_chantier}}Non renseigné{{/nature_chantier}}&lt;br&gt;
 						{{#date_debut}}{{date_debut}}{{/date_debut}} au {{#date_fin}}{{date_fin}}{{/date_fin}}"
-						attributefield="nature_chantier"
-            			customcontrol="true"
+						customcontrol="true"
     					customcontrolpath="apps/edp_travaux/customcontrols"
 						infoformat="application/vnd.ogc.gml"
 						queryable="true"
 						featurecount="5"
 				>
-					<template list="true" url="apps/edp_travaux/templates/edp_travaux.mst"></template>
+					<template url="apps/edp_travaux/templates/edp_travaux.mst"></template>
 				</layer>
       </theme>
 	</themes>
