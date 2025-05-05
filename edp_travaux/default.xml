@@ -44,7 +44,7 @@
 		<extension type="javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
-    	<extension type="component" id="print" path="apps/commons/addons"/>
+    	<!-- <extension type="component" id="print" path="apps/commons/addons"/> -->
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
@@ -59,7 +59,7 @@
 						url="apps/edp_travaux/customlayers/chantiers.js"
 						tooltip="true"
 						tooltipcontent="{{#nature_chantier}}{{nature_chantier}}{{/nature_chantier}}{{^nature_chantier}}Non renseigné{{/nature_chantier}}&lt;br&gt;
-						{{#date_debut}}{{date_debut}}{{/date_debut}} au {{#date_fin}}{{date_fin}}{{/date_fin}}"
+						du {{#date_debut}}{{date_debut}}{{/date_debut}} au {{#date_fin}}{{date_fin}}{{/date_fin}}"
 						attributefield="nature_chantier"
             			customcontrol="true"
     					customcontrolpath="apps/edp_travaux/customcontrols"
