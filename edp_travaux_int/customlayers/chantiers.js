@@ -1,59 +1,59 @@
 let EPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(105, 105, 230)",
+    color: "rgb(46, 162, 197)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(105, 105, 230)",
+    color: "rgb(46, 162, 197)",
     width: 2,
   }),
 });
 
 let ENPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(255, 140, 0)",
+    color: "rgb(234, 158, 64)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(255, 140, 0)",
+    color: "rgb(234, 158, 64)",
     width: 2,
   }),
 });
 
 let INSTALL_RESstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(0, 255, 0)",
+    color: "rgb(142, 216, 84)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(0, 255, 0)",
+    color: "rgb(142, 216, 84)",
     width: 2,
   }),
 });
 
 let GENIE_CIVILstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(255, 0, 0)",
+    color: "rgb(243, 103, 103)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(255, 0, 0)",
+    color: "rgb(243, 103, 103)",
     width: 2,
   }),
 });
 
 let NullStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(128, 18, 121)",
+    color: "rgb(31, 31, 31)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(128, 18, 121)",
+    color: "rgb(31, 31, 31)",
     width: 2,
   }),
 });
 
 let AutreStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(31, 31, 31)",
+    color: "rgb(242, 216, 67)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(31, 31, 31)",
+    color: "rgb(242, 216, 67)",
     width: 2,
   }),
 });
