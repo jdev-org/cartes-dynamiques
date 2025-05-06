@@ -575,6 +575,8 @@
         _cleanCurrentFeature.unset("mviewerid");
         _cleanCurrentFeature.unset("fields_kv");
         _cleanCurrentFeature.unset("serialized");
+        _cleanCurrentFeature.unset("date_debut");
+        _cleanCurrentFeature.unset("date_fin");
 
         // Update to the geoserver
         node = formatWFS.writeTransaction(null, [_cleanCurrentFeature], null, options);

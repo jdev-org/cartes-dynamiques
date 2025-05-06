@@ -1,59 +1,59 @@
 let EPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(170, 184, 255, 1)",
+    color: "rgb(0, 44, 219)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(170, 184, 255, 1)",
+    color: "rgb(0, 44, 219)",
     width: 2,
   }),
 });
 
 let ENPstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 239, 170, 1)",
+    color: "rgb(54,165,133)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(255, 239, 170, 1)",
+    color: "rgb(54,165,133)",
     width: 2,
   }),
 });
 
 let INSTALL_RESstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(174, 255, 174, 1)",
+    color: "rgb(245, 168, 108)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(174, 255, 174, 1)",
+    color: "rgb(245, 168, 108)",
     width: 2,
   }),
 });
 
 let GENIE_CIVILstyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(255, 199, 151, 1)",
+    color: "rgb(255, 100, 125)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(255, 199, 151, 1)",
+    color: "rgb(255, 100, 125)",
     width: 2,
   }),
 });
 
 let NullStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(226, 226, 226, 1)",
+    color: "rgb(255, 239, 170)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(226, 226, 226, 1)",
+    color: "rgb(255, 239, 170)",
     width: 2,
   }),
 });
 
 let AutreStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgba(237, 171, 243, 1)",
+    color: "rgb(170, 185, 255)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgba(237, 171, 243, 1)",
+    color: "rgb(170, 185, 255)",
     width: 2,
   }),
 });
@@ -121,4 +121,24 @@ _vectorEdp = new ol.layer.Vector({
     return styles[feature.get("nature_code_chantier")] || NullStyle;
   },
 });
+
+// Format date
+const formatDate = (isoDate) => {
+  if (!isoDate) return "";
+  const d = new Date(isoDate);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+_sourceEdp.on('addfeature', function (evt) {
+  const feature = evt.feature;
+  const dateDebut = feature.get('date_debut');
+  const dateFin = feature.get('date_fin');
+
+  feature.set('date_debut', formatDate(dateDebut));
+  feature.set('date_fin', formatDate(dateFin));
+});
+
 new CustomLayer("chantiers", _vectorEdp, chantiersLegend);

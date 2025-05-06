@@ -82,9 +82,7 @@
     }
 
     // Affichage des dates
-    const dateDebut = new Date("{{date_debut}}").toLocaleDateString("fr-FR");
-    const dateFin = new Date("{{date_fin}}").toLocaleDateString("fr-FR");
-    document.getElementById("travaux_card_date_{{unique_id}}").innerHTML = `Du ${dateDebut} au ${dateFin}`;
+    document.getElementById("travaux_card_date_{{unique_id}}").innerHTML = `Du {{date_debut}} au {{date_fin}}`;
 
     // Accordéon Plus d'infos
     function toggleInfo (element) {
