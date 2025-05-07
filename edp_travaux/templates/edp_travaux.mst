@@ -47,7 +47,7 @@
             <div class="accordion__body"></div>            
         </div>
         <div class="btn_container">
-            <a href="https://www.eaudeparis.fr/" target="_blank" class="travaux_card_button">En savoir plus</a>
+            <a href="https://www.eaudeparis.fr/travaux-sur-nos-reseaux" target="_blank" class="travaux_card_button">En savoir plus</a>
             <a href="https://dansmarue.paris.fr/dansmarue/jsp/site/Portal.jsp?page=fodansmarue" target="_blank" class="travaux_card_button">Une anomalie ?</a>
         </div>
 	</div>
