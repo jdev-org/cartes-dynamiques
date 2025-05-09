@@ -5,7 +5,7 @@ var travauxInt = (function () {
     "apps/commons/export_table/jspdf.umd.min.js",
     "apps/commons/export_table/tableExport.min.js",
     "apps/commons/export_table/bootstrap-table-export.min.js",
-    "https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"
+    "apps/commons/export_table/xlsx.full.min.js"
   ];
 
   scripts.forEach(function (scriptSrc) {
