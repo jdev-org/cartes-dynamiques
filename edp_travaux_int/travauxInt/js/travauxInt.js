@@ -5,6 +5,7 @@ var travauxInt = (function () {
     "apps/commons/export_table/jspdf.umd.min.js",
     "apps/commons/export_table/tableExport.min.js",
     "apps/commons/export_table/bootstrap-table-export.min.js",
+    "apps/commons/export_table/xlsx.full.min.js"
   ];
 
   scripts.forEach(function (scriptSrc) {
@@ -37,27 +38,27 @@ var travauxInt = (function () {
       // Plus d'utilisation du tableau des données pour le moment
       // $("#bottom-panel").toggleClass("active");
       // _loadDataBottomPanel();
-      _exportCSV();
+      _exportXLS();
     });
   };
 
-  var _exportCSV = () => {
+  var _exportXLS = () => {
+    const XLSX = window.XLSX;
     if (finalData.length === 0) {
       alert("Pas de données à exporter");
       return;
     }
-    const headers = Object.keys(finalData[0]);
-    const csvRows = [
-      headers.join(","),
-      ...finalData.map((obj) => headers.map((key) => `"${obj[key]}"`).join(",")),
-    ];
+    const worksheet = XLSX.utils.json_to_sheet(finalData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Feuille1");
 
-    const blob = new Blob([csvRows.join("\n")], { type: "text/csv;charset=utf-8;" });
+    const wbout = XLSX.write(workbook, {bookType: "xlsx", type: "array"});
+    const blob = new Blob([wbout], {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+    
     const url = URL.createObjectURL(blob);
-
     const a = document.createElement("a");
     a.href = url;
-    a.download = "export.csv";
+    a.download = "export.xlsx";
     a.click();
 
     URL.revokeObjectURL(url);
