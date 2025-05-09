@@ -166,22 +166,22 @@
 }
 
 #container_ep {
-    background-color: rgba(170, 184, 255, 0.5);
+    background-color: rgba(0, 44, 219, 0.5);
 }
 #container_enp {
-    background-color: rgba(255, 239, 170, 0.5);
+    background-color: rgba(54,165,133, 0.5);
 }
 #container_install_res {
-    background-color: rgba(174, 255, 174, 0.5);
+    background-color: rgba(245, 168, 108, 0.5);
 }
 #container_genie_civil {
-    background-color: rgba(255, 199, 151, 0.5);
+    background-color: rgba(255, 100, 125, 0.5);
 }
 #container_nature_autre {
-    background-color: rgba(237, 171, 243, 0.5);
+    background-color: rgba(170, 185, 255, 0.5);
 }
 #container_ {
-    background-color: rgba(226, 226, 226, 0.5);
+    background-color: rgba(255, 239, 170, 0.5);
 }
 
 .travaux_card_container {
