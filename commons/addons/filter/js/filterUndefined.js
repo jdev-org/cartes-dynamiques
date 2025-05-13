@@ -22,8 +22,6 @@ const filterUndefined = (function () {
             _hideFeaturesAlreadySet();
             _disableNatureFilter();
         };
-
-        console.log(_isActive);
     };
 
     // Fonction qui permet de cacher les features ayant un style déjà défini
