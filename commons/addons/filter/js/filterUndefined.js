@@ -4,11 +4,17 @@ const filterUndefined = (function () {
     var _sourceEdp;
     var _isActive = false;
 
-    var init = () => {
+    var _init = (id) => {
         _isActive = !_isActive;
         filter.clearAllFilter();
         _hideFeaturesAlreadySet();
         _disableNatureFilter();
+
+        const switchInput = document.querySelector('#switchLayerFilter input[type="checkbox"]');
+
+        if (id === "advancedFilter-clearAll" && switchInput) {
+            switchInput.checked = false;
+        }
     };
 
     // Fonction qui permet de cacher les features ayant un style déjà défini
@@ -105,6 +111,6 @@ const filterUndefined = (function () {
     };
 
     return {
-        active: init,
+        active: _init,
     };
 })();
