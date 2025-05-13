@@ -5,16 +5,25 @@ const filterUndefined = (function () {
     var _isActive = false;
 
     var _init = (id) => {
-        _isActive = !_isActive;
-        filter.clearAllFilter();
-        _hideFeaturesAlreadySet();
-        _disableNatureFilter();
-
         const switchInput = document.querySelector('#switchLayerFilter input[type="checkbox"]');
+        let switchInputStatus = switchInput.checked;
 
-        if (id === "advancedFilter-clearAll" && switchInput) {
-            switchInput.checked = false;
-        }
+        if (id === "advancedFilter-clearAll") {
+            if (switchInputStatus) {
+                _isActive = !_isActive;
+                _hideFeaturesAlreadySet();
+                _disableNatureFilter();
+                switchInput.checked = false;
+            } else {
+                filter.clearAllFilter();
+            }
+        } else {
+            _isActive = !_isActive;
+            _hideFeaturesAlreadySet();
+            _disableNatureFilter();
+        };
+
+        console.log(_isActive);
     };
 
     // Fonction qui permet de cacher les features ayant un style déjà défini
