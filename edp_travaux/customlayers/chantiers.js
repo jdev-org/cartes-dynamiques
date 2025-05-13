@@ -40,10 +40,10 @@ let GENIE_CIVILstyle = new ol.style.Style({
 
 let NullStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(255, 239, 170)",
+    color: "rgb(247, 236, 109)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(255, 239, 170)",
+    color: "rgb(247, 236, 109)",
     width: 2,
   }),
 });

@@ -166,7 +166,7 @@
 }
 
 #container_ep {
-    background-color: rgba(0, 44, 219, 0.5);
+    background-color: rgba(0, 44, 219, 0.2);
 }
 #container_enp {
     background-color: rgba(54,165,133, 0.5);
@@ -181,7 +181,7 @@
     background-color: rgba(170, 185, 255, 0.5);
 }
 #container_ {
-    background-color: rgba(255, 239, 170, 0.5);
+    background-color: rgba(247, 236, 109, 0.5);
 }
 
 .travaux_card_container {
