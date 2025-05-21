@@ -50,10 +50,10 @@ let NullStyle = new ol.style.Style({
 
 let AutreStyle = new ol.style.Style({
   fill: new ol.style.Fill({
-    color: "rgb(170, 185, 255)",
+    color: "rgb(243, 201, 239)",
   }),
   stroke: new ol.style.Stroke({
-    color: "rgb(170, 185, 255)",
+    color: "rgb(243, 201, 239)",
     width: 2,
   }),
 });

@@ -169,7 +169,7 @@
     background-color: rgba(0, 44, 219, 0.2);
 }
 #container_enp {
-    background-color: rgba(54,165,133, 0.5);
+    background-color: rgba(54,165,133, 0.2);
 }
 #container_install_res {
     background-color: rgba(245, 168, 108, 0.5);
@@ -178,7 +178,7 @@
     background-color: rgba(255, 100, 125, 0.5);
 }
 #container_nature_autre {
-    background-color: rgba(170, 185, 255, 0.5);
+    background-color: rgba(243, 201, 239, 0.5);
 }
 #container_ {
     background-color: rgba(247, 236, 109, 0.5);
