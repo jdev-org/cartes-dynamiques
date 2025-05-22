@@ -281,6 +281,12 @@
             });
         }
 
+        if (natureChantierValue === 'ep') {          
+            impactTravaux.innerHTML = impact["IntePonctuelles"];
+        } else {
+            impactTravaux.innerHTML = "Impact des travaux...";
+        }
+
         if (this.value) {
             selectTypeChantier.disabled = false;
             impactTravaux.disabled = false;
@@ -292,15 +298,13 @@
 
     document.getElementById("select_type_chantier_{{unique_id}}").addEventListener("change", function() {
         const typeChantierValue = selectTypeChantier.value;
-        impactTravaux.innerHTML = "Impact des travaux...";
         if (typeChantierValue === "type_autre") {
             inputStandard.forEach(el => el.style.display = 'none');
             inputTypeAutre.forEach(el => el.style.display = 'flex');
         } else if (correspondancesTypesImpact[typeChantierValue]) {
             inputStandard.forEach(el => el.style.display = 'flex');
             inputTypeAutre.forEach(el => el.style.display = 'none');
-            const impactKey = correspondancesTypesImpact[typeChantierValue];            
-            impactTravaux.innerHTML = impact[impactKey];
+            const impactKey = correspondancesTypesImpact[typeChantierValue];
         }
     });
 
