@@ -82,7 +82,14 @@
     }
 
     // Affichage des dates
-    document.getElementById("travaux_card_date_{{unique_id}}").innerHTML = `Du {{date_debut}} au {{date_fin}}`;
+    const dateDebut = "{{date_debut}}";
+    const dateFin = "{{date_fin}}";
+    const dateDebutReader = moment(dateDebut, "YYYYMMDDHHmmss");
+    const dateDebutOutput = dateDebutReader.format("DD/MM/YYYY");
+    const dateFinReader = moment(dateFin, "YYYYMMDDHHmmss");
+    const dateFinOutput = dateFinReader.format("DD/MM/YYYY");
+    document.getElementById("travaux_card_date_{{unique_id}}").innerHTML = `Du ${dateDebutOutput} au ${dateFinOutput}`;
+
 
     // Accordéon Plus d'infos
     function toggleInfo (element) {
