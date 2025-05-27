@@ -1,0 +1,829 @@
+{{#features}}
+<li id="{{unique_id}}" class="item" style="width:100%;">	
+	<div id="container" class="travaux_card_container">
+		<div id="travaux_card_nature_chantier_{{unique_id}}" class="travaux_card_title">Éditer les informations</div>
+        <div class="travaux_card_ref_chantier">Référence Chantier : {{num_emprise}}</div>
+        <form>
+            <!-- nature chantier -->
+            <div class="travaux_card_content_select">
+                <label for="select_nature_chantier_{{unique_id}}" class="travaux_card_subtitle">Nature du chantier</label>
+                <select id="select_nature_chantier_{{unique_id}}">
+                </select>
+            </div>
+            <div class="travaux_card_content input_autre_nature">
+                <label for="input_autre_nature_chantier_{{unique_id}}" class="travaux_card_subtitle">Précisez la nature du chantier</label>
+                <input type="text" id="input_autre_nature_chantier_{{unique_id}}"/>
+            </div>
+            <!-- type chantier -->
+            <div class="travaux_card_content_select input_type_chantier">
+                <label for="select_type_chantier_{{unique_id}}" class="travaux_card_subtitle">Type de chantier</label>
+                <select id="select_type_chantier_{{unique_id}}" disabled>
+                </select>
+            </div>
+            <div class="travaux_card_content input_autre_nature input_autre_type">
+                <label for="input_autre_type_chantier_{{unique_id}}" class="travaux_card_subtitle">Précisez le type de chantier</label>
+                <input type="text" id="input_autre_type_chantier_{{unique_id}}"/>
+            </div>
+             <!-- impact -->
+            <div class="travaux_card_content input_standard">
+                <span class="travaux_card_subtitle">Impact sur la disponibilité en eau</span>
+                <textarea id="travaux_impact_{{unique_id}}" class="travaux_impact" disabled></textarea>
+            </div>
+            <div class="travaux_card_content input_autre_nature input_autre_type">
+                <label for="autre_impact_chantier_{{unique_id}}" class="travaux_card_subtitle">Précisez l'impact sur l'espace public</label>
+                <textarea id="autre_impact_chantier_{{unique_id}}" class="autre_impact_chantier"></textarea>
+            </div>
+            <div class="travaux_card_content">
+                <span class="travaux_card_subtitle">Document(s) Associé(s)</span>
+                <span class="travaux_add_files">Téléverser des documents avec des informations spécifiques au chantier (max 10Mo)</span>
+                <input type="file" id="fileInput_{{unique_id}}" accept=".pdf" multiple />
+                <label for="fileInput_{{unique_id}}" id="fileInput_button_{{unique_id}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M3 19H21V21H3V19ZM13 5.82843V17H11V5.82843L4.92893 11.8995L3.51472 10.4853L12 2L20.4853 10.4853L19.0711 11.8995L13 5.82843Z"></path></svg>
+                    Téléverser un document
+                </label>
+                <table id="filesList_{{unique_id}}" class="ms-2">
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="buttons_container">
+                <input id="annuler" class="btn__grey" type="button" onclick="$('#right-panel').toggleClass('active')" value="Annuler" />
+                <input id="valider" class="btn__default btnSaveDisabled" type="button" value="Enregistrer" onclick="_transactWfsEdp('{{unique_id}}')" disabled="true" />
+            </div>
+        </form>
+	</div>
+</li>
+<script>
+    const naturesTravaux = {
+        ep: "Travaux sur le réseau d'eau potable",
+        enp: "Travaux sur le réseau d'eau non potable",
+        install_res: "Travaux sur les installations du réseau ou sur les réservoirs",
+        genie_civil: "Travaux de génie civil sur les galeries abritant des canalisations d'eau",
+        nature_autre: "Autre"
+    }
+
+    const typesChantier = {
+        ep_reno_can: "Renouvellement de canalisations",
+        enp_reno_can: "Renouvellement de canalisations",
+        ep_remp_bou_inc: "Remplacement de bouche incendie",
+        ep_remp_van: "Remplacement de vannes",
+        enp_remp_van: "Remplacement de vannes",
+        ep_renf_can: "Renforcement de canalisations lié à la sécurité incendie",
+        ep_int_urg: "Intervention d'urgence",
+        enp_int_urg: "Intervention d'urgence",
+        genie_civil_int_urg: "Intervention d'urgence",
+        ep_remp_app_hyd: "Remplacement d'appareils hydrauliques",
+        enp_remp_app_hyd: "Remplacement d'appareils hydrauliques",
+        install_res_trav: "Travaux sur les installations du réseau ou sur les réservoirs",
+        genie_civil_trav: "Travaux de génie civil sur les galeries abritant des canalisations d'eau",
+        type_autre: "Autre"
+    }
+
+    const correspondancesNaturesTypes = {
+        ep: ['ep_reno_can', 'ep_remp_bou_inc', 'ep_remp_van', 'ep_renf_can', 'ep_int_urg', 'ep_remp_app_hyd', 'type_autre'],
+        enp: ['enp_reno_can', 'enp_remp_van', 'enp_int_urg', 'enp_remp_app_hyd', 'type_autre'],
+        install_res: ['install_res_trav', 'type_autre'],
+        genie_civil: ['genie_civil_trav', 'genie_civil_int_urg', 'type_autre'],
+        nature_autre: ['type_autre']
+    }
+
+    const impact = {
+        IntePonctuelles: "Ces travaux nécessiteront 2 interruptions de service ponctuelles. Celles-ci seront annoncées a minima 48h à l’avance par voie d’affichage dans vos immeubles.",
+        NoImpact: "Ces travaux n’ont pas d’impact sur la distribution d’eau potable",
+        IU: "Intervention d'urgence"
+    }
+
+    const correspondancesTypesImpact = {
+        ep_reno_can: "IntePonctuelles",
+        enp_reno_can: "IntePonctuelles",
+        ep_remp_bou_inc: "NoImpact",
+        ep_remp_van: "IntePonctuelles",
+        enp_remp_van: "IntePonctuelles",
+        ep_renf_can: "IntePonctuelles",
+        ep_int_urg: "IU",
+        enp_int_urg: "IU",
+        ep_remp_app_hyd: "NoImpact",
+        enp_remp_app_hyd: "NoImpact",
+        install_res_trav: "NoImpact",
+        genie_civil_trav: "NoImpact",
+        genie_civil_int_urg: "IU",
+        type_autre: "Autre"
+    }
+
+    const chantierMapping = [
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Renouvellement de canalisations", type_code_chantier: "ep_reno_can" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Remplacement de bouche incendie", type_code_chantier: "ep_remp_bou_inc" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Remplacement de vannes", type_code_chantier: "ep_remp_van" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Renforcement de canalisations lié à la sécurité incendie", type_code_chantier: "ep_renf_can" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Intervention d'urgence", type_code_chantier: "ep_int_urg" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Remplacement d'appareils hydrauliques", type_code_chantier: "ep_remp_app_hyd" },
+        { nature_chantier: "Travaux sur le réseau d'eau potable", nature_code_chantier: "ep", type_chantier: "Autre", type_code_chantier: "type_autre" },
+
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Renouvellement de canalisations", type_code_chantier: "enp_reno_can" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Remplacement d'appareils hydrauliques", type_code_chantier: "enp_remp_app_hyd" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Remplacement de vannes", type_code_chantier: "enp_remp_van" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Intervention d'urgence", type_code_chantier: "enp_int_urg" },
+        { nature_chantier: "Travaux sur le réseau d'eau non potable", nature_code_chantier: "enp", type_chantier: "Saisie libre par le user", type_code_chantier: "type_autre" },
+
+        { nature_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", nature_code_chantier: "install_res", type_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", type_code_chantier: "install_res_trav" },
+        { nature_chantier: "Travaux sur les installations du réseau ou sur les réservoirs", nature_code_chantier: "install_res", type_chantier: "Saisie libre par le user", type_code_chantier: "type_autre" },
+
+        { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", type_code_chantier: "genie_civil_trav" },
+        { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Intervention d'urgence", type_code_chantier: "genie_civil_int_urg" },
+        { nature_chantier: "Travaux de génie civil sur les galeries abritant des canalisations d'eau", nature_code_chantier: "genie_civil", type_chantier: "Saisie libre par le user", type_code_chantier: "type_autre" },
+
+        { nature_chantier: "Non renseigné", nature_code_chantier: "non_renseigne", type_chantier: "Non renseigné", type_code_chantier: "non_renseigne" },
+        { nature_chantier: "Saisie libre par le user", nature_code_chantier: "nature_autre", type_chantier: "Saisie libre par le user", type_code_chantier: "type_autre" }
+    ];
+
+    // Select Nature Chantier
+    const natureChantier = "{{nature_code_chantier}}";   
+    const typeChantier = "{{type_code_chantier}}";
+    const impactChantier = "{{impact_chantier}}";
+    const typeChantierAutre = "{{type_chantier}}";
+    
+    const selectNatureChantier = document.getElementById("select_nature_chantier_{{unique_id}}");
+    const selectTypeChantier = document.getElementById('select_type_chantier_{{unique_id}}');
+    const impactTravaux = document.getElementById("travaux_impact_{{unique_id}}");
+    const btnSave = document.getElementById("valider");
+    const inputNatureAutreBtn = document.getElementById("input_autre_nature_chantier_{{unique_id}}");
+    const inputTypeAutreBtn = document.getElementById("input_autre_type_chantier_{{unique_id}}");
+    const inputImpactAutre = document.getElementById("autre_impact_chantier_{{unique_id}}");
+
+    var toggleBtnSave = () => {
+        if (inputNatureAutreBtn.value && inputTypeAutreBtn.value && inputImpactAutre.value) {
+            btnSave.disabled = false;
+        } else {
+            btnSave.disabled = true;
+        }
+    }
+
+    // Add active class to selected nature option
+    selectNatureChantier.addEventListener("change", function() {
+        const options = selectNatureChantier.querySelectorAll("option");
+        options.forEach(option => {
+            option.classList.remove("active");
+        });
+
+        const selectedOption = selectNatureChantier.options[selectNatureChantier.selectedIndex];
+        selectedOption.classList.add("active");
+
+        // Désactive le bouton "enregistrer" si le premier select a sa valeur par défaut
+        if (selectNatureChantier.selectedIndex === 0) {
+            btnSave.disabled = true;
+        } else if (selectedOption.textContent.trim() === "Autre") {
+            inputNatureAutre.addEventListener("input", _toggleBtnSave);
+            inputTypeAutre.addEventListener("input", _toggleBtnSave);
+            // inputImpactAutre.addEventListener("input", _toggleBtnSave);
+        }
+    });
+
+    // Add active class to selected type option
+    selectTypeChantier.addEventListener("change", function() {
+        const options = selectTypeChantier.querySelectorAll("option");
+        options.forEach(option => {
+            option.classList.remove("active");
+        });
+
+        const selectedOption = selectTypeChantier.options[selectTypeChantier.selectedIndex];
+        selectedOption.classList.add("active");
+
+        // Désactive le bouton "enregistrer" si le second select a sa valeur par défaut
+        if (selectTypeChantier.selectedIndex === 0) {
+            btnSave.disabled = true;
+        } else {
+            btnSave.disabled = false;
+        }
+    });
+    
+    selectNatureChantier.innerHTML = "<option value=''>Sélectionnez une nature de chantier</option>";
+    selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
+    const natureOption = document.createElement("option");
+
+    // Récupérer les fichiers associés
+    const unique_id=  "{{unique_id}}"
+    fetchFiles(unique_id)
+
+    // Créé les listes d'options
+    for (const travaux in naturesTravaux) {
+        const natureOption = document.createElement("option");
+        natureOption.value = travaux;
+        natureOption.textContent = naturesTravaux[travaux];
+        selectNatureChantier.appendChild(natureOption);
+    }
+    
+    // Si l'emprise est déjà complétée
+    if (natureChantier) {
+        btnSave.disabled = false;
+        selectTypeChantier.disabled = false;
+        impactTravaux.disabled = false;
+        selectNatureChantier.value = natureChantier;
+        const options = selectNatureChantier.querySelectorAll("option");
+        options.forEach(option => {
+            option.classList.remove("active");
+        });
+        const selectedOption = selectNatureChantier.options[selectNatureChantier.selectedIndex];
+        selectedOption.classList.add("active");
+
+        if (correspondancesNaturesTypes[selectNatureChantier.value]) {
+            correspondancesNaturesTypes[selectNatureChantier.value].forEach(type => {
+                const typeOption = document.createElement("option")
+                typeOption.value = type;
+                typeOption.textContent = typesChantier[type];
+                selectTypeChantier.appendChild(typeOption);
+            });
+            selectTypeChantier.value = typeChantier;
+            
+            if (typeChantier === "type_autre") {
+                const inputAutreType = Array.from(document.getElementsByClassName('input_autre_type'));
+                inputAutreType.forEach(el => el.style.display = 'flex');
+                document.querySelector('.input_standard').style.display = 'none';
+                document.querySelector('.autre_impact_chantier').innerHTML = impactChantier;
+                document.getElementById("input_autre_type_chantier_{{unique_id}}").value = typeChantierAutre;
+            }
+            const options = selectTypeChantier.querySelectorAll("option");
+            options.forEach(option => {
+                option.classList.remove("active");
+            });
+            const selectedOption = selectTypeChantier.options[selectTypeChantier.selectedIndex];
+            selectedOption.classList.add("active");
+        }
+
+        if (correspondancesTypesImpact[selectTypeChantier.value]) {
+            impactTravaux.innerHTML = impactChantier;
+        }
+    }
+
+    // Select Type Chantier
+    const inputStandard = Array.from(document.getElementsByClassName('input_standard'));
+    const inputNatureAutre = Array.from(document.getElementsByClassName('input_autre_nature'));
+    const inputTypeAutre = Array.from(document.getElementsByClassName('input_autre_type'));
+    document.getElementById("select_nature_chantier_{{unique_id}}").addEventListener("change", function() {
+        const natureChantierValue = selectNatureChantier.value;
+        inputStandard.forEach(el => el.style.display = 'flex');
+        document.querySelector('.input_type_chantier').style.display = 'flex';
+        inputNatureAutre.forEach(el => el.style.display = 'none');
+        inputTypeAutre.forEach(el => el.style.display = 'none');
+
+        selectTypeChantier.innerHTML = "<option value=''>Sélectionnez un type</option>";
+        
+        if (natureChantierValue === "nature_autre") {
+            inputNatureAutre.forEach(el => el.style.display = 'flex');
+            inputStandard.forEach(el => el.style.display = 'none');
+            document.querySelector('.input_type_chantier').style.display = 'none';
+        }
+
+        if (correspondancesNaturesTypes[natureChantierValue]) {
+            correspondancesNaturesTypes[natureChantierValue].forEach(type => {                
+                const typeOption = document.createElement("option")
+                typeOption.value = type;
+                typeOption.textContent = typesChantier[type];
+                selectTypeChantier.appendChild(typeOption);
+            });
+        }
+
+        if (natureChantierValue === 'ep') {          
+            impactTravaux.innerHTML = impact["IntePonctuelles"];
+        } else {
+            impactTravaux.innerHTML = "Impact des travaux...";
+        }
+
+        if (this.value) {
+            selectTypeChantier.disabled = false;
+            impactTravaux.disabled = false;
+        } else {
+            selectTypeChantier.disabled = true;
+            impactTravaux.disabled = true;
+        }
+    });
+
+    document.getElementById("select_type_chantier_{{unique_id}}").addEventListener("change", function() {
+        const typeChantierValue = selectTypeChantier.value;
+        if (typeChantierValue === "type_autre") {
+            inputStandard.forEach(el => el.style.display = 'none');
+            inputTypeAutre.forEach(el => el.style.display = 'flex');
+        } else if (correspondancesTypesImpact[typeChantierValue]) {
+            inputStandard.forEach(el => el.style.display = 'flex');
+            inputTypeAutre.forEach(el => el.style.display = 'none');
+            const impactKey = correspondancesTypesImpact[typeChantierValue];
+        }
+    });
+
+    function getOptions() {
+        const mviewerId = configuration.getConfiguration().application.id;
+        const options = mviewer.customComponents.travauxInt.config.options;
+
+        return options?.mviewer[mviewerId];
+    };
+
+    // Upload de fichiers
+    const fileInput = document.getElementById('fileInput_{{unique_id}}');
+    const filesTableBody = document.getElementById('filesList_{{unique_id}}');
+    const fileInputLabel = document.getElementById('fileInput_button_{{unique_id}}');
+    let selectedFiles = [];
+    const maxFileSize = 10 * 1024 * 1024;
+
+    // Affichage conditionnel du bouton d'upload
+    function toggleFileInput() {
+        if (selectNatureChantier.value === "") {
+            fileInput.disabled = true;
+            fileInputLabel.classList.add('file-upload-disabled');
+        } else {
+            fileInput.disabled = false;
+            fileInputLabel.classList.remove('file-upload-disabled');
+        }
+    }
+    selectNatureChantier.addEventListener('change', toggleFileInput);
+    toggleFileInput();
+
+    fileInput.addEventListener('change', () => {
+        const files = Array.from(fileInput.files);
+        validFiles = [];        
+        files.forEach(file => {
+            if (file.size <= maxFileSize) {
+                validFiles.push(file);
+            } else {
+                alert(`Le fichier "${file.name}" dépasse la taille maximale autorisée (10 Mo).`);
+            }
+        });
+        selectedFiles.push(...validFiles);
+        renderTable();
+        fileInput.value = '';
+    });
+
+    async function fetchFiles(uniqueId) {
+        const response = await fetch(`https://gis.jdev.fr/edp/documents/${uniqueId}/`);
+        if (response.status === 404) {
+            console.warn(`Pas de fichiers pour l'emprise ${uniqueId}`);
+            selectedFiles = [];
+            renderTable();
+            return;
+        }
+        if (!response.ok) {
+            console.error("Erreur lors de la récupération des fichiers :", response.status);
+            return;
+        }
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser .parseFromString(html, "text/html");
+        const links = [...doc.querySelectorAll("a")];        
+        const files = links.map(link => link.getAttribute('href')).filter(href => !href.startsWith("?")).slice(1)
+        
+        selectedFiles = [];
+        selectedFiles = files;
+        
+        renderTable()
+    }
+
+    function renderTable () {
+        const pluginsOption = getOptions();
+        filesTableBody.innerHTML = "";
+        selectedFiles.forEach((file, index) => {
+            const get = typeof file === "string"
+            const row = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            nameCell.style = 'max-width: 100px; overflow: hidden; text-overflow: ellipsis;'
+            nameCell.title = `${file}` || `${file.name}`;
+            nameCell.textContent = get ? file : file.name;
+            
+            // Bouton de visualisation
+            const viewBtn = document.createElement('button');
+            viewBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748ZM12.1779 7.17624C11.4834 7.48982 11 8.18846 11 9C11 10.1046 11.8954 11 13 11C13.8115 11 14.5102 10.5166 14.8238 9.82212C14.9383 10.1945 15 10.59 15 11C15 13.2091 13.2091 15 11 15C8.79086 15 7 13.2091 7 11C7 8.79086 8.79086 7 11 7C11.41 7 11.8055 7.06167 12.1779 7.17624Z"></path></svg>';
+            viewBtn.className = 'actionButton';
+            viewBtn.onclick = () => {
+                event.preventDefault();
+                const fileURL = get ? `https://gis.jdev.fr/edp/documents/${unique_id}/${file}`: URL.createObjectURL(file);
+                window.open(fileURL, '_blank');
+            };
+
+            // Bouton de suppression
+            const actionCell = document.createElement('td');
+            actionCell.style = 'display: flex; justify-content: end;';
+            const deleteBtn = document.createElement('button');
+            deleteBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z"></path></svg>';
+            deleteBtn.className = 'actionButton';
+            deleteBtn.onclick = () => {
+                event.preventDefault();
+                if (get) {
+                    fetch(`${pluginsOption.origin}${pluginsOption.endpointDelete}?chantier_id=${unique_id}&filename=${file}`, {
+                        method: "DELETE",
+                    })
+                    .then(response => response.json())
+                    .then(data => { console.log('then');
+                    
+                        if (data.message) {
+                            console.log(data.message);
+                            fetchFiles(unique_id);
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erreur lors de la suppression du fichier :", error);
+                    });
+                }
+                selectedFiles.splice(index, 1);
+                renderTable();
+            };
+
+            actionCell.appendChild(viewBtn);
+            actionCell.appendChild(deleteBtn);
+            row.appendChild(nameCell);
+            row.appendChild(actionCell);
+            filesTableBody.appendChild(row);
+        });
+    }
+
+    var _transactWfsEdp = (id) => {
+        let s;
+        let node;
+        let str;
+
+        let _sourceEdp;
+        let _currentFeature;
+        let _cleanCurrentFeature;
+        let _coordsCleanCurrentFeature;
+        let _sourceGML;
+        let _vectorGML;
+        let _url = "https://gis.jdev.fr/geoserver/";
+        let _natureChantierAutre = false;
+        let _typeChantierAutre = false;
+        let _selectedContentNatureChantier = document.querySelector(`#select_nature_chantier_${id} option.active`)?.textContent?.trim() || "";
+        let _selectedContentTypeChantier = document.querySelector(`#select_type_chantier_${id} option.active`)?.textContent?.trim() || "";
+
+        if (_selectedContentNatureChantier === "Autre") {
+            _natureChantierAutre = true;
+        }
+        if (_selectedContentTypeChantier === "Autre") {
+            _typeChantierAutre = true;
+        }
+
+        const _inputAutreNatureChantier = document.getElementById(`input_autre_nature_chantier_${id}`).value;
+        const _inputAutreTypeChantier = document.getElementById(`input_autre_type_chantier_${id}`).value;
+        const _autreImpactChantier = document.getElementById(`autre_impact_chantier_${id}`).value;
+
+        let _namespace = "edp_demo";
+
+        let _workspace = "chantiersopendata";
+
+        let _projection = "EPSG:4326";
+
+        let allLayers = mviewer.getMap().getAllLayers();
+
+        for (const layer of allLayers) {
+            if (layer.getProperties().source.id === "edpSource") {
+                _sourceEdp = layer.getSource();
+                break;
+            }
+        }
+
+        if (!_sourceEdp) {
+            console.error("EDP source not found");
+            return;
+        } 
+        
+        _currentFeature = _sourceEdp.getFeatures().find(
+            f => f.get("unique_id") === id
+        );
+
+        if (!_currentFeature) {
+            console.error("Current feature not found for ID : ", id);
+            return;
+        }
+
+        if (!_currentFeature.getGeometry()) {
+            console.error("Invalid feature or geometry is missing :", _currentFeature);
+            return;
+        }
+
+        _coordsCleanCurrentFeature = [
+            _currentFeature.getGeometry().getCoordinates(),
+        ];
+
+        _cleanCurrentFeature = new ol.Feature({
+            geometry: new ol.geom.MultiPolygon([_coordsCleanCurrentFeature.map(function(coord) {
+                return ol.proj.fromLonLat(coord);  // Conversion de chaque coordonnée en projection Web Mercator
+            })]),
+        });
+
+        _cleanCurrentFeature.setId(_currentFeature.getId());
+        _cleanCurrentFeature.setProperties(_currentFeature.getProperties());
+
+        var formatWFS = new ol.format.WFS();
+
+        let matchingChantier = chantierMapping.find(
+            ch => ch.nature_chantier === _selectedContentNatureChantier && ch.type_chantier === _selectedContentTypeChantier
+        );
+
+        // Set attributes if match
+        if (matchingChantier) {
+            // nature_code_chantier
+            _cleanCurrentFeature.set("nature_code_chantier", matchingChantier.nature_code_chantier);
+            // type_code_chantier
+            _cleanCurrentFeature.set("type_code_chantier", matchingChantier.type_code_chantier);
+        } else {
+            matchingChantier = chantierMapping.find(
+                ch => ch.nature_chantier === _selectedContentNatureChantier && ch.type_chantier === "Saisie libre par le user");
+
+            if (matchingChantier) {
+                _cleanCurrentFeature.set("nature_code_chantier", matchingChantier.nature_code_chantier);
+                _cleanCurrentFeature.set("type_code_chantier", "type_autre");
+            } else {
+                _cleanCurrentFeature.set("nature_code_chantier", "nature_autre");
+                _cleanCurrentFeature.set("type_code_chantier", "type_autre");
+            }
+        }
+
+        if (_natureChantierAutre) {
+            // nature_chantier
+            _cleanCurrentFeature.set("nature_chantier", _inputAutreNatureChantier);
+            // type_chantier
+            _cleanCurrentFeature.set("type_chantier", _inputAutreTypeChantier);
+            // impact_chantier
+            _cleanCurrentFeature.set("impact_chantier", _autreImpactChantier);
+        } else if (_typeChantierAutre) {
+            // nature_chantier
+            _cleanCurrentFeature.set("nature_chantier", _selectedContentNatureChantier);
+            // type_chantier
+            _cleanCurrentFeature.set("type_code_chantier", "type_autre");
+            // type_code_chantier
+            _cleanCurrentFeature.set("type_chantier", _inputAutreTypeChantier);
+            // impact_chantier
+            _cleanCurrentFeature.set("impact_chantier", _autreImpactChantier);
+        } else {
+            // nature_chantier
+            _cleanCurrentFeature.set("nature_chantier", _selectedContentNatureChantier);
+            // type_chantier
+            _cleanCurrentFeature.set("type_chantier", _selectedContentTypeChantier);
+            // impact_chantier
+            _cleanCurrentFeature.set("impact_chantier", impactTravaux.value);
+        }
+
+        // Check if the feature has valid data before proceeding
+        if (!_cleanCurrentFeature.get("nature_chantier") || !_cleanCurrentFeature.get("type_chantier")) {
+            console.error("Missing required data (nature_chantier or type_chantier)");
+            return;
+        }
+
+        let options = {
+            "featureNS": `https://www.gis.jdev.fr/geoserver/edpdemo`,
+            "featureType": `${_workspace}`,
+            "srsName": "EPSG:4326",
+            "version": "1.0.0",
+        }
+
+        // Transform the geometry to the correct projection
+        _cleanCurrentFeature.getGeometry().transform("EPSG:3857", _projection);
+
+        // Clear unnecessary properties
+        // Geometry properties is not editable
+        _cleanCurrentFeature.unset("geometry");
+        _cleanCurrentFeature.unset("geom");
+        _cleanCurrentFeature.unset("mviewerid");
+        _cleanCurrentFeature.unset("fields_kv");
+        _cleanCurrentFeature.unset("serialized");
+        _cleanCurrentFeature.unset("date_debut");
+        _cleanCurrentFeature.unset("date_fin");
+
+        // Update to the geoserver
+        node = formatWFS.writeTransaction(null, [_cleanCurrentFeature], null, options);
+
+        s = new XMLSerializer();
+        str = s.serializeToString(node);
+
+        // Send to API
+        fetch(_url + "wfs", {
+            method: "POST",
+            headers: {
+                "Content-Type": "text/xml",
+            },
+            body: str,
+        })
+            .then((response) => {
+                return response.text();
+            })
+            .then((data) => {
+                console.log(data);
+                _sourceEdp.refresh();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        // Si des documents sont associés
+        if (selectedFiles.length > 0) {
+            const pluginsOption = getOptions();
+            const formData = new FormData();
+            selectedFiles.forEach(file => {
+                formData.append("files", file);
+            });
+            formData.append("chantier_id", "{{unique_id}}");
+            fetch(`${pluginsOption.origin}${pluginsOption.endpointUpload}`, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Upload réussi :", data);
+            })
+            .catch(error => {
+                console.error("Erreur lors de l'envoi :", error);
+            });
+        }
+    };
+
+</script>
+<style>
+
+.carousel-inner {
+    overflow: visible !important;
+}
+
+#page-content-wrapper:has(#right-panel.active) #zoomtoolbar,
+  #page-content-wrapper:has(#right-panel.active) #toolstoolbar {
+    margin-right: 420px !important;
+}
+
+#right-panel.active {
+    width: 420px!important;
+}
+
+#right-panel .item.active {
+    padding: 0;
+}
+#right-panel .carousel-control {
+    width: 5%;
+}
+#right-panel span.counter-slide {
+    left: auto;
+    right: 186px!important;
+}
+
+.travaux_card_container {
+    font-size: 15px;
+    font-family: var(--myfont);
+    color: #002DDC;
+}
+.travaux_card_container select:not(:disabled):hover, 
+.travaux_card_container button:hover, 
+.travaux_card_container #fileInput_button_{{unique_id}}:hover{
+    cursor:pointer;
+}
+.travaux_card_ref_chantier{
+    font-weight: 600;
+    font-size: 18px;
+}
+.travaux_card_title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+.travaux_card_subtitle {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.travaux_card_content {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+.travaux_card_content_select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+.travaux_card_container select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    padding: 10px;
+    background-color: white;
+    border-radius: 15px;
+    border: solid 2px #002DDC;
+}
+.travaux_card_content_select::after{
+    content: "▼"; /* Ou "\25BC" (Unicode du chevron) */
+    font-size: 14px;
+    color: #002ddc;
+    position: absolute;
+    right: 15px;
+    top: 54%;
+    pointer-events: none;
+}
+.travaux_impact{
+    min-height: 10em;
+    padding: 10px;
+    border-radius: 15px;
+    border: solid 2px #002DDC;
+    background-color: white;
+}
+.travaux_card_content input, .travaux_card_content textarea {
+    padding: 10px;
+    background-color: white;
+    border-radius: 15px;
+    border: solid 2px #002DDC;
+    resize: none;
+}
+.autre_impact_chantier{
+    height: 10em;
+}
+.input_autre_nature, .input_autre_type {
+    display: none;
+}
+.buttons_container {
+    margin-top: 1em;
+    display: flex;
+    justify-content: end;
+    gap: 15px;
+}
+.buttons_container input {
+    border: none;
+    border-radius: 18px;
+    padding: 6px 18px;
+    transition: all 1s ease-out;
+}
+.btn__default{
+    background-color: #002DDC;
+    color: white;
+}
+
+.btn__default:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+.btn__yellow{
+    background-color:rgb(209, 209, 209);
+    color: #002DDC;
+}
+
+.travaux_add_files{
+    color: #002DDC;
+    font-style: italic;
+    font-size: smaller;
+}
+
+#fileInput_{{unique_id}} {
+    display: none;
+}
+
+#fileInput_button_{{unique_id}} {
+    margin-top: 1rem;
+    font-weight: 600;
+    background-color:#c6cff3ab;
+    color: #002DDC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 12px;
+    transition: all 1s ease-out;
+}
+
+#fileInput_button_{{unique_id}}:hover, .buttons_container input:hover {
+    opacity:0.7;
+    cursor:pointer;
+}
+
+#filesList{
+    margin: 1em 0;
+    border-bottom: 1px solid #002ddc29;
+}
+
+.actionButton {
+    background-color: white;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actionButton:hover {
+    opacity:.8;
+}
+
+.travaux_card_container textarea:disabled, 
+.travaux_card_container select:disabled,
+.travaux_card_container span:has(+ *:disabled),
+.travaux_card_container label:has(+ select:disabled){
+    opacity: 0.4!important;
+}
+
+#form_179:has(select:disabled) ::after{
+    opacity: 0.4!important;
+}
+
+#filesList tr {
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.file-upload-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+</style>
+{{/features}}

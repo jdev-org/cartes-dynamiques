@@ -1,0 +1,57 @@
+{
+  "js": ["js/filter.js", "js/jquery.easyDrag.min.js", "js/filterUndefined.js"],
+  "css": "css/filter.css",
+  "html": "filter.html",
+  "target": "page-content-wrapper",
+  "options": {
+    "mviewer": {
+      "edp_travaux_int": {
+        "tooltipPosition": "bottom-left",
+        "title": "Filtrer",
+        "open": false,
+        "zoomOnFeatures": true,
+        "legendTitle": "Sélectionner une donnée :",
+        "style": {
+          "border": "1px #2e5367 solid",
+          "background": "white",
+          "text": "#002ddc",
+          "colorButton": "#002ddc",
+          "top": "7em",
+          "bottom": "auto",
+          "left": "auto",
+          "right": "5em"
+        },
+        "layers": [
+          {
+            "layerId": "chantiers",
+            "downloadFormats": [
+              { "label": "CSV", "format": "CSV" },
+              { "label": "Shapefiles", "format": "SHAPE-ZIP" },
+              { "label": "Geojson", "format": "application/json" }
+            ],
+            "filter": [
+              {
+                "attribut": "nature_chantier",
+                "type": "button",
+                "label": "Nature du chantier",
+                "updateOnChange": true
+              },
+              {
+                "attribut": "type_chantier",
+                "type": "button",
+                "label": "Type de chantier",
+                "updateOnChange": true
+              },
+              {
+                "attribut": "cp_arrondissement",
+                "type": "button",
+                "label": "Arrondissement",
+                "updateOnChange": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

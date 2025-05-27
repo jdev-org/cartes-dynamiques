@@ -1,0 +1,277 @@
+<div>
+  <h4 id="chantiers_title" class="legend__title">NATURE DU CHANTIER</h4>
+  <p>Cliquez sur un bloc pour filtrer les travaux selon la nature</p>
+  <div id="EDPFilters">
+    <label for="EP_checkbox" id="EP" class="nature_chantier_container">
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="EP_checkbox"
+        name="chantiers_type"
+        cat="ep"
+        checked />
+      <span class="cbx">
+        <svg width="10px" height="10px" viewBox="0 0 12 11">
+          <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+        </svg>
+      </span>
+      <span for="EP_checkbox" class="title_white chantier_container_title"
+        >Travaux sur le réseau d'eau potable</span
+      >
+    </label>
+    <label id="ENP" class="nature_chantier_container">
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="ENP_checkbox"
+        name="chantiers_type"
+        cat="enp"
+        checked />
+      <span class="cbx">
+        <svg width="10px" height="10px" viewBox="0 0 12 11">
+          <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+        </svg>
+      </span>
+      <span for="ENP_checkbox" class="title_white chantier_container_title"
+        >Travaux sur le réseau d'eau non potable</span
+      >
+    </label>
+    <label id="INSTALL_RES" class="nature_chantier_container">
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="INSTALL_RES_checkbox"
+        name="chantiers_type"
+        cat="install_res"
+        checked />
+      <span class="cbx">
+        <svg width="10px" height="10px" viewBox="0 0 12 11">
+          <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+        </svg>
+      </span>
+      <span for="INSTALL_RES_checkbox" class="title_color chantier_container_title"
+        >Travaux sur les installations ou sur les réservoirs</span
+      >
+    </label>
+    <label id="GENIE_CIVIL" class="nature_chantier_container">
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="GENIE_CIVIL_checkbox"
+        name="chantiers_type"
+        cat="genie_civil"
+        checked />
+      <span class="cbx">
+        <svg width="10px" height="10px" viewBox="0 0 12 11">
+          <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+        </svg>
+      </span>
+      <span for="GENIE_CIVIL_checkbox" class="title_color chantier_container_title"
+        >Travaux de génie civil sur les galeries abritant des canalisations d'eau</span
+      >
+    </label>
+    <label id="Autre" class="nature_chantier_container">
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="Autres_checkbox"
+        name="chantiers_type"
+        cat="nature_autre"
+        checked />
+      <span class="cbx">
+        <svg width="10px" height="10px" viewBox="0 0 12 11">
+          <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+        </svg>
+      </span>
+      <span for="Autres_checkbox" class="title_color chantier_container_title"
+        >Autres</span
+      >
+    </label>
+    <label id="Null" class="nature_chantier_container">
+      <input
+        class="chantier_input_type"
+        type="checkbox"
+        id="Null_checkbox"
+        name="chantiers_type"
+        cat=""
+        checked />
+      <span class="cbx">
+        <svg width="10px" height="10px" viewBox="0 0 12 11">
+          <polyline points="1 6.29411765 4.5 10 11 1"></polyline>
+        </svg>
+      </span>
+      <span for="Null_checkbox" class="title_color chantier_container_title"
+        >Non renseigné</span
+      >
+    </label>
+  </div>
+  <div class="legend__dataInfo">
+    <p>
+      Source :
+      <a
+        href="https://opendata.paris.fr/explore/dataset/chantiers-a-paris/"
+        target="_blank"
+        >opendata.paris.fr</a
+      >
+      <br />
+      <span id="section_date_maj"></span>
+    </p>
+  </div>
+</div>
+<style>
+  /* Force l'affichage de la légende */
+  .mv-layer-options {
+    display: block !important;
+  }
+
+  .icon-options {
+    display: none !important;
+  }
+
+  /* Masquage des éléments inutiles de la légende */
+  .layerdisplay-title,
+  .layerdisplay-legend,
+  .form-group-opacity,
+  #chantiers-layer-tooltip {
+    display: none !important;
+  }
+
+  .title_color {
+    color: #002ddc;
+  }
+
+  .title_white {
+    color: #ffffff;
+  }
+
+  .legend__title {
+    color: #002ddc;
+    font-weight: 600;
+    font-size: larger;
+    font-family: var(--myfont);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 15px;
+  }
+
+  .nature_chantier_container {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    border-radius: 20px;
+    margin-bottom: 0.7rem;
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .nature_chantier_container:hover {
+    opacity: 0.8;
+  }
+
+  .chantier_container_title {
+    width: 80%;
+    margin-left: 10px;
+    line-height: 1.1;
+  }
+
+  .chantier_input_type {
+    width: 10%;
+  }
+
+  #EP {
+    background-color: rgb(0, 44, 219);
+  }
+
+  #ENP {
+    background-color: rgb(54,165,133);
+  }
+
+  #INSTALL_RES {
+    background-color: rgb(245, 168, 108);
+  }
+
+  #GENIE_CIVIL {
+    background-color: rgb(255, 100, 125);
+  }
+
+  #Null {
+    background-color: rgb(247, 236, 109);
+  }
+
+  #Autre {
+    background-color: rgb(243, 201, 239);
+  }
+
+  .travaux_count {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-bottom: 0 !important;
+    color: #002ddc !important;
+    font-size: 20px;
+  }
+
+  /* CUSTOMIZE CHECKBOX */
+  .nature_chantier_container *,
+  .nature_chantier_container ::after,
+  .nature_chantier_container ::before {
+    box-sizing: border-box;
+  }
+
+  .nature_chantier_container .cbx {
+    position: relative;
+    display: block;
+    float: left;
+    width: 18px;
+    height: 18px;
+    border: 2px solid;
+    border-radius: 50%;
+    border-color: #ffffff;
+    background-color: #002ddc;
+    transition: all 0.15s ease;
+  }
+
+  .nature_chantier_container .cbx svg {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #002ddc;
+    stroke-width: 2;
+    stroke-dasharray: 17;
+    stroke-dashoffset: 17;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .nature_chantier_container label {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .nature_chantier_container input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+  }
+
+  .nature_chantier_container input[type="checkbox"]:checked + .cbx {
+    background-color: #ffffff;
+  }
+
+  .nature_chantier_container input[type="checkbox"]:checked + .cbx svg {
+    stroke-dashoffset: 0;
+    transition: all 0.15s ease;
+  }
+
+  /* Infos */
+  .legend__dataInfo {
+    margin-top: 3em;
+  }
+
+  .legend__dataInfo p,
+  .legend__dataInfo a {
+    font-size: 13px !important;
+  }
+</style>

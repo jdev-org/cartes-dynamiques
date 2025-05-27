@@ -18,6 +18,9 @@
           },
           "travaux_eau": {
             "templateFooterUrl":"apps/commons/templates/network_link.html"
+          },
+          "edp_travaux": {
+            "templateFooterUrl":"apps/commons/templates/network_link.html"
           }
         }
     }

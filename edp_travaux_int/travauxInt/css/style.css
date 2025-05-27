@@ -1,0 +1,15 @@
+#bottom-panel.active {
+    padding: 1em 2em;
+}
+
+#bottom-panel .fixed-table-container table {
+    width: 100% !important;
+}
+
+#bottom-panel .form-control {
+    border-radius: 4px!important;
+}
+
+#sidebar:has(.active) #bottom-panel {
+    margin-left: 500px;
+}

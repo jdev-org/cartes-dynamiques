@@ -849,6 +849,15 @@ span.badge.counter-slide {
     background-color: var(--mycolor);
 }
 
+@media screen and (min-width: 768px) {
+    span.badge.counter-slide, #right-panel span.counter-slide {
+        position: fixed;
+        left: auto;
+        right: 180px !important;
+        width: 40px;
+    }
+}
+
 .carousel-control .glyphicon-chevron-left,.carousel-control .glyphicon-chevron-right {
     font-size: 18px!important;
 }
