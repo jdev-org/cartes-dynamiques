@@ -126,19 +126,22 @@ _vectorEdp = new ol.layer.Vector({
 const formatDate = (isoDate) => {
   if (!isoDate) return "";
   const d = new Date(isoDate);
-  const day = String(d.getDate()).padStart(2, '0');
-  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, "0");
+  const month = String(d.getMonth() + 1).padStart(2, "0");
   const year = d.getFullYear();
   return `${day}/${month}/${year}`;
-}
+};
 
-_sourceEdp.on('addfeature', function (evt) {
+_sourceEdp.on("addfeature", function (evt) {
   const feature = evt.feature;
-  const dateDebut = feature.get('date_debut');
-  const dateFin = feature.get('date_fin');
+  const dateDebut = feature.get("date_debut");
+  const dateFin = feature.get("date_fin");
 
-  feature.set('date_debut', formatDate(dateDebut));
-  feature.set('date_fin', formatDate(dateFin));
+  feature.set("date_debut", formatDate(dateDebut));
+  feature.set("date_fin", formatDate(dateFin));
+  //données d'origine à utiliser pour être compatible avec iOs
+  feature.set("date_debut_origin", dateDebut);
+  feature.set("date_fin_origin", dateFin);
 });
 
 new CustomLayer("chantiers", _vectorEdp, chantiersLegend);
