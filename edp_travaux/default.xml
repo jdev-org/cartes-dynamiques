@@ -33,10 +33,10 @@
 
 	<styles>
 		<selectionstyle>
-			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+			<polygon fillcolor="0,45,220" opacity="0" strokecolor="0,45,220" strokewidth="2" />
 		</selectionstyle>
 		<subselectionstyle>
-			<polygon opacity="0" strokewidth="8" />
+			<polygon fillcolor="0,45,220" opacity="0" strokecolor="0,45,220" strokewidth="2" />
 		</subselectionstyle>
 	</styles>
 	
