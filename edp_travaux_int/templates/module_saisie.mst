@@ -284,7 +284,7 @@
         if (natureChantierValue === 'ep') {          
             impactTravaux.innerHTML = impact["IntePonctuelles"];
         } else {
-            impactTravaux.innerHTML = "Impact des travaux...";
+            impactTravaux.innerHTML = "Impact non renseigné";
         }
 
         if (this.value) {
