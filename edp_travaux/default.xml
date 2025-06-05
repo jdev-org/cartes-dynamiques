@@ -33,10 +33,10 @@
 
 	<styles>
 		<selectionstyle>
-			<polygon fillcolor="26, 188, 156" opacity="0" strokecolor="0,45,220" strokewidth="2" />
+			<polygon fillcolor="0,45,220" opacity="0" strokecolor="0,45,220" strokewidth="2" />
 		</selectionstyle>
 		<subselectionstyle>
-			<polygon opacity="0" strokewidth="8" />
+			<polygon fillcolor="0,45,220" opacity="0" strokecolor="0,45,220" strokewidth="2" />
 		</subselectionstyle>
 	</styles>
 	
@@ -44,7 +44,7 @@
 		<extension type="javascript" src="https://cdn.rawgit.com/Viglino/ol-ext/master/dist/ol-ext.min.js"/>
 		<extension type="component" id="btnGeoloc" path="apps/commons/addons"/>
 		<extension type="component" id="offCanvas" path="apps/commons/addons"/>
-    	<!-- <extension type="component" id="print" path="apps/commons/addons"/> -->
+    		<extension type="component" id="print" path="apps/commons/addons"/>
 		<extension type="component" id="homeBtnTools" path="apps/commons/addons"/>
 		<extension type="component" id="modalShareMap" path="apps/commons/addons"/>
 	</extensions>
