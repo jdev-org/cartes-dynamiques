@@ -150,7 +150,7 @@
     const inputImpactAutre = document.getElementById("autre_impact_chantier_{{unique_id}}");
 
     var toggleBtnSave = () => {
-        if (inputNatureAutreBtn.value && inputTypeAutreBtn.value && inputImpactAutre.value) {
+        if (inputNatureAutreBtn.value && inputTypeAutreBtn.value) {
             btnSave.disabled = false;
         } else {
             btnSave.disabled = true;
@@ -171,9 +171,9 @@
         if (selectNatureChantier.selectedIndex === 0) {
             btnSave.disabled = true;
         } else if (selectedOption.textContent.trim() === "Autre") {
-            inputNatureAutre.addEventListener("input", _toggleBtnSave);
-            inputTypeAutre.addEventListener("input", _toggleBtnSave);
-            // inputImpactAutre.addEventListener("input", _toggleBtnSave);
+            inputNatureAutreBtn.addEventListener("input", toggleBtnSave);
+            inputTypeAutreBtn.addEventListener("input", toggleBtnSave);
+            // inputImpactAutre.addEventListener("input", toggleBtnSave);
         }
     });
 
@@ -284,7 +284,7 @@
         if (natureChantierValue === 'ep') {          
             impactTravaux.innerHTML = impact["IntePonctuelles"];
         } else {
-            impactTravaux.innerHTML = "Impact des travaux...";
+            impactTravaux.innerHTML = "Impact non renseigné";
         }
 
         if (this.value) {
