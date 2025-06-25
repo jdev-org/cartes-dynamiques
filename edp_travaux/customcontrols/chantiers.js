@@ -63,7 +63,7 @@ const cc = (function () {
   // Date de mise à jour
   async function getDateDataUpdate() {
     var url = new URL(
-      `${mviewer.env?.url}/geoserver/${mviewer.env?.namespace}/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${mviewer.env?.dataUpdateLayer}%3Adonnees_maj&maxFeatures=50&outputFormat=application%2Fjson`
+      `${mviewer.env?.url}/geoserver/${mviewer.env?.namespace}/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=${mviewer.env?.namespace}%3A${mviewer.env?.dataUpdateLayer}&maxFeatures=50&outputFormat=application%2Fjson`
     );
     fetch(url)
       .then((response) => response.json())
