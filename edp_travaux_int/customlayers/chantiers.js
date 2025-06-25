@@ -38,15 +38,7 @@ let GENIE_CIVILstyle = new ol.style.Style({
   }),
 });
 
-let NullStyle = new ol.style.Style({
-  fill: new ol.style.Fill({
-    color: "rgb(247, 236, 109)",
-  }),
-  stroke: new ol.style.Stroke({
-    color: "rgb(247, 236, 109)",
-    width: 2,
-  }),
-});
+let NullStyle = new ol.style.Style(null);
 
 let AutreStyle = new ol.style.Style({
   fill: new ol.style.Fill({
@@ -54,6 +46,16 @@ let AutreStyle = new ol.style.Style({
   }),
   stroke: new ol.style.Stroke({
     color: "rgb(243, 201, 239)",
+    width: 2,
+  }),
+});
+
+let undefinedStyle = new ol.style.Style({
+  fill: new ol.style.Fill({
+    color: "rgb(247, 236, 109)",
+  }),
+  stroke: new ol.style.Stroke({
+    color: "rgb(247, 236, 109)",
     width: 2,
   }),
 });
@@ -118,7 +120,7 @@ _vectorEdp = new ol.layer.Vector({
       genie_civil: GENIE_CIVILstyle,
       nature_autre: AutreStyle,
     };
-    return styles[feature.get("nature_code_chantier")] || NullStyle;
+    return styles[feature.get("nature_code_chantier")] || undefinedStyle;
   },
 });
 
