@@ -76,6 +76,12 @@ const cc = (function () {
             }
           }
         });
+      })
+      .catch((error) => {
+        console.error(
+          "Erreur lors de la récupération de la date de mise à jour :",
+          error
+        );
       });
   }
 
