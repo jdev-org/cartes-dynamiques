@@ -4,5 +4,6 @@
   "workspace": "chantiersopendata",
   "projection": "EPSG:4326",
   "url": "https://gis.jdev.fr/",
-  "dataUpdateLayer": "donnees_maj"
+  "docsPath": "edp/documents/",
+  "dataUpdateLayer": "donnee_maj"
 }

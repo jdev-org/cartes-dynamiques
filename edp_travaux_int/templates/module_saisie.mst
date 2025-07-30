@@ -200,8 +200,8 @@
     const natureOption = document.createElement("option");
 
     // Récupérer les fichiers associés
-    const unique_id=  "{{unique_id}}"
-    fetchFiles(unique_id)
+    const unique_id = "{{unique_id}}";
+    fetchFiles(unique_id);
 
     // Créé les listes d'options
     for (const travaux in naturesTravaux) {
@@ -364,7 +364,7 @@
         }
         const html = await response.text();
         const parser = new DOMParser();
-        const doc = parser .parseFromString(html, "text/html");
+        const doc = parser.parseFromString(html, "text/html");
         const links = [...doc.querySelectorAll("a")];        
         const files = links.map(link => link.getAttribute('href')).filter(href => !href.startsWith("?")).slice(1)
         
@@ -382,7 +382,7 @@
             const row = document.createElement('tr');
             const nameCell = document.createElement('td');
             nameCell.style = 'max-width: 100px; overflow: hidden; text-overflow: ellipsis;'
-            nameCell.title = `${file}` || `${file.name}`;
+            nameCell.title = `${file.name}`;
             nameCell.textContent = get ? file : file.name;
             
             // Bouton de visualisation
@@ -458,10 +458,11 @@
         const _inputAutreNatureChantier = document.getElementById(`input_autre_nature_chantier_${id}`).value;
         const _inputAutreTypeChantier = document.getElementById(`input_autre_type_chantier_${id}`).value;
         const _autreImpactChantier = document.getElementById(`autre_impact_chantier_${id}`).value;
+        const _listDocuments = document.getElementById(`filesList_${id}`);
 
         let _namespace = "edp_demo";
 
-        let _workspace = "chantiersopendata";
+        let _workspace = "chantiersopendatatest";
 
         let _projection = "EPSG:4326";
 
@@ -556,6 +557,17 @@
             _cleanCurrentFeature.set("impact_chantier", impactTravaux.value);
         }
 
+        if (_listDocuments) {
+            const files = Array.from(_listDocuments.querySelectorAll("td"));
+            const fileNames = files
+                .map(file => file.title)
+                .filter(title => typeof title === "string" && title.trim() !== "");
+
+            if (fileNames.length > 0) {
+                _cleanCurrentFeature.set("documents", JSON.stringify(fileNames));
+            }
+        }
+
         // Check if the feature has valid data before proceeding
         if (!_cleanCurrentFeature.get("nature_chantier") || !_cleanCurrentFeature.get("type_chantier")) {
             console.error("Missing required data (nature_chantier or type_chantier)");
@@ -600,11 +612,10 @@
                 return response.text();
             })
             .then((data) => {
-                console.log(data);
                 _sourceEdp.refresh();
             })
             .catch((error) => {
-                console.log(error);
+                console.error(error);
             });
 
         // Si des documents sont associés

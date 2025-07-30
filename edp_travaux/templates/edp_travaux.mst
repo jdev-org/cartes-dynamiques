@@ -35,7 +35,7 @@
             <span id="travaux_card_date_{{unique_id}}"></span>
         </div>
         <!-- Lettre d'info-->
-        <a href="#" class="travaux_card_button_info {{nature_chantier}}" id="btnLettreInfo">
+        <a class="travaux_card_button_info {{nature_chantier}}" id="btnLettreInfo">
             Consulter la lettre d'info
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM8 7H16V9H8V7ZM8 11H16V13H8V11ZM8 15H16V17H8V15Z"></path></svg>
         </a>
@@ -53,8 +53,84 @@
 	</div>
 </li>
 <script>
-    const unique_id=  "{{unique_id}}"
-    fetchFiles(unique_id)
+    const unique_id = "{{unique_id}}";
+    const lettreInfo = document.getElementById("btnLettreInfo");
+    const listeLettresInfo = document.getElementById("accordionLettreInfo");
+
+    const getDocuments = () => {
+       const documentsEncoded = "{{documents}}";
+
+        const documentsDecoded = documentsEncoded
+            .replace(/&quot;/g, '"')
+            .replace(/&amp;/g, '&');
+
+        let documents = JSON.parse(documentsDecoded);
+
+        return documents;
+    }
+
+    const renderFile = (fileName, fileUrl, documents) => {
+        const container = document.querySelector(".accordion__body");
+        const ul = document.createElement("ul");
+
+        const li = document.createElement("li");
+        li.textContent = fileName;
+
+        const elt = documents.length === 1 ? lettreInfo : li;
+        elt.onclick = (e) => {
+            e.preventDefault();
+            window.open(fileUrl, "_blank");
+        };
+        ul.appendChild(li);
+        container.appendChild(ul);
+    };
+
+    const displayInfoPanel = (documents) => {
+        if (!lettreInfo || !listeLettresInfo) return;
+
+        if (documents.length === 1) {
+            lettreInfo.style.display = "flex";
+            listeLettresInfo.style.display = "none";
+        } else {
+            lettreInfo.style.display = "none";
+            listeLettresInfo.style.display = "block";
+        }
+    };
+
+    const fetchFilesByAttribute = (uniqueId, documents) => {
+        if (!uniqueId || !documents) return;
+
+        const domainName = mviewer.env?.url;
+        const docsPath = mviewer.env?.docsPath;
+
+        const url = `${domainName}${docsPath}${uniqueId}`;
+
+        displayInfoPanel(documents);
+
+        for (const file of documents) {
+            const fullUrl = `${url}/${file}`;
+
+            fetch(fullUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP ${response.status} - ${response.statusText}`);
+                    }
+                    return response.blob();
+                })
+                .then(data => {
+                    renderFile(file, fullUrl, documents);
+                })
+                .catch(error => {
+                    console.error("Error fetching files:", error);
+                });
+        }
+    };
+
+    const documents = getDocuments();
+
+    if (documents.length > 0) {
+        fetchFilesByAttribute(unique_id, documents);
+    }
 
     // Customize le CSS selon la nature des travaux
     const naturesTravaux = {
@@ -98,67 +174,6 @@
         container.classList.toggle("open");
         element.classList.toggle("open");
     }
-
-    // Get documents associés
-    associatedFiles = [];
-    const lettreInfo = document.getElementById('btnLettreInfo');
-    const listeLettresInfo = document.getElementById('accordionLettreInfo');
-    async function fetchFiles(uniqueId) {
-        const response = await fetch(`https://gis.jdev.fr/edp/documents/${uniqueId}/`);
-        if (response.status === 404) {
-            return;
-        }
-        if (!response.ok) {
-            console.error("Erreur lors de la récupération des fichiers :", response.status);
-            return;
-        }
-        const html = await response.text();
-        const parser = new DOMParser();
-        const doc = parser .parseFromString(html, "text/html");
-        const links = [...doc.querySelectorAll("a")];        
-        const files = links.map(link => link.getAttribute('href')).filter(href => !href.startsWith("?")).slice(1)
-        
-        associatedFiles = [];
-        associatedFiles = files;
-        
-        if (associatedFiles.length < 1) {
-            lettreInfo.style.display = 'none';
-            listeLettresInfo.style.display = 'none';
-        }
-
-        if (associatedFiles.length === 1) {
-            lettreInfo.style.display = 'flex';
-            listeLettresInfo.style.display = 'none';
-            lettreInfo.onclick = (e) => {
-                e.preventDefault();
-                const fileURL = `https://gis.jdev.fr/edp/documents/${unique_id}/${associatedFiles[0]}`;
-                window.open(fileURL, '_blank');
-            }
-        }
-
-        if (associatedFiles.length > 1) {
-            lettreInfo.style.display = 'none';
-            listeLettresInfo.style.display = 'block';
-            renderFilesList();
-        }
-    }
-
-    function renderFilesList () {
-        const accordeonBody = document.querySelector('.accordion__body');
-        const list = document.createElement('ul');
-        associatedFiles.forEach((file, index) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = "- " + file;
-            listItem.onclick = (e) => {
-                event.preventDefault();
-                const fileURL = `https://gis.jdev.fr/edp/documents/${unique_id}/${file}`;
-                window.open(fileURL, '_blank');
-            }
-            list.appendChild(listItem); 
-            accordeonBody.appendChild(list); 
-        });
-    }
-
 </script>
 <style>
 

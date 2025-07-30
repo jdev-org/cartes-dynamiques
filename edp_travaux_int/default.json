@@ -1,8 +1,8 @@
 {
-    "serveur_carto": "geoserver",
-    "namespace": "edp_demo",
-    "workspace": "chantiersopendata",
-    "projection": "EPSG:4326",
-    "url": "https://gis.jdev.fr/",
-    "dataUpdateLayer": "donnee_maj"
+  "serveur_carto": "geoserver",
+  "namespace": "edp_demo",
+  "workspace": "chantiersopendatatest",
+  "projection": "EPSG:4326",
+  "url": "https://gis.jdev.fr/",
+  "dataUpdateLayer": "donnee_maj"
 }
