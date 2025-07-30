@@ -1,7 +1,7 @@
 {
   "serveur_carto": "geoserver",
   "namespace": "edp_demo",
-  "workspace": "chantiersopendatatest",
+  "workspace": "chantiersopendata",
   "projection": "EPSG:4326",
   "url": "https://gis.jdev.fr/",
   "docsPath": "edp/documents/",
