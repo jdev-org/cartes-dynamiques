@@ -3,6 +3,6 @@
   "namespace": "edp_demo",
   "workspace": "chantiersopendatatest",
   "projection": "EPSG:4326",
-  "url": "https://gis.jdev.fr/",
+  "url": "https://gis.jdev.fr",
   "dataUpdateLayer": "donnee_maj"
 }

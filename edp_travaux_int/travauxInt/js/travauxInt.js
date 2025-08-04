@@ -70,7 +70,7 @@ var travauxInt = (function () {
 
   let _workspace = `${mviewer.env?.workspace}`;
 
-  let _url = `${mviewer.env?.url}` + _serveurCarto + "/" + _namespace;
+  let _url = `${mviewer.env?.url}` + "/" + _serveurCarto + "/" + _namespace;
 
   var _initTravauxData = () => {
     let sourceTravaux = new ol.source.Vector({
