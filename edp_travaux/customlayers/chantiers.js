@@ -93,7 +93,7 @@ let _workspace = `${mviewer.env?.workspace}`;
 
 let _projection = `${mviewer.env?.projection}`;
 
-let _url = `${mviewer.env?.url}` + _serveurCarto + "/" + _namespace;
+let _url = `${mviewer.env?.url}` + "/" + _serveurCarto + "/" + _namespace;
 
 _sourceEdp = new ol.source.Vector({
   format: new ol.format.GeoJSON({
