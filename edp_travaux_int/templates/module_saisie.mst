@@ -139,6 +139,7 @@
     const natureChantier = "{{nature_code_chantier}}";   
     const typeChantier = "{{type_code_chantier}}";
     const impactChantier = "{{impact_chantier}}";
+    const natureChantierAutre = "{{nature_chantier}}";
     const typeChantierAutre = "{{type_chantier}}";
     
     const selectNatureChantier = document.getElementById("select_nature_chantier_{{unique_id}}");
@@ -234,10 +235,11 @@
             selectTypeChantier.value = typeChantier;
             
             if (typeChantier === "type_autre") {
-                const inputAutreType = Array.from(document.getElementsByClassName('input_autre_type'));
+                const inputAutreType = Array.from(document.getElementsByClassName('input_autre_nature'));
                 inputAutreType.forEach(el => el.style.display = 'flex');
                 document.querySelector('.input_standard').style.display = 'none';
-                document.querySelector('.autre_impact_chantier').innerHTML = impactChantier;
+                document.querySelector('.autre_impact_chantier').innerHTML = impactChantier;                
+                document.getElementById("input_autre_nature_chantier_{{unique_id}}").value = natureChantierAutre;
                 document.getElementById("input_autre_type_chantier_{{unique_id}}").value = typeChantierAutre;
             }
             const options = selectTypeChantier.querySelectorAll("option");
@@ -571,6 +573,7 @@
         // Check if the feature has valid data before proceeding
         if (!_cleanCurrentFeature.get("nature_chantier") || !_cleanCurrentFeature.get("type_chantier")) {
             console.error("Missing required data (nature_chantier or type_chantier)");
+            alert(`${id} | Veuillez préciser la nature et le type de chantier pour enregistrer.`);
             return;
         }
 
