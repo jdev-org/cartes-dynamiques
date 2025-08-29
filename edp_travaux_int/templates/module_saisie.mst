@@ -353,7 +353,7 @@
     });
 
     async function fetchFiles(uniqueId) {
-        const response = await fetch(`https://gis.jdev.fr/edp/documents/${uniqueId}/`);
+        const response = await fetch(`https://pdg.edp.net/document-chantier/${uniqueId}/`);
         if (response.status === 404) {
             console.warn(`Pas de fichiers pour l'emprise ${uniqueId}`);
             selectedFiles = [];
@@ -393,7 +393,7 @@
             viewBtn.className = 'actionButton';
             viewBtn.onclick = () => {
                 event.preventDefault();
-                const fileURL = get ? `https://gis.jdev.fr/edp/documents/${unique_id}/${file}`: URL.createObjectURL(file);
+                const fileURL = get ? `https://pdg.edp.net/document-chantier/${unique_id}/${file}`: URL.createObjectURL(file);
                 window.open(fileURL, '_blank');
             };
 
@@ -444,7 +444,7 @@
         let _coordsCleanCurrentFeature;
         let _sourceGML;
         let _vectorGML;
-        let _url = "https://gis.jdev.fr/geoserver/";
+        let _url = "https://pdg.edp.net/geoserver/";
         let _natureChantierAutre = false;
         let _typeChantierAutre = false;
         let _selectedContentNatureChantier = document.querySelector(`#select_nature_chantier_${id} option.active`)?.textContent?.trim() || "";
@@ -462,9 +462,9 @@
         const _autreImpactChantier = document.getElementById(`autre_impact_chantier_${id}`).value;
         const _listDocuments = document.getElementById(`filesList_${id}`);
 
-        let _namespace = "edp_demo";
+        let _namespace = "donnees_externes";
 
-        let _workspace = "chantiersopendatatest";
+        let _workspace = "chantiersopendata";
 
         let _projection = "EPSG:4326";
 
@@ -578,7 +578,7 @@
         }
 
         let options = {
-            "featureNS": `https://www.gis.jdev.fr/geoserver/edpdemo`,
+            "featureNS": `https://pdg.edp.net/geoserver/donnees_externes`,
             "featureType": `${_workspace}`,
             "srsName": "EPSG:4326",
             "version": "1.0.0",
