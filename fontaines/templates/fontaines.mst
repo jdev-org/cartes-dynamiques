@@ -336,6 +336,9 @@ li.item.cardInfo {
     } else if (type_objet=='FTNE_MAT_SOURCE_2EN1') {
         typeInfoF = "<span i18n='fontaine.type.mat'>Fontaine Mât Source 2-en-1</span>"
         textInfoF = "<span i18n='fontaine.description.mat'>La Mât Source est accessible à tous et toutes, aux enfants comme aux personnes à mobilité réduite. Il est facile d'y remplir sa gourde, et la brumisation en fait un délicieux îlot de fraîcheur.</span>";
+    } else if (type_objet=='FONTAINE_2EN1') {
+        typeInfoF = "<span i18n='fontaine.type.mat'>Fontaine Mât Source 2-en-1</span>"
+        textInfoF = "<span i18n='fontaine.description.mat'>La Mât Source est accessible à tous et toutes, aux enfants comme aux personnes à mobilité réduite. Il est facile d'y remplir sa gourde, et la brumisation en fait un délicieux îlot de fraîcheur.</span>";
     }
     document.getElementById('typeFont_{{feature_ol_uid}}').innerHTML =  typeInfoF;
     document.getElementById('infoFont_{{feature_ol_uid}}').innerHTML =  textInfoF ;
