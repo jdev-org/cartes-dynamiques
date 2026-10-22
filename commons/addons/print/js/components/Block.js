@@ -5,8 +5,8 @@ import { Legend } from "./Legend.js";
 
 /**
  * Will create default template HTML string
- * @param {*} settings from items for a given key (e.g legend, mapPrint....)
- * @returns
+ * @param {object} settings Block settings for a given key (e.g. legend, mapPrint).
+ * @returns {string}
  */
 const defaultTemplate = ({
   id,
@@ -18,6 +18,7 @@ const defaultTemplate = ({
   style,
   classNames,
   zindex,
+  content
 }) => {
   const rowGrid = row ? `grid-row:${row}` : "";
   const colGrid = row ? `grid-column:${col}` : "";
@@ -27,7 +28,7 @@ const defaultTemplate = ({
   const ownerInfos = `
     <div>
     <p class="small">${pluginsOption?.ownerInfos || ""}</p>
-    <img src="${pluginsOption?.ownerLogo || ""}"/>
+    <img class="print-logo" src="${pluginsOption?.ownerLogo || ""}"/>
     <div/>
   `;
 
@@ -45,6 +46,9 @@ const defaultTemplate = ({
     case "informations":
       divByType = ownerInfos;
       break;
+    case "custom":
+      divByType = content || "";
+      break;
     default:
       `<div>${placeHolder}</div>`;
   }
@@ -60,7 +64,7 @@ const defaultTemplate = ({
     (rowGrid ? "; " : "") + colGrid
   }; z-index:${zindex}">
         ${titleDiv}
-        <button type="button" class="close print-panel-close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close print-panel-close" aria-label="Close"></button>
         ${typeDiv}
     </div>`;
   return html;
@@ -108,12 +112,18 @@ export const deleteUselessBlocks = (itemsToDisplay) => {
  */
 export const createBlock = (customInfos) => {
   let infos = defaultBlocksInfos[customInfos.id] || {};
-  return defaultTemplate({ ...infos, ...customInfos, classNames: customInfos.class });
+  const mergedInfos = { ...infos, ...customInfos, classNames: customInfos.class };
+
+  return defaultTemplate({
+    ...mergedInfos,
+  });
 };
 
 /**
  *
- * @returns options according to mviewer id
+ * Return the print addon options associated with the current mviewer application id.
+ *
+ * @returns {object}
  */
 export const getOptions = () => {
   const mviewerId = configuration.getConfiguration().application.id;

@@ -1,4 +1,5 @@
 import { createBlock, deleteUselessBlocks, deleteBlocksById } from "./Block.js";
+import { initLegendTitleEdition } from "./Legend.js";
 import Map from "./Map.js";
 
 const parentModalId = "blockViewImpress";
@@ -16,7 +17,7 @@ const createAndAddBlocs = (items) => {
   // update size or create block for each layout item
   Object.keys(items).forEach((item) => {
     deleteBlocksById(item);
-    // create
+
     const block = createBlock({ ...items[item], id: item });
     modalGridContainer.insertAdjacentHTML("afterend", block);
   });
@@ -26,6 +27,7 @@ const createAndAddBlocs = (items) => {
  * To force correct format size
  * @param {string} format
  * @param {boolean} landscape
+ * @returns {void}
  */
 const setSize = (format = "A4", landscape) => {
   const viewDiv = document.getElementById(parentModalId);
@@ -40,12 +42,19 @@ const setSize = (format = "A4", landscape) => {
   }
 };
 
+/**
+ * Rebuild the modal preview content from the selected layout.
+ *
+ * @param {object} layoutJson Selected layout configuration.
+ * @returns {void}
+ */
 export default (layoutJson) => {
   printGridContainer.style.display = "grid";
   if (!document.getElementById(parentModalId)) return;
   // create blocks
 
   createAndAddBlocs(layoutJson.items);
+  initLegendTitleEdition();
   setSize(layoutJson.format, layoutJson.landscape);
   if (mviewer.customComponents.print.printmap) {
     mviewer.customComponents.print.printmap.updateSize();

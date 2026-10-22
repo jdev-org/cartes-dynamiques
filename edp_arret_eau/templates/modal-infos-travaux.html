@@ -1,6 +1,8 @@
 <div>
   <div class="titleHome">Travaux en cours</div>
-  <div class="updateData"> Date de dernière mise à jour : Mercredi 31 Janvier 2024 à 13:45 </div>
+  <div class="updateData">
+    Date de dernière mise à jour : Mercredi 31 Janvier 2024 à 13:45
+  </div>
   <div id="list__trvx">
     <div class="list__trvxArr">
       <div></div>
@@ -8,34 +10,40 @@
     </div>
   </div>
   <div class="block__info">
-    <p> Les travaux planifiés sur le réseau d'eau non potable (ENP) n'ont aucun impact sur la distribution de l'eau potable (EP) dans les habitations et autres locaux du même secteur. </p>
+    <p>
+      Les travaux planifiés sur le réseau d'eau non potable (ENP) n'ont aucun impact sur
+      la distribution de l'eau potable (EP) dans les habitations et autres locaux du même
+      secteur.
+    </p>
   </div>
 </div>
 <script>
   var URL_DATA = `https://edp.jdev.fr/geoserver/edp/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=edp%3Aarret_eau_p&outputFormat=application%2Fjson`;
-  fetch(URL_DATA).then((response) => response.json()).then((data) => {
-    function filtrerParStatut(feature) {
-      if (feature.properties.statut === "EN COURS") {
-        return true;
-      } else {
-        return false;
+  fetch(URL_DATA)
+    .then((response) => response.json())
+    .then((data) => {
+      function filtrerParStatut(feature) {
+        if (feature.properties.statut === "EN COURS") {
+          return true;
+        } else {
+          return false;
+        }
       }
-    }
-    var features = data?.features.filter(filtrerParStatut);
-    const groupByArr = Object.groupBy(features, (feature) => {
-      return feature.properties.arrondisse;
-    });
-    let arrayArr = Object.entries(groupByArr).sort();
-    arrayArr.forEach(function(item) {
-      let arrTxt;
-      let numArr = item[0];
-      numArr = String(+(numArr.replace(",", "."))).replace(".", ",");
-      if (numArr == "1") {
-        arrTxt = '' + numArr + '<sup>er</sup>';
-      } else {
-        arrTxt = '' + numArr + '<sup>e</sup>';
-      }
-      const divArr = `
+      var features = data?.features.filter(filtrerParStatut);
+      const groupByArr = Object.groupBy(features, (feature) => {
+        return feature.properties.arrondisse;
+      });
+      let arrayArr = Object.entries(groupByArr).sort();
+      arrayArr.forEach(function (item) {
+        let arrTxt;
+        let numArr = item[0];
+        numArr = String(+numArr.replace(",", ".")).replace(".", ",");
+        if (numArr == "1") {
+          arrTxt = "" + numArr + "<sup>er</sup>";
+        } else {
+          arrTxt = "" + numArr + "<sup>e</sup>";
+        }
+        const divArr = `
 	<div class="list__trvxArr" id="Arr-${item[0]}">
 		<div class="item__name collaspe__btn item__displayIcon" id="btnArr-${item[0]}">
 			<button onclick="itemDisplayBlock('trvxArr-${item[0]}','btnArr-${item[0]}')">
@@ -56,15 +64,16 @@
 		</div>
 		<ul class="item__list item__display" id="trvxArr-${item[0]}"></ul>
 	</div>`;
-      document.getElementById("list__trvx").insertAdjacentHTML("beforeend", divArr);
-      var data = item[1];
-      data.forEach(function(feature) {
-        let coord_x = feature.geometry.coordinates[0];
-        let coord_y = feature.geometry.coordinates[1];
-        let street = feature.properties.adresse;
-        street = street.split(" ").slice(0, -3).join(" ");
-        let nature = feature.properties.nature_res === "EP" ? "Eau potable" : "Eau non potable";
-        const divItem = `
+        document.getElementById("list__trvx").insertAdjacentHTML("beforeend", divArr);
+        var data = item[1];
+        data.forEach(function (feature) {
+          let coord_x = feature.geometry.coordinates[0];
+          let coord_y = feature.geometry.coordinates[1];
+          let street = feature.properties.adresse;
+          street = street.split(" ").slice(0, -3).join(" ");
+          let nature =
+            feature.properties.nature_res === "EP" ? "Eau potable" : "Eau non potable";
+          const divItem = `
 	<li class="${feature.properties.nature_res}__item">
 		<div>
 			<div class="li__name">${street}</div>
@@ -82,10 +91,13 @@
 			</svg>
 		</button
 	</li>`;
-        document.getElementById(`trvxArr-${item[0]}`).insertAdjacentHTML("beforeend", divItem);
+          document
+            .getElementById(`trvxArr-${item[0]}`)
+            .insertAdjacentHTML("beforeend", divItem);
+        });
       });
-    });
-  }).catch(console.error);
+    })
+    .catch(console.error);
   // Function item on click
   function zoomToItem(x, y) {
     mviewer.zoomToLocation(x, y, 18, true, "EPSG:2154");

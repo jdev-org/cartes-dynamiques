@@ -2,6 +2,8 @@
 
 This extension provides a map layout interface to create and print a personalised PDF file.
 
+Legend titles can be edited directly in the print modal. Custom values are kept when the modal is closed and reopened during the same session.
+
 ![image](https://github.com/jdev-org/mviewer/assets/16317988/e84fd308-e08d-4314-812c-1f1403beba92)
 
 Only A4 (portrail/landscape) are available for this version.
@@ -12,7 +14,7 @@ Here, you can find a simple PDF rendered with this mviewer Print extension :
 
 ## Installation
 
-By default, Print extension is already available in the `/demo/addons` directory.
+By default, Print extension is already available in the `/addons` directory.
 
 So, use this extension as simple mviewer extension.
 
@@ -20,7 +22,7 @@ So, use this extension as simple mviewer extension.
 
 ```
 <extensions>
-  <extension type="component" id="print" path="demo/addons"/>
+  <extension type="component" id="print" path="addons"/>
 </extensions>
 ```
 
@@ -30,7 +32,7 @@ So, use this extension as simple mviewer extension.
 <application id="my_print_app" title="A super title" />
 ```
 
-3. Now, open demo/addons/print/config.json file and insert you application id to create a dedicated configuration by mviewer app :
+3. Now, open addons/print/config.json file and insert you application id to create a dedicated configuration by mviewer app :
 
 In options (create this key if not available), insert `options.mviewer.applicationid` (change applicationid by application id value) like :
 
@@ -49,11 +51,12 @@ In options (create this key if not available), insert `options.mviewer.applicati
 
 You just have to know that the layout template administration is not required and offer default layout (see next chapter).
 
-Only 3 application properties are possible in the config.json file :
+Application properties available in the config.json file :
 
 - `printLayouts` : **required** _string_ - layout template (JSON) URL to use
 - `ownerLogo` : _string_ - default logo to use in informations area
 - `ownerInfos` : _string_ - default text to use in informations area
+- `customStyleDefaults` : _object_ - default values used to initialize style inputs in the print modal
 
   Here a simple example :
 
@@ -61,13 +64,41 @@ Only 3 application properties are possible in the config.json file :
   "options": {
     "mviewer": {
       "print": {
-        "printLayouts": "demo/addons/print/layouts/standard.json",
+        "printLayouts": "addons/print/layouts/standard.json",
         "ownerLogo": "https://avatars.githubusercontent.com/u/114171481?s=400&u=7fcf63ac01887ece3f5f2d5527e92c10527c7a91&v=4",
-        "ownerInfos": "This is default text to present mviewer map."
+        "ownerInfos": "This is default text to present mviewer map.",
+        "customStyleDefaults": {
+          "backgroundColor": "#ffffff",
+          "borderColor": "#1e90ff",
+          "fontFamily": "Georgia, serif",
+          "fontSize": "14",
+          "fontColor": "#1f2937"
+        }
       }
     }
   }
 ```
+
+Available keys for `customStyleDefaults` :
+
+- `backgroundColor` : _string_ - default background color for blocks
+- `borderColor` : _string_ - default border color for blocks
+- `fontFamily` : _string_ - default font-family value
+- `fontSize` : _string_ - default font size in pixels
+- `fontColor` : _string_ - default text color
+
+## Style panel
+
+The print modal contains a `Style` accordion to edit block styles during the current session.
+
+You can:
+
+- apply a default style to all blocks with `Tous les blocs (défaut)`
+- select a single block from the target list or by clicking a block in the preview
+- apply a specific style only to the selected block
+- revert the selected block to the default style with `Revenir au style par défaut`
+
+Default values displayed in this accordion come from `customStyleDefaults` when present in `config.json`.
 
 **That's all ! Now, learn how to manage and use a custom layout with a simple JSON file.**
 
@@ -77,7 +108,7 @@ A template represents the configuration of the elements to be printed in a JSON 
 
 According to the previous configuration, you can use a custom layout template by mviewer application.
 
-The default template is available in `demo/addons/print/layouts/standard.json`.
+The default template is available in `addons/print/layouts/standard.json`.
 
 We will describe it in next chapters to understand how to create you own template (_open standard.json template beside for a better understanding_) .
 
@@ -134,6 +165,8 @@ You can find here the corresponding key for each item :
 | legend       | legend       |
 | title        | title        |
 | qrcode       | qrcode       |
+
+For the `legend` item, each layer title is editable directly in the print modal. The edited value is preserved when the modal content is rebuilt or reopened, as long as the page is not reloaded.
 
 ## Grid system
 
@@ -231,7 +264,7 @@ Also, you can display an item for landscape and remove it for portrait :
 
 Default elements already have default values :
 
-https://github.com/jdev-org/mviewer/blob/c857f6d839cf028756e4a7f6a86035dbe89cbb94/demo/addons/print/js/const.js#L2-L10
+https://github.com/jdev-org/mviewer/blob/c857f6d839cf028756e4a7f6a86035dbe89cbb94/addons/print/js/const.js#L2-L10
 
 **You can also use these properties to override default values.**
 
@@ -244,6 +277,7 @@ Here, a list of available item properties :
 - **placeholder** : _string_ - Text to display by default with empty values. Not required with default items.
 - **style** : _string_ - Allow to add or override default style properties (e.g `background-color: red`). Not required.
 - **class** : _string_ - Allow to add CSS class (e.g `text-right`). Not required.
+- **content** : _string_ - HTML content used with `type: "custom"`.
 
 **Example :**
 
@@ -259,22 +293,58 @@ Here, a list of available item properties :
 }
 ```
 
+### Custom HTML block
+
+Use `type: "custom"` when you want to personalize the content of a block with your own HTML.
+
+`custom` is a specific block type, different from the standard printed items presented above such as `mapPrint`, `informations`, `legend`, `title` or `qrcode`.
+
+This content is injected as-is in the print modal when blocks are created from the JSON layout configuration.
+
+Example from `layouts/littosat.json` :
+
+```
+"customInformationsBlock": {
+  "title": "My custom block",
+  "row": "6/7",
+  "col": "2/4",
+  "type": "custom",
+  "style":"padding: 20px 10px 5px;",
+  "content": "<p class='small px-0 py-0 mx-0 my-0'>Cette carte a été réalisée dans le cadre du projet Littosat</p><img class='print-logo' src='apps/resources/2023_logo_hti_littosat.png'>"
+}
+```
+
+> Note : `content` parameter is only available with custom block element.
+
+Implementation details :
+
+- `js/components/ModalContent.js` loops through `layoutJson.items` and creates one block for each declared item.
+- `js/components/Block.js` renders the block and, when `type` is `custom`, inserts the `content` value into the block body.
+
+Use this type when built-in blocks (`text`, `legend`, `qrcode`, `informations`) are not sufficient and you need fixed branded or project-specific content.
+
+This type is about customizing the block content, not about creating a new block key in the layout.
+
 ### Insert new item
 
-> This system is experimental and may have some bugs
+> This system is experimental and may have some bugs. Please report a new issue if you catch a bug.
 
-If you need to insert new item (not in default list), you can insert a new unique key and appropriate settings (use type text for textarea or empty type value to just insert a given fixed text).
-Don't forget to adapt `row` and `row` properties to set your custom item position according to others (see grid system section).
+If you need to insert a new item not present in the default list, add a new unique key in `items` with its own settings.
+
+For this use case, the `Insert new item` section applies. You can then use `type: "custom"` on that new item if you want to fully control its HTML content.
+
+Don't forget to adapt `row` and `col` properties to set your custom item position according to others (see grid system section).
 
 ```
 **Example**
   "historyText": {
       "col": "6/6",
       "row": "1/2",
-      "type": "text",
+      "type": "custom",
       "title": "History",
       "style": "background-color: rgba(213,234,216,0.2)",
-      "class": "text-center"
+      "class": "text-center",
+      "content": "<p>History content</p>"
   }
 ```
 

@@ -1,23 +1,25 @@
 /* MODAL */
 
+#modalShareMap .modal-header {
+    padding: 2em 2em 1em 2em;
+    border: none;
+}
 #modalShareMap .modal-body {
-  padding: 0 15px;
+  padding: 0 2em 2em 2em;
 }
 
 #modalShareMap .modal-content {
   border-radius: 2rem !important;
-  padding: 2rem 1rem;
 }
 
 #modalShareMap {
-  font-family: var(--myfont);
   font-size: medium;
 }
 
 #modalShareMap h3 {
   font-weight: 700;
   color: var(--mycolor);
-  margin: 0 0rem 1rem;
+  margin: 0;
 }
 
 #modalShareMap .iconShare__list {
@@ -26,6 +28,7 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
+  gap: 5px;
 }
 
 .xs #modalShareMap .iconShare__list {
@@ -39,16 +42,15 @@
   flex-wrap: nowrap;
   align-content: flex-start;
   align-items: center;
-  margin-right: 10px;
+  /* margin-right: 10px; */
 }
 
 .iconShare__list a span {
-  font-family: var(--myfont);
   font-size: smaller;
 }
 
 #modalShareMap .iconShare__list img {
-  width: 4.6rem;
+  width: 4rem;
   transition: transform 0.2s;
 }
 
@@ -66,8 +68,14 @@
   border: 1px solid #333;
   width: 30%;
   border-radius: 1em;
-  padding: 12px 0px 12px 40px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1;
+  cursor:pointer
 }
+
 
 .xs .inputShare__mode .radio-inline {
   width: 100%;

@@ -7,7 +7,7 @@
  */
 
 // north arrow
-const defaultNorthImgUrl = "demo/addons/print/img/NorthArrow.png";
+const defaultNorthImgUrl = "addons/print/img/NorthArrow.png";
 
 // default basemap layers
 // Required !
@@ -31,6 +31,12 @@ const defaultControls = {
 };
 
 // HTML string to render
+/**
+ * Build the HTML markup required to host the print map and optional north arrow.
+ *
+ * @param {string} northImgUrl URL of the north arrow image.
+ * @returns {string}
+ */
 const template = (northImgUrl) => {
   const northImg =
     northImgUrl &&
@@ -64,26 +70,24 @@ const createMap = (layers, controls) => {
  * @returns array
  */
 const getMviewerMapLayers = () => {
-  const layers = [];
   var baseLayer = mviewer.getActiveBaseLayer();
   var allLayers = mviewer.getMap().getLayers().getArray();
-  allLayers.forEach(function (layer) {
-    // Filter only the visible basemap
-    if (layer.get("blid") === baseLayer) {
-      // map.addLayer(layer);
-      layers.push(layer);
-    }
-  });
-  /* Add layers */
   var layersIds = Object.keys(mviewer.getLayers());
-  layersIds.forEach((id) => {
-    var layer = mviewer.getLayer(id).layer;
-    // map.addLayer(layer);
-    layers.push(layer);
+
+  return allLayers.filter(function (layer) {
+    var mviewerId = layer.get("mviewerid");
+
+    // Keep the current map order, with only the active basemap and mviewer layers.
+    return layer.get("blid") === baseLayer || layersIds.includes(mviewerId);
   });
-  return layers;
 };
 
+/**
+ * Render and initialize the print map component.
+ *
+ * @param {string} [northImgUrl] Optional north arrow image URL.
+ * @returns {void}
+ */
 export default function (northImgUrl) {
   $("#print-mapPrint").append(template(northImgUrl || defaultNorthImgUrl));
 

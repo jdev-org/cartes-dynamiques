@@ -1,7 +1,7 @@
 #sidebar #searchtool {
-    margin: 3em 0 2em;
-    width: 100%!important;
-    padding: 0;
+    padding: 3em 0 2em;
+    position: static;
+    width: 100%;
 }
 
 #sidebar #searchtool .form-group {
@@ -19,6 +19,10 @@
     background-color:#00ffff00;
     color: var(--mycolor)!important;
     font-family: var(--myfont);
+    border: none;
+    font-size: .95em;
+    font-weight: 500;
+    padding: 10px 15px;
 }
 
 #sidebar #searchfield::placeholder{
@@ -28,6 +32,28 @@
 
 #sidebar #searchtool .btn {
     background-color:#00ffff00!important;
+    display: none;
+}
+
+/* Lorsque l'input est sélectionné */
+#sidebar #searchtool .form-group:focus-within {
+    border-color: var(--mycolor) !important;
+    box-shadow: 0 0 0 4px rgba(0, 45, 220, 0.12);
+}
+
+/* Supprimer le focus Bootstrap par défaut */
+#sidebar #searchfield:focus {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    color: var(--mycolor) !important;
+}
+
+/* Placeholder pendant le focus */
+#sidebar #searchfield:focus::placeholder {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
 }
 
 #sidebar #searchresults {
@@ -38,39 +64,29 @@
     z-index: 100;
     border: 2px solid var(--mycolor);
     max-width: 90%!important;
-    background-color: #ffffff;
-    right: 65px!important;
-    top: 70px!important;
-    border-radius: 6px;
-    font-family: var(--myfont);
-    color:#333;
     box-shadow: 0px 0px 30px 3px rgb(200 200 200 / 40%);
-    padding: 6px;
 }
 
 #sidebar .searchresults-title {
     font-size: 17px!important;
+    border: none;
+    color: var(--mycolor) !important;
 }
 
 #sidebar #searchresults a.list-group-item.disabled {
     font-size: 12px!important;
     text-transform: uppercase;
+    border: none;
+    color: var(--mycolor) !important;
 }
 
 #sidebar #searchresults a:hover {
     background-color: var(--mycolor)!important;
     color: white!important;
+    cursor: pointer;
 }
 
 #sidebar #searchresults a {
-    font-size: 13px!important;
-    font-family: var(--myfont);
-    margin: 0 !important;
-}
-
-/* Masque le bouton d'accès à la modal "Paramètres de recherche" */
-
-#searchtool .input-group-btn {
-    display: none;
+    border: none;
 }
 

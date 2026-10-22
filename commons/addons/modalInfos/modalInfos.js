@@ -21,8 +21,8 @@ const modalInfos = (function () {
    */
   function createBtnModalMobile() {
     const toolstoolbar = document.getElementById("toolstoolbar");
-    const btnModalMobile = `<a id="btnModalInfosMobile" class="btn btn-default btn-raised" type="button" title="Informations" data-toggle="modal" data-target="#modalInfos">
-    <i class="fas fa-info-circle"></i>
+    const btnModalMobile = `<a id="btnModalInfosMobile" class="btn btn-light" type="button" title="Informations" data-bs-toggle="modal" data-bs-target="#modalInfos">
+    <i class="ri-information-line"></i>
 </a>`;
     toolstoolbar.insertAdjacentHTML("beforeend", btnModalMobile);
   }
