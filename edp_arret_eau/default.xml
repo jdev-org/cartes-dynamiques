@@ -12,6 +12,7 @@
 			langfile="apps/edp_arret_eau/edpep.i18n.json" lang="fr"
 			togglealllayersfromtheme="true"
 			templaterightinfopanel="brut"
+			templatemobileinfopanel="brut"
 	/>
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
