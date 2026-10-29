@@ -1,7 +1,7 @@
 {
   "A4_LANDSCAPE": {
     "format": "A4",
-    "northUrl": "addons/print/img/NorthArrow.png",
+    "northUrl": "apps/commons/addons/print/img/NorthArrow.png",
     "landscape": true,
     "grid": {
       "rows": "6",
