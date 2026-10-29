@@ -1,4 +1,8 @@
-/*SLIDER*/
+
+/* ==========================================================
+   SLIDER - STYLES GLOBAUX
+   ========================================================== */
+
 .slider .slider-track {
     height: 5px !important;
 }
@@ -19,4 +23,181 @@
     height: 17px !important;
     border: 3px solid var(--mycolor);
     background-color: white !important;
+}
+
+
+/* ==========================================================
+   SLIDER TEMPOREL - EAU DE PARIS
+   ========================================================== */
+
+/* 01. CONTENEUR */
+
+#sidebar .time-slider {
+    width: 90%;
+    padding: 10px 12px 20px;
+    box-sizing: border-box;
+    font-family: var(--mvcustom-font);
+    overflow: visible;
+}
+
+/* 02. SLIDER HORIZONTAL */
+
+#sidebar .time-slider .slider-horizontal {
+    width: 100% !important;
+    height: 0;
+    margin-bottom: 40px !important;
+}
+
+/* 03. BARRE DE PROGRESSION */
+
+#sidebar .time-slider .slider-track {
+    top: 50%;
+    height: 4px;
+    margin-top: -2px;
+    background: #E4E8F5;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+/* Zones non sélectionnées */
+
+#sidebar .time-slider .slider-track-low,
+#sidebar .time-slider .slider-track-high {
+    background: #E4E8F5;
+    border-radius: 10px;
+}
+
+/* Zone sélectionnée */
+
+#sidebar .time-slider .slider-selection {
+    background: var(--mycolor, #002DDC);
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+/* 04. POINTS DES PÉRIODES */
+
+#sidebar .time-slider .slider-tick {
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    margin-top: -5px;
+    margin-left: -5px;
+    background: #FFFFFF;
+    border: 2px solid var(--mycolor, #002DDC);
+    border-radius: 50%;
+    box-shadow: none;
+    opacity: 1;
+}
+
+/* Points dans la zone sélectionnée */
+
+#sidebar .time-slider .slider-tick.in-selection {
+    background: #FFFFFF;
+    border-color: var(--mycolor, #002DDC);
+}
+
+/* 05. CURSEUR ACTIF */
+
+#sidebar .time-slider .slider-handle {
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin-top: -9px;
+    margin-left: -9px;
+    background: #FFFFFF !important;
+    border: 4px solid #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #002DDC;
+    opacity: 1;
+    cursor: grab;
+    transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Survol */
+
+#sidebar .time-slider .slider-handle:hover {
+    box-shadow:
+        0 0 0 2px var(--mycolor, #002DDC),
+        0 0 0 6px rgba(0, 45, 220, 0.12);
+}
+
+/* Focus clavier */
+
+#sidebar .time-slider .slider-handle:focus {
+    outline: none;
+    box-shadow:
+        0 0 0 2px var(--mycolor, #002DDC),
+        0 0 0 6px rgba(0, 45, 220, 0.18);
+}
+
+/* Curseur pendant le déplacement */
+
+#sidebar .time-slider .slider-handle:active {
+    cursor: grabbing;
+}
+
+/* 06. LIBELLÉS */
+
+#sidebar .time-slider .slider-tick-label-container {
+    margin-top: 10px;
+}
+
+#sidebar .time-slider .slider-tick-label {
+    color: #666666;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+/* Premier libellé : Aujourd'hui */
+
+#sidebar .time-slider .slider-tick-label:first-child {
+    text-align: left;
+    padding-left: 0;
+    transform: translateX(20px);
+}
+
+/* Dernier libellé : Total */
+
+#sidebar .time-slider .slider-tick-label:last-child {
+    text-align: right;
+    padding-right: 0;
+    transform: translateX(-20px);
+}
+
+/* 07. INFOBULLES */
+
+#sidebar .time-slider .tooltip-inner {
+    background-color: var(--mycolor, #002DDC);
+    color: #FFFFFF;
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-family: var(--mvcustom-font);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* 08. RESPONSIVE */
+
+@media (max-width: 480px) {
+
+    #sidebar .time-slider {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    #sidebar .time-slider .slider-tick-label {
+        font-size: 10px;
+    }
+
+    #sidebar .time-slider .slider-handle {
+        width: 16px;
+        height: 16px;
+        margin-left: -8px;
+    }
 }

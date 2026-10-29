@@ -122,6 +122,10 @@
 /* SIDEBAR HEADER */
 
 /* SIDEBAR BODY */
+#sidebarBody #layers-container {
+	overflow-y: hidden;
+}
+
 #sidebarBody #layers-container .list-group-item {
 	background-color: #ffffff00 !important;
 }
@@ -143,10 +147,6 @@
 	padding-bottom: 0px;
 }
 
-#sidebarBody .layerdisplay-title {
-	padding: 0px 15px 0px;
-}
-
 #sidebarBody .list-group-item {
 	padding: 0px 0px 10px !important;
 }
@@ -157,3 +157,4 @@
 	grid-column: 1 / 2;
 	grid-row: 1;
 }
+

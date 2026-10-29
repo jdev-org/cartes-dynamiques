@@ -13,7 +13,7 @@
               <sld:CssParameter name="fill-opacity">0</sld:CssParameter>
             </sld:Fill>
             <sld:Stroke>
-              <sld:CssParameter name="stroke">#002DDC</sld:CssParameter>
+              <sld:CssParameter name="stroke">#212529</sld:CssParameter>
               <sld:CssParameter name="stroke-opacity">1</sld:CssParameter>
               <sld:CssParameter name="stroke-width">1</sld:CssParameter>
             </sld:Stroke>

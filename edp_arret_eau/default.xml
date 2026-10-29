@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<application
-			title="Info Travaux"
+			title="Arrêts d’Eau"
 			id="travaux_eau"
 			logo="apps/commons/theme_edp/logo_edp_white.png"	
 			style="apps/commons/theme_edp/theme_edp.css"
@@ -22,7 +22,7 @@
         <baselayer  type="WMTS" id="plan" label="Plan IGN" title="GéoPortail" maxscale="2000" thumbgallery="img/basemap/plan_ign.png" opacity="0.8"
             url="https://data.geopf.fr/wmts" layers="GEOGRAPHICALGRIDSYSTEMS.PLANIGNV2" format="image/png" visible="false" fromcapacity="false"
             attribution="&lt;a href='https://geoservices.ign.fr/services-geoplateforme-diffusion' target='_blank'>&lt;img src='img/basemap/geoservices.png'>&lt;/a>" style="normal" matrixset="PM" maxzoom="22"/>
-		<baselayer type="OSM" id="positron" label="Noir et blanc" title="Geo2France" thumbgallery="img/basemap/positron.png"
+		<baselayer type="OSM" id="positron" label="Noir et blanc" title="Geo2France" thumbgallery="img/basemap/positron.png" opacity="0.8"
             url="https://osm.geo2france.fr/mapcache/wmts/1.0.0/grey/default/webmercator/{z}/{y}/{x}.png" maxzoom="21"
             visible="true" attribution="Fond de plan &lt;a href='https://www.geo2france.fr/' target='_blank'>Geo2France&lt;/a> — données &lt;a href='https://www.openstreetmap.org/copyright' target='_blank'>© les contributeurs OpenStreetMap&lt;/a>" />
     </baselayers>
@@ -52,10 +52,10 @@
 	</extensions>
 	
 	<themes mini="true" legendmini="false">
-		<theme name="Travaux" collapsed="true" id="edp_arret_eau_recherche_test" icon="fas fa-tint">
+		<theme name="Arrêts d’Eau" collapsed="true" id="edp_arret_eau_recherche_test" icon="fas fa-tint">
 			<layer
 					id="edp_ep"
-					name="Travaux"
+					name="Arrêts d’Eau"
 					url="apps/edp_arret_eau/addons/customlayers/edp_ep.js"
 					scalemin="0"
 					scalemax="1000000"
@@ -84,8 +84,9 @@
 					dynamiclegend ="false"
 					visible="true"
 					exclusive="false"
+					style="arrondissement_black"
 					tiled="false"
-					opacity="1"
+					opacity="0.4"
 					legendurl = ""
 					filter=""
 					toplayer="false"

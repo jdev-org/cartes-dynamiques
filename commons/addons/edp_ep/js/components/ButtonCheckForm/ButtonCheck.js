@@ -26,7 +26,7 @@ class ButtonCheck {
       btn.classList.add("btn-" + this.size);
     }
     btn.classList.add("btn");
-    btn.classList.add("btn-check");
+    btn.classList.add("btn-check-edp");
     btn.id = this.id;
     btn.value = this.value;
 

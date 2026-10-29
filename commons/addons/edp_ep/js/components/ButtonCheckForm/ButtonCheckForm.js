@@ -49,7 +49,7 @@ class ButtonCheckForm {
 
     const childDiv = document.createElement("div");
     childDiv.id = this.id;
-    childDiv.classList.add("form-check");
+    childDiv.classList.add("form-check-edp");
 
     this.buttons = this.values.forEach((value) => {
       const btn = new ButtonCheck(value, "default", this.size, this.translate);

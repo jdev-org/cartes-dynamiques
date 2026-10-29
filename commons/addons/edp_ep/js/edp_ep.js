@@ -128,8 +128,8 @@ const createFilters = async () => {
   //const statuts = getTravauxValues("statut");
   const statuts = ['PREVU','EN COURS'];
   const typeReseau = ['EP','ENP'];  
-  buttonFilterType("Types de réseau", _.uniq(typeReseau), onTypeReseauClick, "xs", true);
-  switchFilter("Statuts des travaux", _.uniq(statuts), onStatusClick);  
+  buttonFilterType("Type d’eau", _.uniq(typeReseau), onTypeReseauClick, "xs", true);
+  switchFilter("Statut des interventions", _.uniq(statuts), onStatusClick);  
   //buttonFilterType("Motifs des travaux", _.uniq(motifs), onMotifClick, "xs", true, true);
   buttonFilterType(
     "Arrondissements",

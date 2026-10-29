@@ -247,3 +247,22 @@ input[type="reset"],
 .xs .modal-body {
     padding: 1.5rem !important;
 }
+
+
+.text-big-legend {
+    display: none;
+}
+
+.layerdisplay-titleLabel {
+    font-weight: 600;
+    color: var(--mv-color-primary);
+}
+
+.mv-layer-options-attribution {
+    font-size: smaller;
+    color: grey;
+}
+
+#mv-navbar .navbar-right {
+    margin-right: 5em;
+}
