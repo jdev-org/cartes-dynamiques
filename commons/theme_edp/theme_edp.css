@@ -268,5 +268,9 @@ input[type="reset"],
 }
 
 .featureInfo__brut .card {
-    margin: 0;
+    margin: 0!important;
+}
+
+.featureInfo__brut .list-group.card-body {
+    padding: 0!important;
 }
