@@ -12,7 +12,8 @@
 			home="https://www.eaudeparis.fr/"
 			showhelp="true"		
 			togglealllayersfromtheme="true"
-			templaterightinfopanel="brut"
+			templaterightinfopanel="brut"			
+        	templatemobileinfopanel="brut"
 	/>
 	<mapoptions	maxzoom="22" projection="EPSG:3857"	center="260000,6251423"	zoom="13"/>
 
@@ -60,6 +61,7 @@
 				customcontrol="true"
                 customcontrolpath="apps/fontaines_wallace/customcontrol"
                 attribution="Eau de Paris"
+				featurecount="5"
 				infoformat="application/vnd.ogc.gml">
 				<template url="apps/fontaines_wallace/templates/fontaines_wallace.mst"></template>
 			</layer>

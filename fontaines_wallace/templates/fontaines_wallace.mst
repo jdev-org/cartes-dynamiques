@@ -1,5 +1,6 @@
 {{#features}}
-	<li class="item cardInfo fontaines" style="width:100%;">
+	<li class="item" style="width:100%;">
+    <div class="cardInfo fontaines">
         <div class="displayFlex">
             <img src="apps/fontaines/img/{{type_objet}}.svg" style="padding: 0;">
             <div class="badgeF" id="statutFont_{{feature_ol_uid}}"></div>
@@ -18,7 +19,7 @@
             </a>            
         </div>
         <div class="accordion__fontaines">
-            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_{{feature_ol_uid}}" aria-expanded="false" aria-controls="collapse_{{feature_ol_uid}}">
+            <a class="btn btn-primary" role="button" data-bs-toggle="collapse" href="#collapse_{{feature_ol_uid}}" aria-expanded="false" aria-controls="collapse_{{feature_ol_uid}}">
                 <span i18n="template.btn.plusinfos">Plus d'infos</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
             </a>
@@ -35,161 +36,19 @@
                 </div>                 
             </div>
         </div>
+        </div>
 	</li>
 <style>
-.accordion__fontaines-body {
-    display: inline-flex;
-    align-items: stretch;
-    flex-direction: row;
-    flex-wrap: wrap;
+/* Variables */
+:root {
+    --mvcustom-rightpanel-size: 410px;
 }
 
-.btnGo {
-    font-size: 1.2rem;
-    background-color: var(--mycolor);
-    color: white;
-    padding: 8px 14px;
-    border-radius: 2rem;
-    display: inline-flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    margin: 1em 0;
-}
-
-.btnGo svg {
-    margin-right: 5px;
-}
-
-.btnGo:hover {
-    color: white;
-    opacity: 0.8;
-    cursor: pointer;
-}
-
-.btnGo:focus {
-    color: white;
-    outline: none;
-}
-.accordion__fontaines {
-    border-top: 1px solid var(--mycolor);
-    margin: 1em 0 0;
-}
-
-.accordion__fontaines .btn.btn-primary {
-    background: none;
-    border: none;
-    color: var(--mycolor);
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding: 5px 0px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.accordion__fontaines .btn[aria-expanded="true"] svg {
-  transform: rotate(180deg);
-}
-
-#right-panel.active {
-    width: 420px!important;
-}
-
-#page-content-wrapper:has(#right-panel.active) #zoomtoolbar,
-  #page-content-wrapper:has(#right-panel.active) #toolstoolbar {
-    margin-right: 420px !important;
-}
-
-#right-panel .item.active {
-    padding-bottom: 2.5rem!important;
-}
-
+/* Carte et contenu */
 .cardInfo {
+    padding: 2rem !important;
+    border-radius: 2rem;
     background-color: #ededed7d;
-    padding: 2.5rem!important;
-    border-radius: 2rem;
-    font-family: var(--myfont);
-    margin-bottom: 2rem;
-}
-
-.cardInfo.fontaines img {
-    margin-left: -15px;
-    width: 70px;
-}
-
-.nameCard {
-    color: var(--mycolor);
-    font-weight: 700;
-    font-size: 2em;
-    line-height: 1;
-    margin-bottom: 1rem;
-}
-
-.adressCard {
-    color: var(--mycolor);
-    font-size: 1.2rem;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    font-weight: 500;
-}
-
-.textCard {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
-
-.btnCard {
-    font-size: 1.1rem;
-    padding: 8px 14px;
-    border-radius: 2rem;
-    display: inline-flex;
-    align-items: center;
-    margin: 0 5px 3px 0px;
-}
-
-.bgPrimary{    
-    background-color: var(--mycolor);
-    color: white;
-}
-
-.bgPrimary:hover{    
-    color: white;
-}
-
-.bgOutlinePrim{    
-    background-color: #ffffff00!important;
-    color: var(--mycolor);
-    border: 0.16rem solid;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 6px 10px;
-    border-radius: 2rem;
-    display: inline-flex;
-    align-items: center;
-    margin: 0px 5px 5px 0px;
-}
-
-.bgOutlinePrim:hover{    
-    color: var(--mycolor);
-    opacity: 0.8;
-}
-.btnCard svg {
-    margin-right: 5px;
-}
-
-.btnCard:hover {
-    opacity: 0.8;
-    cursor: pointer;
-}
-
-.btnCard:focus {
-    color: white;
-    outline: none;
-}
-
-li.item.cardInfo {
-    list-style: none;
 }
 
 .displayFlex {
@@ -198,21 +57,149 @@ li.item.cardInfo {
     justify-content: space-between;
 }
 
+.cardInfo.fontaines img {
+    width: 70px;
+    margin-left: -15px;
+}
+
 .badgeF {
-    color: var(--mycolor);
-    font-weight: 600;
     padding: 4px 10px;
     border-radius: 1rem;
+    color: var(--mycolor);
+    font-size: small;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.nameCard {
+    margin-bottom: 1rem;
+    color: var(--mycolor);
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.adressCard {
+    margin-bottom: 1rem;
+    color: var(--mycolor);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.textCard {
+    margin-bottom: 2rem;
 }
 
 .textCard a {
+    border-bottom: 3px solid var(--mycolor);
     color: var(--mycolor);
     font-weight: 600;
-    border-bottom: 3px solid var(--mycolor);
 }
 
-.textCard a:hover{
+.textCard a:hover {
     border: none;
+}
+
+/* Boutons */
+.btnGo,
+.btnCard {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 2rem;
+    background-color: var(--mycolor);
+    color: white;
+}
+
+.btnGo {
+    justify-content: center;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.btnCard {
+    margin-bottom: 3px;
+}
+
+.btnGo svg,
+.btnCard svg {
+    margin-right: 5px;
+}
+
+.btnCard svg {
+    margin-bottom: 5px;
+}
+
+.btnGo:hover,
+.btnCard:hover {
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.btnGo:focus,
+.btnCard:focus {
+    outline: none;
+    color: white;
+}
+
+.bgOutlinePrim {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 5px 5px 0;
+    padding: 6px 10px;
+    border: 0.16rem solid;
+    border-radius: 2rem;
+    background-color: #ffffff00 !important;
+    color: var(--mycolor);
+    font-size: 0.8em;
+    font-weight: 600;
+}
+
+.bgOutlinePrim:hover {
+    color: var(--mycolor);
+    opacity: 0.8;
+}
+
+/* Accordeon */
+.accordion__fontaines {
+    margin: 1em 0 0;
+    border-top: 1px solid var(--mycolor);
+}
+
+.accordion__fontaines .btn.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    border: none;
+    background: none;
+    color: var(--mycolor);
+    font-weight: 500;
+}
+
+.accordion__fontaines .btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.accordion__fontaines-body {
+    display: inline-flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Ajustements mviewer */
+.featureInfo__brut .card {
+    border: none;
+}
+
+.featureInfo__brut .card-header {
+    display: none;
+}
+
+.mv-header h6 {
+    visibility: hidden;
 }
 
 </style>
