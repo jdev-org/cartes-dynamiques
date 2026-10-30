@@ -53,6 +53,14 @@
 	.textCard a:hover{
 		border: none;
 	}
+
+	.featureInfo__brut .card{
+		border: none;
+	}
+
+	.featureInfo__brut .card-header{
+		display: none;
+	}
 </style>
 
 <script>
