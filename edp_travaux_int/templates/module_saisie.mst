@@ -839,5 +839,9 @@
     pointer-events: none;
 }
 
+.mv-header h6 {
+    visibility: hidden;
+}
+
 </style>
 {{/features}}
