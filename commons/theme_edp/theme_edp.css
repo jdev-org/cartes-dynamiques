@@ -267,10 +267,10 @@ input[type="reset"],
     margin-right: 5em;
 }
 
-.featureInfo__brut .card {
+.xs .featureInfo__brut .card {
     margin: 0!important;
 }
 
-.featureInfo__brut .list-group.card-body {
+.xs .featureInfo__brut .list-group.card-body {
     padding: 0!important;
 }
