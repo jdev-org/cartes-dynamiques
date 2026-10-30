@@ -723,6 +723,12 @@ checkboxes.forEach(function (checkbox) {
 
 </script>
 <style>
+  #inputFilterCustom {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+
   .inputCanSelected.checkOnMap ~ label, .inputIsClicked.checkOnMap ~ label {
     color: #000000 !important;
     font-weight: 600 !important;
@@ -787,7 +793,7 @@ checkboxes.forEach(function (checkbox) {
   }
 
   .blockDisplay {
-    display: none;
+    display: none!important;
   }
 
   .btn__collapse button {
@@ -797,7 +803,6 @@ checkboxes.forEach(function (checkbox) {
     width: 100%;
     align-items: center;
     font-weight: 500;
-    font-size: 1.2rem;
     color: #5e5e5e;
     justify-content: space-between;
     flex-direction: row;
@@ -810,11 +815,16 @@ checkboxes.forEach(function (checkbox) {
 
   .block__collapse {
     padding: 0.2em 1em 0em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
   }
 
   #section_date_maj {
     color: #a7a7a7;
     margin: 2em 0 !important;
+    font-size: small;
   }
   
   #legend .layerdisplay-title,
@@ -848,8 +858,8 @@ checkboxes.forEach(function (checkbox) {
     display: flex;
     align-items: center;
     font-weight: 500;
-    font-size: 1.2rem;
     color: #5e5e5e;
+    font-size: .95em;
   }
 
   #legendFontaines input {
@@ -866,5 +876,9 @@ checkboxes.forEach(function (checkbox) {
     letter-spacing: 1px;
     opacity: 0.6;
     margin-bottom: 20px;
+  }
+
+  #sidebarBody #layers-container {
+    max-height: 200vh;
   }
 </style>

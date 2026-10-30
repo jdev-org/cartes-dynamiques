@@ -1,5 +1,6 @@
 {{#features}}
-	<li class="item cardInfo" style="width:100%;">
+	<li class="item" style="width:100%;">
+        <div class="cardInfo">
         <div>
             <span class="btnOpen" id="isopen-{{feature_ol_uid}}" >
                 <span class="opentext"></span>
@@ -24,7 +25,7 @@
             </a>
         </div>
         <div class="accordion__commerce">
-            <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapse_{{feature_ol_uid}}" aria-expanded="false" aria-controls="collapse_{{feature_ol_uid}}">
+            <a class="btn btn-primary" role="button" data-bs-toggle="collapse" href="#collapse_{{feature_ol_uid}}" aria-expanded="false" aria-controls="collapse_{{feature_ol_uid}}">
                 <span i18n="template.btn.plusinfos">Plus d'infos</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path></svg>
             </a>
@@ -37,7 +38,8 @@
                 </a>  
                 <a id="cotemplBtnMoreInfos_{{feature_ol_uid}}" class="bgOutlinePrim" target="_blank" href="" i18n="template.btn.moreinfos">En savoir plus</a>
             </div>
-        </div>        		
+        </div> 
+        </div>       		
 	</li>
 
 
@@ -138,98 +140,67 @@ if(apiId) {
 </script>
 
 <style>
-.accordion__commerce {
-    border-top: 1px solid var(--mycolor);
-    margin: 1em 0 0;
+/* Variables */
+:root {
+    --mvcustom-rightpanel-size: 410px;
 }
 
-.accordion__commerce .btn.btn-primary {
-    background: none;
-    border: none;
-    color: var(--mycolor);
-    font-weight: 500;
-    font-size: 1.2rem;
-    padding: 5px 0px;
+/* Carte et contenu */
+.cardInfo {
+    padding: 2rem !important;
+    border-radius: 2rem;
+    background-color: #ededed7d;
+}
+
+.displayFlex {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
 }
 
-.accordion__commerce .btn[aria-expanded="true"] svg {
-  transform: rotate(180deg);
-}
-
-.name__co {
-    margin-top: 10px;
-}
-
-#right-panel.active {
-    width: 420px!important;
-}
-
-#page-content-wrapper:has(#right-panel.active) #zoomtoolbar,
-  #page-content-wrapper:has(#right-panel.active) #toolstoolbar {
-    margin-right: 420px !important;
-}
-
-#right-panel .item.active {
-    padding-bottom: 2.5rem!important;
-}
-
-.cardInfo {
-    background-color: #ededed7d;
-    padding: 2.5rem!important;
-    border-radius: 2rem;
-    font-family: var(--myfont);
-    margin-bottom: 2rem;
-}
-
 .nameCard {
+    margin-bottom: 1rem;
     color: var(--mycolor);
+    font-size: 1.5rem;
     font-weight: 700;
-    font-size: 2em;
+    line-height: 1;
 }
 
 .adressCard {
-    color: var(--mycolor);
-    font-size: 1.2rem;
-    line-height: 1.2;
     margin-bottom: 1rem;
+    color: var(--mycolor);
     font-weight: 500;
+    line-height: 1.2;
 }
 
 .textCard {
-    font-size: 1.2rem;
+    margin-bottom: 2rem;
 }
 
+.textCard a {
+    border-bottom: 3px solid var(--mycolor);
+    color: var(--mycolor);
+    font-weight: 600;
+}
 
+.textCard a:hover {
+    border: none;
+}
+
+/* Boutons */
 .btnGo {
-    font-size: 1.2rem;
-    background-color: var(--mycolor);
-    color: white;
+    display: inline-flex;
+    align-items: center;
     padding: 8px 14px;
     border-radius: 2rem;
-    display: inline-flex;
-    width: 100%;
-    align-items: center;
+    background-color: var(--mycolor);
+    color: white;
+}
+
+.btnGo {
     justify-content: center;
+    width: 100%;
     margin: 1em 0;
-}
-
-.btnOpen {
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 1rem;
-    line-height: 1.1;
-    color: var(--mycolor);
-}
-
-.openplace {
-    background-color: #AEFFAE;
-}
-
-.closeplace {
-    background-color: #FF95A5;
 }
 
 .btnGo svg {
@@ -243,64 +214,120 @@ if(apiId) {
 }
 
 .btnGo:focus {
-    color: white;
     outline: none;
-}
-
-.displayFlex {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.badgeCo {
-    background-color: var(--mycolor);
     color: white;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 1rem;
 }
 
-li.item.cardInfo {
-    list-style: none;
-}
-
-.btn__more {
-    color: var(--mycolor);
-    font-weight: 600;
-    border-bottom: 3px solid var(--mycolor);
-    font-size: 1.2rem;
-
-}
-
-.btn__more:hover{
-    border: none;
-}
-
-.bgOutlinePrim{    
-    background-color: #ffffff00!important;
-    color: var(--mycolor);
-    border: 0.16rem solid;
-    font-weight: 600;
-    font-size: 13px;
-    padding: 6px 10px;
-    border-radius: 2rem;
+.bgOutlinePrim {
     display: inline-flex;
     align-items: center;
-    margin: 0px 5px 5px 0px;
+    margin: 0 5px 5px 0;
+    padding: 6px 10px;
+    border: 0.16rem solid;
+    border-radius: 2rem;
+    background-color: #ffffff00 !important;
+    color: var(--mycolor);
+    font-size: 0.8em;
+    font-weight: 600;
 }
 
-.bgOutlinePrim:hover{    
+.bgOutlinePrim:hover {
     color: var(--mycolor);
     opacity: 0.8;
 }
 
+/* Accordeon */
+.accordion__commerce {
+    margin: 1em 0 0;
+    border-top: 1px solid var(--mycolor);
+}
+
+.accordion__commerce .btn.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+    border: none;
+    background: none;
+    color: var(--mycolor);
+    font-weight: 500;
+}
+
+.accordion__commerce .btn[aria-expanded="true"] svg {
+    transform: rotate(180deg);
+}
+
+.accordion__commerce .collapse.show {
+    display: inline-flex;
+    align-items: stretch;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+/* Specificites des commerces */
+li.item.cardInfo {
+    list-style: none;
+}
+
+.name__co {
+    margin-top: 10px;
+}
+
+.btnOpen {
+    padding: 4px 10px;
+    border-radius: 1rem;
+    color: var(--mycolor);
+    font-size: small;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.openplace {
+    background-color: #aeffae;
+}
+
+.closeplace {
+    background-color: #ff95a5;
+}
+
+.badgeCo {
+    padding: 4px 10px;
+    border-radius: 1rem;
+    background-color: var(--mycolor);
+    color: white;
+    font-weight: 600;
+}
+
+.btn__more {
+    border-bottom: 3px solid var(--mycolor);
+    color: var(--mycolor);
+    font-weight: 600;
+}
+
+.btn__more:hover {
+    border: none;
+}
+
+/* Adaptations mobiles */
 .xs #modal-panel-selector .carousel-control {
     height: 70%;
 }
 
 .xs .cardInfo.active {
     background-color: #ededed00;
+}
+
+/* Ajustements mviewer */
+.featureInfo__brut .card {
+    border: none;
+}
+
+.featureInfo__brut .card-header {
+    display: none;
+}
+
+.mv-header h6 {
+    visibility: hidden;
 }
 
 </style>

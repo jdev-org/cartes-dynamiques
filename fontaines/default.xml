@@ -6,7 +6,6 @@
         htmltitle="&lt;span i18n=&apos;home.title&apos;&gt;Où boire de l’eau à Paris ?&lt;/span&gt;"
         langfile="apps/fontaines/fontaines.i18n.json" lang="fr,en"
         mouseposition="false"
-        initialextenttool="false"
         logo="apps/commons/theme_edp/logo_edp_white.png"	
 		style="apps/commons/theme_edp/theme_edp.css"
 		favicon="apps/commons/theme_edp/favicon.ico"
@@ -17,6 +16,7 @@
         titlehelp="A propos"
         togglealllayersfromtheme="true"
         templaterightinfopanel="brut"
+        templatemobileinfopanel="brut"
     />
     <mapoptions	maxzoom="22" projection="EPSG:3857"	center="260707.27,6251287.70"	zoom="12"/>
 
