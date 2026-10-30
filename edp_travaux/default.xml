@@ -11,6 +11,7 @@
 			langfile="apps/edp_travaux/edpep.i18n.json" lang="fr"
 			showhelp="true"
 			templaterightinfopanel="brut"
+			templatemobileinfopanel="brut"
 	/>
 	<mapoptions maxzoom="19" projection="EPSG:3857" center="261080.6331702467, 6250562.251554384" zoom="13" projextent="-20037508.342789244, -20037508.342789244, 20037508.342789244, 20037508.342789244" />
 

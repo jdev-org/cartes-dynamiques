@@ -1,6 +1,6 @@
 <div>
   <h4 id="chantiers_title" class="legend__title">NATURE DU CHANTIER</h4>
-  <p>Cliquez sur un bloc pour filtrer les travaux selon la nature</p>
+  <p class="legend__subtitle">Cliquez sur un bloc pour filtrer les travaux selon la nature</p>
   <div id="EDPFilters">
     <label for="EP_checkbox" id="EP" class="nature_chantier_container">
       <input
@@ -140,12 +140,16 @@
     color: #002ddc;
   }
 
-  .title_white {
-    color: #ffffff;
+  .title_white.chantier_container_title {
+    color: #ffffff!important;
+  }
+
+  .title_white.chantier_container_title {
+    color: #ffffff!important;
   }
 
   .legend__title {
-    color: #002ddc;
+    color: #002ddc!important;
     font-weight: 600;
     font-size: larger;
     font-family: var(--myfont);
@@ -158,11 +162,11 @@
     padding: 10px;
     display: flex;
     align-items: center;
-    height: 5rem;
     border-radius: 20px;
     margin-bottom: 0.7rem;
     user-select: none;
     cursor: pointer;
+    min-height: 4em;
   }
 
   .nature_chantier_container:hover {
@@ -173,6 +177,9 @@
     width: 80%;
     margin-left: 10px;
     line-height: 1.1;
+    font-size: 1em !important;
+    color: #002ddc!important;
+    font-weight: 500;
   }
 
   .chantier_input_type {
@@ -273,5 +280,13 @@
   .legend__dataInfo p,
   .legend__dataInfo a {
     font-size: 13px !important;
+  }
+
+  .legend__dataInfo a {
+    color: var(--mv-color-primary);
+  }
+
+  .legend__subtitle{
+    font-size: 12px;
   }
 </style>
